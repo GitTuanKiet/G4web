@@ -6,11 +6,12 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { Link } from 'react-router-dom'
 
 const schema = Yup.object({
+  name: Yup.string().required('Name is required').min(3, 'Name must be at least 8 characters '),
   email: Yup.string().email('Invalid email').required('Email is required'),
   password: Yup.string().required('Password is required').min(8, 'Password must be at least 8 characters')
 })
 
-function Login() {
+function Register() {
   const {
     handleSubmit,
     control,
@@ -18,6 +19,7 @@ function Login() {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
+      name: '',
       email: '',
       password: ''
     }
@@ -49,7 +51,7 @@ function Login() {
             />
           </svg>
         </div>
-        <h1 className="text-xl font-semibold mt-5">Sign in to your account</h1>
+        <h1 className="text-xl font-semibold mt-5">Sign up to your account</h1>
         <div className="flex items-center justify-center text-sm mt-3">
           <div className="mr-2">Or</div>
           <div className="text-primary">start your 14-day free trial</div>
@@ -58,29 +60,18 @@ function Login() {
           onSubmit={handleSubmit(onSubmit)}
           className="w-full max-w-[500px] bg-white p-10 rounded-lg shadow-md mt-10"
         >
+          <Input label="Name" placeholder="Enter your name" name="name" control={control} errors={errors} />
           <Input label="Email" placeholder="Enter your email" name="email" control={control} errors={errors} />
           <Input label="Password" placeholder="Enter your password" name="password" control={control} errors={errors} />
 
-          <div className="mt-4 flex items-center justify-between mb-4">
-            <div className="flex items-center justify-start">
-              <input type="checkbox" />
-              <div className="text-sm ml-2 text-gray-600">Remember me</div>
-            </div>
-            <div className="my-3 float-right text-sm ">
-              <Link to="/register" className="text-primary ">
-                Forgot your password?
-              </Link>
-            </div>
+          <div className="my-3 float-right">
+            <p href="#" className=" text-sm">
+              Already have an account? <Link to="/" className='text-primary'>Sign in</Link>
+            </p>
           </div>
           <Button primary wFull>
             Sign up
           </Button>
-          <div className="my-3 float-right text-sm ">
-            <span> Don&apos;t have an account? </span>
-            <Link to="/register" className="text-primary ">
-              Register now
-            </Link>
-          </div>
           <div className="w-full flex items-center justify-between mt-8">
             <div className="border-t border-gray-200 w-full h-1"></div>
             <div className="flex-none mx-4 text-gray-500 text-sm font-light">Or continue with</div>
@@ -106,4 +97,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Register
