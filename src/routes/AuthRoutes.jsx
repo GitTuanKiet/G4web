@@ -13,15 +13,14 @@ const AuthRoutes = {
   path: '/auth',
   children: [
     {
-      path: '/auth/login',
+      path: 'login', // không bắt đầu bằng '/'
       element: <Login />
     },
     {
-      path: '/register',
+      path: 'register', // không bắt đầu bằng '/'
       element: <Register />
     }
-
   ]
 }
 
-export default AuthRoutes
+export default AuthRoutes;
