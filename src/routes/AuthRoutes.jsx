@@ -10,10 +10,10 @@ const Register = Loadable(lazy(() => import('views/auth/Register')))
 // ===========================|| AUTH ROUTING ||=========================== //
 
 const AuthRoutes = {
-  path: '/',
+  path: '/auth',
   children: [
     {
-      path: '/',
+      path: '/auth/login',
       element: <Login />
     },
     {
