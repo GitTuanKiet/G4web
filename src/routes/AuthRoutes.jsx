@@ -9,10 +9,10 @@ const Login = Loadable(lazy(() => import('views/auth/Login')))
 // ===========================|| AUTH ROUTING ||=========================== //
 
 const AuthRoutes = {
-  path: '/',
+  path: '/auth',
   children: [
     {
-      path: '/',
+      path: '/auth/login',
       element: <Login />
     }
   ]
