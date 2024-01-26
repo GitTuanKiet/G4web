@@ -80,13 +80,13 @@ function Register() {
           <div className="mt-4 flex justify-between items-center">
             <a className="flex gap-x-2 items-center p-3 shadow rounded-lg cursor-pointer hover:shadow-md ">
               <div>
-                <img src="src/assets/images/ggLogo.png" alt="" className="w-4" />
+                <img src="/src/assets/images/ggLogo.png" alt="" className="w-4" />
               </div>{' '}
               <span className="text-xs">Continue with Google</span>
             </a>
             <a className="flex gap-x-2 items-center p-3 shadow rounded-lg cursor-pointer hover:shadow-md ">
               <div>
-                <img src="src/assets/images/fbLogo.png" alt="" className="w-4" />
+                <img src="/src/assets/images/fbLogo.png" alt="" className="w-4" />
               </div>{' '}
               <span className="text-xs">Continue with Facebook</span>
             </a>

@@ -67,7 +67,7 @@ function Login() {
               <div className="text-sm ml-2 text-gray-600">Remember me</div>
             </div>
             <div className="my-3 float-right text-sm ">
-              <Link to="/register" className="text-primary ">
+              <Link to="/auth/forgot-password" className="text-primary ">
                 Forgot your password?
               </Link>
             </div>
@@ -77,7 +77,7 @@ function Login() {
           </Button>
           <div className="my-3 float-right text-sm ">
             <span> Don&apos;t have an account? </span>
-            <Link to="/register" className="text-primary ">
+            <Link to="/auth/register" className="text-primary ">
               Register now
             </Link>
           </div>
@@ -89,14 +89,14 @@ function Login() {
           <div className="mt-4 flex justify-between items-center">
             <a className="flex gap-x-2 items-center p-3 shadow rounded-lg cursor-pointer hover:shadow-md ">
               <div>
-                <img src="src/assets/images/ggLogo.png" alt="" className="w-4" />
-              </div>{' '}
+                <img src="/src/assets/images/ggLogo.png" alt="" className="w-4" />
+              </div>
               <span className="text-xs">Continue with Google</span>
             </a>
             <a className="flex gap-x-2 items-center p-3 shadow rounded-lg cursor-pointer hover:shadow-md ">
               <div>
-                <img src="src/assets/images/fbLogo.png" alt="" className="w-4" />
-              </div>{' '}
+                <img src="/src/assets/images/fbLogo.png" alt="" className="w-4" />
+              </div>
               <span className="text-xs">Continue with Facebook</span>
             </a>
           </div>

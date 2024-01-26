@@ -2,6 +2,7 @@ import { lazy } from 'react'
 
 // project imports
 import Loadable from 'components/Loadable'
+import ForgotPassword from 'views/auth/ForgotPassword'
 
 // auth routing
 const Login = Loadable(lazy(() => import('views/auth/Login')))
@@ -19,6 +20,10 @@ const AuthRoutes = {
     {
       path: 'register', // không bắt đầu bằng '/'
       element: <Register />
+    },
+    {
+      path: 'forgot-password', // không bắt đầu bằng '/'
+      element: <ForgotPassword />
     }
   ]
 }
