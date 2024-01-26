@@ -3,7 +3,7 @@
 // ==============================|| LOGO SVG ||============================== //
 
 const Logo = () => (
-  <svg height="123" viewBox="0 0 366.243 100.12352394" width="123" xmlns="http://www.w3.org/2000/svg">
+  <svg height="40" viewBox="0 0 366.243 100.12352394" width="250" xmlns="http://www.w3.org/2000/svg">
     <g
       clipRule="evenodd"
       fillRule="evenodd"
