@@ -17,6 +17,7 @@
       "themes/*": ["themes/*"],
       "utils/*": ["utils/*"],
       "views/*": ["views/*"],
+      "apis/*": ["apis/*"],
     },
   },
   "include": ["src/**/*"],
