@@ -6,19 +6,21 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      'styles': '/src/styles',
-      'components': '/src/components',
-      'pages': '/src/pages',
-      'utils': '/src/utils',
-      'hooks': '/src/hooks',
       'assets': '/src/assets',
+      'components': '/src/components',
       'config': '/src/config',
+      'containers': '/src/containers',
+      'hooks': '/src/hooks',
+      'layouts': '/src/layouts',
+      'locales': '/src/locales',
+      'models': '/src/models',
+      'pages': '/src/pages',
+      'routes': '/src/routes',
       'services': '/src/services',
-      'constants': '/src/constants',
-      'types': '/src/types',
-      'store': '/src/store',
-      'api': '/src/api',
-      'routes': '/src/routes'
+      'themes': '/src/themes',
+      'typings': '/src/typings',
+      'utils': '/src/utils',
+      'views': '/src/views'
     }
   }
 })
