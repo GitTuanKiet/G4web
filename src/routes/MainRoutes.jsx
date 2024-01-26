@@ -11,11 +11,11 @@ import Loadable from 'components/Loadable'
 // ===========================|| MAIN ROUTING ||=========================== //
 
 const MainRoutes = {
-  path: '/',
+  path: '/g4',
   element: <MainLayout />
   // children: [
   //   {
-  //     path: '/',
+  //     path: '/g4/home',
   //     element: <Home />
   //   }
   // ]
