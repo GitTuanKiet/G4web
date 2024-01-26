@@ -6,18 +6,13 @@ import Header from './Header'
 const MainLayout = () => {
 
   return (
-    <div className="flex">
+    <div className="w-full h-screen bg-gray-50 flex flex-col items-center justify-start">
       {/* header */}
-      <div
-        className = "flex-shrink-0 w-full"
-      >
+      <div className="w-full h-20 bg-white shadow-md flex items-center justify-center">
         <Header />
       </div>
-
-      {/* main content */}
-      <div
-        className = "flex-grow"
-      >
+      {/* content */}
+      <div className="w-full h-{calc(100vh - 5rem)} bg-red flex flex-col items-center justify-start">
         <Outlet />
       </div>
     </div>
