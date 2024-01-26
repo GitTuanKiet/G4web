@@ -19,7 +19,7 @@
       "hooks/*": ["src/hooks/*"],
       "locales/*": ["src/locales/*"],
       "typings/*": ["src/typings/*"]
-    },
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "build", "dist"]
