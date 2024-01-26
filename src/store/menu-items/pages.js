@@ -1,9 +1,9 @@
 // assets
-import { IconKey } from '@tabler/icons-react'
+import { FaKey } from 'react-icons/fa'
 
 // constant
 const icons = {
-  IconKey
+  FaKey
 }
 
 // ==============================|| EXTRA PAGES MENU ITEMS ||============================== //
@@ -18,28 +18,28 @@ const pages = {
       id: 'authentication',
       title: 'Authentication',
       type: 'collapse',
-      icon: icons.IconKey,
+      icon: icons.FaKey,
 
       children: [
         {
-          id: 'login3',
+          id: 'login',
           title: 'Login',
           type: 'item',
-          url: '/pages/login/login3',
+          url: '/auth/login',
           target: true
         },
         {
-          id: 'register3',
+          id: 'register',
           title: 'Register',
           type: 'item',
-          url: '/pages/register/register3',
+          url: '/auth/register',
           target: true
         },
         {
-          id: 'forgot-password3',
+          id: 'forgot-password',
           title: 'Forgot Password',
           type: 'item',
-          url: '/pages/forgot-password/forgot-password3',
+          url: '/auth/forgot-password',
           target: true
         }
       ]

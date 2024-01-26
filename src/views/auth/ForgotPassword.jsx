@@ -1,9 +1,15 @@
+import { Link } from 'react-router-dom'
+
+// project imports
 import Button from 'components/Button'
 import { Input } from 'components/Form'
+import Logo from 'components/Logo'
+
+// third-party
 import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { Link } from 'react-router-dom'
+
 
 const schema = Yup.object({
   email: Yup.string().email('Invalid email').required('Email is required')
@@ -36,7 +42,7 @@ function ForgotPassword() {
         <form onSubmit={handleSubmit(onSubmit)} className="w-full">
           <h2 className='text-4xl mb-4 font-bold'>Forgot password?</h2>
           <p>Enter the email address associated with your account.</p>
-          <Input  placeholder="Enter your email" name="email" control={control} errors={errors} />
+          <Input placeholder="Enter your email" name="email" control={control} errors={errors} />
 
           <Button primary wFull>
           Confirm

@@ -1,25 +1,25 @@
 // assets
-import { IconDashboard } from '@tabler/icons-react'
+import { MdHome } from 'react-icons/md'
 
 // constant
-const icons = { IconDashboard }
+const icons = { MdHome }
 
-// ==============================|| DASHBOARD MENU ITEMS ||============================== //
+// ==============================|| HOME MENU ITEMS ||============================== //
 
-const dashboard = {
-  id: 'dashboard',
-  title: 'Dashboard',
+const home = {
+  id: 'home',
+  title: 'home',
   type: 'group',
   children: [
     {
       id: 'default',
-      title: 'Dashboard',
+      title: 'home',
       type: 'item',
-      url: '/dashboard/default',
-      icon: icons.IconDashboard,
+      url: '/home',
+      icon: icons.MdHome,
       breadcrumbs: false
     }
   ]
 }
 
-export default dashboard
+export default home
