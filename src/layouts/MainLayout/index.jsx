@@ -1,4 +1,6 @@
 import { Outlet } from 'react-router-dom'
+
+// project imports
 import Header from './Header'
 import Footer from './Footer'
 
@@ -7,7 +9,7 @@ import Footer from './Footer'
 const MainLayout = () => {
 
   return (
-    <div className="w-full h-screen bg-gray-50 flex flex-col items-center justify-start">
+    <div className="w-full h-screen">
       {/* header */}
       <div className="w-full">
         <Header />

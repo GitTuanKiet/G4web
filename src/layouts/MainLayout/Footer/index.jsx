@@ -1,4 +1,3 @@
-import React from 'react'
 import logo from 'assets/images/menu/cgvlogo.png'
 
 export default function Header() {
