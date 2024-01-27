@@ -17,10 +17,12 @@ export default defineConfig({
       'pages': '/src/pages',
       'routes': '/src/routes',
       'services': '/src/services',
+      'store': '/src/store',
       'themes': '/src/themes',
       'typings': '/src/typings',
       'utils': '/src/utils',
-      'views': '/src/views'
+      'views': '/src/views',
+      'apis': '/src/apis'
     }
   }
 })

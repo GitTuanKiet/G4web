@@ -1,3 +1,62 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+html {
+    font-family: 'Poppins', sans-serif;
+}
+
+@layer base {
+    :root {
+        --primary : #d2001a;
+        --light-primary: rgba(146, 80, 193,0.9);
+    }
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    body {
+        @apply font-body;
+    }
+    input {
+        outline: none;
+    }
+
+    button {
+        // border: none;
+        outline: none;
+    }
+    a[href] {
+        text-decoration: none;
+    }
+}
+
+@layer components {
+    .page-container {
+        max-width: 1280px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        @apply px-[16px];
+    }
+
+    // .input-search:not(:placeholder-shown) ~ span {
+    //     @apply text-slate-900;
+    //     cursor: pointer;
+        
+    // }
+
+    #page-not-found {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+
+        background-color: #f5f5f5;
+        background: url('src/assets/images/404.gif') no-repeat center;
+    }
+
+   
+}
