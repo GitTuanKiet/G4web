@@ -10,7 +10,7 @@ import { IoTicketOutline } from "react-icons/io5";
 export default function Header() {
   return (
     <>
-      <header className="flex flex-row items-center justify-center py-[30px]  text-base text-black font-verdana"
+      <header className="flex flex-row items-center justify-center py-[30px]  text-[#D2001A] bg-[#FFDE00] font-urbanist"
       // style={{ backgroundImage: `url(${background})` }}
       >
         <div className="h-[53px] w-[159px] flex flex-col items-start justify-start  pr-[37px] ">
@@ -22,10 +22,10 @@ export default function Header() {
           />
         </div>
         <div >
-          <ul className='flex gap-[40px] pt-[36px] mr-80 font-bold '>
+          <ul className='flex gap-[40px] pt-[36px] mr-80 font-medium '>
             <li className='relative group'>
               <a href="#" className=''>PHIM
-                <ul className='submenu bg-gray-500 p-3 border rounded-md text-white hidden absolute left-0 w-[200px] z-10 group-hover:block group-focus:block'>
+                <ul className='submenu bg-gray-600 p-3 border rounded-md text-white hidden absolute left-0 w-[200px] z-10 group-hover:block group-focus:block'>
                   <li><a href="" className='transition-colors duration-300 hover:text-red-500'>Phim Đang Chiếu</a></li>
                   <li><a href="" className='transition-colors duration-300 hover:text-red-500'>Phim Sắp Chiếu</a></li>
                 </ul>
@@ -33,7 +33,7 @@ export default function Header() {
             </li>
             <li className='relative group'>
               <a href="#">RẠP CGV
-                <ul className=' submenu bg-gray-500 p-3 border rounded-md text-white hidden absolute left-0  w-[200px] z-10 group-hover:block group-focus:block'>
+                <ul className=' submenu bg-gray-600 p-3 border rounded-md text-white hidden absolute left-0  w-[200px] z-10 group-hover:block group-focus:block'>
                   <li><a href="" className='transition-colors duration-300 hover:text-red-500'>Tất Cả Các Rạp</a></li>
                   <li><a href="" className='transition-colors duration-300 hover:text-red-500'>Rạp Đặc Biệt</a></li>
                   <li><a href="" className='transition-colors duration-300 hover:text-red-500'>Rạp 3D</a></li>
@@ -42,7 +42,7 @@ export default function Header() {
             </li>
             <li className='relative group'>
               <a href="#">THÀNH VIÊN
-                <ul className=' submenu bg-gray-500 p-3 border rounded-md text-white hidden absolute left-0  w-[200px] z-10 group-hover:block group-focus:block'>
+                <ul className=' submenu bg-gray-600 p-3 border rounded-md text-white hidden absolute left-0  w-[200px] z-10 group-hover:block group-focus:block'>
                   <li><a href="" className='transition-colors duration-300 hover:text-red-500'>Tài Khoản CGV</a></li>
                   <li><a href="" className='transition-colors duration-300 hover:text-red-500'>Quyền Lợi</a></li>
                 </ul>
@@ -50,7 +50,7 @@ export default function Header() {
             </li>
             <li className='relative group'>
               <a href="#">CULTUREPLEX
-                <ul class="submenu bg-gray-500 p-3 border rounded-md text-white hidden absolute left-0  w-[200px] z-10 group-hover:block group-focus:block">
+                <ul class="submenu bg-gray-600 p-3 border rounded-md text-white hidden absolute left-0  w-[200px] z-10 group-hover:block group-focus:block">
                   <li><a href="" class="transition-colors duration-300 hover:text-red-500">Quầy Online</a></li>
                   <li><a href="" class="transition-colors duration-300 hover:text-red-500">Thu Rạp & Vé Nhóm</a></li>
                   <li><a href="" class="transition-colors duration-300 hover:text-red-500">E-CGV</a></li>
@@ -87,6 +87,9 @@ export default function Header() {
           <CiUser className='my-auto' />
           <a href='' className=''> Đăng nhập / Đăng ký </a>
         </div>
+      </div>
+      <div>
+        
       </div>
     </>
   )

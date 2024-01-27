@@ -3,7 +3,7 @@ import logo from '../../img/menu/cgvlogo.png'
 
 export default function Header() {
     return (
-        <footer className="text-sm text-black font-alata z-10">
+        <footer className="text-sm font-urbanist z-10">
             <hr className='border-t-2 border-solid border-black my-4' />
             <div className='flex flex-row flex-wrap items-start gap-[20px] justify-center'>
                 <a href="#" className='[border:none] [outline:none] bg-gainsboro h-[37px] flex-1 relative min-w-[84px] max-w-[86px]'><img src={logo} alt="" className="w-full h-full object-contain" /></a>
