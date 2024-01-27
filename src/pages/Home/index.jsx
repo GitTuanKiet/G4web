@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+// import { useEffect, useState } from 'react'
+// import { Link } from 'react-router-dom'
 
 // views components
 import Banner from 'views/home/Banner'
