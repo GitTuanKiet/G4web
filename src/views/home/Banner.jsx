@@ -46,7 +46,7 @@ export default function App() {
 
   return (
     <>
-      <div className='w-[70%] h-full'>
+      <div className='w-[70%] h-full '>
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
@@ -65,8 +65,8 @@ export default function App() {
         >
           {slides.map((slide, index) => (
             <SwiperSlide key={index}>
-              <Link to={slide.link} className='!underline'>
-                <img src={slide.src} alt={slide.alt} className="w-full h-full object-cover" />
+              <Link to={slide.link} className='!underline '>
+                <img src={slide.src} alt={slide.alt} className="w-full h-full object-cover " />
               </Link>
             </SwiperSlide>
           ))}

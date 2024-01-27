@@ -11,7 +11,7 @@ import LogoSection from '../LogoSection'
 export default function Header() {
   return (
     <>
-      <header className="flex flex-row items-center justify-center py-[30px]  text-[#D2001A] bg-[#FFDE00] font-urbanist"
+      <header className="flex flex-row items-center justify-center py-[30px]  text-primary bg-secondary font-urbanist"
       // style={{ backgroundImage: `url(${background})` }}
       >
         <LogoSection />

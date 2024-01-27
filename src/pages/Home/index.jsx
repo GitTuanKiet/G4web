@@ -2,6 +2,8 @@
 // import { Link } from 'react-router-dom'
 
 // views components
+import EventList from 'components/Event/EventList'
+import MovieList from 'components/Movie/MovieList'
 import Banner from 'views/home/Banner'
 
 // ==============================|| HOME ||============================== //
@@ -19,7 +21,10 @@ const Home = () => {
       </div>
 
       {/* content */}
-      <div className="w-full h-auto bg-green-500 flex items-center justify-center">
+      <div className=" page-container ">
+        <MovieList/>
+
+        <EventList/>
 
       </div>
     </>

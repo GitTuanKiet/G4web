@@ -47,6 +47,14 @@ html {
     //     cursor: pointer;
         
     // }
+    .movie-list .swiper-slide  {
+        width: 350px;
+        height:auto;
+      }
+    .event-list .swiper-slide  {
+        width: 200px;
+        height:auto;
+      }
 
     #page-not-found {
         display: flex;
@@ -57,6 +65,29 @@ html {
         background-color: #f5f5f5;
         background: url('src/assets/images/404.gif') no-repeat center;
     }
+    .triangle-left {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 22px 0 22px 22px; 
+        border-color: transparent transparent transparent #fff; 
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 1; 
+      }
+      .triangle-right {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 22px 22px 22px 0;
+        border-color: transparent #fff transparent transparent;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1;
+      }
+      
 
    
 }
