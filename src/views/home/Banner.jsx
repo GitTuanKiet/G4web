@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
 
@@ -44,36 +45,39 @@ export default function App() {
   ]
 
   return (
-    <div className='w-full h-full px-36'>
-      <Swiper
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false
-        }}
-        pagination={{
-          clickable: true
-        }}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        onAutoplayTimeLeft={onAutoplayTimeLeft}
-        className="mySwiper"
-      >
-        {slides.map((slide, index) => (
-          <SwiperSlide key={index}>
-            <Link to={slide.link} className='w-full h-full block'>
-              <img src={slide.src} alt={slide.alt} className='w-full h-full object-contain' />
-            </Link>
-          </SwiperSlide>
-        ))}
-        <div className="autoplay-progress hidden" slot="container-end">
-          <svg viewBox="0 0 48 48" ref={progressCircle}>
-            <circle cx="24" cy="24" r="20"></circle>
-          </svg>
-          <span ref={progressContent}></span>
-        </div>
-      </Swiper>
-    </div>
+    <>
+      <div className='w-[70%] h-full'>
+        <Swiper
+          spaceBetween={30}
+          centeredSlides={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false
+          }}
+          pagination={{
+            clickable: true
+          }}
+          loop={true}
+          navigation={true}
+          modules={[Autoplay, Pagination, Navigation]}
+          onAutoplayTimeLeft={onAutoplayTimeLeft}
+          className="mySwiper w-full h-full"
+        >
+          {slides.map((slide, index) => (
+            <SwiperSlide key={index}>
+              <Link to={slide.link} className='!underline'>
+                <img src={slide.src} alt={slide.alt} className="w-full h-full object-cover" />
+              </Link>
+            </SwiperSlide>
+          ))}
+          <div className="autoplay-progress hidden" slot="container-end">
+            <svg viewBox="0 0 48 48" ref={progressCircle}>
+              <circle cx="24" cy="24" r="20"></circle>
+            </svg>
+            <span ref={progressContent}></span>
+          </div>
+        </Swiper>
+      </div>
+    </>
   )
 }
