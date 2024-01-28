@@ -8,8 +8,7 @@ import Loadable from 'components/Loadable'
 const Home = Loadable(lazy(() => import('pages/Home')))
 const Theater = Loadable(lazy(() => import('pages/Theater')))
 const Movie = Loadable(lazy(() => import('pages/Movie')))
-const GoldClass = Loadable(lazy(() => import('pages/Theater/Special/GoldClass')))
-const _3D = Loadable(lazy(() => import('pages/Theater/Special/3D')))
+const Special = Loadable(lazy(() => import('pages/Theater/Special')))
 
 // ===========================|| MAIN ROUTING ||=========================== //
 
@@ -34,15 +33,11 @@ const MainRoutes = {
         },
         {
           path: 'special',
-          element: <Theater />
+          element: <Special />
         },
         {
-          path: 'special/gold-class',
-          element: <GoldClass />
-        },
-        {
-          path: 'special/3D',
-          element: <_3D />
+          path: 'special/:slug',
+          element: <Special />
         }
       ]
     },

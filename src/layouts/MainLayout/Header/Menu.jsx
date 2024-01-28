@@ -18,8 +18,8 @@ export default function Menu() {
             <a href="#">RẠP CGV
               <ul className='submenu bg-gray-600 p-3 border rounded-md text-white hidden absolute left-0  w-[200px] z-10 group-hover:block group-focus:block'>
                 <li><a href="/theater" className='transition-colors duration-300 hover:text-red-500'>Tất Cả Các Rạp</a></li>
-                <li><a href="/theater/special/gold-class" className='transition-colors duration-300 hover:text-red-500'>Rạp Đặc Biệt</a></li>
-                <li><a href="/theater/special/3D" className='transition-colors duration-300 hover:text-red-500'>Rạp 3D</a></li>
+                <li><a href="/theater/special" className='transition-colors duration-300 hover:text-red-500'>Rạp Đặc Biệt</a></li>
+                <li><a href="/theater/special/3d" className='transition-colors duration-300 hover:text-red-500'>Rạp 3D</a></li>
               </ul>
             </a>
           </li>
