@@ -16,7 +16,7 @@ export default function Menu() {
           </li>
           <li className='relative group'>
             <a href="#">RẠP CGV
-              <ul className=' submenu bg-gray-600 p-3 border rounded-md text-white hidden absolute left-0  w-[200px] z-10 group-hover:block group-focus:block'>
+              <ul className='submenu bg-gray-600 p-3 border rounded-md text-white hidden absolute left-0  w-[200px] z-10 group-hover:block group-focus:block'>
                 <li><a href="/theater" className='transition-colors duration-300 hover:text-red-500'>Tất Cả Các Rạp</a></li>
                 <li><a href="/theater/special/gold-class" className='transition-colors duration-300 hover:text-red-500'>Rạp Đặc Biệt</a></li>
                 <li><a href="/theater/special/3D" className='transition-colors duration-300 hover:text-red-500'>Rạp 3D</a></li>
@@ -25,7 +25,7 @@ export default function Menu() {
           </li>
           <li className='relative group'>
             <a href="#">THÀNH VIÊN
-              <ul className=' submenu bg-gray-600 p-3 border rounded-md text-white hidden absolute left-0  w-[200px] z-10 group-hover:block group-focus:block'>
+              <ul className='submenu bg-gray-600 p-3 border rounded-md text-white hidden absolute left-0  w-[200px] z-10 group-hover:block group-focus:block'>
                 <li><a href="/account" className='transition-colors duration-300 hover:text-red-500'>Tài Khoản CGV</a></li>
                 <li><a href="/benefit" className='transition-colors duration-300 hover:text-red-500'>Quyền Lợi</a></li>
               </ul>
