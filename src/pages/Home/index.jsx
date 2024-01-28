@@ -1,10 +1,10 @@
 // import { useEffect, useState } from 'react'
 // import { Link } from 'react-router-dom'
 
-// views components
-import EventList from 'components/Event/EventList'
-import MovieList from 'components/Movie/MovieList'
+// project imports
 import Banner from 'views/home/Banner'
+import Widget from 'views/home/Widget'
+import Content from 'views/home/Content'
 
 // ==============================|| HOME ||============================== //
 
@@ -12,20 +12,17 @@ const Home = () => {
   return (
     <>
       {/* widget */}
-      <div className="w-full h-24 bg-red-500 flex items-center justify-center">
-
+      <div className="w-full h-24 bg-blue-500 flex items-center justify-center">
+        <Widget />
       </div>
       {/* banner */}
-      <div className="w-full h-96 bg-yellow-500 flex items-center justify-center px-20">
+      <div className="w-full h-96 bg-green-500 flex items-center justify-center px-20">
         <Banner />
       </div>
 
       {/* content */}
-      <div className=" page-container ">
-        <MovieList/>
-
-        <EventList/>
-
+      <div className="page-container ">
+        <Content />
       </div>
     </>
   )
