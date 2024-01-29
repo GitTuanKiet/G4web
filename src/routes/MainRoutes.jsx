@@ -9,6 +9,8 @@ const Home = Loadable(lazy(() => import('pages/Home')))
 const Theater = Loadable(lazy(() => import('pages/Theater')))
 const Movie = Loadable(lazy(() => import('pages/Movie')))
 const Special = Loadable(lazy(() => import('pages/Theater/Special')))
+const NewsOffer = Loadable(lazy(() => import('pages/NewsOffer')))
+const NewsOfferDetail = Loadable(lazy(() => import('pages/NewsOffer/Partials')))
 
 // ===========================|| MAIN ROUTING ||=========================== //
 
@@ -51,6 +53,19 @@ const MainRoutes = {
         {
           path: ':slug',
           element: <Movie />
+        }
+      ]
+    },
+    {
+      path: 'news-offer',
+      children: [
+        {
+          path: '',
+          element: <NewsOffer />
+        },
+        {
+          path: ':id',
+          element: <NewsOfferDetail />
         }
       ]
     }

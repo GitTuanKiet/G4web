@@ -20,7 +20,7 @@ export default function Header() {
       <div className=' flex gap-10 justify-end pr-5 text-[16px] uppercase text-gray-500'>
         <div className='flex gap-1'>
           <FaRegNewspaper className='my-auto' />
-          <a href='#' className=''> Tin mới & Ưu đãi </a>
+          <a href='/news-offer' className=''> Tin mới & Ưu đãi </a>
         </div>
         <div className='flex gap-1'>
           <IoTicketOutline className='my-auto' />
