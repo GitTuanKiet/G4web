@@ -43,7 +43,16 @@ const MainRoutes = {
     },
     {
       path: 'movie',
-      element: <Movie />
+      children: [
+        {
+          path: '',
+          element: <Movie />
+        },
+        {
+          path: ':slug',
+          element: <Movie />
+        }
+      ]
     }
   ]
 }
