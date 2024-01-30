@@ -1,4 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
+
 function EventList() {
   const fakeList = new Array(10).fill(null)
 

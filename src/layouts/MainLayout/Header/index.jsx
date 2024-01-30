@@ -20,15 +20,15 @@ export default function Header() {
       <div className=' flex gap-10 justify-end pr-5 text-[16px] uppercase text-gray-500'>
         <div className='flex gap-1'>
           <FaRegNewspaper className='my-auto' />
-          <a href='' className=''> Tin mới & Ưu đãi </a>
+          <a href='/news-offer' className=''> Tin mới & Ưu đãi </a>
         </div>
         <div className='flex gap-1'>
           <IoTicketOutline className='my-auto' />
-          <a href='' className=''> Vé của tôi </a>
+          <a href='#' className=''> Vé của tôi </a>
         </div>
         <div className='flex gap-1'>
           <CiUser className='my-auto' />
-          <a href='' className=''> Đăng nhập / Đăng ký </a>
+          <a href='#' className=''> Đăng nhập / Đăng ký </a>
         </div>
       </div>
       <div>

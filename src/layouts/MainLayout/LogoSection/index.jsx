@@ -8,7 +8,7 @@ import Logo from 'components/Logo'
 const LogoSection = () => {
 
   return (
-    <Link to="#">
+    <Link to="/">
       <button
         className="focus:outline-none"
       >
