@@ -36,8 +36,8 @@ export default function Menu() {
               <ul className="submenu bg-gray-600 p-3 border rounded-md text-white hidden absolute left-0  w-[200px] z-10 group-hover:block group-focus:block">
                 <li><a href="#" className="transition-colors duration-300 hover:text-red-500">Quầy Online</a></li>
                 <li><a href="#" className="transition-colors duration-300 hover:text-red-500">Thu Rạp & Vé Nhóm</a></li>
-                <li><a href="#" className="transition-colors duration-300 hover:text-red-500">E-CGV</a></li>
-                <li><a href="#" className="transition-colors duration-300 hover:text-red-500">CGV EGift</a></li>
+                <li><a href="" className="transition-colors duration-300 hover:text-red-500">E-CGV</a></li>
+                <li><a href="cultureplex/gift" className="transition-colors duration-300 hover:text-red-500">CGV EGift</a></li>
                 <li><a href="#" className="transition-colors duration-300 hover:text-red-500">CGV Rules</a></li>
               </ul>
             </a>

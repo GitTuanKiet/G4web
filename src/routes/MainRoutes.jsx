@@ -12,7 +12,8 @@ const Special = Loadable(lazy(() => import('pages/Theater/Special')))
 const NewsOffer = Loadable(lazy(() => import('pages/NewsOffer')))
 const NewsOfferDetail = Loadable(lazy(() => import('pages/NewsOffer/Partials')))
 const MovieDetail = Loadable(lazy(() => import('pages/Movie/MovieDetail')))
-
+const Gift = Loadable(lazy(() => import('pages/Cultureplex')))
+const Detail = Loadable(lazy(() => import('pages/Cultureplex/Detail')))
 // ===========================|| MAIN ROUTING ||=========================== //
 
 const MainRoutes = {
@@ -72,6 +73,22 @@ const MainRoutes = {
           path: ':id',
           element: <NewsOfferDetail />
         }
+      ]
+    }
+    , {
+      path: 'cultureplex',
+      children: [
+        {
+          path: 'gift',
+          element: <Gift />,
+          children : [
+            {
+              path : 'detail/:index' ,
+              element : <Detail />
+            }
+          ]
+        },
+        // Còn vài mục con nhưng chưa thêm 
       ]
     }
   ]
