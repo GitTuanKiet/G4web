@@ -26,7 +26,7 @@ export default function Menu() {
           <li className='relative group'>
             <a href="#">THÀNH VIÊN
               <ul className='submenu bg-gray-600 p-3 border rounded-md text-white hidden absolute left-0  w-[200px] z-10 group-hover:block group-focus:block'>
-                <li><a href="/account" className='transition-colors duration-300 hover:text-red-500'>Tài Khoản CGV</a></li>
+                <li><a href="/membership" className='transition-colors duration-300 hover:text-red-500'>Tài Khoản CGV</a></li>
                 <li><a href="/benefit" className='transition-colors duration-300 hover:text-red-500'>Quyền Lợi</a></li>
               </ul>
             </a>

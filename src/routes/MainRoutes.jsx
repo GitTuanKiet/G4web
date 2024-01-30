@@ -12,6 +12,7 @@ const Special = Loadable(lazy(() => import('pages/Theater/Special')))
 const NewsOffer = Loadable(lazy(() => import('pages/NewsOffer')))
 const NewsOfferDetail = Loadable(lazy(() => import('pages/NewsOffer/Partials')))
 const MovieDetail = Loadable(lazy(() => import('pages/Movie/MovieDetail')))
+const MemberShip = Loadable(lazy(() => import('pages/MemberShip')))
 
 // ===========================|| MAIN ROUTING ||=========================== //
 
@@ -73,6 +74,10 @@ const MainRoutes = {
           element: <NewsOfferDetail />
         }
       ]
+    },
+    {
+      path: 'membership',
+      element: <MemberShip />
     }
   ]
 }
