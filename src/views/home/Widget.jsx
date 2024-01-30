@@ -41,12 +41,13 @@ const StaticWidget = [
 const Widget = () => {
   return (
     <>
-      <div className="flex flex-row space-x-4">
+      <div className="flex flex-row ">
         {StaticWidget.map((item) => (
           <a
             key={item.id}
             href={item.link}
-            className="hover:text-yellow-500"
+            className="hover:text-yellow-500 w-[100px] h-[100px] border"
+            style={{backgroundImage : 'url() link ảnh'}}
           >
             {item.title}
           </a>
