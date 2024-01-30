@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Poppins', 'san-serif']
+        body: ['Roboto', 'san-serif']
       },
 
       colors: {

@@ -1,6 +1,8 @@
 import Button from 'components/Button'
+import { useNavigate } from 'react-router-dom'
 
 function MovieItem(movie) {
+  const navigate = useNavigate();
   return (
     <div className="bg-white flex flex-col rounded-lg  h-full select-none relative">
       <img
@@ -15,7 +17,7 @@ function MovieItem(movie) {
         <h3 className='text-center text-2xl'>Harry porter</h3>
         <div className="flex items-center justify-between my-2 mx-8">
           <Button primary className="hover:opacity-100">Buy now</Button>
-          <Button primary className="hover:opacity-100">Detail</Button>
+          <Button onClick={() => navigate('/movie/slug-of-movie')} primary className="hover:opacity-100">Detail</Button>
         </div>
       </div>
     </div>
