@@ -1,7 +1,26 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 
+const img = 'https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/u/2/u22-240x201-04.png'
+
 function EventList() {
-  const fakeList = new Array(10).fill(null)
+  const fakeList = [
+    {
+      id: 1,
+      img: img
+    },
+    {
+      id: 2,
+      img: img
+    },
+    {
+      id: 3,
+      img: img
+    },
+    {
+      id: 4,
+      img: img
+    }
+  ]
 
   return (
     <div>
@@ -21,12 +40,12 @@ function EventList() {
 
       <div className="event-list ">
         <Swiper grabCursor={true} spaceBetween={40} slidesPerView={'auto'}>
-          {fakeList.map((event, index) => {
+          {fakeList.map((event) => {
             return (
-              <SwiperSlide key={index}>
+              <SwiperSlide key={event.id}>
                 <div className='select-none'>
                   <img
-                    src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/u/2/u22-240x201-04.png"
+                    src={event.img}
                     alt="w-full h-full"
                   />
                 </div>

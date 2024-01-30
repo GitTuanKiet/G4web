@@ -6,8 +6,7 @@ const data = [
     id: 1,
     poster: 'https://www.cgv.vn/media/wysiwyg/2024/012024/240x201.png',
     title: 'Lat Mat 48h',
-    time: 'Từ 01.04.2021 - 30.04.2021',
-    
+    time: 'Từ 01.04.2021 - 30.04.2021'
   },
   {
     id: 2,

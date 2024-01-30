@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 const data = [
   {
     id: 1,
-    img: 'https://i.pinimg.com/474x/af/b5/eb/afb5eb4d723c2385531525bbc787db0d.jpg',
+    poster: 'https://i.pinimg.com/474x/af/b5/eb/afb5eb4d723c2385531525bbc787db0d.jpg',
     name: 'Harry porter',
     slug: 'harry-porter',
     director: 'John Doe',
@@ -28,7 +28,7 @@ function MovieDetail() {
       <div className="flex gap-x-10 justify-start">
         <div>
           <img
-            src={data[0].img}
+            src={data[0].poster}
             alt=""
             className="w-[500px] h-[600px] object-cover  rounded-lg"
           />
@@ -37,9 +37,9 @@ function MovieDetail() {
           <h2 className=" text-xl font-semibold">{data[0].name}</h2>
           <ul className="list-disc">
             <li>Đạo diễn: {data[0].director}</li>
-            <li> Ngày phát hành: {data[0].releaseDate}</li>
-            <li> Thể loại: {data[0].genre}</li>
-            <li> Thời lượng: {data[0].duration}</li>
+            <li>Ngày phát hành: {data[0].releaseDate}</li>
+            <li>Thể loại: {data[0].genre}</li>
+            <li>Thời lượng: {data[0].duration}</li>
             <li>Ngôn ngữ: {data[0].language}</li>
           </ul>
         </div>

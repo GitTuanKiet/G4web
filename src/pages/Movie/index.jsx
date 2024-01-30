@@ -3,6 +3,12 @@ import { useParams, Link, Navigate } from 'react-router-dom'
 
 import ListMove from 'views/movie/ListMovie'
 
+const fake = {
+  poster: 'https://i.pinimg.com/474x/af/b5/eb/afb5eb4d723c2385531525bbc787db0d.jpg',
+  releaseDate: '25/01/2024',
+  genre: 'Hành động, nhập vai, tình cảm',
+  duration: '120p'
+}
 const data = [
   {
     type: 'now',
@@ -10,26 +16,26 @@ const data = [
       {
         id: 1,
         name: 'Movie 1',
-        image: 'https://i.pinimg.com/474x/af/b5/eb/afb5eb4d723c2385531525bbc787db0d.jpg',
-        slug: 'movie-1'
+        slug: 'movie-1',
+        ...fake
       },
       {
         id: 2,
         name: 'Movie 2',
-        image: 'https://i.pinimg.com/474x/af/b5/eb/afb5eb4d723c2385531525bbc787db0d.jpg',
-        slug: 'movie-2'
+        slug: 'movie-2',
+        ...fake
       },
       {
         id: 3,
         name: 'Movie 3',
-        image: 'https://i.pinimg.com/474x/af/b5/eb/afb5eb4d723c2385531525bbc787db0d.jpg',
-        slug: 'movie-3'
+        slug: 'movie-3',
+        ...fake
       },
       {
         id: 4,
         name: 'Movie 4',
-        image: 'https://i.pinimg.com/474x/af/b5/eb/afb5eb4d723c2385531525bbc787db0d.jpg',
-        slug: 'movie-4'
+        slug: 'movie-4',
+        ...fake
       }
     ]
   },
@@ -39,26 +45,26 @@ const data = [
       {
         id: 5,
         name: 'Movie 5',
-        image: 'https://i.pinimg.com/474x/af/b5/eb/afb5eb4d723c2385531525bbc787db0d.jpg',
-        slug: 'movie-5'
+        slug: 'movie-5',
+        ...fake
       },
       {
         id: 6,
         name: 'Movie 6',
-        image: 'https://i.pinimg.com/474x/af/b5/eb/afb5eb4d723c2385531525bbc787db0d.jpg',
-        slug: 'movie-6'
+        slug: 'movie-6',
+        ...fake
       },
       {
         id: 7,
         name: 'Movie 7',
-        image: 'https://i.pinimg.com/474x/af/b5/eb/afb5eb4d723c2385531525bbc787db0d.jpg',
-        slug: 'movie-7'
+        slug: 'movie-7',
+        ...fake
       },
       {
         id: 8,
         name: 'Movie 8',
-        image: 'https://i.pinimg.com/474x/af/b5/eb/afb5eb4d723c2385531525bbc787db0d.jpg',
-        slug: 'movie-8'
+        slug: 'movie-8',
+        ...fake
       }
     ]
   }

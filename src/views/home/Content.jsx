@@ -8,7 +8,6 @@ const Content = () => {
       <MovieList />
 
       <EventList />
-
     </>
   )
 }
