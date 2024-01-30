@@ -3,15 +3,15 @@ import { lazy } from 'react'
 // project imports
 import MainLayout from 'layouts/MainLayout'
 import Loadable from 'components/Loadable'
-import MovieDetail from 'pages/MovieDetail'
 
 // pages routing
 const Home = Loadable(lazy(() => import('pages/Home')))
 const Theater = Loadable(lazy(() => import('pages/Theater')))
-const Movie = Loadable(lazy(() => import('pages/Movie')))
+const ListMovie = Loadable(lazy(() => import('pages/Movie')))
 const Special = Loadable(lazy(() => import('pages/Theater/Special')))
 const NewsOffer = Loadable(lazy(() => import('pages/NewsOffer')))
 const NewsOfferDetail = Loadable(lazy(() => import('pages/NewsOffer/Partials')))
+const MovieDetail = Loadable(lazy(() => import('pages/Movie/MovieDetail')))
 
 // ===========================|| MAIN ROUTING ||=========================== //
 
@@ -46,21 +46,18 @@ const MainRoutes = {
     },
     {
       path: 'movie',
-       
-      element: <Movie />
-     
-    },
-    {
-      path: 'movie/:slug',
-      element: <MovieDetail />
       children: [
         {
           path: '',
-          element: <Movie />
+          element: <ListMovie />
         },
         {
-          path: ':slug',
-          element: <Movie />
+          path: ':type',
+          element: <ListMovie />
+        },
+        {
+          path: 'detail/:slug',
+          element: <MovieDetail />
         }
       ]
     },
