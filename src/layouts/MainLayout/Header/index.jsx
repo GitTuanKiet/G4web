@@ -28,7 +28,7 @@ export default function Header() {
         </div>
         <div className='flex gap-1'>
           <CiUser className='my-auto' />
-          <a href='#' className=''> Đăng nhập / Đăng ký </a>
+          <a href='/auth' className=''> Đăng nhập / Đăng ký </a>
         </div>
       </div>
       <div>

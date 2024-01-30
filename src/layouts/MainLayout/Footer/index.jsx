@@ -20,23 +20,23 @@ export default function Header() {
         <div>
           <p className='font-bold'>CGV Việt Nam</p>
           <ul className='mt-2 text-base'>
-            <li><a href="#">Giới thiệu</a></li>
-            <li><a href="#">Tiện ích online</a></li>
-            <li><a href="#">Thẻ quà tặng</a></li>
-            <li><a href="#">Tuyển dụng</a></li>
-            <li><a href="#">Liên hệ quảng cáo</a></li>
-            <li><a href="#">Dành cho đối tác</a></li>
+            <li><a href="/about">Giới thiệu</a></li>
+            <li><a href="/cgv-online">Tiện ích online</a></li>
+            <li><a href="/gifts">Thẻ quà tặng</a></li>
+            <li><a href="/careers">Tuyển dụng</a></li>
+            <li><a href="/contacts">Liên hệ quảng cáo</a></li>
+            <li><a href="/for-partners">Dành cho đối tác</a></li>
           </ul>
         </div>
 
         <div>
           <p className='font-bold'>Điều khoản sử dụng</p>
           <ul className='mt-2 text-base'>
-            <li><a href="#">Điều khoản chung</a></li>
-            <li><a href="#">Điều khoản giao dịch</a></li>
-            <li><a href="#">Chính sách thanh toán</a></li>
-            <li><a href="#">Chính sách bảo mật</a></li>
-            <li><a href="#">Câu hỏi thường gặp</a></li>
+            <li><a href="/terms/conditions">Điều khoản chung</a></li>
+            <li><a href="/terms/of-use">Điều khoản giao dịch</a></li>
+            <li><a href="/policy/payment">Chính sách thanh toán</a></li>
+            <li><a href="/policy/privacy">Chính sách bảo mật</a></li>
+            <li><a href="/faq">Câu hỏi thường gặp</a></li>
           </ul>
         </div>
 
@@ -54,10 +54,10 @@ export default function Header() {
         <div>
           <p className='font-bold'>Chăm sóc khách hàng</p>
           <ul className='mt-2 text-base'>
-            <li><a href="#">Hotline: 1900 6017</a></li>
-            <li><a href="#">Giờ làm việc: 8:00 - 22:00 <br />
-                            (Tất cả các ngày bao gồm cả Lễ Tết)</a></li>
-            <li><a href="#">Email hỗ trợ: hoidap@cgv.vn</a></li>
+            <li>Hotline: 1900 6017</li>
+            <li>Giờ làm việc: 8:00 - 22:00
+                            (Tất cả các ngày bao gồm cả Lễ Tết)</li>
+            <li>Email hỗ trợ: hoidap@cgv.vn</li>
 
           </ul>
         </div>
