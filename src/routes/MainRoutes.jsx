@@ -3,6 +3,7 @@ import { lazy } from 'react'
 // project imports
 import MainLayout from 'layouts/MainLayout'
 import Loadable from 'components/Loadable'
+import MovieDetail from 'pages/MovieDetail'
 
 // pages routing
 const Home = Loadable(lazy(() => import('pages/Home')))
@@ -45,6 +46,13 @@ const MainRoutes = {
     },
     {
       path: 'movie',
+       
+      element: <Movie />
+     
+    },
+    {
+      path: 'movie/:slug',
+      element: <MovieDetail />
       children: [
         {
           path: '',
