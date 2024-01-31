@@ -12,11 +12,11 @@ const Home = () => {
   return (
     <>
       {/* widget */}
-      <div className="w-full h-24 bg-blue-500 flex items-center justify-center">
+      <div className="w-full h-24 bg-blue-400 flex items-center justify-center">
         <Widget />
       </div>
       {/* banner */}
-      <div className="w-full h-96 bg-green-500 flex items-center justify-center px-20">
+      <div className="w-full h-96 bg-green-400 flex items-center justify-center px-20">
         <Banner />
       </div>
 

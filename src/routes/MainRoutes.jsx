@@ -99,6 +99,22 @@ const MainRoutes = {
       path: 'online-store',
       element: <OnlineStore />
     }
+    , {
+      path: 'cultureplex',
+      children: [
+        {
+          path: 'gift',
+          element: <Gift />,
+          children : [
+            {
+              path : 'detail/:index' ,
+              element : <Detail />
+            }
+          ]
+        },
+        // Còn vài mục con nhưng chưa thêm 
+      ]
+    }
   ]
 }
 
