@@ -16,6 +16,8 @@ const MemberShip = Loadable(lazy(() => import('pages/MemberShip')))
 const CgvRules = Loadable(lazy(() => import('pages/CgvRules')))
 const Cinemas = Loadable(lazy(() => import('pages/Cinemas')))
 const Gift = Loadable(lazy(() => import('pages/Gift')))
+const ListGift = Loadable(lazy(() => import('pages/Gift/ListGift')))
+const GiftDetail = Loadable(lazy(() => import('pages/Gift/GiftDetail')))
 const OnlineStore = Loadable(lazy(() => import('pages/OnlineStore')))
 
 // ===========================|| MAIN ROUTING ||=========================== //
@@ -93,27 +95,24 @@ const MainRoutes = {
     },
     {
       path: 'gifts',
-      element: <Gift />
+      children: [
+        {
+          path: '',
+          element: <Gift />
+        },
+        {
+          path: ':slug',
+          element: <ListGift />
+        },
+        {
+          path: 'detail/:slug',
+          element: <GiftDetail />
+        }
+      ]
     },
     {
       path: 'online-store',
       element: <OnlineStore />
-    }
-    , {
-      path: 'cultureplex',
-      children: [
-        {
-          path: 'gift',
-          element: <Gift />,
-          children : [
-            {
-              path : 'detail/:index' ,
-              element : <Detail />
-            }
-          ]
-        },
-        // Còn vài mục con nhưng chưa thêm 
-      ]
     }
   ]
 }
