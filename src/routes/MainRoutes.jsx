@@ -12,8 +12,14 @@ const Special = Loadable(lazy(() => import('pages/Theater/Special')))
 const NewsOffer = Loadable(lazy(() => import('pages/NewsOffer')))
 const NewsOfferDetail = Loadable(lazy(() => import('pages/NewsOffer/Partials')))
 const MovieDetail = Loadable(lazy(() => import('pages/Movie/MovieDetail')))
-const Gift = Loadable(lazy(() => import('pages/Cultureplex')))
-const Detail = Loadable(lazy(() => import('pages/Cultureplex/Detail')))
+const MemberShip = Loadable(lazy(() => import('pages/MemberShip')))
+const CgvRules = Loadable(lazy(() => import('pages/CgvRules')))
+const Cinemas = Loadable(lazy(() => import('pages/Cinemas')))
+const Gift = Loadable(lazy(() => import('pages/Gift')))
+const ListGift = Loadable(lazy(() => import('pages/Gift/ListGift')))
+const GiftDetail = Loadable(lazy(() => import('pages/Gift/GiftDetail')))
+const OnlineStore = Loadable(lazy(() => import('pages/OnlineStore')))
+
 // ===========================|| MAIN ROUTING ||=========================== //
 
 const MainRoutes = {
@@ -74,22 +80,39 @@ const MainRoutes = {
           element: <NewsOfferDetail />
         }
       ]
-    }
-    , {
-      path: 'cultureplex',
+    },
+    {
+      path: 'membership',
+      element: <MemberShip />
+    },
+    {
+      path: 'rules',
+      element: <CgvRules />
+    },
+    {
+      path: 'cinemas',
+      element: <Cinemas />
+    },
+    {
+      path: 'gifts',
       children: [
         {
-          path: 'gift',
-          element: <Gift />,
-          children : [
-            {
-              path : 'detail/:index' ,
-              element : <Detail />
-            }
-          ]
+          path: '',
+          element: <Gift />
         },
-        // Còn vài mục con nhưng chưa thêm 
+        {
+          path: ':slug',
+          element: <ListGift />
+        },
+        {
+          path: 'detail/:slug',
+          element: <GiftDetail />
+        }
       ]
+    },
+    {
+      path: 'online-store',
+      element: <OnlineStore />
     }
   ]
 }
