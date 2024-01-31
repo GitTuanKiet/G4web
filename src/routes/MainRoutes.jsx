@@ -12,8 +12,12 @@ const Special = Loadable(lazy(() => import('pages/Theater/Special')))
 const NewsOffer = Loadable(lazy(() => import('pages/NewsOffer')))
 const NewsOfferDetail = Loadable(lazy(() => import('pages/NewsOffer/Partials')))
 const MovieDetail = Loadable(lazy(() => import('pages/Movie/MovieDetail')))
-const Gift = Loadable(lazy(() => import('pages/Cultureplex')))
-const Detail = Loadable(lazy(() => import('pages/Cultureplex/Detail')))
+const MemberShip = Loadable(lazy(() => import('pages/MemberShip')))
+const CgvRules = Loadable(lazy(() => import('pages/CgvRules')))
+const Cinemas = Loadable(lazy(() => import('pages/Cinemas')))
+const Gift = Loadable(lazy(() => import('pages/Gift')))
+const OnlineStore = Loadable(lazy(() => import('pages/OnlineStore')))
+
 // ===========================|| MAIN ROUTING ||=========================== //
 
 const MainRoutes = {
@@ -74,6 +78,26 @@ const MainRoutes = {
           element: <NewsOfferDetail />
         }
       ]
+    },
+    {
+      path: 'membership',
+      element: <MemberShip />
+    },
+    {
+      path: 'rules',
+      element: <CgvRules />
+    },
+    {
+      path: 'cinemas',
+      element: <Cinemas />
+    },
+    {
+      path: 'gifts',
+      element: <Gift />
+    },
+    {
+      path: 'online-store',
+      element: <OnlineStore />
     }
     , {
       path: 'cultureplex',

@@ -26,19 +26,19 @@ export default function Menu() {
           <li className='relative group'>
             <a href="#">THÀNH VIÊN
               <ul className='submenu bg-gray-600 p-3 border rounded-md text-white hidden absolute left-0  w-[200px] z-10 group-hover:block group-focus:block'>
-                <li><a href="/account" className='transition-colors duration-300 hover:text-red-500'>Tài Khoản CGV</a></li>
-                <li><a href="/benefit" className='transition-colors duration-300 hover:text-red-500'>Quyền Lợi</a></li>
+                <li><a href="/auth" className='transition-colors duration-300 hover:text-red-500'>Tài Khoản CGV</a></li>
+                <li><a href="/membership" className='transition-colors duration-300 hover:text-red-500'>Quyền Lợi</a></li>
               </ul>
             </a>
           </li>
           <li className='relative group'>
             <a href="#">CULTUREPLEX
               <ul className="submenu bg-gray-600 p-3 border rounded-md text-white hidden absolute left-0  w-[200px] z-10 group-hover:block group-focus:block">
-                <li><a href="#" className="transition-colors duration-300 hover:text-red-500">Quầy Online</a></li>
-                <li><a href="#" className="transition-colors duration-300 hover:text-red-500">Thu Rạp & Vé Nhóm</a></li>
-                <li><a href="" className="transition-colors duration-300 hover:text-red-500">E-CGV</a></li>
-                <li><a href="cultureplex/gift" className="transition-colors duration-300 hover:text-red-500">CGV EGift</a></li>
-                <li><a href="#" className="transition-colors duration-300 hover:text-red-500">CGV Rules</a></li>
+                <li><a href="/online-store" className="transition-colors duration-300 hover:text-red-500">Quầy Online</a></li>
+                <li><a href="/cinemas" className="transition-colors duration-300 hover:text-red-500">Thu Rạp & Vé Nhóm</a></li>
+                <li><a href="/cgv-online" className="transition-colors duration-300 hover:text-red-500">E-CGV</a></li>
+                <li><a href="/gifts" className="transition-colors duration-300 hover:text-red-500">CGV EGift</a></li>
+                <li><a href="/rules" className="transition-colors duration-300 hover:text-red-500">CGV Rules</a></li>
               </ul>
             </a>
           </li>
@@ -47,13 +47,13 @@ export default function Menu() {
       <img
         className="h-[27px] w-[108px] relative overflow-hidden shrink-0 object-cover"
         loading="eager"
-        alt=""
+        alt="https://kenhcine.cgv.vn"
         src={logo2}
       />
       <img
         className="h-[79px] w-[97px] relative overflow-hidden shrink-0 object-cover"
         loading="eager"
-        alt=""
+        alt="/movie/now"
         src={logo3}
       />
     </>
