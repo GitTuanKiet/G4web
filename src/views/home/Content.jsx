@@ -5,9 +5,9 @@ import MovieList from 'views/movie/MovieList'
 const Content = () => {
   return (
     <>
-      <MovieList />
+      <MovieList key={1} />
 
-      <EventList />
+      <EventList key={2} />
     </>
   )
 }

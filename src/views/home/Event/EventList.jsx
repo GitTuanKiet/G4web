@@ -20,7 +20,7 @@ const fakeList = [
     img: img
   },
   {
-    ìd: 5,
+    id: 5,
     img: img
   },
   {
@@ -54,18 +54,14 @@ function EventList() {
 
       <div className="event-list ">
         <Swiper grabCursor={true} spaceBetween={40} slidesPerView={'auto'}>
-          {fakeList.map((event) => {
-            return (
-              <SwiperSlide key={event.id}>
-                <div className='select-none'>
-                  <img
-                    src={event.img}
-                    alt="w-full h-full"
-                  />
-                </div>
-              </SwiperSlide>
-            )
-          })}
+          {fakeList.map((event) => (
+            <SwiperSlide key={event.id}>
+              <img
+                src={event.img}
+                className="w-full h-full"
+              />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </div>

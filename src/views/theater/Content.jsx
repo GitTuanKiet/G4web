@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 
 import Banner from 'views/home/Banner'
@@ -58,7 +58,7 @@ const Content = ({ item }) => {
       </div>
 
       <div className="page-container ">
-        <EventList />
+        <EventList key={selectedDate} />
       </div>
 
     </>
