@@ -5,7 +5,7 @@ import { useState } from 'react'
 import Support from 'views/membership/Support'
 import LoyaltyPoint from 'views/membership/LoyaltyPoint'
 import CgvLevel from 'views/membership/CgvLevel'
-import Manage from 'views/membership/CgvLevel'
+import Manage from 'views/membership/Manage'
 import BirthdayGift from 'views/membership/BirthdayGift'
 
 

@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 
 // project imports
-import FormOffer from 'components/NewsOffer'
+import FormOffer from 'views/newsoffer'
 
 const fake = {
   img: 'https://www.cgv.vn/media/wysiwyg/2024/012024/350x495.png',

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 
 // Import Swiper React components
@@ -56,7 +56,7 @@ export default function App() {
 
   return (
     <>
-      <div className='w-[70%] h-full '>
+      <div className='w-full h-full '>
         <Swiper
           spaceBetween={30}
           centeredSlides={true}

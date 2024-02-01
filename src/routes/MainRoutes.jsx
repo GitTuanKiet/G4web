@@ -35,7 +35,7 @@ const MainRoutes = {
       element: <Home />
     },
     {
-      path: 'theater',
+      path: 'theaters',
       children: [
         {
           path: '',

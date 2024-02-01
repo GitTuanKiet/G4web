@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 
 
 import Banner from 'views/home/Banner'
-import EventList from 'components/Event/EventList'
+import EventList from 'views/home/Event/EventList'
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'

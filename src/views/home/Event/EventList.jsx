@@ -2,29 +2,43 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 
 const img = 'https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/u/2/u22-240x201-04.png'
 
+const fakeList = [
+  {
+    id: 1,
+    img: img
+  },
+  {
+    id: 2,
+    img: img
+  },
+  {
+    id: 3,
+    img: img
+  },
+  {
+    id: 4,
+    img: img
+  },
+  {
+    ìd: 5,
+    img: img
+  },
+  {
+    id: 6,
+    img: img
+  },
+  {
+    id: 7,
+    img: img
+  }
+]
+
 function EventList() {
-  const fakeList = [
-    {
-      id: 1,
-      img: img
-    },
-    {
-      id: 2,
-      img: img
-    },
-    {
-      id: 3,
-      img: img
-    },
-    {
-      id: 4,
-      img: img
-    }
-  ]
+
 
   return (
     <div>
-      <h1 className="text-primary text-3xl text-center my-6 font-semibold">EVENT</h1>
+      <h1 className="text-primary text-6xl text-center my-6 font-semibold">EVENT</h1>
 
       <div className="flex items-center justify-center pb-6 text-white rounded-b-none relative">
         <div className="triangle-left"></div>

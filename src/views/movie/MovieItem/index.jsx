@@ -8,7 +8,7 @@ function MovieItem({ movie }) {
       <img
         src={movie.poster}
         alt=""
-        className=" w-full h-[500px] rounded-xl object-cover "
+        className=" w-full h-auto rounded-xl object-cover "
       />
       <div>
         <span className='absolute top-0 bg-secondary text-primary py-1 px-3 rounded-md ml-3 mt-3'>18+</span>

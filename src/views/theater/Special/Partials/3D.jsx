@@ -15,7 +15,7 @@ export default function Theater3D() {
         </h3>
         <h3 className="font-semibold">
           Tất cả các rạp của CGV đều có định dạng 3D để khách hàng thưởng thức điện ảnh trọn vẹn. Chi tiết xem
-          <Link to="/theater" className='text-primary'> tại đây</Link>
+          <Link to="/theaters" className='text-primary'> tại đây</Link>
         </h3>
         <p>
           <img
@@ -30,10 +30,10 @@ export default function Theater3D() {
           Đặt vé ngay :
           </strong>
         </h2>
-        <Link href="/theater">
+        <Link to="/theaters">
           <h1 className="text-primary cursor-pointer px-4">Tìm rạp</h1>
         </Link>
-        <Link href="/theater/special">
+        <Link to="/theaters/special">
           <h1 className="text-primary cursor-pointer px-4">Quay lại</h1>
         </Link>
       </div>

@@ -1,6 +1,6 @@
 
-import EventList from 'components/Event/EventList'
-import MovieList from 'components/Movie/MovieList'
+import EventList from 'views/home/Event/EventList'
+import MovieList from 'views/movie/MovieList'
 
 const Content = () => {
   return (

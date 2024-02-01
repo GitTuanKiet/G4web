@@ -1,4 +1,5 @@
 
+
 const FormOffer = ({ title, img, content }) => {
   return (
     <>
@@ -11,7 +12,7 @@ const FormOffer = ({ title, img, content }) => {
           <img
             src={img || 'https://www.cgv.vn/media/wysiwyg/2024/012024/350x495.png'}
             alt=""
-            className="min-w-[350px] min-h-[495px] object-cover " />
+            className="w-auto h-auto object-cover " />
         </div>
         <div>
           {content.map((item, index) => (
