@@ -7,7 +7,7 @@ import Loadable from 'components/Loadable'
 // pages routing
 const About = Loadable(lazy(() => import('pages/Others/About')))
 const Contact = Loadable(lazy(() => import('pages/Others/Contact')))
-const FAQ = Loadable(lazy(() => import('pages/Others/FAQ')))
+const FAQ = Loadable(lazy(() => import('pages/Others/Faq')))
 const PolicyPrivacy = Loadable(lazy(() => import('pages/Others/Policy/Privacy')))
 const PolicyPayment = Loadable(lazy(() => import('pages/Others/Policy/Payment')))
 const TermConditions = Loadable(lazy(() => import('pages/Others/Terms/Conditions')))
