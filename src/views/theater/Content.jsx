@@ -29,7 +29,7 @@ const Content = ({ item }) => {
       <h1 className="text-primary text-4xl text-center font-semibold py-10">THEATER</h1>
       <h2 className="text-primary text-2xl text-center font-semibold py-10">{item.name}</h2>
 
-      <div className="w-full h-96 bg-green-500 flex items-center justify-center px-20">
+      <div className="w-full h-auto">
         <Banner />
       </div>
 
