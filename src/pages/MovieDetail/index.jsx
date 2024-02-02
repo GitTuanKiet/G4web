@@ -30,7 +30,7 @@ function MovieDetail() {
             <h1 className="mr-3 cursor-pointer hover:opacity-90 hover:text-secondary">Trailer</h1>
             <div className="triangle-right"></div>
           </div>
-            <Trailer/>
+          <Trailer/>
         </div>
       </div>
       <p className="text-sm">

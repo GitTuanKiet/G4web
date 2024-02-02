@@ -94,8 +94,8 @@ const ListGift = () => {
   const list = data.find(item => item.slug === slug)
 
   return (
-    <div className="container mx-auto px-4">
-      <h2 className="text-3xl font-bold mb-4">{list.title}</h2>
+    <div className="py-10 gap-5">
+      <h2 className="text-3xl font-semibold uppercase">{list.title}</h2>
       <List key={slug} data={list.img} />
     </div>
   )

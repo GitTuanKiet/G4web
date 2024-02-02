@@ -1,4 +1,5 @@
 
+import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 const data = [
@@ -21,6 +22,7 @@ const data = [
 function MovieDetail() {
   const { slug } = useParams()
   const movie = data.find((item) => item.slug === slug)
+  const [showTrailer, setShowTrailer] = useState(false)
 
   return (
     <div className="page-container">
@@ -30,7 +32,7 @@ function MovieDetail() {
           <img
             src={data[0].poster}
             alt=""
-            className="w-[500px] h-[600px] object-cover  rounded-lg"
+            className="w-full h-auto object-cover  rounded-lg"
           />
         </div>
         <div className="content">
@@ -49,17 +51,31 @@ function MovieDetail() {
           <div className="triangle-left"></div>
           <div className="text-center bg-red-500 py-2 px-6 border-r-transparent inline-flex justify-center gap-x-4 text-lg relative z-10">
             <div className="triangle-left"></div>
-            <h1 className="ml-3 cursor-pointer hover:opacity-90 hover:text-secondary">Chi tiết</h1>
-            <button onClick={() => window.open(data[0].trailer, '_blank')} className="ml-3 cursor-pointer hover:opacity-90 hover:text-secondary">Trailer</button>
+            <h1 className={`ml-3 cursor-pointer hover:opacity-90 hover:text-secondary ${!showTrailer ? 'text-secondary': ''} `} onClick={() => setShowTrailer(false)}>Chi tiết</h1>
+            <h1 className={`mr-3 cursor-pointer hover:opacity-90 hover:text-secondary ${showTrailer ? 'text-secondary': ''} `} onClick={() => setShowTrailer(true)}>Trailer</h1>
             <div className="triangle-right"></div>
           </div>
         </div>
       </div>
-      <p className="text-sm">
-        {data[0].description}
-      </p>
+      {showTrailer ?
+        <div className="aspect-video">
+          <Trailer />
+        </div>
+        : <p className="text-sm">{data[0].description}</p>}
     </div>
   )
 }
 
 export default MovieDetail
+
+function Trailer() {
+  return (
+    <iframe
+      className='w-full h-full object-cover'
+      src="https://www.youtube.com/embed/VyHV0BRtdxo?si=HnfVXtPH3nly71Nl"
+      title="YouTube video player"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowFullScreen
+    />
+  )
+}

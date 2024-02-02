@@ -1,5 +1,5 @@
-import { useParams } from 'react-router-dom'
-import { useState } from 'react';
+import { useParams, Link } from 'react-router-dom'
+import { useState } from 'react'
 const data = [
   {
     url: 'https://www.cgv.vn/media/cinemas/cms//1/_/1_cgv_tet.png',
@@ -168,24 +168,24 @@ const content = [
 
 const GiftDetail = () => {
   const { slug } = useParams()
-  const gift = data.find(item => item.img.some(img => img.slug === slug));
-  const giftItem = gift.img.find(item => item.slug === slug);
-  const ruleContents = content.filter(item => item.title === 'rule');
-  const noteContents = content.filter(item => item.title === 'note');
-  const [selectedPrice, setSelectedPrice] = useState(price[0].price);
+  const gift = data.find(item => item.img.some(img => img.slug === slug))
+  const giftItem = gift.img.find(item => item.slug === slug)
+  const ruleContents = content.filter(item => item.title === 'rule')
+  const noteContents = content.filter(item => item.title === 'note')
+  const [selectedPrice, setSelectedPrice] = useState(price[0].price)
 
   if (!giftItem) {
-    return <div>Error: Gift image not found</div>;
+    return <div>Error: Gift image not found</div>
   }
   const handlePriceChange = (event) => {
-    const selectedPrice = parseInt(event.target.value, 10);
-    setSelectedPrice(selectedPrice);
-  };
+    const selectedPrice = parseInt(event.target.value, 10)
+    setSelectedPrice(selectedPrice)
+  }
   return (
     <>
       <div>
         <div className='bg-[#fb4357] mt-10 p-10 rounded-xl text-white flex gap-10'>
-          <a href="#" className='text-2xl uppercase font-bold ml-10'>Thẻ quà tặng</a>
+          <Link to="/gifts" className='text-2xl uppercase font-bold ml-10'>Thẻ quà tặng</Link>
           <button className='border-white border py-1 px-4 rounded-3xl uppercase text-xs font-bold'>Thêm thẻ mới</button>
         </div>
         <div className='flex my-5 gap-5'>
@@ -196,29 +196,29 @@ const GiftDetail = () => {
             <p className='text-[24px]'>{giftItem.title}</p>
             <hr className='border-t-1 border-gray-300' />
             <div className='flex justify-between'>
-            <select name="price" id="price" className='w-40 border p-2 mt-2' onChange={handlePriceChange}>
-          {price.map((item, index) => (
-            <option key={index} value={item.price}>
-              {item.price} Đ
-            </option>
-          ))}
-        </select>
+              <select name="price" id="price" className='w-40 border p-2 mt-2' onChange={handlePriceChange}>
+                {price.map((item, index) => (
+                  <option key={index} value={item.price}>
+                    {item.price} Đ
+                  </option>
+                ))}
+              </select>
               <p className='mt-6'>
                 {selectedPrice}
               </p>
-           
+
             </div>
             <hr className='mt-2 border-t-1 border-gray-300' />
             <div className='mt-3 ml-auto'>
               <p className=' text-xl flex gap-2'>
-                Tổng tiền : <p className='text-red-500'>{selectedPrice} Đ</p>   
+                Tổng tiền : <p className='text-red-500'>{selectedPrice} Đ</p>
               </p>
               <div className='flex gap-2 ml-auto'>
                 <button className='border p-2 bg-red-500  text-white font-bold rounded-xl'>
                   Mua ngay
                 </button>
                 <button className='border p-2  bg-red-500 text-white font-bold rounded-xl'>
-                  Tặng quà 
+                  Tặng quà
                 </button>
               </div>
             </div>
@@ -229,22 +229,21 @@ const GiftDetail = () => {
         <p className='text-center text-xl mt-2'>Điều kiện & điều khoản</p>
         <div>
           {
-            ruleContents.map((item, index) => (
-              <p className='text-sm'>
+            ruleContents.map((item) => (
+              <p className='text-sm' key={item.title}>
                 - {item.content}
               </p>
-            )) 
-            
+            ))
           }
           <p className='mt-2'>Lưu ý : </p>
           {
-            noteContents.map((item, index) => (
-              <p className='text-sm'>
+            noteContents.map((item) => (
+              <p className='text-sm' key={item.title}>
                 - {item.content}
               </p>
-            ))   
+            ))
           }
-            
+
         </div>
       </div>
     </>

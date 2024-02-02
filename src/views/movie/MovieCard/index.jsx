@@ -8,7 +8,7 @@ const MovieCard = ({ movie }) => {
         <img
           src={movie.poster}
           alt=""
-          className="w-full h-[500px] rounded-xl object-cover "
+          className="w-full h-auto rounded-xl object-cover "
         />
         <div className="py-4 flex flex-col  w-full bottom-0 ">
           <h2 className='text-xl'>{movie.name}</h2>

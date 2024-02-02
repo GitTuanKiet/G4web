@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 
-import ListMove from 'views/movie/ListMovie'
+import ListMovie from 'views/movie/ListMovie'
 
 const fake = {
   poster: 'https://i.pinimg.com/474x/af/b5/eb/afb5eb4d723c2385531525bbc787db0d.jpg',
@@ -99,7 +99,7 @@ const Movie = () => {
       </div>
       <hr />
       <div className="w-full h-auto my-5">
-        <ListMove movies={movies} />
+        <ListMovie movies={movies} />
       </div>
     </>
   )

@@ -12,7 +12,7 @@ const FormOffer = ({ title, img, content }) => {
           <img
             src={img || 'https://www.cgv.vn/media/wysiwyg/2024/012024/350x495.png'}
             alt=""
-            className="w-auto h-auto object-cover " />
+            className="w-full h-auto object-cover " />
         </div>
         <div>
           {content.map((item, index) => (
