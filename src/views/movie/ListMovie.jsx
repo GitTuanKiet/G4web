@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import MovieCard from 'components/Movie/MovieCard'
+import MovieCard from 'views/movie/MovieCard'
 
 export default function ListMovie({ movies }) {
   return (

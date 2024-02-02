@@ -9,9 +9,7 @@ const LogoSection = () => {
 
   return (
     <Link to="/">
-      <button
-        className="focus:outline-none"
-      >
+      <button className="focus:outline-none">
         <Logo />
       </button>
     </Link>

@@ -9,7 +9,7 @@ const Partials = ({ data }) => {
   const theater = data.filter((item) => item.slug === slug)
 
   if (!theater.length) {
-    return <Navigate to="/theater/special/gold-class" />
+    return <Navigate to="/theaters/special/gold-class" />
   }
 
   const cinemas = theater[0]?.cinemas

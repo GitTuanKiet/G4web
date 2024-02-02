@@ -1,62 +1,132 @@
+
+// assets
 import logo2 from 'assets/images/menu/kenhcine.gif'
 import logo3 from 'assets/images/menu/mua-ve_ngay.png'
 
-export default function Menu() {
+
+// project imports
+import Dropdown from 'components/extended/Dropdown'
+
+const movies = {
+  id: 'movies',
+  title: 'Phim',
+  icon: '',
+  items: [
+    {
+      id: 'now',
+      text: 'Phim Đang Chiếu',
+      to: '/movie/now'
+    },
+    {
+      id: 'soon',
+      text: 'Phim Sắp Chiếu',
+      to: '/movie/soon'
+    }
+  ]
+}
+
+const theaters = {
+  id: 'theaters',
+  title: 'Rạp CGV',
+  icon: '',
+  items: [
+    {
+      id: 'all',
+      text: 'Tất Cả Các Rạp',
+      to: '/theaters'
+    },
+    {
+      id: 'special',
+      text: 'Rạp Đặc Biệt',
+      to: '/theaters/special'
+    },
+    {
+      id: '3d',
+      text: 'Rạp 3D',
+      to: '/theaters/special/3d'
+    }
+  ]
+}
+
+const members = {
+  id: 'members',
+  title: 'Thành Viên',
+  icon: '',
+  items: [
+    {
+      id: 'auth',
+      text: 'Tài Khoản CGV',
+      to: '/auth'
+    },
+    {
+      id: 'membership',
+      text: 'Quyền Lợi',
+      to: '/membership'
+    }
+  ]
+}
+
+const cultureplex = {
+  id: 'cultureplex',
+  title: 'Cultureplex',
+  icon: '',
+  items: [
+    {
+      id: 'online-store',
+      text: 'Quầy Online',
+      to: '/online-store'
+    },
+    {
+      id: 'cinemas',
+      text: 'Thu Rạp & Vé Nhóm',
+      to: '/cinemas'
+    },
+    {
+      id: 'cgv-online',
+      text: 'E-CGV',
+      to: '/cgv-online'
+    },
+    {
+      id: 'gifts',
+      text: 'CGV EGift',
+      to: '/gifts'
+    },
+    {
+      id: 'rules',
+      text: 'CGV Rules',
+      to: '/rules'
+    }
+  ]
+}
+
+const menuItems = [movies, theaters, members, cultureplex]
+
+const Menu = () => {
   return (
     <>
-      <div >
-        <ul className='flex gap-[40px] pt-[36px] mr-80 font-medium '>
-          <li className='relative group'>
-            <a href="#" className=''>PHIM
-              <ul className='submenu bg-gray-600 p-3 border rounded-md text-white hidden absolute left-0 w-[200px] z-10 group-hover:block group-focus:block'>
-                <li><a href="/movie/now" className='transition-colors duration-300 hover:text-red-500'>Phim Đang Chiếu</a></li>
-                <li><a href="/movie/soon" className='transition-colors duration-300 hover:text-red-500'>Phim Sắp Chiếu</a></li>
-              </ul>
-            </a>
-          </li>
-          <li className='relative group'>
-            <a href="#">RẠP CGV
-              <ul className='submenu bg-gray-600 p-3 border rounded-md text-white hidden absolute left-0  w-[200px] z-10 group-hover:block group-focus:block'>
-                <li><a href="/theater" className='transition-colors duration-300 hover:text-red-500'>Tất Cả Các Rạp</a></li>
-                <li><a href="/theater/special" className='transition-colors duration-300 hover:text-red-500'>Rạp Đặc Biệt</a></li>
-                <li><a href="/theater/special/3d" className='transition-colors duration-300 hover:text-red-500'>Rạp 3D</a></li>
-              </ul>
-            </a>
-          </li>
-          <li className='relative group'>
-            <a href="#">THÀNH VIÊN
-              <ul className='submenu bg-gray-600 p-3 border rounded-md text-white hidden absolute left-0  w-[200px] z-10 group-hover:block group-focus:block'>
-                <li><a href="/account" className='transition-colors duration-300 hover:text-red-500'>Tài Khoản CGV</a></li>
-                <li><a href="/benefit" className='transition-colors duration-300 hover:text-red-500'>Quyền Lợi</a></li>
-              </ul>
-            </a>
-          </li>
-          <li className='relative group'>
-            <a href="#">CULTUREPLEX
-              <ul className="submenu bg-gray-600 p-3 border rounded-md text-white hidden absolute left-0  w-[200px] z-10 group-hover:block group-focus:block">
-                <li><a href="#" className="transition-colors duration-300 hover:text-red-500">Quầy Online</a></li>
-                <li><a href="#" className="transition-colors duration-300 hover:text-red-500">Thu Rạp & Vé Nhóm</a></li>
-                <li><a href="" className="transition-colors duration-300 hover:text-red-500">E-CGV</a></li>
-                <li><a href="cultureplex/gift" className="transition-colors duration-300 hover:text-red-500">CGV EGift</a></li>
-                <li><a href="#" className="transition-colors duration-300 hover:text-red-500">CGV Rules</a></li>
-              </ul>
-            </a>
-          </li>
+      <div className='flex justify-between w-full h-full'>
+        <ul className='flex font-semibold uppercase items-end gap-1'>
+          {menuItems.map((item) => (
+            <Dropdown key={item.id} title={item.title} items={item.items} icon={item.icon} />
+          ))}
         </ul>
+        <div className='flex items-center'>
+          <img
+            className="h-27 w-108 relative overflow-hidden shrink-0 object-cover"
+            loading="eager"
+            alt="https://kenhcine.cgv.vn"
+            src={logo2}
+          />
+          <img
+            className="h-79 w-97 relative overflow-hidden shrink-0 object-cover"
+            loading="eager"
+            alt="/movie/now"
+            src={logo3}
+          />
+        </div>
       </div>
-      <img
-        className="h-[27px] w-[108px] relative overflow-hidden shrink-0 object-cover"
-        loading="eager"
-        alt=""
-        src={logo2}
-      />
-      <img
-        className="h-[79px] w-[97px] relative overflow-hidden shrink-0 object-cover"
-        loading="eager"
-        alt=""
-        src={logo3}
-      />
     </>
   )
 }
 
+export default Menu

@@ -1,9 +1,9 @@
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 
 import Banner from 'views/home/Banner'
-import EventList from 'components/Event/EventList'
+import EventList from 'views/home/Event/EventList'
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -29,7 +29,7 @@ const Content = ({ item }) => {
       <h1 className="text-primary text-4xl text-center font-semibold py-10">THEATER</h1>
       <h2 className="text-primary text-2xl text-center font-semibold py-10">{item.name}</h2>
 
-      <div className="w-full h-96 bg-green-500 flex items-center justify-center px-20">
+      <div className="w-full h-auto">
         <Banner />
       </div>
 
@@ -58,7 +58,7 @@ const Content = ({ item }) => {
       </div>
 
       <div className="page-container ">
-        <EventList />
+        <EventList key={selectedDate} />
       </div>
 
     </>

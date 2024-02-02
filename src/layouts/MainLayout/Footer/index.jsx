@@ -1,47 +1,85 @@
+import { Link } from 'react-router-dom'
+
+// Assets
 import logo from 'assets/images/menu/cgvlogo.png'
 
-export default function Header() {
+const footerData = [
+  {
+    title: 'CGV Việt Nam',
+    links: [
+      { title: 'Giới thiệu', url: '/about' },
+      { title: 'Tiện ích online', url: '/cgv-online' },
+      { title: 'Thẻ quà tặng', url: '/gifts' },
+      { title: 'Tuyển dụng', url: '/careers' },
+      { title: 'Liên hệ quảng cáo', url: '/contacts' },
+      { title: 'Dành cho đối tác', url: '/for-partners' }
+    ]
+  },
+  {
+    title: 'Điều khoản sử dụng',
+    links: [
+      { title: 'Điều khoản chung', url: '/terms/conditions' },
+      { title: 'Điều khoản giao dịch', url: '/terms/of-use' },
+      { title: 'Chính sách thanh toán', url: '/policy/payment' },
+      { title: 'Chính sách bảo mật', url: '/policy/privacy' },
+      { title: 'Câu hỏi thường gặp', url: '/faq' }
+    ]
+  },
+  {
+    title: 'Chăm sóc khách hàng',
+    links: [
+      { title: 'Hotline: 1900 6017', url: null },
+      { title: 'Giờ làm việc: 8:00 - 22:00 (Tất cả các ngày bao gồm cả Lễ Tết)', url: null },
+      { title: 'Email hỗ trợ: hoidap@cgv.vn', url: null }
+    ]
+  }
+]
+
+const FooterLink = ({ title, links }) => {
   return (
-    <footer className="text-sm font-urbanist z-10">
-      <hr className='border-t-2 border-solid border-black my-4' />
-      <div className='flex flex-row flex-wrap items-start gap-[20px] justify-center'>
-        <a href="#" className='[border:none] [outline:none] bg-gainsboro h-[37px] flex-1 relative min-w-[84px] max-w-[86px]'><img src={logo} alt="" className="w-full h-full object-contain" /></a>
-        <a href="#" className='[border:none] [outline:none] bg-gainsboro h-[37px] flex-1 relative min-w-[84px] max-w-[86px]'><img src={logo} alt="" className="w-full h-full object-contain" /></a>
-        <a href="#" className='[border:none] [outline:none] bg-gainsboro h-[37px] flex-1 relative min-w-[84px] max-w-[86px]'><img src={logo} alt="" className="w-full h-full object-contain" /></a>
-        <a href="#" className='[border:none] [outline:none] bg-gainsboro h-[37px] flex-1 relative min-w-[84px] max-w-[86px]'><img src={logo} alt="" className="w-full h-full object-contain" /></a>
-        <a href="#" className='[border:none] [outline:none] bg-gainsboro h-[37px] flex-1 relative min-w-[84px] max-w-[86px]'><img src={logo} alt="" className="w-full h-full object-contain" /></a>
-        <a href="#" className='[border:none] [outline:none] bg-gainsboro h-[37px] flex-1 relative min-w-[84px] max-w-[86px]'><img src={logo} alt="" className="w-full h-full object-contain" /></a>
-        <a href="#" className='[border:none] [outline:none] bg-gainsboro h-[37px] flex-1 relative min-w-[84px] max-w-[86px]'><img src={logo} alt="" className="w-full h-full object-contain" /></a>
-        <a href="#" className='[border:none] [outline:none] bg-gainsboro h-[37px] flex-1 relative min-w-[84px] max-w-[86px]'><img src={logo} alt="" className="w-full h-full object-contain" /></a>
-        <a href="#" className='[border:none] [outline:none] bg-gainsboro h-[37px] flex-1 relative min-w-[84px] max-w-[86px]'><img src={logo} alt="" className="w-full h-full object-contain" /></a>
+    <div>
+      <h2 className='font-semibold text-2xl py-2'>{title}</h2>
+      <ul className='text-xl max-w-[260px]'>
+        {links.map((link, index) => (
+          <li key={index}>
+            {link.url ? (
+              <Link to={link.url}>{link.title}</Link>
+            ) : (
+              <span>{link.title}</span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+const LogoLink = ({ url, logo }) => {
+  return (
+    <a href={url} className='[border:none] [outline:none] h-[37px] flex relative'>
+      <img src={logo} alt="" className="w-full h-full object-contain" />
+    </a>
+  )
+}
+
+const logoData = Array(10).fill({ url: '#', logo: logo })
+
+export default function Footer() {
+  return (
+    <footer className="z-10 w-full py-2">
+      <hr className='border border-black absolute w-full left-0' />
+      <div className='flex justify-between flex-row gap-4 py-2'>
+        {logoData.map((data, index) => (
+          <LogoLink key={index} url={data.url} logo={data.logo} />
+        ))}
       </div>
-      <hr className='border-t-2 border-solid border-black my-4' />
-      <div className='flex justify-center gap-[120px] max-w-full mq1050:flex-wrap text-gray-500' style={{ fontSize: '14px' }}>
+      <hr className='border border-black absolute w-full left-0' />
+      <div className='flex justify-between gap-10 w-full text-gray-500 dark:text-white'>
+        {footerData.map((data, index) => (
+          <FooterLink key={index} title={data.title} links={data.links} />
+        ))}
         <div>
-          <p className='font-bold'>CGV Việt Nam</p>
-          <ul className='mt-2 text-base'>
-            <li><a href="#">Giới thiệu</a></li>
-            <li><a href="#">Tiện ích online</a></li>
-            <li><a href="#">Thẻ quà tặng</a></li>
-            <li><a href="#">Tuyển dụng</a></li>
-            <li><a href="#">Liên hệ quảng cáo</a></li>
-            <li><a href="#">Dành cho đối tác</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <p className='font-bold'>Điều khoản sử dụng</p>
-          <ul className='mt-2 text-base'>
-            <li><a href="#">Điều khoản chung</a></li>
-            <li><a href="#">Điều khoản giao dịch</a></li>
-            <li><a href="#">Chính sách thanh toán</a></li>
-            <li><a href="#">Chính sách bảo mật</a></li>
-            <li><a href="#">Câu hỏi thường gặp</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <p className='font-bold'>Kết nối với chúng tôi</p>
+          <p className='font-semibold text-2xl py-2'>Kết nối với chúng tôi</p>
           <ul className='mt-2 flex flex-row items-start justify-start gap-[13px] mb-2'>
             <li className='transition-transform transform hover:scale-90'><a href="#"><img src={logo} alt="" className="object-contain h-[34px] w-[34px] relative bg-gray-100" /></a></li>
             <li className='transition-transform transform hover:scale-90'><a href="#"><img src={logo} alt="" className="object-contain h-[34px] w-[34px] relative bg-gray-100" /></a></li>
@@ -50,20 +88,9 @@ export default function Header() {
           </ul>
           <a href="#"><img src={logo} alt="" className="w-[175px] h-[35px] relative bg-brown object-contain  bg-gray-100" /></a>
         </div>
-
-        <div>
-          <p className='font-bold'>Chăm sóc khách hàng</p>
-          <ul className='mt-2 text-base'>
-            <li><a href="#">Hotline: 1900 6017</a></li>
-            <li><a href="#">Giờ làm việc: 8:00 - 22:00 <br />
-                            (Tất cả các ngày bao gồm cả Lễ Tết)</a></li>
-            <li><a href="#">Email hỗ trợ: hoidap@cgv.vn</a></li>
-
-          </ul>
-        </div>
       </div>
-      <hr className='border-t-2 border-solid border-black my-4' />
-      <div className='flex items-center justify-center gap-[25px] text-xs text-gray-500 mx-auto'>
+      <hr className='border border-black absolute w-full left-0' />
+      <div className='flex justify-center items-center gap-[25px] text-xs text-gray-500 mx-auto py-2'>
         <div>
           <img src={logo} alt="" className='h-[84px] w-[84px] relative bg-gray-200 object-contain' />
         </div>

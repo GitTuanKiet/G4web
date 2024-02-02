@@ -49,7 +49,7 @@ const data = [
 const NewsOffer = () => {
   return (
     <>
-      <h1 className="text-primary text-3xl text-center my-6 font-semibold">Tin Mới và Ưu Đãi</h1>
+      <h1 className="text-primary text-6xl text-center my-6 font-semibold">Tin Mới và Ưu Đãi</h1>
 
       <div className="flex items-center justify-center py-4 text-white rounded-b-none relative">
         <div className="triangle-left"></div>

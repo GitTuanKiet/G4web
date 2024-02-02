@@ -33,7 +33,7 @@ export default function TheaterSpecial({ data }) {
         >
           {data.map((item) => (
             <SwiperSlide key={item.id}>
-              <Link to={`/theater/special/${item.slug}`}>
+              <Link to={`/theaters/special/${item.slug}`}>
                 <button
                   className='h-[100px] w-[100px] relative rounded-[50%] object-cover border-2 border-black bg-white filter grayscale hover:grayscale-0 active:grayscale-0 focus:outline-none focus:ring focus:border-transparent transition duration-300 '
                   style={{

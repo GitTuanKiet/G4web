@@ -45,7 +45,7 @@ function MovieDetail() {
         </div>
       </div>
       <div>
-        <div className="flex items-center justify-center pb-6 text-white rounded-b-none relative">
+        <div className="flex items-center justify-center py-6 text-white rounded-b-none relative">
           <div className="triangle-left"></div>
           <div className="text-center bg-red-500 py-2 px-6 border-r-transparent inline-flex justify-center gap-x-4 text-lg relative z-10">
             <div className="triangle-left"></div>
