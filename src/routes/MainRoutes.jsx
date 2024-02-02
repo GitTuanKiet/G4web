@@ -3,15 +3,22 @@ import { lazy } from 'react'
 // project imports
 import MainLayout from 'layouts/MainLayout'
 import Loadable from 'components/Loadable'
-import MovieDetail from 'pages/MovieDetail'
 
 // pages routing
 const Home = Loadable(lazy(() => import('pages/Home')))
 const Theater = Loadable(lazy(() => import('pages/Theater')))
-const Movie = Loadable(lazy(() => import('pages/Movie')))
+const ListMovie = Loadable(lazy(() => import('pages/Movie')))
 const Special = Loadable(lazy(() => import('pages/Theater/Special')))
 const NewsOffer = Loadable(lazy(() => import('pages/NewsOffer')))
 const NewsOfferDetail = Loadable(lazy(() => import('pages/NewsOffer/Partials')))
+const MovieDetail = Loadable(lazy(() => import('pages/Movie/MovieDetail')))
+const MemberShip = Loadable(lazy(() => import('pages/MemberShip')))
+const CgvRules = Loadable(lazy(() => import('pages/CgvRules')))
+const Cinemas = Loadable(lazy(() => import('pages/Cinemas')))
+const Gift = Loadable(lazy(() => import('pages/Gift')))
+const ListGift = Loadable(lazy(() => import('pages/Gift/ListGift')))
+const GiftDetail = Loadable(lazy(() => import('pages/Gift/GiftDetail')))
+const OnlineStore = Loadable(lazy(() => import('pages/OnlineStore')))
 
 // ===========================|| MAIN ROUTING ||=========================== //
 
@@ -28,7 +35,7 @@ const MainRoutes = {
       element: <Home />
     },
     {
-      path: 'theater',
+      path: 'theaters',
       children: [
         {
           path: '',
@@ -46,21 +53,18 @@ const MainRoutes = {
     },
     {
       path: 'movie',
-       
-      element: <Movie />
-     
-    },
-    {
-      path: 'movie/:slug',
-      element: <MovieDetail />
       children: [
         {
           path: '',
-          element: <Movie />
+          element: <ListMovie />
         },
         {
-          path: ':slug',
-          element: <Movie />
+          path: ':type',
+          element: <ListMovie />
+        },
+        {
+          path: 'detail/:slug',
+          element: <MovieDetail />
         }
       ]
     },
@@ -76,6 +80,39 @@ const MainRoutes = {
           element: <NewsOfferDetail />
         }
       ]
+    },
+    {
+      path: 'membership',
+      element: <MemberShip />
+    },
+    {
+      path: 'rules',
+      element: <CgvRules />
+    },
+    {
+      path: 'cinemas',
+      element: <Cinemas />
+    },
+    {
+      path: 'gifts',
+      children: [
+        {
+          path: '',
+          element: <Gift />
+        },
+        {
+          path: ':slug',
+          element: <ListGift />
+        },
+        {
+          path: 'detail/:slug',
+          element: <GiftDetail />
+        }
+      ]
+    },
+    {
+      path: 'online-store',
+      element: <OnlineStore />
     }
   ]
 }

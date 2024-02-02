@@ -6,8 +6,7 @@ const data = [
     id: 1,
     poster: 'https://www.cgv.vn/media/wysiwyg/2024/012024/240x201.png',
     title: 'Lat Mat 48h',
-    time: 'Từ 01.04.2021 - 30.04.2021',
-    
+    time: 'Từ 01.04.2021 - 30.04.2021'
   },
   {
     id: 2,
@@ -50,7 +49,7 @@ const data = [
 const NewsOffer = () => {
   return (
     <>
-      <h1 className="text-primary text-3xl text-center my-6 font-semibold">Tin Mới và Ưu Đãi</h1>
+      <h1 className="text-primary text-6xl text-center my-6 font-semibold">Tin Mới và Ưu Đãi</h1>
 
       <div className="flex items-center justify-center py-4 text-white rounded-b-none relative">
         <div className="triangle-left"></div>

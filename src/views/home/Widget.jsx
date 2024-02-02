@@ -1,55 +1,69 @@
-
+import { Link } from 'react-router-dom'
 
 const StaticWidget = [
   {
     id: 1,
-    title: 'cgv theater',
-    link: 'https://www.cgv.vn/default/cinox/site/'
+    title: 'rạp cgv',
+    bgImage: 'https://chocanh.vn/wp-content/uploads/hinh-anh-cho-cute-chibi-dep-nhat_101023548.png',
+    link: '/theaters'
   },
   {
     id: 2,
-    title: 'now showing',
-    link: 'https://www.cgv.vn/default/movies/now-showing.html/'
+    title: 'phim đang chiếu',
+    bgImage: 'https://chocanh.vn/wp-content/uploads/hinh-anh-cho-cute-chibi-dep-nhat_101023548.png',
+    link: '/movie/now'
   },
   {
     id: 3,
-    title: 'cgv special',
-    link: 'https://www.cgv.vn/default/theaters/special/gold-class'
+    title: 'dặc trưng cgv',
+    bgImage: 'https://chocanh.vn/wp-content/uploads/hinh-anh-cho-cute-chibi-dep-nhat_101023548.png',
+    link: '/theaters/special'
   },
   {
     id: 4,
-    title: 'Mua voucher, thẻ quả tặng CGV',
-    link: 'https://www.cgv.vn/default/cinemas/sale/'
+    title: 'Thuê rạp & vé nhóm',
+    bgImage: 'https://chocanh.vn/wp-content/uploads/hinh-anh-cho-cute-chibi-dep-nhat_101023548.png',
+    link: '/cinemas'
   },
   {
     id: 5,
-    title: 'my ticket info',
-    link: 'https://www.cgv.vn/default/contacts/'
+    title: 'liên hệ cgv',
+    bgImage: 'https://chocanh.vn/wp-content/uploads/hinh-anh-cho-cute-chibi-dep-nhat_101023548.png',
+    link: '/contacts'
   },
   {
     id: 6,
-    title: 'discount info',
-    link: 'https://www.cgv.vn/default/newsoffer/'
+    title: 'tin mới & ưu đãi',
+    bgImage: 'https://chocanh.vn/wp-content/uploads/hinh-anh-cho-cute-chibi-dep-nhat_101023548.png',
+    link: '/news-offer'
   },
   {
     id: 7,
-    title: 'create account quick',
-    link: 'https://www.cgv.vn/default/customer/account/create/'
+    title: 'đăng ký ngay',
+    bgImage: 'https://chocanh.vn/wp-content/uploads/hinh-anh-cho-cute-chibi-dep-nhat_101023548.png',
+    link: '/auth/register'
   }
 ]
+
+const CardWidget = ({ title, bgImage, link }) => {
+  return (
+    <div className="flex flex-col w-full h-full bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${bgImage})` }}>
+      <Link to={link} className="w-full h-full flex items-end justify-center">
+        <span className="uppercase font-mono text-xs">{title}</span>
+      </Link>
+    </div>
+
+  )
+}
 
 const Widget = () => {
   return (
     <>
-      <div className="flex flex-row space-x-4">
-        {StaticWidget.map((item) => (
-          <a
-            key={item.id}
-            href={item.link}
-            className="hover:text-yellow-500"
-          >
-            {item.title}
-          </a>
+      <div className="flex gap-4">
+        {StaticWidget.map((item, index) => (
+          <div className="min-w-[80px] min-h-[80px]" key={index}>
+            <CardWidget key={index} title={item.title} bgImage={item.bgImage} link={item.link} />
+          </div>
         ))}
       </div>
     </>

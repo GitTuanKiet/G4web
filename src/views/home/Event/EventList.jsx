@@ -1,11 +1,44 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 
+const img = 'https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/u/2/u22-240x201-04.png'
+
+const fakeList = [
+  {
+    id: 1,
+    img: img
+  },
+  {
+    id: 2,
+    img: img
+  },
+  {
+    id: 3,
+    img: img
+  },
+  {
+    id: 4,
+    img: img
+  },
+  {
+    id: 5,
+    img: img
+  },
+  {
+    id: 6,
+    img: img
+  },
+  {
+    id: 7,
+    img: img
+  }
+]
+
 function EventList() {
-  const fakeList = new Array(10).fill(null)
+
 
   return (
     <div>
-      <h1 className="text-primary text-3xl text-center my-6 font-semibold">EVENT</h1>
+      <h1 className="text-primary text-6xl text-center my-6 font-semibold">EVENT</h1>
 
       <div className="flex items-center justify-center pb-6 text-white rounded-b-none relative">
         <div className="triangle-left"></div>
@@ -21,18 +54,14 @@ function EventList() {
 
       <div className="event-list ">
         <Swiper grabCursor={true} spaceBetween={40} slidesPerView={'auto'}>
-          {fakeList.map((event, index) => {
-            return (
-              <SwiperSlide key={index}>
-                <div className='select-none'>
-                  <img
-                    src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/u/2/u22-240x201-04.png"
-                    alt="w-full h-full"
-                  />
-                </div>
-              </SwiperSlide>
-            )
-          })}
+          {fakeList.map((event) => (
+            <SwiperSlide key={event.id}>
+              <img
+                src={event.img}
+                className="w-full h-full"
+              />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </div>
