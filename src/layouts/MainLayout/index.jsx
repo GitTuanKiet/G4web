@@ -18,7 +18,7 @@ const MainLayout = () => {
       </div>
       {/* content */}
       <div className="w-full flex justify-center">
-        <div className="w-[70%] h-auto flex flex-col">
+        <div className="w-[70%] h-auto flex flex-col z-0">
           <Outlet />
         </div>
       </div>
