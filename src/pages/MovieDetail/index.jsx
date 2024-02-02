@@ -30,6 +30,7 @@ function MovieDetail() {
             <h1 className="mr-3 cursor-pointer hover:opacity-90 hover:text-secondary">Trailer</h1>
             <div className="triangle-right"></div>
           </div>
+            <Trailer/>
         </div>
       </div>
       <p className="text-sm">
@@ -43,3 +44,17 @@ function MovieDetail() {
 }
 
 export default MovieDetail
+
+function Trailer() {
+  return (
+    <iframe
+      width={560}
+      height={315}
+      src="https://www.youtube.com/embed/VyHV0BRtdxo?si=HnfVXtPH3nly71Nl"
+      title="YouTube video player"
+      frameBorder={0}
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowFullScreen
+    />
+  )
+}

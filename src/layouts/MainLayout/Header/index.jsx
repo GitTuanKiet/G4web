@@ -7,6 +7,7 @@ import { IoTicketOutline } from 'react-icons/io5'
 // project imports
 import Menu from './Menu'
 import LogoSection from '../LogoSection'
+import { Link } from 'react-router-dom'
 
 export default function Header() {
   return (
@@ -28,7 +29,11 @@ export default function Header() {
         </div>
         <div className='flex gap-1'>
           <CiUser className='my-auto' />
-          <a href='#' className=''> Đăng nhập / Đăng ký </a>
+          <div>
+          <Link to='/auth/login' className=''> Đăng nhập  </Link>
+          <Link to='/auth/register' className=''> / Đăng ký  </Link>
+
+          </div>
         </div>
       </div>
       <div>
