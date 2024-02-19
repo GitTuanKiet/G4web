@@ -1,4 +1,4 @@
-import AccoutDetail from 'pages/Profile/AccoutDetail'
+import AccountDetail from 'pages/Profile/AccoutDetail'
 import CommonInfo from 'pages/Profile/CommonInfo'
 import TransactionHistory from 'pages/Profile/TransactionHistory'
 import { NavLink } from 'react-router-dom'
@@ -27,7 +27,7 @@ const sidebarLinks = [
   {
     path: 'account-detail',
     title: 'Chi tiết tài khoản',
-    element: <AccoutDetail />,
+    element: <AccountDetail />,
     icon: (
       <svg
         className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"

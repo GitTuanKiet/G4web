@@ -11,7 +11,7 @@ const schema = Yup.object({
   password: Yup.string().required('Password is required').min(8, 'Password must be at least 8 characters')
 })
 
-function AccoutDetail() {
+function AccountDetail() {
   const navigate = useNavigate()
 
   const [isDesireChangePassword, setIsDesireChangePassword] = useState(false)
@@ -124,4 +124,4 @@ function AccoutDetail() {
     </div>
   )
 }
-export default AccoutDetail
+export default AccountDetail
