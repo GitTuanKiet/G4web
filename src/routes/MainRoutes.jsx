@@ -3,6 +3,7 @@ import { lazy } from 'react'
 // project imports
 import MainLayout from 'layouts/MainLayout'
 import Loadable from 'components/Loadable'
+import ProfileLayout from 'layouts/ProfileLayout'
 
 // pages routing
 const Home = Loadable(lazy(() => import('pages/Home')))
@@ -19,6 +20,9 @@ const Gift = Loadable(lazy(() => import('pages/Gift')))
 const ListGift = Loadable(lazy(() => import('pages/Gift/ListGift')))
 const GiftDetail = Loadable(lazy(() => import('pages/Gift/GiftDetail')))
 const OnlineStore = Loadable(lazy(() => import('pages/OnlineStore')))
+const AccountDetail = Loadable(lazy(() => import('pages/Profile/AccoutDetail')))
+const CommonInfo = Loadable(lazy(() => import('pages/Profile/CommonInfo')))
+const TransactionHistory = Loadable(lazy(() => import('pages/Profile/TransactionHistory')))
 
 // ===========================|| MAIN ROUTING ||=========================== //
 
@@ -113,6 +117,24 @@ const MainRoutes = {
     {
       path: 'online-store',
       element: <OnlineStore />
+    },
+    {
+      path: '/me',
+      element: <ProfileLayout />,
+      children: [
+        {
+          path: 'account-detail',
+          element: <AccountDetail />
+        },
+        {
+          path: 'common-info',
+          element: <CommonInfo />
+        },
+        {
+          path: 'transaction-history',
+          element: <TransactionHistory />
+        }
+      ]
     }
   ]
 }

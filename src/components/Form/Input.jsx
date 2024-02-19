@@ -5,7 +5,7 @@ function Input({ label, errors, control, ...rest }) {
   // console.log('errors' + errors)
 
   return (
-    <div className="mb-4">
+    <div className="mb-4 w-full">
       <label htmlFor={rest.id || rest.name} className="font-medium text-sm text-gray-700">
         {label}
       </label>
