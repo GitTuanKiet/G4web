@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { useState } from 'react'
 import Button from 'components/Button'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const schema = Yup.object({
   email: Yup.string().email('Invalid email').required('Email is required'),
@@ -12,6 +13,7 @@ const schema = Yup.object({
 })
 
 function AccountDetail() {
+  const { user } = useSelector((state) => state.auth)
   const navigate = useNavigate()
 
   const [isDesireChangePassword, setIsDesireChangePassword] = useState(false)
@@ -38,31 +40,53 @@ function AccountDetail() {
 
       <form onSubmit={handleSubmit(onSubmit)} className="w-full  bg-white p-10 rounded-lg shadow-md mt-10">
         <div className="flex justify-between w-full gap-10">
-          <Input label="Name" placeholder="Enter your name" name="name" control={control} errors={errors} />
-          <Input label="City" placeholder="Enter your City" name="City" control={control} errors={errors} />
+          <Input
+            label="Name"
+            placeholder="Enter your name"
+            value={user.name}
+            name="name"
+            control={control}
+            errors={errors}
+          />
+          <Input
+            label="City"
+            placeholder="Enter your City"
+            value={user.city}
+            name="City"
+            control={control}
+            errors={errors}
+          />
         </div>
         <div className="flex justify-between w-full gap-10">
           <Input
             label="Phone number"
             placeholder="Enter your phone number"
             name="phoneNumber"
+            value={user.phone}
             control={control}
             errors={errors}
           />
-          <Input label="address" placeholder="Enter your address" name="address" control={control} errors={errors} />
+          <Input
+            label="address"
+            placeholder="Enter your address"
+            value={user.address}
+            name="address"
+            control={control}
+            errors={errors}
+          />
         </div>
         <div className="flex justify-between w-full gap-10">
           <div className="flex w-full gap-3">
             <div>
-              <input type="radio" name="gender" className="mx-2" />
+              <input type="radio" name="gender" className="mx-2" checked={user.gender === 'male'} />
               Male
             </div>
             <div>
-              <input type="radio" name="gender" className="mx-2" />
+              <input type="radio" name="gender" className="mx-2" checked={user.gender === 'female'} />
               Female
             </div>
             <div>
-              <input type="radio" name="gender" className="mx-2" />
+              <input type="radio" name="gender" className="mx-2" checked={user.gender === 'none'} />
               None
             </div>
           </div>
@@ -76,10 +100,10 @@ function AccountDetail() {
         </div>
 
         <p>
-          <span className="font-bold">Ngày Sinh:</span> <br /> FEB 08 2003
+          <span className="font-bold">Ngày Sinh:</span> <br /> {user.birthday || 'Chưa có ngày sinh'}
         </p>
         <p className="mb-2">
-          <span className="font-bold">Địa chỉ email:</span> <br /> johndoe@example.com
+          <span className="font-bold">Địa chỉ email:</span> <br /> {user.email}
         </p>
         <label className="select-none ">
           <input type="checkbox" onClick={() => setIsDesireChangePassword(!isDesireChangePassword)} /> Tôi muốn thay đổi

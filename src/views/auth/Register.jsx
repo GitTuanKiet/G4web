@@ -11,7 +11,7 @@ import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useDispatch } from 'react-redux'
 import { authRegister } from 'stores/auth/authSlice.js'
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify'
 
 const schema = Yup.object({
   name: Yup.string().required('Name is required').min(3, 'Name must be at least 8 characters '),
@@ -20,7 +20,7 @@ const schema = Yup.object({
 })
 
 function Register() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const {
     handleSubmit,
@@ -39,10 +39,10 @@ function Register() {
     // waiting for backendP
     try {
       dispatch(authRegister(data))
-      toast.success('Đăng kí tài khoản thành công');
+      toast.success('Đăng kí tài khoản thành công')
       setTimeout(() => {
-        navigate('/');
-      }, 3000);
+        window.location.href = '/'
+      }, 3000)
     } catch (error) {
       console.log('🚀 ~ onSubmit ~ error:', error)
     }

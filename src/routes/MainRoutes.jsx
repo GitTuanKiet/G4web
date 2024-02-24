@@ -20,7 +20,7 @@ const Gift = Loadable(lazy(() => import('pages/Gift')))
 const ListGift = Loadable(lazy(() => import('pages/Gift/ListGift')))
 const GiftDetail = Loadable(lazy(() => import('pages/Gift/GiftDetail')))
 const OnlineStore = Loadable(lazy(() => import('pages/OnlineStore')))
-const AccountDetail = Loadable(lazy(() => import('pages/Profile/AccoutDetail')))
+const AccountDetail = Loadable(lazy(() => import('pages/Profile/AccountDetail')))
 const CommonInfo = Loadable(lazy(() => import('pages/Profile/CommonInfo')))
 const TransactionHistory = Loadable(lazy(() => import('pages/Profile/TransactionHistory')))
 const VoucherDetail = Loadable(lazy(() => import('pages/VoucherDetail')))
@@ -141,6 +141,9 @@ const MainRoutes = {
           path: 'transaction-history',
           element: <TransactionHistory />
         }
+        // {
+        //   path:'logout'
+        // }
       ]
     }
   ]

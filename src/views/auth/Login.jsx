@@ -12,6 +12,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { authLogin } from 'stores/auth/authSlice'
 import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
+import { useState } from 'react'
 
 const schema = Yup.object({
   email: Yup.string().email('Invalid email').required('Email is required'),
@@ -20,7 +21,8 @@ const schema = Yup.object({
 
 function Login() {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
+  // const [messageLoginFailed,setMessageLoginFailed] = useState()
   const {
     handleSubmit,
     control,
@@ -37,9 +39,6 @@ function Login() {
     // waiting for backend
     console.log(data)
     dispatch(authLogin(data))
-    setTimeout(() => {
-      navigate('/')
-    }, 3000)
   }
 
   return (
@@ -52,6 +51,7 @@ function Login() {
         <div className="flex items-center justify-center text-sm mt-3">
           <div className="mr-2">Or</div>
           <div className="text-primary">start your 14-day free trial</div>
+         
         </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -72,7 +72,7 @@ function Login() {
             </div>
           </div>
           <Button primary wFull>
-            Sign up
+            Sign in
           </Button>
           <div className="my-3 float-right text-sm ">
             <span> Don&apos;t have an account? </span>

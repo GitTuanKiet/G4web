@@ -1,12 +1,20 @@
-import AccountDetail from 'pages/Profile/AccoutDetail'
+import AccountDetail from 'pages/Profile/AccountDetail'
 import CommonInfo from 'pages/Profile/CommonInfo'
 import TransactionHistory from 'pages/Profile/TransactionHistory'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { logout } from 'utils/auth'
+
+const handleLogout = (e) => {
+  e.preventDefault()
+  logout()
+  window.location.href = '/'
+  console.log('log out')
+}
 
 const sidebarLinks = [
   {
     path: 'common-info',
-    element: <CommonInfo />,
+    // element: <CommonInfo />,
     title: 'Thông tin chung',
     icon: (
       <svg
@@ -27,7 +35,7 @@ const sidebarLinks = [
   {
     path: 'account-detail',
     title: 'Chi tiết tài khoản',
-    element: <AccountDetail />,
+    // element: <AccountDetail />,
     icon: (
       <svg
         className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -44,7 +52,7 @@ const sidebarLinks = [
   {
     path: 'transaction-history',
     title: 'LỊCH SỬ GIAO DỊCH',
-    element: <TransactionHistory />,
+    // element: <TransactionHistory />,
     icon: (
       <svg
         className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -57,10 +65,34 @@ const sidebarLinks = [
         <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
       </svg>
     )
+  },
+  {
+    path: 'logout',
+    title: 'Đăng xuất',
+    onClick: handleLogout,
+    // element:
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="currentColor"
+        className="w-6 h-6"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
+        />
+      </svg>
+    )
   }
 ]
 
 function Sidebar() {
+  const navigate = useNavigate()
+
   return (
     <div>
       <aside
@@ -74,6 +106,7 @@ function Sidebar() {
               <li key={index}>
                 <NavLink
                   to={link.path}
+                  onClick={link?.onClick}
                   className={({ isActive }) =>
                     isActive
                       ? 'text-primary block px-4 py-2 '

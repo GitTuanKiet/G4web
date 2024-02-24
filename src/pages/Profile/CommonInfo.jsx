@@ -1,7 +1,9 @@
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 function CommonInfo() {
   const navigate = useNavigate()
+  const { user } = useSelector((state) => state.auth)
 
   return (
     <div>
@@ -14,7 +16,9 @@ function CommonInfo() {
         />
         <button className="text-white bg-[#9d9b9b] py-2 px-3 max-w-[100px] block   mt-3">thay đổi</button>
       </div>
-      <h2 className="font-semibold ">Xin chào John doe,</h2>
+      <h2 className="font-semibold ">
+        Xin chào <span className="text-primary ">{user.name}</span>,
+      </h2>
       <p>Với trang này, bạn sẽ quản lý được tất cả thông tin tài khoản của mình.</p>
       <div className="rounded-lg border-2 p-4 grid grid-cols-5 gap-x-6 text-center">
         <div className="border-r-2 border-black">
@@ -60,9 +64,9 @@ function CommonInfo() {
           </div>
 
           <div className="text-gray-400">
-            <h2>Tên: John Doe</h2>
-            <h2>Email: johndoe@example.com</h2>
-            <h2>Diện thoại: 9283982398</h2>
+            <h2>Tên: {user.name}</h2>
+            <h2>Email: {user.email}</h2>
+            <h2>Diện thoại: {user.phone || 'Chưa có số điên thoại'}</h2>
           </div>
         </div>
       </div>

@@ -26,7 +26,7 @@ function App() {
         if (decoded) {
           dispatch(
             authUpdateUserInfo({
-              user: { id: decoded.id, email: decoded.email, name: decoded.name },
+              user: decoded,
               isLoggedIn: true
             })
           )
