@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 // project imports
 import Button from 'components/Button'
@@ -9,7 +9,9 @@ import Logo from 'components/Logo'
 import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-
+import { useDispatch } from 'react-redux'
+import { authRegister } from 'stores/auth/authSlice.js'
+import {toast} from 'react-toastify'
 
 const schema = Yup.object({
   name: Yup.string().required('Name is required').min(3, 'Name must be at least 8 characters '),
@@ -18,6 +20,8 @@ const schema = Yup.object({
 })
 
 function Register() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
   const {
     handleSubmit,
     control,
@@ -31,9 +35,17 @@ function Register() {
     }
   })
   // console.log(errors)
-  const onSubmit = (data) => {
-    // waiting for backend
-    console.log(data)
+  const onSubmit = async (data) => {
+    // waiting for backendP
+    try {
+      dispatch(authRegister(data))
+      toast.success('Đăng kí tài khoản thành công');
+      setTimeout(() => {
+        navigate('/');
+      }, 3000);
+    } catch (error) {
+      console.log('🚀 ~ onSubmit ~ error:', error)
+    }
   }
 
   return (
@@ -57,7 +69,10 @@ function Register() {
 
           <div className="my-3 float-right">
             <p href="#" className=" text-sm">
-              Already have an account? <Link to="/auth/login" className='text-primary'>Sign in</Link>
+              Already have an account?{' '}
+              <Link to="/auth/login" className="text-primary">
+                Sign in
+              </Link>
             </p>
           </div>
           <Button primary wFull>

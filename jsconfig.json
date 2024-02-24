@@ -13,11 +13,11 @@
       "pages/*": ["pages/*"],
       "routes/*": ["routes/*"],
       "services/*": ["services/*"],
-      "store/*": ["store/*"],
+      "stores/*": ["stores/*"],
       "themes/*": ["themes/*"],
       "utils/*": ["utils/*"],
       "views/*": ["views/*"],
-      "apis/*": ["apis/*"],
+      "apis/*": ["apis/*"]
     },
   },
   "include": ["src/**/*"],

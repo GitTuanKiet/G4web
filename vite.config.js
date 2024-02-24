@@ -17,7 +17,7 @@ export default defineConfig({
       'pages': '/src/pages',
       'routes': '/src/routes',
       'services': '/src/services',
-      'store': '/src/store',
+      'stores': '/src/stores',
       'themes': '/src/themes',
       'typings': '/src/typings',
       'utils': '/src/utils',

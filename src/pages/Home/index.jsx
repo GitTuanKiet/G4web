@@ -9,6 +9,7 @@ import Content from 'views/home/Content'
 // ==============================|| HOME ||============================== //
 
 const Home = () => {
+  console.log('api url: ' + import.meta.env.VITE_REACT_APP_BASE_URL_API)
   return (
     <>
       {/* widget */}
