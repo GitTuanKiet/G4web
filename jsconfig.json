@@ -4,17 +4,10 @@
     "paths": {
       "assets/*": ["assets/*"],
       "components/*": ["components/*"],
-      "config/*": ["config/*"],
-      "containers/*": ["containers/*"],
-      "hooks/*": ["hooks/*"],
       "layouts/*": ["layouts/*"],
-      "locales/*": ["locales/*"],
-      "models/*": ["models/*"],
       "pages/*": ["pages/*"],
       "routes/*": ["routes/*"],
-      "services/*": ["services/*"],
       "stores/*": ["stores/*"],
-      "themes/*": ["themes/*"],
       "utils/*": ["utils/*"],
       "views/*": ["views/*"],
       "apis/*": ["apis/*"]

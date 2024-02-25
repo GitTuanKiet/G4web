@@ -1,12 +1,10 @@
 import Cookies from 'js-cookie'
-
+import { CONSTANT } from './constant'
 const access_token = 'CGV_access_token'
-
-console.log('domain cookie: ', import.meta.env.VITE_REACT_APP_COOKIE_DOMAIN)
 
 export const objCookie = {
   expires: 30,
-  domain: import.meta.env.VITE_REACT_APP_COOKIE_DOMAIN
+  domain: CONSTANT.domain
 }
 
 const saveToken = (accessToken) => {
@@ -27,14 +25,14 @@ const logout = () => {
     Cookies.remove(access_token, {
       ...objCookie,
       path: '/',
-      domain: import.meta.env.VITE_REACT_APP_COOKIE_DOMAIN
+      domain: CONSTANT.domain
     })
     // Cookies.remove(refreshToken, {
     //     ...objCookie,
     //     path: '/',
-    //     domain: import.meta.env.VITE_REACT_APP_COOKIE_DOMAIN,
+    //     domain: CONSTANT.domain
     // });
   }
 }
 
-export { saveToken, getToken,logout }
+export { saveToken, getToken, logout }

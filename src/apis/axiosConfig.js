@@ -1,7 +1,7 @@
 import axios from 'axios'
-
+import { CONSTANT } from 'utils/constant'
 const axiosPublic = axios.create({
-  baseURL: import.meta.env.VITE_REACT_APP_BASE_URL_API,
+  baseURL: CONSTANT.baseURL,
   headers: {
     'Content-Type': 'application/json'
   }
