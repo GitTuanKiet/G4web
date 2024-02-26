@@ -2,8 +2,8 @@ import { Link, useNavigate } from 'react-router-dom'
 
 // project imports
 import Button from 'components/Button'
-import { Input } from 'components/Form'
-import Logo from 'components/Logo'
+import Input from 'components/Input'
+import Logo from 'components/icons/Logo'
 
 // third-party
 import { useForm } from 'react-hook-form'
@@ -51,7 +51,7 @@ function Login() {
         <div className="flex items-center justify-center text-sm mt-3">
           <div className="mr-2">Or</div>
           <div className="text-primary">start your 14-day free trial</div>
-         
+
         </div>
         <form
           onSubmit={handleSubmit(onSubmit)}

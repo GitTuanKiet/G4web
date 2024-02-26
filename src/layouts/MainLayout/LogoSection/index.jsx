@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 // project imports
-import Logo from 'components/Logo'
+import Logo from 'components/icons/Logo'
 
 // ==============================|| MAIN LOGO ||============================== //
 

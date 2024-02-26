@@ -1,4 +1,4 @@
-import { Input } from 'components/Form'
+import Input from 'components/Input'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'

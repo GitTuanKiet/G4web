@@ -1,4 +1,4 @@
-import CgvOnline from 'pages/CgvOnline'
+import CgvOnline from 'pages/static/CgvOnline'
 
 // ===========================|| CGV ONLINE ROUTING ||=========================== //
 
