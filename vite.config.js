@@ -9,7 +9,6 @@ export default defineConfig({
       'assets': '/src/assets',
       'components': '/src/components',
       'layouts': '/src/layouts',
-      'models': '/src/models',
       'pages': '/src/pages',
       'routes': '/src/routes',
       'stores': '/src/stores',

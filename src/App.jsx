@@ -22,7 +22,6 @@ function App() {
     if (access_token) {
       if (!user) {
         var decoded = jwtDecode(access_token)
-        console.log('🚀 ~ useEffect ~ decoded:', decoded)
         if (decoded) {
           dispatch(
             authUpdateUserInfo({
@@ -33,8 +32,7 @@ function App() {
         }
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user])
+  }, [dispatch, user])
 
   return (
     <>
