@@ -2,7 +2,6 @@ import { useController } from 'react-hook-form'
 
 function Input({ label, errors, control, ...rest }) {
   const { field } = useController({ control, name: rest.name })
-  // console.log('errors' + errors)
 
   return (
     <div className="mb-4 w-full">

@@ -30,7 +30,7 @@ function ForgotPassword() {
       email: ''
     }
   })
-  // console.log(errors)
+
   const onSubmit = (data) => {
     dispatch(authForgotPassword(data))
   }

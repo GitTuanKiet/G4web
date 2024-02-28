@@ -32,9 +32,8 @@ function Login() {
       password: ''
     }
   })
-  // console.log(errors)
+
   const onSubmit = (data) => {
-    // waiting for backend
     dispatch(authLogin(data))
   }
 

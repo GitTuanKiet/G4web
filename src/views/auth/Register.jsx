@@ -10,7 +10,7 @@ import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useDispatch } from 'react-redux'
-import { authRegister } from 'stores/auth/authSlice.js'
+import { authRegister } from 'stores/auth/authSlice'
 
 const schema = Yup.object({
   name: Yup.string().required('Name is required').min(3, 'Name must be at least 8 characters '),
@@ -32,9 +32,8 @@ function Register() {
       password: ''
     }
   })
-  // console.log(errors)
+
   const onSubmit = async (data) => {
-    // waiting for backendP
     dispatch(authRegister(data))
   }
 

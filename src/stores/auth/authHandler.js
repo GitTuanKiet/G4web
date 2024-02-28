@@ -1,5 +1,6 @@
-import { call } from 'redux-saga/effects'
+import { call, put } from 'redux-saga/effects'
 import AuthApi from 'apis/auth.api'
+import UserApi from 'apis/user.api'
 import { saveToken } from 'utils/auth'
 import { toast } from 'react-toastify'
 
@@ -60,3 +61,30 @@ function* handleForgotPassword(action) {
 }
 
 export { handleAuthRegister, handleAuthLogin, handleRefreshToken, handleForgotPassword }
+
+function* handleUpdateProfile(action) {
+  const { payload } = action
+  try {
+    const res = yield call(UserApi.updateProfile, payload)
+    if (res.status === 200) {
+      saveToken(res.data.token)
+      toast.success('Profile updated')
+    }
+  } catch (error) {
+    toast.error(error.response.data?.message)
+  }
+}
+
+function* handleChangePassword(action) {
+  const { payload } = action
+  try {
+    const res = yield call(UserApi.changePassword, payload)
+    if (res.status === 200) {
+      toast.success(res.data.message)
+    }
+  } catch (error) {
+    toast.error(error.response.data?.message)
+  }
+}
+
+export { handleUpdateProfile, handleChangePassword }

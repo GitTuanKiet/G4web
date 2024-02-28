@@ -8,7 +8,6 @@ const handleLogout = (e) => {
   e.preventDefault()
   logout()
   window.location.href = '/'
-  console.log('log out')
 }
 
 const sidebarLinks = [
@@ -124,7 +123,6 @@ function Sidebar() {
         </div>
       </aside>
       {/* <div className="p-4 sm:ml-64">
-
 
 
       </div> */}

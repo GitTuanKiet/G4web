@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     const access_token = getToken()
     if (access_token) {
-      var decoded = jwtDecode(access_token)
+      const decoded = jwtDecode(access_token)
       if (!decoded) return
       if (!user) {
         dispatch(
