@@ -25,7 +25,9 @@ function* handleAuthLogin(action) {
     if (res.status === 200) {
       saveToken(res.data.token, res.data.refreshToken)
       toast.success('Welcome back!')
-      window.location.href = '/'
+      setTimeout(() => {
+        window.location.href = '/'
+      }, 1000)
     }
   } catch (error) {
     toast.error(error.response.data?.message)
@@ -44,4 +46,17 @@ function* handleRefreshToken(action) {
   }
 }
 
-export { handleAuthRegister, handleAuthLogin, handleRefreshToken }
+function* handleForgotPassword(action) {
+  const { payload } = action
+
+  try {
+    const res = yield call(AuthApi.forgotPassword, payload)
+    if (res.status === 200) {
+      toast.success(res.data.message)
+    }
+  } catch (error) {
+    toast.error(error.response.data?.message)
+  }
+}
+
+export { handleAuthRegister, handleAuthLogin, handleRefreshToken, handleForgotPassword }

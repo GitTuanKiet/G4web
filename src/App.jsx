@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { getToken, getRefreshToken } from 'utils/auth'
 import { jwtDecode } from 'jwt-decode'
-import { authUpdateUserInfo, authRefreshToken } from 'stores/auth/authSlice'
+import { setUser, authRefreshToken } from 'stores/auth/authSlice'
 
 function App() {
   const { user } = useSelector((state) => state.auth)
@@ -24,7 +24,7 @@ function App() {
       if (!decoded) return
       if (!user) {
         dispatch(
-          authUpdateUserInfo({
+          setUser({
             user: decoded,
             isLoggedIn: true
           })

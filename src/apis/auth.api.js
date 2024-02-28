@@ -12,6 +12,10 @@ class AuthApi {
   static refreshToken = async (data) => {
     return await axiosPublic.post('auth/refresh-token', data)
   }
+
+  static forgotPassword = async (data) => {
+    return await axiosPublic.post('auth/forgot-password', data)
+  }
 }
 
 export default AuthApi
