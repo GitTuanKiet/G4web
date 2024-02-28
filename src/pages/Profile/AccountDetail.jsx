@@ -2,30 +2,39 @@ import Input from 'components/Input'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import Button from 'components/Button'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 const schema = Yup.object({
   email: Yup.string().email('Invalid email').required('Email is required'),
-  password: Yup.string().required('Password is required').min(8, 'Password must be at least 8 characters')
+  password: Yup.string().required('Password is required').min(8, 'Password must be at least 8 characters'),
+  name: Yup.string().required('Name is required'),
+  city: Yup.string().required('City is required'),
+  phone: Yup.string().required('Phone number is required'),
+  address: Yup.string().required('Address is required')
 })
 
 function AccountDetail() {
   const { user } = useSelector((state) => state.auth)
   const navigate = useNavigate()
+  const formRef = useRef()
 
   const [isDesireChangePassword, setIsDesireChangePassword] = useState(false)
   const {
     handleSubmit,
     control,
-    formState: { errors }
+    formState: { errors },
+    submit
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      email: '',
-      password: ''
+      name: user.userInfo.name,
+      city: user.userInfo.city || '',
+      // password: '',
+      phone: user.userInfo.phone || '',
+      address: user.userInfo.address || ''
     }
   })
   // console.log(errors)
@@ -38,65 +47,48 @@ function AccountDetail() {
     <div>
       <h1 className="uppercase bg-[#222222] text-white py-3 text-center">THAY ĐỔI THÔNG TIN</h1>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="w-full  bg-white p-10 rounded-lg shadow-md mt-10">
+      <form
+        ref={formRef}
+        // id="form-info"
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-full  bg-white p-10 rounded-lg shadow-md mt-10"
+      >
         <div className="flex justify-between w-full gap-10">
-          <Input
-            label="Name"
-            placeholder="Enter your name"
-            value={user.name}
-            name="name"
-            control={control}
-            errors={errors}
-          />
-          <Input
-            label="City"
-            placeholder="Enter your City"
-            value={user.city}
-            name="City"
-            control={control}
-            errors={errors}
-          />
+          <Input label="Name" placeholder="Enter your name" name="name" control={control} errors={errors} />
+          <Input label="City" placeholder="Enter your City" name="city" control={control} errors={errors} />
         </div>
         <div className="flex justify-between w-full gap-10">
           <Input
             label="Phone number"
             placeholder="Enter your phone number"
-            name="phoneNumber"
-            value={user.phone}
+            name="phone"
             control={control}
             errors={errors}
           />
-          <Input
-            label="address"
-            placeholder="Enter your address"
-            value={user.address}
-            name="address"
-            control={control}
-            errors={errors}
-          />
+          <Input label="address" placeholder="Enter your address" name="address" control={control} errors={errors} />
         </div>
         <div className="flex justify-between w-full gap-10">
           <div className="flex w-full gap-3">
             <div>
-              <input type="radio" name="gender" className="mx-2" checked={user.gender === 'male'} />
+              <input type="radio" name="gender" className="mx-2" />
               Male
             </div>
             <div>
-              <input type="radio" name="gender" className="mx-2" checked={user.gender === 'female'} />
+              <input type="radio" name="gender" className="mx-2" />
               Female
             </div>
             <div>
-              <input type="radio" name="gender" className="mx-2" checked={user.gender === 'none'} />
+              <input type="radio" name="gender" className="mx-2" />
               None
             </div>
           </div>
-          <Input
+          {/* <Input
             label="Old password"
             placeholder="Enter your old password"
-            name="old password"
+            name="password"
             control={control}
             errors={errors}
-          />
+          /> */}
         </div>
 
         <p>
@@ -127,7 +119,7 @@ function AccountDetail() {
         <div className="mt-3 flex gap-x-10">
           <div>
             <h2>Số thẻ thành viên</h2>
-            <span> 9992-4334-9306-2508</span>
+            <span> {user._id}</span>
           </div>
           <div>
             <h2>Rạp yêu thích</h2>
@@ -143,7 +135,9 @@ function AccountDetail() {
         <button className="text-rose-500 mr-5" onClick={() => navigate(-1)}>
           &lt;&lt; Quay lại
         </button>
-        <Button primary>Lưu lại</Button>
+        <Button type="button" onClick={() => formRef.current.submit()} primary>
+          Lưu lại
+        </Button>
       </div>
     </div>
   )

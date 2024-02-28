@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import authReducer from './auth/authSlice'
 import createSagaMiddleware from 'redux-saga'
-import logger from 'redux-logger'
+// import logger from 'redux-logger'
 
 import rootSaga from './rootSaga'
 
@@ -11,7 +11,7 @@ const store = configureStore({
   reducer: {
     auth: authReducer
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger, sagaMiddleware)
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat( sagaMiddleware)
 })
 
 sagaMiddleware.run(rootSaga)
