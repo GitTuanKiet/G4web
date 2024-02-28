@@ -1,4 +1,4 @@
-import PageNotFound from 'pages/PageNotFound'
+import PageNotFound from 'pages/static/PageNotFound'
 
 const NotFoundRoutes = {
   path: '*',

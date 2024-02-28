@@ -2,8 +2,8 @@ import { Link, useNavigate } from 'react-router-dom'
 
 // project imports
 import Button from 'components/Button'
-import { Input } from 'components/Form'
-import Logo from 'components/Logo'
+import Input from 'components/Input'
+import Logo from 'components/icons/Logo'
 
 // third-party
 import { useForm } from 'react-hook-form'
