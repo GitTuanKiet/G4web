@@ -9,8 +9,15 @@ function* handleAuthRegister(action) {
     console.log('🚀 ~ function*handleAuthRegister ~ res:', res)
     if (res.status === 201) {
       saveToken(res.data.token)
+      toast.success('Đăng kí tài khoản thành công')
+      setTimeout(() => {
+        window.location.href = '/'
+      }, 3000)
     }
   } catch (error) {
+    if (error.response.status === 400) {
+      toast.error(error.response.data?.message)
+    }
     console.log('🚀 ~ function*handleAuthRegister ~ error:', error)
   }
 }
@@ -22,8 +29,7 @@ function* handleAuthLogin(action) {
     console.log('🚀 ~ function*handleAuthLogin ~ res:', res)
     if (res.status === 200) {
       saveToken(res.data.token)
-      window.location.href='/'
-
+      window.location.href = '/'
     }
   } catch (error) {
     toast.error('Thông tin tài khoản không chính xác')

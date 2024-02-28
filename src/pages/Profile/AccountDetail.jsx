@@ -2,7 +2,7 @@ import Input from 'components/Input'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import Button from 'components/Button'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -19,6 +19,7 @@ const schema = Yup.object({
 function AccountDetail() {
   const { user } = useSelector((state) => state.auth)
   const navigate = useNavigate()
+  const formRef = useRef()
 
   const [isDesireChangePassword, setIsDesireChangePassword] = useState(false)
   const {
@@ -29,11 +30,11 @@ function AccountDetail() {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      name: user.name,
-      city: user.city || '',
-      password: '',
-      phone: user.phone || '',
-      address: user.address || ''
+      name: user.userInfo.name,
+      city: user.userInfo.city || '',
+      // password: '',
+      phone: user.userInfo.phone || '',
+      address: user.userInfo.address || ''
     }
   })
   // console.log(errors)
@@ -47,7 +48,8 @@ function AccountDetail() {
       <h1 className="uppercase bg-[#222222] text-white py-3 text-center">THAY ĐỔI THÔNG TIN</h1>
 
       <form
-        id="form-info"
+        ref={formRef}
+        // id="form-info"
         onSubmit={handleSubmit(onSubmit)}
         className="w-full  bg-white p-10 rounded-lg shadow-md mt-10"
       >
@@ -80,13 +82,13 @@ function AccountDetail() {
               None
             </div>
           </div>
-          <Input
+          {/* <Input
             label="Old password"
             placeholder="Enter your old password"
             name="password"
             control={control}
             errors={errors}
-          />
+          /> */}
         </div>
 
         <p>
@@ -133,7 +135,7 @@ function AccountDetail() {
         <button className="text-rose-500 mr-5" onClick={() => navigate(-1)}>
           &lt;&lt; Quay lại
         </button>
-        <Button type="submit" form="form-info" primary>
+        <Button type="button" onClick={() => formRef.current.submit()} primary>
           Lưu lại
         </Button>
       </div>

@@ -51,7 +51,7 @@ export default function Header() {
         }
       : {
           id: 'me',
-          title: 'Hello, ' + user.name,
+          title: 'Hello, ' + user.userInfo.name,
           icon: <CiUser />,
           to: '/me'
         }

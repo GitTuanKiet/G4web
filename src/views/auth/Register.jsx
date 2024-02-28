@@ -39,10 +39,7 @@ function Register() {
     // waiting for backendP
     try {
       dispatch(authRegister(data))
-      toast.success('Đăng kí tài khoản thành công')
-      setTimeout(() => {
-        window.location.href = '/'
-      }, 3000)
+     
     } catch (error) {
       console.log('🚀 ~ onSubmit ~ error:', error)
     }
