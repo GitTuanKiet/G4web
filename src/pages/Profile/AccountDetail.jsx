@@ -30,11 +30,11 @@ function AccountDetail() {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      name: user.userInfo.name,
-      city: user.userInfo.city || '',
+      name: user.name,
+      city: user.city || '',
       // password: '',
-      phone: user.userInfo.phone || '',
-      address: user.userInfo.address || ''
+      phone: user.phone || '',
+      address: user.address || ''
     }
   })
   // console.log(errors)

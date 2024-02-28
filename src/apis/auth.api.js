@@ -6,7 +6,11 @@ class AuthApi {
   }
 
   static login = async (data) => {
-    return axiosPublic.post('auth/login', data)
+    return await axiosPublic.post('auth/login', data)
+  }
+
+  static refreshToken = async (data) => {
+    return await axiosPublic.post('auth/refresh-token', data)
   }
 }
 

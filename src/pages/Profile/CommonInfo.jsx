@@ -17,7 +17,7 @@ function CommonInfo() {
         <button className="text-white bg-[#9d9b9b] py-2 px-3 max-w-[100px] block   mt-3">thay đổi</button>
       </div>
       <h2 className="font-semibold ">
-        Xin chào <span className="text-primary ">{user.userInfo.name}</span>,
+        Xin chào <span className="text-primary ">{user.name}</span>,
       </h2>
       <p>Với trang này, bạn sẽ quản lý được tất cả thông tin tài khoản của mình.</p>
       <div className="rounded-lg border-2 p-4 grid grid-cols-5 gap-x-6 text-center">
@@ -69,9 +69,9 @@ function CommonInfo() {
           </div>
 
           <div className="text-gray-400">
-            <h2>Tên: {user.userInfo.name}</h2>
-            <h2>Email: {user.userInfo.email}</h2>
-            <h2>Diện thoại: {user.userInfo.phone || 'Chưa có số điên thoại'}</h2>
+            <h2>Tên: {user.name}</h2>
+            <h2>Email: {user.email}</h2>
+            <h2>Diện thoại: {user.phone || 'Chưa có số điên thoại'}</h2>
           </div>
         </div>
       </div>

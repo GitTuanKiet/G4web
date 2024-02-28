@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 // project imports
 import Button from 'components/Button'
@@ -11,7 +11,6 @@ import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useDispatch } from 'react-redux'
 import { authRegister } from 'stores/auth/authSlice.js'
-import { toast } from 'react-toastify'
 
 const schema = Yup.object({
   name: Yup.string().required('Name is required').min(3, 'Name must be at least 8 characters '),
@@ -20,7 +19,6 @@ const schema = Yup.object({
 })
 
 function Register() {
-  const navigate = useNavigate()
   const dispatch = useDispatch()
   const {
     handleSubmit,
@@ -37,12 +35,7 @@ function Register() {
   // console.log(errors)
   const onSubmit = async (data) => {
     // waiting for backendP
-    try {
-      dispatch(authRegister(data))
-     
-    } catch (error) {
-      console.log('🚀 ~ onSubmit ~ error:', error)
-    }
+    dispatch(authRegister(data))
   }
 
   return (
