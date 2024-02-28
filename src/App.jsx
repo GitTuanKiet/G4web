@@ -9,9 +9,9 @@ import 'react-toastify/dist/ReactToastify.css'
 import NavigationScroll from 'layouts/NavigationScroll'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { getToken } from 'utils/auth'
+import { getToken, getRefreshToken } from 'utils/auth'
 import { jwtDecode } from 'jwt-decode'
-import { authUpdateUserInfo } from 'stores/auth/authSlice'
+import { setUser, authRefreshToken } from 'stores/auth/authSlice'
 
 function App() {
   const { user } = useSelector((state) => state.auth)
@@ -20,16 +20,20 @@ function App() {
   useEffect(() => {
     const access_token = getToken()
     if (access_token) {
+      var decoded = jwtDecode(access_token)
+      if (!decoded) return
       if (!user) {
-        var decoded = jwtDecode(access_token)
-        if (decoded) {
-          dispatch(
-            authUpdateUserInfo({
-              user: decoded,
-              isLoggedIn: true
-            })
-          )
-        }
+        dispatch(
+          setUser({
+            user: decoded,
+            isLoggedIn: true
+          })
+        )
+      }
+
+      if (new Date(decoded.exp * 1000) < new Date(new Date().getTime() - 15 * 60000)) {
+        const refreshToken = getRefreshToken()
+        dispatch(authRefreshToken({ refreshToken }))
       }
     }
   }, [dispatch, user])

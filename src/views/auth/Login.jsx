@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 // project imports
 import Button from 'components/Button'
@@ -11,8 +11,6 @@ import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { authLogin } from 'stores/auth/authSlice'
 import { useDispatch } from 'react-redux'
-import { toast } from 'react-toastify'
-import { useState } from 'react'
 
 const schema = Yup.object({
   email: Yup.string().email('Invalid email').required('Email is required'),
@@ -37,7 +35,6 @@ function Login() {
   // console.log(errors)
   const onSubmit = (data) => {
     // waiting for backend
-    console.log(data)
     dispatch(authLogin(data))
   }
 

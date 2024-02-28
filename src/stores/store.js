@@ -11,7 +11,7 @@ const store = configureStore({
   reducer: {
     auth: authReducer
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat( sagaMiddleware)
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware)
 })
 
 sagaMiddleware.run(rootSaga)
