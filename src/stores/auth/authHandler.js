@@ -9,10 +9,11 @@ function* handleAuthRegister(action) {
   try {
     const res = yield call(AuthApi.register, payload)
     if (res.status === 201) {
-      toast.success(res.data.message)
+      saveToken(res.data.token)
+      toast.success('Vui lòng kiểm tra email xác nhận.')
       setTimeout(() => {
         window.location.href = '/auth/login'
-      }, 3000)
+      }, 5000)
     }
   } catch (error) {
     toast.error(error.response.data?.message)
@@ -32,6 +33,7 @@ function* handleAuthLogin(action) {
     }
   } catch (error) {
     toast.error(error.response.data?.message)
+    console.log('🚀 ~ function*handleAuthLogin ~ error:', error)
   }
 }
 
