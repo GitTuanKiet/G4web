@@ -1,4 +1,4 @@
-import { call, put } from 'redux-saga/effects'
+import { call } from 'redux-saga/effects'
 import AuthApi from 'apis/auth.api'
 import UserApi from 'apis/user.api'
 import { saveToken } from 'utils/auth'
@@ -10,7 +10,7 @@ function* handleAuthRegister(action) {
     const res = yield call(AuthApi.register, payload)
     if (res.status === 201) {
       saveToken(res.data.token)
-      toast.success('Vui lòng kiểm tra email xác nhận.')
+      toast.success(res.data.message)
       setTimeout(() => {
         window.location.href = '/auth/login'
       }, 5000)
@@ -33,7 +33,6 @@ function* handleAuthLogin(action) {
     }
   } catch (error) {
     toast.error(error.response.data?.message)
-    console.log('🚀 ~ function*handleAuthLogin ~ error:', error)
   }
 }
 
