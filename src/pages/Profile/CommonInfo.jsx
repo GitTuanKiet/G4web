@@ -60,7 +60,12 @@ function CommonInfo() {
         <div className="mt-6">
           <div className="flex gap-x-14 ">
             <h2 className="uppercase">Liên hệ</h2>
-            <button className="text-white bg-[#9d9b9b] py-1 px-3 max-w-[100px]  ">thay đổi</button>
+            <button
+              className="text-white bg-[#9d9b9b] py-1 px-3 max-w-[100px]"
+              onClick={() => navigate('/me/account-detail')}
+            >
+              Thay đổi
+            </button>
           </div>
 
           <div className="text-gray-400">
