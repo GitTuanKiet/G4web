@@ -24,6 +24,8 @@ const Home = () => {
       <div className="page-container">
         <Content />
       </div>
+
+     
     </>
   )
 }

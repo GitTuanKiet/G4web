@@ -35,7 +35,7 @@ function Button({
     })
   }
 
-  let defaultClassName = `rounded-lg text-white min-w-[100px] py-2 px-4 hover:opacity-85 border border-transparent 
+  let defaultClassName = `rounded-lg text-white min-w-[100px]  py-2 px-4 hover:opacity-85 border border-transparent 
     ${primary ? 'bg-primary' : '!border-primary !text-primary '} 
     ${wFull ? 'w-full py-4' : ''}
     ${disabled ? 'opacity-40 hover:opacity-40 pointer-events-none' : ''}  
