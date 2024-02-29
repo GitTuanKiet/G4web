@@ -10,6 +10,7 @@ function Button({
   wFull = false,
   disabled = false,
   size,
+  small = false,
   className: externalClassName, // Thêm prop className để nhận thêm className từ bên ngoài
   style,
   ...passProps
@@ -35,11 +36,12 @@ function Button({
     })
   }
 
-  let defaultClassName = `rounded-lg text-white min-w-[100px]  py-2 px-4 hover:opacity-85 border border-transparent 
+  let defaultClassName = `rounded-lg text-white hover:opacity-85 border border-transparent 
     ${primary ? 'bg-primary' : '!border-primary !text-primary '} 
     ${wFull ? 'w-full py-4' : ''}
     ${disabled ? 'opacity-40 hover:opacity-40 pointer-events-none' : ''}  
     ${size === 'xl' ? 'h-full' : ''}
+    ${small ? 'text-xs py-0 px-3 min-w-[50px]' : 'px-4 py-2 min-w-[100px]'}
     `
 
   let className = `${defaultClassName} ${externalClassName || ''}`

@@ -88,4 +88,19 @@ function* handleChangePassword(action) {
   }
 }
 
-export { handleUpdateProfile, handleChangePassword }
+function* handleUploadAvatar(action) {
+  const { payload } = action
+  try {
+    const formData = new FormData()
+    formData.append('avatar', payload)
+    const res = yield call(UserApi.uploadAvatar, formData)
+    if (res.status === 200) {
+      saveToken(res.data.token)
+      toast.success('Avatar updated')
+    }
+  } catch (error) {
+    toast.error(error.response.data?.message)
+  }
+}
+
+export { handleUpdateProfile, handleChangePassword, handleUploadAvatar }

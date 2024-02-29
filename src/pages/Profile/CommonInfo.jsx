@@ -1,83 +1,101 @@
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import Button from 'components/Button'
+import { useState } from 'react'
+import { userUploadAvatar } from 'stores/auth/authSlice'
+import { CONSTANT } from 'utils/constant'
 
 function CommonInfo() {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const { user } = useSelector((state) => state.auth)
+  const inputId = Math.random().toString(32).substring(2)
+
+  const [image, setImage] = useState(null)
+
+  const handleUploadAvatar = () => {
+    const fileInput = document.getElementById(inputId)
+    fileInput.click()
+  }
+
+  const handleOnAddImage = (e) => {
+    if (!e.target.files) return
+
+    const avatar = e.target.files[0]
+    setImage(avatar)
+    e.target.value = ''
+    dispatch(userUploadAvatar(avatar))
+  }
 
   return (
     <div>
       <h1 className="uppercase bg-[#222222] text-white py-3 text-center">THÔNG TIN CHUNG</h1>
-      <div className=" w-[200px] flex justify-center flex-col">
+      <div className="w-full flex justify-center items-center flex-col py-3">
         <img
-          src="https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/icon-profile-cgv.png"
+          src={image ? URL.createObjectURL(image) : user.avatar ? CONSTANT.baseURL+user.avatar : 'https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/icon-profile-cgv.png'}
           alt="avatar"
-          className="border border-slate-800 p-2 rounded-full "
+          className="border border-slate-800 p-2 rounded-full max-w-40 max-h-40"
         />
-        <button className="text-white bg-[#9d9b9b] py-2 px-3 max-w-[100px] block   mt-3">thay đổi</button>
+        <label htmlFor={inputId}>
+          <input id={inputId} type='file' accept='image/*,.png,.jpg,.jpeg,.gif' onChange={(e) => handleOnAddImage(e)} hidden />
+          <Button onClick={() => handleUploadAvatar()} primary>Thay đổi</Button>
+        </label>
       </div>
       <h2 className="font-semibold ">
         Xin chào <span className="text-primary ">{user.name}</span>,
       </h2>
       <p>Với trang này, bạn sẽ quản lý được tất cả thông tin tài khoản của mình.</p>
-      <div className="rounded-lg border-2 p-4 grid grid-cols-5 gap-x-6 text-center">
-        <div className="border-r-2 border-black">
-          <p>
-            Cấp độ thẻ <span className="ml-4 font-bold"> 0đ</span>
+      <div className="rounded-lg border-2 p-2 grid grid-cols-5 text-center">
+        <div className="border-r-2 pr-2 text-left border-black flex flex-col justify-between">
+          <p className='flex justify-between'>
+           Cấp độ thẻ <span className="font-bold">{user?.POINTS}</span>
           </p>
-          <p>
-            Tổng chi tiêu <span className="ml-4 font-bold"> 0đ</span>{' '}
+
+          <p className='flex justify-between'>
+           Tổng chi tiêu <span className="font-bold">{user?.POINTS}</span>
           </p>
-          <p>
-            Điểm CGV <span className="ml-4 font-bold"> 0đ</span>
+
+          <p className='flex justify-between'>
+           Điểm CGV <span className="font-bold">{user?.POINTS}</span>
           </p>
+
         </div>
-        <div className="border-r-2 border-black">
-          <p>Thẻ quà tặng </p>
-          <p className="font-bold">0đ</p>
-          <button className="bg-blue-500 text-white py-1 px-2 rounded mt-1">Xem</button>
+        <div className="border-r-2 border-black flex flex-col justify-between items-center">
+          <p>Thẻ quà tặng</p>
+          <p className="font-bold">{user?.giftIds.length}</p>
+          <Button to='/gifts' small>Xem</Button>
         </div>
 
-        <div className="border-r-2 border-black">
-          <p>Vouncher </p>
-          <p className="font-bold">0</p>
-          <button className="bg-blue-500 text-white py-1 px-2 rounded mt-1">Xem</button>
+        <div className="border-r-2 border-black flex flex-col justify-between items-center">
+          <p>Voucher</p>
+          <p className="font-bold">{user?.voucherIds.length}</p>
+          <Button to='/online-store' small>Xem</Button>
         </div>
-        <div className="border-r-2 border-black">
-          <p>Counpon </p>
-          <p className="font-bold">0đ</p>
-          <button className="bg-blue-500 text-white py-1 px-2 rounded mt-1">Xem</button>
+        <div className="border-r-2 border-black flex flex-col justify-between items-center">
+          <p>Counpon</p>
+          <p className="font-bold">{user?.couponIds.length}</p>
+          <Button to='/cinemas' small>Xem</Button>
         </div>
-        <div className="">
-          <p>Thẻ thành viên </p>
-          <p className="font-bold">1</p>
-          <button className="bg-blue-500 text-white py-1 px-2 rounded mt-1">Xem</button>
+        <div className="flex flex-col justify-between items-center">
+          <p>Giao dịch</p>
+          <p className="font-bold">{user?.orderIds.length}</p>
+          <Button to='/me/transaction-history' small>Xem</Button>
         </div>
       </div>
 
-      <div className="mt-3">
-        <h2 className="border-b-2 pb-2">Thông tin tài khoản</h2>
-        <div className="mt-6">
-          <div className="flex gap-x-14 ">
-            <h2 className="uppercase">Liên hệ</h2>
-            <button
-              className="text-white bg-[#9d9b9b] py-1 px-3 max-w-[100px]"
-              onClick={() => navigate('/me/account-detail')}
-            >
-              Thay đổi
-            </button>
-          </div>
-
-          <div className="text-gray-400">
-            <h2>Tên: {user.name}</h2>
-            <h2>Email: {user.email}</h2>
-            <h2>Diện thoại: {user.phone || 'Chưa có số điên thoại'}</h2>
-          </div>
-        </div>
+      <h1 className="border-b-2 p-2 uppercase">Thông tin tài khoản</h1>
+      <div className="text-gray-400 px-6 py-3">
+        <h2>Tên: {user.name}</h2>
+        <h2>Email: {user.email}</h2>
+        <h2>Điện thoại: {user.phone || 'Chưa có số điên thoại'}</h2>
+        <h2>Thẻ thành viên: {user.memberCardId || 'Chưa có thẻ thành viên'}</h2>
       </div>
-      <button className="text-rose-500" onClick={() => navigate(-1)}>
+      <Button className="mr-2" onClick={() => navigate(-1)}>
         &lt;&lt; Quay lại
-      </button>
+      </Button>
+      <Button primary onClick={() => navigate('/me/account-detail')}>
+        Chi Tiết
+      </Button>
     </div>
   )
 }

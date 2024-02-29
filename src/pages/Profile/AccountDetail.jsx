@@ -1,33 +1,11 @@
 import Input from 'components/Input'
 import * as Yup from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { useForm } from 'react-hook-form'
 import { useState } from 'react'
 import Button from 'components/Button'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { userUpdateProfile } from 'stores/auth/authSlice'
-
-const useFormSubmit = (schema, defaultValues, dispatch) => {
-  const { handleSubmit, register, control, formState: { errors } } = useForm({
-    resolver: yupResolver(schema),
-    defaultValues: defaultValues
-  })
-
-  const [isSubmitting, setIsSubmitting] = useState(false)
-
-  const onSubmit = (data) => {
-    setIsSubmitting(true)
-
-    if (data) {
-      dispatch(userUpdateProfile(data))
-    }
-
-    setIsSubmitting(false)
-  }
-
-  return { handleOnSubmit : handleSubmit(onSubmit), register, control, errors, isSubmitting }
-}
+import { useFormSubmit } from 'utils/form'
 
 function AccountDetail() {
   const { user } = useSelector((state) => state.auth)
@@ -44,13 +22,15 @@ function AccountDetail() {
     address: Yup.string().required('Address is required')
   })
 
+  const call = (data) => dispatch(userUpdateProfile(data))
+
   const { handleOnSubmit, register, control, errors, isSubmitting } = useFormSubmit(schemaProfile, {
     name: user.name,
     city: user.city,
     gender: user.gender,
     phone: user.phone,
     address: user.address
-  }, dispatch)
+  }, call)
 
   return (
     <div>

@@ -12,9 +12,16 @@ const axiosPublic = axios.create({
 const axiosPrivate = axios.create({
   baseURL: CONSTANT.baseURL,
   headers: {
-    'Content-Type': 'application/json',
     Authorization: `Bearer ${getToken()}`
   }
 })
 
-export { axiosPublic, axiosPrivate }
+const axiosMultipart = axios.create({
+  baseURL: CONSTANT.baseURL,
+  headers: {
+    'Content-Type': 'multipart/form-data',
+    Authorization: `Bearer ${getToken()}`
+  }
+})
+
+export { axiosPublic, axiosPrivate, axiosMultipart }
