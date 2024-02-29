@@ -84,18 +84,22 @@ function CommonInfo() {
       </div>
 
       <h1 className="border-b-2 p-2 uppercase">Thông tin tài khoản</h1>
-      <div className="text-gray-400 px-6 py-3">
-        <h2>Tên: {user.name}</h2>
-        <h2>Email: {user.email}</h2>
-        <h2>Điện thoại: {user.phone || 'Chưa có số điên thoại'}</h2>
-        <h2>Thẻ thành viên: {user.memberCardId || 'Chưa có thẻ thành viên'}</h2>
-      </div>
-      <Button className="mr-2" onClick={() => navigate(-1)}>
+      <div className="flex justify-between">
+        <div className="text-gray-400 px-6 py-3">
+          <h2>Tên: {user.name}</h2>
+          <h2>Email: {user.email}</h2>
+          <h2>Điện thoại: {user.phone || 'Chưa có số điên thoại'}</h2>
+          <h2>Thẻ thành viên: {user.memberCardId || 'Chưa có thẻ thành viên'}</h2>
+        </div>
+        <div className='flex gap-4 justify-end items-center'>
+          <Button onClick={() => navigate(-1)}>
         &lt;&lt; Quay lại
-      </Button>
-      <Button primary onClick={() => navigate('/me/account-detail')}>
+          </Button>
+          <Button primary onClick={() => navigate('/me/account-detail')}>
         Chi Tiết
-      </Button>
+          </Button>
+        </div>
+      </div>
     </div>
   )
 }

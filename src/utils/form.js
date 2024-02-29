@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { useState } from 'react'
+import { toast } from 'react-toastify'
 
 const useFormSubmit = (schema, defaultValues, call) => {
   const { handleSubmit, register, control, formState: { errors } } = useForm({
@@ -13,11 +14,22 @@ const useFormSubmit = (schema, defaultValues, call) => {
   const onSubmit = (data) => {
     setIsSubmitting(true)
 
-    if (data) {
-      call(data)
-    }
+    const check = Object.keys(data).every((key) => data[key] === defaultValues[key])
 
-    setIsSubmitting(false)
+    setTimeout(() => {
+      if (check) {
+        toast.info('Không có gì thay đổi')
+        setIsSubmitting(false)
+        return
+      }
+
+      if (data) {
+        call(data)
+      }
+
+      setIsSubmitting(false)
+    }, 3000)
+
   }
 
   return { handleOnSubmit : handleSubmit(onSubmit), register, control, errors, isSubmitting }

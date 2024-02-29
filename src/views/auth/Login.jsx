@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 // project imports
 import Button from 'components/Button'
@@ -19,8 +20,9 @@ const schema = Yup.object({
 
 function Login() {
   const dispatch = useDispatch()
-  // const navigate = useNavigate()
-  // const [messageLoginFailed,setMessageLoginFailed] = useState()
+
+  const [remember, setRemember] = useState(false)
+
   const {
     handleSubmit,
     control,
@@ -28,13 +30,19 @@ function Login() {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      email: '',
+      email: localStorage.getItem('email') || '',
       password: ''
     }
   })
 
   const onSubmit = (data) => {
     dispatch(authLogin(data))
+
+    if (remember) {
+      localStorage.setItem('email', data.email)
+    } else {
+      localStorage.removeItem('email')
+    }
   }
 
   return (
@@ -58,7 +66,7 @@ function Login() {
 
           <div className="mt-4 flex items-center justify-between mb-4">
             <div className="flex items-center justify-start">
-              <input type="checkbox" />
+              <input type="checkbox" onChange={() => setRemember(!remember)} />
               <div className="text-sm ml-2 text-gray-600">Remember me</div>
             </div>
             <div className="my-3 float-right text-sm ">

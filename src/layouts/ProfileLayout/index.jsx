@@ -6,7 +6,7 @@ import { toast } from 'react-toastify'
 import { useEffect } from 'react'
 
 function ProfileLayout() {
-  const { isLoggedIn } = useSelector((state) => state.auth)
+  const isLoggedIn = useSelector((state) => state.auth)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -16,7 +16,11 @@ function ProfileLayout() {
     }
   }, [isLoggedIn, navigate])
 
-  if (!isLoggedIn) return navigate('/auth')
+  if (!isLoggedIn) return (
+    <div className="w-full h-screen flex items-center justify-center">
+      <p>Vui lòng đăng nhập để tiếp tục</p>
+    </div>
+  )
 
   return (
     <div className="flex items-start gap-x-4 w-full h-screen">
