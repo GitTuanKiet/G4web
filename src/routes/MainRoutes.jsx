@@ -21,10 +21,13 @@ const Gift = Loadable(lazy(() => import('pages/Gift')))
 const ListGift = Loadable(lazy(() => import('pages/Gift/ListGift')))
 const GiftDetail = Loadable(lazy(() => import('pages/Gift/GiftDetail')))
 const OnlineStore = Loadable(lazy(() => import('pages/OnlineStore')))
+const VoucherDetail = Loadable(lazy(() => import('pages/VoucherDetail')))
+
+// profile
 const AccountDetail = Loadable(lazy(() => import('pages/Profile/AccountDetail')))
 const CommonInfo = Loadable(lazy(() => import('pages/Profile/CommonInfo')))
 const TransactionHistory = Loadable(lazy(() => import('pages/Profile/TransactionHistory')))
-const VoucherDetail = Loadable(lazy(() => import('pages/VoucherDetail')))
+const ChangePassword = Loadable(lazy(() => import('pages/Profile/ChangePassword')))
 
 // ===========================|| MAIN ROUTING ||=========================== //
 
@@ -135,12 +138,20 @@ const MainRoutes = {
       element: <ProfileLayout />,
       children: [
         {
+          path: '',
+          element: <CommonInfo />
+        },
+        {
           path: 'account-detail',
           element: <AccountDetail />
         },
         {
           path: 'common-info',
           element: <CommonInfo />
+        },
+        {
+          path: 'change-password',
+          element: <ChangePassword />
         },
         {
           path: 'transaction-history',
