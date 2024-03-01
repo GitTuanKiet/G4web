@@ -1,4 +1,5 @@
 import Button from 'components/Button'
+
 function PageNotFound() {
   return (
     <div id="page-not-found" className="relative">

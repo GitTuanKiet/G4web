@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
-import RankIron from './Partials/Iron'
-import RankBronze from './Partials/Bronze'
-import RankSilver from './Partials/Silver'
-import RankGold from './Partials/Gold'
+import RankIron from './ranks/Iron'
+import RankBronze from './ranks/Bronze'
+import RankSilver from './ranks/Silver'
+import RankGold from './ranks/Gold'
 
 const U22MemberDetails = () => {
   const [show, setShow] = useState('iron')

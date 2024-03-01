@@ -1,22 +1,22 @@
 import Sidebar from 'components/Sidebar'
 import { Outlet } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { useEffect } from 'react'
+import { getToken } from 'utils/auth'
 
 function ProfileLayout() {
-  const isLoggedIn = useSelector((state) => state.auth)
   const navigate = useNavigate()
+  const access_token = getToken()
 
   useEffect(() => {
-    if (!isLoggedIn) {
+    if (!access_token) {
       toast.error('Vui lòng đăng nhập để tiếp tục')
       navigate('/auth')
     }
-  }, [isLoggedIn, navigate])
+  }, [access_token, navigate])
 
-  if (!isLoggedIn) return (
+  if (!access_token) return (
     <div className="w-full h-screen flex items-center justify-center">
       <p>Vui lòng đăng nhập để tiếp tục</p>
     </div>

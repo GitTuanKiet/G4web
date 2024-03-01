@@ -2,11 +2,11 @@
 import { useState } from 'react'
 
 // project imports
-import Support from 'views/membership/Support'
-import LoyaltyPoint from 'views/membership/LoyaltyPoint'
-import CgvLevel from 'views/membership/CgvLevel'
-import Manage from 'views/membership/Manage'
-import BirthdayGift from 'views/membership/BirthdayGift'
+import Support from 'pages/static/MemberShip/Partials/Support'
+import LoyaltyPoint from 'pages/static/MemberShip/Partials/LoyaltyPoint'
+import CgvLevel from 'pages/static/MemberShip/Partials'
+import Manage from 'pages/static/MemberShip/Partials/Manage'
+import BirthdayGift from 'pages/static/MemberShip/Partials/BirthdayGift'
 
 
 const Membership = () => {

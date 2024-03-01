@@ -56,7 +56,7 @@ const members = {
     {
       id: 'auth',
       text: 'Tài Khoản CGV',
-      to: '/me'
+      to: '/profile'
     },
     {
       id: 'membership',

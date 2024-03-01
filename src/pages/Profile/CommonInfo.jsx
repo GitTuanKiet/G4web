@@ -79,7 +79,7 @@ function CommonInfo() {
         <div className="flex flex-col justify-between items-center">
           <p>Giao dịch</p>
           <p className="font-bold">{user?.orderIds.length}</p>
-          <Button to='/me/transaction-history' small>Xem</Button>
+          <Button to='/profile/transaction-history' small>Xem</Button>
         </div>
       </div>
 
@@ -95,7 +95,7 @@ function CommonInfo() {
           <Button onClick={() => navigate(-1)}>
         &lt;&lt; Quay lại
           </Button>
-          <Button primary onClick={() => navigate('/me/account-detail')}>
+          <Button primary onClick={() => navigate('/profile/account-detail')}>
         Chi Tiết
           </Button>
         </div>

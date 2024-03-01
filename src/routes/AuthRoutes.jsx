@@ -18,15 +18,15 @@ const AuthRoutes = {
       element: <Login />
     },
     {
-      path: 'login', // không bắt đầu bằng '/'
+      path: 'login',
       element: <Login />
     },
     {
-      path: 'register', // không bắt đầu bằng '/'
+      path: 'register',
       element: <Register />
     },
     {
-      path: 'forgot-password', // không bắt đầu bằng '/'
+      path: 'forgot-password',
       element: <ForgotPassword />
     }
   ]

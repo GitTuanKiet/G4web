@@ -3,8 +3,6 @@ import { lazy } from 'react'
 // project imports
 import MainLayout from 'layouts/MainLayout'
 import Loadable from 'components/Loadable'
-import ProfileLayout from 'layouts/ProfileLayout'
-import CinemaByMovie from 'pages/CinemaByMovie'
 
 // pages routing
 const Home = Loadable(lazy(() => import('pages/Home')))
@@ -14,20 +12,14 @@ const Special = Loadable(lazy(() => import('pages/Theater/Special')))
 const NewsOffer = Loadable(lazy(() => import('pages/NewsOffer')))
 const NewsOfferDetail = Loadable(lazy(() => import('pages/NewsOffer/Partials')))
 const MovieDetail = Loadable(lazy(() => import('pages/Movie/MovieDetail')))
-const MemberShip = Loadable(lazy(() => import('pages/static/MemberShip')))
-const CgvRules = Loadable(lazy(() => import('pages/static/CgvRules')))
-const Cinemas = Loadable(lazy(() => import('pages/static/Cinemas')))
 const Gift = Loadable(lazy(() => import('pages/Gift')))
 const ListGift = Loadable(lazy(() => import('pages/Gift/ListGift')))
 const GiftDetail = Loadable(lazy(() => import('pages/Gift/GiftDetail')))
 const OnlineStore = Loadable(lazy(() => import('pages/OnlineStore')))
 const VoucherDetail = Loadable(lazy(() => import('pages/VoucherDetail')))
+const CinemaByMovie = Loadable(lazy(() => import('pages/CinemaByMovie')))
 
-// profile
-const AccountDetail = Loadable(lazy(() => import('pages/Profile/AccountDetail')))
-const CommonInfo = Loadable(lazy(() => import('pages/Profile/CommonInfo')))
-const TransactionHistory = Loadable(lazy(() => import('pages/Profile/TransactionHistory')))
-const ChangePassword = Loadable(lazy(() => import('pages/Profile/ChangePassword')))
+import ProfileRoutes from './ProfileRoutes'
 
 // ===========================|| MAIN ROUTING ||=========================== //
 
@@ -95,18 +87,6 @@ const MainRoutes = {
       ]
     },
     {
-      path: 'membership',
-      element: <MemberShip />
-    },
-    {
-      path: 'rules',
-      element: <CgvRules />
-    },
-    {
-      path: 'cinemas',
-      element: <Cinemas />
-    },
-    {
       path: 'gifts',
       children: [
         {
@@ -127,40 +107,12 @@ const MainRoutes = {
       path: 'online-store',
       element: <OnlineStore />
     },
-    // voucher
     {
       path: 'vouchers/:voucher-slug',
       element: <VoucherDetail />
     },
-    // profile (me)
     {
-      path: '/me',
-      element: <ProfileLayout />,
-      children: [
-        {
-          path: '',
-          element: <CommonInfo />
-        },
-        {
-          path: 'account-detail',
-          element: <AccountDetail />
-        },
-        {
-          path: 'common-info',
-          element: <CommonInfo />
-        },
-        {
-          path: 'change-password',
-          element: <ChangePassword />
-        },
-        {
-          path: 'transaction-history',
-          element: <TransactionHistory />
-        }
-        // {
-        //   path:'logout'
-        // }
-      ]
+      ...ProfileRoutes
     }
   ]
 }
