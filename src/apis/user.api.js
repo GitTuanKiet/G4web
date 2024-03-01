@@ -12,6 +12,10 @@ class UserApi {
   static uploadAvatar = async (data) => {
     return await axiosMultipart.post('uploads/avatar', data)
   }
+
+  static setupPIN = async (data) => {
+    return await axiosPrivate.put('user/setup-pin', data)
+  }
 }
 
 export default UserApi

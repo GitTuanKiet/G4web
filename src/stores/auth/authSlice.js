@@ -18,7 +18,8 @@ const authSlice = createSlice({
     }),
     userUpdateProfile: (state, action) => ({ ...state, ...action.payload }),
     userChangePassword: (state, action) => ({ ...state, ...action.payload }),
-    userUploadAvatar: (state, action) => ({ ...state, ...action.payload })
+    userUploadAvatar: (state, action) => ({ ...state, ...action.payload }),
+    userSetupPIN: (state, action) => ({ ...state, ...action.payload })
   }
 })
 export const {
@@ -29,7 +30,8 @@ export const {
   setUser,
   userUpdateProfile,
   userChangePassword,
-  userUploadAvatar
+  userUploadAvatar,
+  userSetupPIN
 } = authSlice.actions
 
 export default authSlice.reducer

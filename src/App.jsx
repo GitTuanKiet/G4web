@@ -19,6 +19,8 @@ function App() {
 
   useEffect(() => {
     const access_token = getToken()
+    const refreshToken = getRefreshToken()
+
     if (access_token) {
       const decoded = jwtDecode(access_token)
       if (!decoded) return
@@ -32,9 +34,12 @@ function App() {
       }
 
       if (new Date(decoded.exp * 1000) < new Date(new Date().getTime() - 15 * 60000)) {
-        const refreshToken = getRefreshToken()
         dispatch(authRefreshToken({ refreshToken }))
       }
+    } else if (refreshToken) {
+      dispatch(authRefreshToken({ refreshToken }))
+    } else {
+      dispatch(setUser({ user: null, isLoggedIn: false }))
     }
   }, [dispatch, user])
 

@@ -79,7 +79,21 @@ function* handleUpdateProfile(action) {
 function* handleChangePassword(action) {
   const { payload } = action
   try {
+    if (payload.confirmPassword) delete payload.confirmPassword
     const res = yield call(UserApi.changePassword, payload)
+    if (res.status === 200) {
+      toast.success(res.data.message)
+    }
+  } catch (error) {
+    toast.error(error.response.data?.message)
+  }
+}
+
+function* handleSetupPIN(action) {
+  const { payload } = action
+  try {
+    if (payload.confirmPIN) delete payload.confirmPIN
+    const res = yield call(UserApi.setupPIN, payload)
     if (res.status === 200) {
       toast.success(res.data.message)
     }
@@ -103,4 +117,4 @@ function* handleUploadAvatar(action) {
   }
 }
 
-export { handleUpdateProfile, handleChangePassword, handleUploadAvatar }
+export { handleUpdateProfile, handleChangePassword, handleSetupPIN, handleUploadAvatar }

@@ -9,6 +9,7 @@ const AccountDetail = Loadable(lazy(() => import('pages/Profile/AccountDetail'))
 const CommonInfo = Loadable(lazy(() => import('pages/Profile/CommonInfo')))
 const TransactionHistory = Loadable(lazy(() => import('pages/Profile/TransactionHistory')))
 const ChangePassword = Loadable(lazy(() => import('pages/Profile/ChangePassword')))
+const SetupPIN = Loadable(lazy(() => import('pages/Profile/SetupPIN')))
 
 // ===========================|| PROFILE ROUTING ||=========================== //
 
@@ -35,6 +36,10 @@ const ProfileRoutes = {
     {
       path: 'change-password',
       element: <ChangePassword />
+    },
+    {
+      path: 'setup-pin',
+      element: <SetupPIN />
     }
   ]
 }
