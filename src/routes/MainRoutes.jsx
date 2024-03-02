@@ -18,9 +18,10 @@ const GiftDetail = Loadable(lazy(() => import('pages/Gift/GiftDetail')))
 const OnlineStore = Loadable(lazy(() => import('pages/OnlineStore')))
 const VoucherDetail = Loadable(lazy(() => import('pages/VoucherDetail')))
 const CinemaByMovie = Loadable(lazy(() => import('pages/CinemaByMovie')))
+const Recruitment = Loadable(lazy(() => import('pages/Recruitment')))
 
 import ProfileRoutes from './ProfileRoutes'
-
+import ExtraInfoRoutes from './ExtraInfoRoutes'
 // ===========================|| MAIN ROUTING ||=========================== //
 
 const MainRoutes = {
@@ -113,6 +114,13 @@ const MainRoutes = {
     },
     {
       ...ProfileRoutes
+    },
+    {
+      ...ExtraInfoRoutes
+    },
+    {
+      path: '/recruitment',
+      element: <Recruitment />
     }
   ]
 }
