@@ -78,8 +78,7 @@ function Recruitment() {
                 <h2 className="font-bold text-lg text-center">Khối Văn Phòng/ Cụm Rạp</h2>
                 <div>
                   <p>
-                    <b>Cách 1</b>: Gửi CV đến email <b>cgvtalent@cj.net</b> với tiêu đề <b />
-                    "[HỌ TÊN] - Ứng tuyển [VỊ TRÍ]”.
+                    <b>Cách 1</b>: Gửi CV đến email <b>cgvtalent@cj.net</b> với tiêu đề <b>&quot;[HỌ TÊN] - Ứng tuyển [VỊ TRÍ]&rdquo;</b>.
                   </p>
                   <p>
                     <b>Cách 2:</b> Nộp hồ sơ trực tiếp trên các trang tuyển dụng uy tín mà CGV có đăng tuyển như

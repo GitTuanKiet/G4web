@@ -10,7 +10,7 @@ const testView = {
   element: <MainLayout />,
   children: [
     {
-      path: 'test',
+      path: 'booking-ticket',
       element: <BookTicket />
     },
     {

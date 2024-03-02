@@ -1,6 +1,7 @@
 import Button from 'components/Button'
 import Logo from 'components/icons/Logo'
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 const data = [
@@ -138,9 +139,11 @@ const Content = ({ data = fakeJSONdata, voucher, setVoucher }) => {
 }
 
 const GroupButton = ({ start, end, total }) => {
+  const navigate = useNavigate()
   const handleNext = () => {
     if (end) {
       toast.info(total)
+      navigate('/payment-method')
     }
   }
   return (
