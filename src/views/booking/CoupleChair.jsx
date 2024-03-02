@@ -1,27 +1,23 @@
-import { useState } from 'react';
-const CoupleChair = ({ id, checked }) => {
-    const color = checked ? '#AAAAAA99' : '#FC0909CC';
-    const [isChecked, setChecked] = useState(false);
-    const status = checked ? true : false;
-    const handleButtonClick = () => {
-        setChecked(!isChecked);
-        const chairInfo = { id, checked: !isChecked, price: vip };
-        onChairClick(chairInfo);
-    };
-    return (
-        <>
-            <button
-                className="w-16 h-8 border rounded-xl flex items-center justify-center text-[10px] text-white"
-                style={{
-                    backgroundColor: color,
-                    opacity: isChecked ? 0.5 : 1, // Change opacity when button is disabled
-                }}
-                disabled={status}
-                onClick={handleButtonClick}
-            >
-                {isChecked ? '✔' : id}
-            </button>
-        </>
-    )
+import { useState } from 'react'
+const CoupleChair = ({ id, checked, price, setChair }) => {
+  const color = checked ? 'bg-gray-500' : 'bg-red-500'
+  const [isChecked, setChecked] = useState(false)
+  const handleButtonClick = () => {
+    const checked = !isChecked
+    setChecked(checked)
+    const chairInfo = { id, checked, price }
+    setChair(chairInfo)
+  }
+  return (
+    <>
+      <button
+        className={`w-16 h-8 shadow-md rounded-xl text-[10px] ${color} ${checked ? 'opacity-50' : 'opacity-100'}`}
+        disabled={checked}
+        onClick={handleButtonClick}
+      >
+        <span>{isChecked ? '✔' : id}</span>
+      </button>
+    </>
+  )
 }
-export default CoupleChair;
+export default CoupleChair
