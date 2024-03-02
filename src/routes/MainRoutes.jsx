@@ -21,7 +21,7 @@ const CinemaByMovie = Loadable(lazy(() => import('pages/CinemaByMovie')))
 const Recruitment = Loadable(lazy(() => import('pages/Recruitment')))
 
 import ProfileRoutes from './ProfileRoutes'
-
+import ExtraInfoRoutes from './ExtraInfoRoutes'
 // ===========================|| MAIN ROUTING ||=========================== //
 
 const MainRoutes = {
@@ -114,10 +114,13 @@ const MainRoutes = {
     },
     {
       ...ProfileRoutes
-    }
-    , {
+    },
+    {
+      ...ExtraInfoRoutes
+    },
+    {
       path: '/recruitment',
-      element: <Recruitment/>
+      element: <Recruitment />
     }
   ]
 }
