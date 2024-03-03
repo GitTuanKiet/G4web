@@ -1,5 +1,5 @@
 
-import { addDays, format, set } from 'date-fns'
+import { addDays, format } from 'date-fns'
 import Button from 'components/Button'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
@@ -145,13 +145,12 @@ const fakeTypes = [
   }
 ]
 
-function CinemaAdd({ setData }) {
+function CinemaAdd({ data, setData }) {
   const { user } = useSelector((state) => state.auth)
   const findCity = fakeCities.find((city) => city?.name == user?.city)
   const [date, setDate] = useState(dates[0])
   const [city, setCity] = useState(findCity || fakeCities[0])
   const [type, setType] = useState(fakeTypes[0])
-  const [selectedTime, setSelectedTime] = useState('')
 
   const [cinemas, setCinemas] = useState(fakeCinemas)
   const [times, setTimes] = useState(fakeTimes)
@@ -167,20 +166,6 @@ function CinemaAdd({ setData }) {
     const filterTimes = fakeTimes.filter((time) => time.dateId === date.id)
     setTimes(filterTimes)
   }, [date])
-
-  const handleSetData = (day, time, cinema, type) => {
-    setSelectedTime(time)
-    const info = {
-      'Suất chiếu': `${time}, ${day}`,
-      'Loại rạp': type
-    }
-    setData({ info, cinema })
-  }
-
-  useEffect(() => {
-    setData({})
-    setSelectedTime('')
-  }, [date, city, type, setData])
 
   return (
     <div className="bg-rose-100 flex flex-col h-auto min-w-[1280px]">
@@ -251,8 +236,8 @@ function CinemaAdd({ setData }) {
                 {filterTimes.map((itemTime) => (
                   itemTime.time.map((time, index) =>
                     <Button key={index} small className="h-8"
-                      primary={selectedTime !== time}
-                      onClick={() => handleSetData(date.day, time, itemCinema.name, type.name)}
+                      primary={data.time !== time}
+                      onClick={() => setData({ day: date.day, time, cinema: itemCinema.name, type: type.name })}
                     >{time}</Button>
                   )))}
               </div>

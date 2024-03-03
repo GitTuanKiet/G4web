@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
@@ -17,16 +17,27 @@ const BookTicket = () => {
   const [data, setData] = useState({})
   const [step, setStep] = useState(1)
 
-  useEffect(() => {
+  const handleStep = (step) => {
     if (step === 0) {
       toast.info('Hủy đặt vé thành công')
       navigate(-1)
+      return
+    }
+
+    if (step === 1) {
+      if (!data?.cinema) {
+        setSelectedChairs([])
+        setTotal(0)
+        setSelectedPayment('')
+        setPrice(0)
+      }
     }
 
     if (step === 2) {
-      if (!data?.cinema || !data?.info) {
+      if (!data?.cinema || !data?.time || !data?.day || !data?.type) {
         toast.error('Vui lòng chọn đủ thông tin')
         setStep(1)
+        return
       }
     }
 
@@ -34,6 +45,7 @@ const BookTicket = () => {
       if (selectedChairs.length === 0) {
         toast.error('Vui lòng chọn ghế')
         setStep(2)
+        return
       }
     }
 
@@ -41,6 +53,7 @@ const BookTicket = () => {
       if (selectedPayment === '') {
         toast.error('Vui lòng chọn phương thức thanh toán')
         setStep(3)
+        return
       }
     }
 
@@ -48,15 +61,17 @@ const BookTicket = () => {
       toast.success('Xác nhận đặt vé thành công')
       navigate(-1)
       // call api to book ticket
+      return
     }
-  }, [step, navigate, data, selectedChairs, selectedPayment])
+    setStep(step)
+  }
 
   return (
     <section className="flex w-full justify-center h-auto mx-auto py-8 gap-8">
       {step === 1 && <CinemaAdd data={data} setData={setData} />}
       {step === 2 && <RoomMap price={price} setPrice={setPrice} selectedChairs={selectedChairs} setSelectedChairs={setSelectedChairs} />}
       {step === 3 && <PaymentMethodCard selectedPayment={selectedPayment} setSelectedPayment={setSelectedPayment} />}
-      <BillCard price={price} total={total} setTotal={setTotal} data={data} chair={selectedChairs} payment={selectedPayment} step={step} setStep={setStep} />
+      <BillCard price={price} total={total} setTotal={setTotal} data={data} chair={selectedChairs} payment={selectedPayment} step={step} setStep={handleStep} />
     </section>
   )
 }

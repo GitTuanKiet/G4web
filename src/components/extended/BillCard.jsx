@@ -205,19 +205,23 @@ const Total = ({ discount = 0, price = 100, setTotal }) => {
 
 
 const Bill = ({ price, total, setTotal, data, chair, payment, step, setStep }) => {
-  const { info, cinema } = data
+  const { type, day, time, cinema } = data
   const { slug } = useParams()
   const { name, poster, rated, category, duration, language } = fakeList.find((item) => item.slug === slug) || {}
   const [lastInfo, setLastInfo] = useState({})
-
   const [voucher, setVoucher] = useState(null)
 
   useEffect(() => {
+    if (!time || !day || !type) return
+    const info = {
+      'Suất chiếu': `${time}, ${day}`,
+      'Loại rạp': type
+    }
     setLastInfo({ ...info })
-  }, [info])
+  }, [time, day, type])
 
   useEffect(() => {
-    setLastInfo(prev => ({ ...prev, 'Số ghế': chair.join(', ') }))
+    setLastInfo(prev => ({ ...prev, 'Ghế': chair.join(', ') }))
   }, [chair])
 
   useEffect(() => {
@@ -226,7 +230,7 @@ const Bill = ({ price, total, setTotal, data, chair, payment, step, setStep }) =
 
   return (
     <div>
-      <div className="rounded-xl h-auto min-w-80 bg-rose-100 p-4 text-[15px]">
+      <div className="rounded-xl h-auto w-80 bg-rose-100 p-4 text-[15px]">
         {/* Title */}
         <Title title={cinema || ''} />
         <Divider />
