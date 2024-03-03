@@ -36,10 +36,10 @@ function Button({
     })
   }
 
-  let defaultClassName = `rounded-lg text-white hover:opacity-85 border border-transparent 
+  let defaultClassName = `rounded-lg text-white border border-transparent cursor-pointer
     ${primary ? 'bg-primary' : '!border-primary !text-primary '} 
     ${wFull ? 'w-full py-4' : ''}
-    ${disabled ? 'opacity-40 hover:opacity-40 pointer-events-none' : ''}  
+    ${disabled ? 'opacity-40' : 'opacity-80 hover:opacity-100 transition-opacity'}
     ${size === 'xl' ? 'h-full' : ''}
     ${small ? 'text-xs py-0 px-3 min-w-[50px]' : 'px-4 py-2 min-w-[100px]'}
     `

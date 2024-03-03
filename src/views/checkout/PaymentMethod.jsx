@@ -3,37 +3,37 @@ import { useState } from 'react'
 const paymentOptionsData = [
   {
     value: 'atm',
-    logoSrc: 'src/assets/images/payment-methods/napas.png',
+    logoSrc: '/src/assets/images/payment-methods/napas.png',
     altText: 'ATM nội địa Napas',
     description: 'Thẻ ATM nội địa Napas'
   },
   {
-    value: 'visa-master-amex-jcb',
-    logoSrc: 'src/assets/images/payment-methods/visa-master-amex-jcb.jfif',
+    value: 'visa-master',
+    logoSrc: '/src/assets/images/payment-methods/visa-master-amex-jcb.jfif',
     altText: 'Thẻ quốc tế',
-    description: 'Thẻ quốc tế (Visa, Master, Amex, JCB)'
+    description: 'Thẻ quốc tế (Visa, Master)'
   },
   {
     value: 'momo',
-    logoSrc: 'src/assets/images/payment-methods/momo.png',
+    logoSrc: '/src/assets/images/payment-methods/momo.png',
     altText: 'MoMo',
     description: 'MoMo: Nhập MMCGV24 -5k/bill'
   },
   {
     value: 'zalopay',
-    logoSrc: 'src/assets/images/payment-methods/zalopay.png',
+    logoSrc: '/src/assets/images/payment-methods/zalopay.png',
     altText: 'ZaloPay',
     description: 'ZaloPay: 84k/vé + quà 50k đặt xe Be'
   },
   {
     value: 'shopeepay',
-    logoSrc: 'src/assets/images/payment-methods/shopeepay.png',
+    logoSrc: '/src/assets/images/payment-methods/shopeepay.png',
     altText: 'ShopeePay',
     description: 'ShopeePay'
   },
   {
     value: 'vnpay',
-    logoSrc: 'src/assets/images/payment-methods/vnpay.png',
+    logoSrc: '/src/assets/images/payment-methods/vnpay.png',
     altText: 'VNPAY',
     description: 'VNPAY'
   }
@@ -53,14 +53,13 @@ const PaymentOption = ({
   >
     <input type="radio" id={value} name={altText} value={value} checked={selected} onChange={onSelected} />
     <div className="h-full w-20">
-      <img loading="lazy" src={logoSrc} alt={altText} className="mix-blend-darken aspect-auto h-full" />
+      <img src={logoSrc} alt={altText} className="mix-blend-darken aspect-auto h-full" />
     </div>
     <span className='hidden md:flex'>{description}</span>
   </button>
 )
 
-const PaymentMethodCard = ({ paymentOptions = paymentOptionsData }) => {
-  const [selectedPayment, setSelectedPayment] = useState(paymentOptions[0].value)
+const PaymentMethodCard = ({ paymentOptions = paymentOptionsData, selectedPayment, setSelectedPayment }) => {
 
   return (
     <section className="flex flex-col justify-center items-center max-w-4xl min-w-80 mx-auto py-8">

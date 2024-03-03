@@ -1,25 +1,51 @@
 import Button from 'components/Button'
 import Logo from 'components/icons/Logo'
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
+import { useParams } from 'react-router-dom'
 
-const data = [
+
+const fake = {
+  poster: 'https://i.pinimg.com/474x/af/b5/eb/afb5eb4d723c2385531525bbc787db0d.jpg',
+  name: 'Movie 1',
+  category: 'Action, Adventure, Fantasy',
+  duration: '109 minutes',
+  language: 'English',
+  rated: '18+',
+  slug: 'movie-1'
+}
+
+const fakeList = [
   {
-    idCinema: 'Cinema1',
-    logo: 'https://s3-alpha-sig.figma.com/img/3112/bfa1/a3a4337c36f6bd2bfc476abff4da69e0?Expires=1710115200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=jfakF-eyeLPlbEPkD3mfULTmahHGxH4-5TSFTO8Fsxg0OOatiLpIPWeISIi4kqlD5mKz22eYvzwem0SzFyhRP5O0jRJ~bkPZJ0vkVfaq~ivM4ktjp-WDpNIbuh29IV4L6ydoJdGi3nLWqVQ4xNpIABkdDb9mcnT2~jfynH7IQl1~HjErXEZWvjU996gLbBhT1TgPuffnY5r0afYRNBFSI93qB~L6ukwsskwZ0Bq653-6LQvTbtWtNHaBJwAEXPR5ShQhx9J4RHAmEf3UaOSv25F4Ncz4RcnGdPsQwfICU1LY9SieQq-gCky-6fMVMnrttV64NfenwebqfQCjGnAjQw__',
-    NameCinema: 'CGV Vincom Trần Duy Hưng'
+    id: 1,
+    ...fake
   },
   {
-    idFilm: 'Film1',
-    NameFilm: 'Xứ sở các nguyên tố',
-    ImgFilm: 'https://s3-alpha-sig.figma.com/img/9ac3/e245/56a81bb7940147701a3fc5172296b0a7?Expires=1710115200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=lz2zlEhgTnG9LdpF-zmN6ApYpxJLFS-dvCnqjlLmhBgGy4ansd4AxRaSobFV-yts0pbroQeVeGGA8lyXiyF~XaMo61syaJNKE5LCtTHMQdrhYdyzjE4Um8mlShIpIi6JMzOO5s50dz-yrT-PPqQ34D~0CVBjzix~joAsAIvd8FetoGLvqih6CGycafZbHTHmx2SPT0kPOoIXPkna8IOmelb3BQLCIgNDxjfUGOS-2joy4uSWTBohASEBJ3ZdWvt4IF6o87MNbt0RRcduqv0tGT9Po1WLlrzbVQY6Ae5DQeRCqqIPWSKoPyButr6uzpeP1Gbujh6yx3yULf3bP4hcEg__',
-    CategoryFilm: 'Gia đình, Hoạt hình',
-    TimeFilm: '109 phút',
-    ShowDate: '15/02/2024',
-    ScreeningRate: '19:00',
-    Room: 'Cinema P1',
-    Rated: '18+'
+    id: 2,
+    ...fake
+  },
+  {
+    id: 3,
+    ...fake
+  },
+  {
+    id: 4,
+    ...fake
+  },
+  {
+    id: 5,
+    ...fake
+  },
+  {
+    id: 6,
+    ...fake
+  },
+  {
+    id: 7,
+    ...fake
+  },
+  {
+    id: 8,
+    ...fake
   }
 ]
 
@@ -29,7 +55,7 @@ const Title = ({ title }) => {
       <div className='w-16'>
         <Logo />
       </div>
-      <p className="font-sans">{title}</p>
+      <p className="font-sans text-xl">{title}</p>
     </div>
   )
 }
@@ -40,33 +66,20 @@ const Divider = () => {
   )
 }
 
-const fakeData = [
-  'Gia đình, Hoạt hình',
-  '109 phút',
-  'Tiếng Anh',
-  '18+'
-]
-
-const Info = ({ image, title, data = fakeData }) => {
+const Info = ({ image, title, data }) => {
   return (
-    <div className="flex w-full h-40 gap-2">
+    data && <div className="flex w-full h-40 gap-2">
       <img src={image} alt={title} className="rounded-xl aspect-auto" />
       <div className='flex flex-col justify-evenly'>
         <span className="uppercase text-center font-semibold">{title}</span>
         <div>
           {data.map((item, index) => (
-            <p key={index} className='text-left'> {item}</p>
+            <p key={index} className='text-left'>{item}</p>
           ))}
         </div>
       </div>
     </div>
   )
-}
-
-const fakeJSONdata = {
-  'Suất chiếu': '19:00, 01/01/2022',
-  'Phòng chiếu': 'Cinema P1 - 2D',
-  'Số ghế': 'A1, A2'
 }
 
 const ListVoucher = [
@@ -115,7 +128,7 @@ const Line = ({ data }) => {
   )
 }
 
-const Content = ({ data = fakeJSONdata, voucher, setVoucher }) => {
+const Content = ({ total, data, voucher, setVoucher }) => {
   const [showModal, setShowModal] = useState(false)
 
   const handleSetVoucher = (value) => {
@@ -125,37 +138,32 @@ const Content = ({ data = fakeJSONdata, voucher, setVoucher }) => {
 
   return (
     <div>
-      {Object.entries(data).map(([key, value], index) => (
+      {data && Object.entries(data).map(([key, value], index) => (
         <Line key={index} data={{ key, value }} />
       ))}
-      <div className='flex justify-between'>
+      {total > 0 && <div className='flex justify-between'>
         <span className="font-medium">Mã giảm giá:</span>
         {voucher ? <span>{voucher?.code}<Button small className="min-w-1 ml-1" onClick={() => setVoucher(null)}>x</Button></span> :
           <Button small onClick={() => setShowModal(!showModal)}>+</Button>}
-      </div>
+      </div>}
       {showModal && <ModalListVoucher handleSetVoucher={handleSetVoucher} />}
     </div>
   )
 }
 
-const GroupButton = ({ start, end, total }) => {
-  const navigate = useNavigate()
-  const handleNext = () => {
-    if (end) {
-      toast.info(total)
-      navigate('/payment-method')
-    }
-  }
+const GroupButton = ({ step, setStep }) => {
+  const start = step === 1
+  const end = step === 4
   return (
     <div className="flex justify-around">
-      <Button>{start ? 'Hủy' : 'Quay lại'}</Button>
-      <Button primary onClick={handleNext}>{end ? 'Thanh toán' : 'Tiếp tục'}</Button>
+      <Button onClick={() => setStep(step - 1)}>{start ? 'Hủy' : 'Quay lại'}</Button>
+      <Button primary onClick={() => setStep(step + 1)}>{end ? 'Thanh toán' : 'Tiếp tục'}</Button>
     </div>
   )
 }
 
-const Total = ({ discount = 0, price = 100, total, setTotal }) => {
-  const totalEnd = price - discount
+const Total = ({ discount = 0, price = 100, setTotal }) => {
+  const totalEnd = price < discount ? 0 : price - discount
   const vat = totalEnd / 10
 
   useEffect(() => {
@@ -196,39 +204,47 @@ const Total = ({ discount = 0, price = 100, total, setTotal }) => {
 }
 
 
-const Bill = ({ price, total, setTotal }) => {
-  const NameFilm = data[1]?.NameFilm
-  const NameCinema = data[0]?.NameCinema
-  const LogoCinema = data[0]?.logo
-  const ImgFilm = data[1]?.ImgFilm
-  const CategoryFilm = data[1]?.CategoryFilm
-  const Time = data[1]?.TimeFilm
-  const ShowDate = data[1]?.ShowDate
-  const ScreeningRate = data[1]?.ScreeningRate
-  const Room = data[1]?.Room
+const Bill = ({ price, total, setTotal, data, chair, payment, step, setStep }) => {
+  const { info, cinema } = data
+  const { slug } = useParams()
+  const { name, poster, rated, category, duration, language } = fakeList.find((item) => item.slug === slug) || {}
+  const [lastInfo, setLastInfo] = useState({})
 
   const [voucher, setVoucher] = useState(null)
+
+  useEffect(() => {
+    setLastInfo({ ...info })
+  }, [info])
+
+  useEffect(() => {
+    setLastInfo(prev => ({ ...prev, 'Số ghế': chair.join(', ') }))
+  }, [chair])
+
+  useEffect(() => {
+    setLastInfo(prev => ({ ...prev, 'Phương thức thanh toán': payment }))
+  }, [payment])
 
   return (
     <div>
       <div className="rounded-xl h-auto min-w-80 bg-rose-100 p-4 text-[15px]">
         {/* Title */}
-        <Title title={NameCinema} />
+        <Title title={cinema || ''} />
         <Divider />
         {/* Info */}
         <Info
-          image={ImgFilm}
-          title={NameFilm}
+          image={poster}
+          title={name}
+          data={[category, duration, language, rated]}
         />
         <Divider />
         {/* Content */}
-        <Content voucher={voucher} setVoucher={setVoucher} />
+        <Content total={total} data={lastInfo} voucher={voucher} setVoucher={setVoucher} />
         <Divider />
         {/* Total */}
-        <Total discount={voucher?.discount} price={price} total={total} setTotal={setTotal} />
+        <Total discount={voucher?.discount} price={price} setTotal={setTotal} />
         <Divider />
         {/* group button */}
-        <GroupButton start={false} end={true} total={total} />
+        <GroupButton step={step} setStep={setStep} total={total} />
       </div>
     </div>
   )
