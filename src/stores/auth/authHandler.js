@@ -1,6 +1,6 @@
 import { call } from 'redux-saga/effects'
-import AuthApi from 'apis/auth.api'
-import UserApi from 'apis/user.api'
+import AuthApi from 'apis/authApi'
+import UserApi from 'apis/userApi'
 import { saveToken } from 'utils/auth'
 import { toast } from 'react-toastify'
 

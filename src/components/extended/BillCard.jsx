@@ -1,53 +1,6 @@
 import Button from 'components/Button'
 import Logo from 'components/icons/Logo'
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-
-
-const fake = {
-  poster: 'https://i.pinimg.com/474x/af/b5/eb/afb5eb4d723c2385531525bbc787db0d.jpg',
-  name: 'Movie 1',
-  category: 'Action, Adventure, Fantasy',
-  duration: '109 minutes',
-  language: 'English',
-  rated: '18+',
-  slug: 'movie-1'
-}
-
-const fakeList = [
-  {
-    id: 1,
-    ...fake
-  },
-  {
-    id: 2,
-    ...fake
-  },
-  {
-    id: 3,
-    ...fake
-  },
-  {
-    id: 4,
-    ...fake
-  },
-  {
-    id: 5,
-    ...fake
-  },
-  {
-    id: 6,
-    ...fake
-  },
-  {
-    id: 7,
-    ...fake
-  },
-  {
-    id: 8,
-    ...fake
-  }
-]
 
 const Title = ({ title }) => {
   return (
@@ -170,12 +123,6 @@ const Total = ({ discount = 0, price = 100, setTotal }) => {
     setTotal(totalEnd+vat)
   }, [totalEnd, setTotal, vat])
 
-  const Unit = ({ value, currency = 'USD' }) => {
-    const price = (value).toLocaleString('en', { style: 'currency', currency: currency })
-    return (
-      <p className="text-blue-500 text-[14px]">{price}</p>
-    )
-  }
   const data = [
     {
       key: 'Giá vé',
@@ -194,6 +141,7 @@ const Total = ({ discount = 0, price = 100, setTotal }) => {
       value: Unit({ value: totalEnd+vat })
     }
   ]
+
   return (
     <div>
       {data.map((item, index) => (
@@ -203,54 +151,11 @@ const Total = ({ discount = 0, price = 100, setTotal }) => {
   )
 }
 
-
-const Bill = ({ price, total, setTotal, data, chair, payment, step, setStep }) => {
-  const { type, day, time, cinema } = data
-  const { slug } = useParams()
-  const { name, poster, rated, category, duration, language } = fakeList.find((item) => item.slug === slug) || {}
-  const [lastInfo, setLastInfo] = useState({})
-  const [voucher, setVoucher] = useState(null)
-
-  useEffect(() => {
-    if (!time || !day || !type) return
-    const info = {
-      'Suất chiếu': `${time}, ${day}`,
-      'Loại rạp': type
-    }
-    setLastInfo({ ...info })
-  }, [time, day, type])
-
-  useEffect(() => {
-    setLastInfo(prev => ({ ...prev, 'Ghế': chair.join(', ') }))
-  }, [chair])
-
-  useEffect(() => {
-    setLastInfo(prev => ({ ...prev, 'Phương thức thanh toán': payment }))
-  }, [payment])
-
+const Unit = ({ value, currency = 'USD' }) => {
+  const price = (value).toLocaleString('en', { style: 'currency', currency: currency })
   return (
-    <div>
-      <div className="rounded-xl h-auto w-80 bg-rose-100 p-4 text-[15px]">
-        {/* Title */}
-        <Title title={cinema || ''} />
-        <Divider />
-        {/* Info */}
-        <Info
-          image={poster}
-          title={name}
-          data={[category, duration, language, rated]}
-        />
-        <Divider />
-        {/* Content */}
-        <Content total={total} data={lastInfo} voucher={voucher} setVoucher={setVoucher} />
-        <Divider />
-        {/* Total */}
-        <Total discount={voucher?.discount} price={price} setTotal={setTotal} />
-        <Divider />
-        {/* group button */}
-        <GroupButton step={step} setStep={setStep} total={total} />
-      </div>
-    </div>
+    <p className="text-blue-500 text-[14px]">{price}</p>
   )
 }
-export default Bill
+
+export { Content, GroupButton, Total, ModalListVoucher, Line, Info, Divider, Title, Unit }

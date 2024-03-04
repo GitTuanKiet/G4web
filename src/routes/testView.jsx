@@ -2,7 +2,7 @@
 import MainLayout from 'layouts/MainLayout'
 import PaymentMethod from 'views/checkout/PaymentMethod'
 import RoomMap from 'views/booking/RoomMap'
-import Bill from 'views/checkout/Bill'
+import Bill from 'views/checkout/BillTicket'
 import BookTicket from 'pages/booking/BookTicket'
 import CinemaAdd from 'views/booking/CinemaAdd'
 

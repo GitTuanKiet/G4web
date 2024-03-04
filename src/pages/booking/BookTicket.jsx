@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-import BillCard from 'components/extended/BillCard'
+import BillTicket from 'views/checkout/BillTicket'
 import RoomMap from 'views/booking/RoomMap'
 import CinemaAdd from 'views/booking/CinemaAdd'
 import PaymentMethodCard from 'views/checkout/PaymentMethod'
@@ -25,12 +25,7 @@ const BookTicket = () => {
     }
 
     if (step === 1) {
-      if (!data?.cinema) {
-        setSelectedChairs([])
-        setTotal(0)
-        setSelectedPayment('')
-        setPrice(0)
-      }
+      toast.info('Vui lòng chọn rạp chiếu')
     }
 
     if (step === 2) {
@@ -71,7 +66,7 @@ const BookTicket = () => {
       {step === 1 && <CinemaAdd data={data} setData={setData} />}
       {step === 2 && <RoomMap price={price} setPrice={setPrice} selectedChairs={selectedChairs} setSelectedChairs={setSelectedChairs} />}
       {step === 3 && <PaymentMethodCard selectedPayment={selectedPayment} setSelectedPayment={setSelectedPayment} />}
-      <BillCard price={price} total={total} setTotal={setTotal} data={data} chair={selectedChairs} payment={selectedPayment} step={step} setStep={handleStep} />
+      <BillTicket price={price} total={total} setTotal={setTotal} data={data} chair={selectedChairs} payment={selectedPayment} step={step} setStep={handleStep} />
     </section>
   )
 }
