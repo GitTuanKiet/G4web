@@ -2,9 +2,8 @@
 import MainLayout from 'layouts/MainLayout'
 import PaymentMethod from 'views/checkout/PaymentMethod'
 import RoomMap from 'views/booking/RoomMap'
-import Bill from 'views/checkout/BillTicket'
 import BookTicket from 'pages/booking/BookTicket'
-import CinemaAdd from 'views/booking/CinemaAdd'
+import ComboCard from 'views/booking/Combo'
 
 const testView = {
   path: '/',
@@ -23,12 +22,8 @@ const testView = {
       element: <RoomMap />
     },
     {
-      path: 'bill',
-      element: <Bill />
-    },
-    {
-      path: 'test',
-      element: <CinemaAdd />
+      path: 'combo-card',
+      element: <ComboCard />
     }
   ]
 }

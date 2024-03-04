@@ -1,55 +1,63 @@
+import { useDispatch, useSelector } from 'react-redux'
+
 import Chair from './Chair'
 import CoupleChair from './CoupleChair'
 
-const RoomMap = ({ price, setPrice, selectedChairs, setSelectedChairs }) => {
+import { setChair } from 'stores/booking/slice'
 
-  const handleChairClick = (chair) => {
-    if (chair.checked) {
-      setSelectedChairs([...selectedChairs, chair.id])
-      setPrice(price + Number(chair.price))
+const RoomMap = ({ price, setPrice }) => {
+  const dispatch = useDispatch()
+  const { chair } = useSelector((state) => state.booking)
+
+  const handleChairClick = (item) => {
+    if (item.checked) {
+      dispatch(setChair([...chair, item.id]))
+      setPrice(price + Number(item.price))
     } else {
-      setSelectedChairs(selectedChairs.filter((id) => id !== chair.id))
-      setPrice(price - Number(chair.price))
+      dispatch(setChair(chair.filter((id) => id !== item.id)))
+      setPrice(price - Number(item.price))
     }
   }
 
   return (
-    <div className="flex flex-col min-w-96 justify-center items-center gap-y-2">
-      <img
-        src="https://s3-alpha-sig.figma.com/img/7b3a/b285/c1b0431a99d8d024da6ca3827bc37327?Expires=1710115200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Eb9Bwl6qemoNjU8NoBkJIi4kaZ4syys5QdNgEbhJ~CehueXGMb0LJOsX2o6DZ4Y4AzgTiEdljF8TBrDeRtwMAZHpS7Oot7yT4mhI3GpMBqg8ldj7gnvBOA19LiDG9tzkbe4yRx78rJRbQSbhHIFRcVzhvWkHj616~GHG7TRQpKPmTMt200rVFbfJ8M3lavXNOdbVcSjUy3RBPSxdGxR4quhFD7OIFDbypYoTk66pr3-uxm5DQEWRPqUFT6Do9WmUOmGlmFII4shhF98IRFRDqW2wfqisMjdya114NHXAwjWb4KIf-omQOTq7xLiZMuFuLcJp7XyoS2R4vKgfcZkvvw__"
-        alt="Màn hình chiếu"
-      />
-      <div className="w-full h-auto grid grid-cols-12 justify-items-center gap-y-2">
-        {CoupleChairs?.map((content, index) => (
-          <CoupleChair
-            key={index}
-            id={content.idChair}
-            checked={content.isChecked}
-            price={content.priceChair}
-            setChair={handleChairClick}
-          />
-        ))}
-        {ChairVips?.map((content, index) => (
-          <Chair
-            key={index}
-            id={content.idChair}
-            checked={content.isChecked}
-            vip
-            price={content.priceChair}
-            setChair={handleChairClick}
-          />
-        ))}
-        {Chairs?.map((content, index) => (
-          <Chair
-            key={index}
-            id={content.idChair}
-            checked={content.isChecked}
-            price={content.priceChair}
-            setChair={handleChairClick}
-          />
-        ))}
+    <div>
+      <div className="flex flex-col min-w-96 justify-center items-center gap-y-2">
+        <img
+          src="https://s3-alpha-sig.figma.com/img/7b3a/b285/c1b0431a99d8d024da6ca3827bc37327?Expires=1710115200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Eb9Bwl6qemoNjU8NoBkJIi4kaZ4syys5QdNgEbhJ~CehueXGMb0LJOsX2o6DZ4Y4AzgTiEdljF8TBrDeRtwMAZHpS7Oot7yT4mhI3GpMBqg8ldj7gnvBOA19LiDG9tzkbe4yRx78rJRbQSbhHIFRcVzhvWkHj616~GHG7TRQpKPmTMt200rVFbfJ8M3lavXNOdbVcSjUy3RBPSxdGxR4quhFD7OIFDbypYoTk66pr3-uxm5DQEWRPqUFT6Do9WmUOmGlmFII4shhF98IRFRDqW2wfqisMjdya114NHXAwjWb4KIf-omQOTq7xLiZMuFuLcJp7XyoS2R4vKgfcZkvvw__"
+          alt="Màn hình chiếu"
+        />
+        <div className="w-full h-auto grid grid-cols-12 justify-items-center gap-y-2">
+          {CoupleChairs?.map((content, index) => (
+            <CoupleChair
+              key={index}
+              id={content.idChair}
+              checked={content.isChecked}
+              price={content.priceChair}
+              setChair={handleChairClick}
+            />
+          ))}
+          {ChairVips?.map((content, index) => (
+            <Chair
+              key={index}
+              id={content.idChair}
+              checked={content.isChecked}
+              vip
+              price={content.priceChair}
+              setChair={handleChairClick}
+            />
+          ))}
+          {Chairs?.map((content, index) => (
+            <Chair
+              key={index}
+              id={content.idChair}
+              checked={content.isChecked}
+              price={content.priceChair}
+              setChair={handleChairClick}
+            />
+          ))}
+        </div>
+        <SeatLegend />
       </div>
-      <SeatLegend />
     </div>
   )
 }

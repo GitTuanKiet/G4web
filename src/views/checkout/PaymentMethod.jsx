@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
+import { setPayment } from 'stores/booking/slice'
 const paymentOptionsData = [
   {
     value: 'atm',
@@ -59,7 +60,9 @@ const PaymentOption = ({
   </button>
 )
 
-const PaymentMethodCard = ({ paymentOptions = paymentOptionsData, selectedPayment, setSelectedPayment }) => {
+const PaymentMethodCard = ({ paymentOptions = paymentOptionsData }) => {
+  const dispatch = useDispatch()
+  const { payment } = useSelector((state) => state.booking)
 
   return (
     <section className="flex flex-col justify-center items-center max-w-4xl min-w-80 mx-auto py-8">
@@ -74,8 +77,8 @@ const PaymentMethodCard = ({ paymentOptions = paymentOptionsData, selectedPaymen
               logoSrc={option.logoSrc}
               altText={option.altText}
               description={option.description}
-              selected={selectedPayment === option.value}
-              onSelected={() => setSelectedPayment(option.value)}
+              selected={payment === option.value}
+              onSelected={() => dispatch(setPayment((option.value)))}
             />
           ))}
         </div>
