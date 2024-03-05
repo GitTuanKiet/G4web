@@ -39,21 +39,21 @@ export default function Header() {
       id: 'ticket',
       title: 'Vé của tôi',
       icon: <IoTicketOutline />,
-      to: '/ticket'
+      to: '/profile/transaction-history'
     },
     !user
       ? {
-        id: 'auth',
-        title: 'Đăng nhập / Đăng ký',
-        icon: <CiUser />,
-        to: '/auth'
-      }
+          id: 'auth',
+          title: 'Đăng nhập / Đăng ký',
+          icon: <CiUser />,
+          to: '/auth'
+        }
       : {
-        id: 'me',
-        title: 'Hello, ' + user.name,
-        icon: <CiUser />,
-        to: '/profile'
-      }
+          id: 'me',
+          title: 'Hello, ' + user.name,
+          icon: <CiUser />,
+          to: '/profile'
+        }
   ]
 
   return (

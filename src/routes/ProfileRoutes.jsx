@@ -5,11 +5,11 @@ import Loadable from 'components/Loadable'
 import ProfileLayout from 'layouts/ProfileLayout'
 
 // profile
-const AccountDetail = Loadable(lazy(() => import('pages/Profile/AccountDetail')))
-const CommonInfo = Loadable(lazy(() => import('pages/Profile/CommonInfo')))
-const TransactionHistory = Loadable(lazy(() => import('pages/Profile/TransactionHistory')))
-const ChangePassword = Loadable(lazy(() => import('pages/Profile/ChangePassword')))
-const SetupPIN = Loadable(lazy(() => import('pages/Profile/SetupPIN')))
+const AccountDetail = Loadable(lazy(() => import('pages/MyInfo/AccountDetail')))
+const CommonInfo = Loadable(lazy(() => import('pages/MyInfo/CommonInfo')))
+const TransactionHistory = Loadable(lazy(() => import('pages/MyInfo/TransactionHistory')))
+const ChangePassword = Loadable(lazy(() => import('pages/MyInfo/ChangePassword')))
+const SetupPIN = Loadable(lazy(() => import('pages/MyInfo/SetupPIN')))
 
 // ===========================|| PROFILE ROUTING ||=========================== //
 
