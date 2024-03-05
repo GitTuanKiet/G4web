@@ -19,7 +19,6 @@ const OnlineStore = Loadable(lazy(() => import('pages/OnlineStore')))
 const VoucherDetail = Loadable(lazy(() => import('pages/VoucherDetail')))
 const CinemaByMovie = Loadable(lazy(() => import('pages/CinemaByMovie')))
 const Recruitment = Loadable(lazy(() => import('pages/Recruitment')))
-const ShowTicketSuccess = Loadable(lazy(() => import('pages/ShowTiketSuccess')))
 
 import ProfileRoutes from './ProfileRoutes'
 import ExtraInfoRoutes from './ExtraInfoRoutes'
@@ -68,10 +67,6 @@ const MainRoutes = {
         {
           path: 'detail/:slug',
           element: <MovieDetail />
-        },
-        {
-          path: ':slug/cinema',
-          element: <CinemaByMovie />
         }
       ]
     },
@@ -122,10 +117,6 @@ const MainRoutes = {
     {
       path: '/recruitment',
       element: <Recruitment />
-    },
-    {
-      path: '/show-booked-tiket/:slug',
-      element: <ShowTicketSuccess />
     }
   ]
 }

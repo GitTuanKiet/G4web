@@ -8,8 +8,8 @@ const footerData = [
     title: 'CGV Việt Nam',
     links: [
       { title: 'Giới thiệu', url: '/extra-info/about' },
-      { title: 'Tiện ích online', url: '/extra-info/cgv-online' },
-      { title: 'Thẻ quà tặng', url: '/extra-info/gifts' },
+      { title: 'Tiện ích online', url: '/cgv-online' },
+      { title: 'Thẻ quà tặng', url: '/gifts' },
       { title: 'Tuyển dụng', url: '/recruitment' },
       { title: 'Liên hệ quảng cáo', url: '/extra-info/contacts' },
       { title: 'Dành cho đối tác', url: '/extra-info/partners' }
@@ -18,10 +18,10 @@ const footerData = [
   {
     title: 'Điều khoản sử dụng',
     links: [
-      { title: 'Điều khoản chung', url: '/terms/conditions' },
-      { title: 'Điều khoản giao dịch', url: '/terms/of-use' },
-      { title: 'Chính sách thanh toán', url: '/policy/payment' },
-      { title: 'Chính sách bảo mật', url: '/policy/privacy' },
+      { title: 'Điều khoản chung', url: '/extra-info/policy' },
+      { title: 'Điều khoản giao dịch', url: '/extra-info/rule-transaction' },
+      { title: 'Chính sách thanh toán', url: '/extra-info/payment-policy' },
+      { title: 'Chính sách bảo mật', url: '/extra-info/security-policy' },
       { title: 'Câu hỏi thường gặp', url: '/faq' }
     ]
   },

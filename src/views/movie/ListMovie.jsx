@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom'
-
 import MovieCard from 'views/movie/MovieCard'
 
 export default function ListMovie({ movies }) {
@@ -8,9 +6,7 @@ export default function ListMovie({ movies }) {
       <div className="w-full h-auto grid grid-cols-4 gap-4">
         { movies &&
           movies.map((movie, index) => (
-            <Link to={`/movie/detail/${movie.slug}`} key={index}>
-              <MovieCard movie={movie} />
-            </Link>
+            <MovieCard key={index} movie={movie} />
           ))
         }
       </div>

@@ -7,10 +7,10 @@ const data = [
     id: 1,
     poster: 'https://i.pinimg.com/474x/af/b5/eb/afb5eb4d723c2385531525bbc787db0d.jpg',
     name: 'Harry porter',
-    slug: 'harry-porter',
+    slug: 'movie-1',
     director: 'John Doe',
     releaseDate: '25/01/2024',
-    genre: 'Hành động, nhập vai, tình cảm',
+    category: 'Hành động, nhập vai, tình cảm',
     duration: '120p',
     language: 'tiếng anh',
     description:
@@ -30,19 +30,19 @@ function MovieDetail() {
       <div className="flex gap-x-10 justify-start">
         <div>
           <img
-            src={data[0].poster}
+            src={movie.poster}
             alt=""
             className="w-full h-auto object-cover  rounded-lg"
           />
         </div>
         <div className="content">
-          <h2 className=" text-xl font-semibold">{data[0].name}</h2>
-          <ul className="list-disc">
-            <li>Đạo diễn: {data[0].director}</li>
-            <li>Ngày phát hành: {data[0].releaseDate}</li>
-            <li>Thể loại: {data[0].genre}</li>
-            <li>Thời lượng: {data[0].duration}</li>
-            <li>Ngôn ngữ: {data[0].language}</li>
+          <h2 className=" text-3xl font-semibold">{movie.name}</h2>
+          <ul className="list-disc text-xl">
+            <li>Đạo diễn: {movie.director}</li>
+            <li>Ngày phát hành: {movie.releaseDate}</li>
+            <li>Thể loại: {movie.category}</li>
+            <li>Thời lượng: {movie.duration}</li>
+            <li>Ngôn ngữ: {movie.language}</li>
           </ul>
         </div>
       </div>
@@ -61,7 +61,7 @@ function MovieDetail() {
         <div className="aspect-video">
           <Trailer />
         </div>
-        : <p className="text-sm">{data[0].description}</p>}
+        : <p className="text-sm">{movie.description}</p>}
     </div>
   )
 }
