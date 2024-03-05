@@ -7,7 +7,9 @@ import {
   userUpdateProfile,
   userChangePassword,
   userUploadAvatar,
-  userSetupPIN
+  userSetupPIN,
+  userHistory,
+  userCards
 } from './authSlice'
 import {
   handleAuthLogin,
@@ -17,7 +19,9 @@ import {
   handleUpdateProfile,
   handleChangePassword,
   handleUploadAvatar,
-  handleSetupPIN
+  handleSetupPIN,
+  handleGetHistory,
+  handleGetCards
 } from './authHandler'
 
 export default function* authSaga() {
@@ -29,4 +33,6 @@ export default function* authSaga() {
   yield takeLatest(userChangePassword.type, handleChangePassword)
   yield takeLatest(userUploadAvatar.type, handleUploadAvatar)
   yield takeLatest(userSetupPIN.type, handleSetupPIN)
+  yield takeLatest(userHistory.type, handleGetHistory)
+  yield takeLatest(userCards.type, handleGetCards)
 }

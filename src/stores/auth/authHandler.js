@@ -1,8 +1,10 @@
-import { call } from 'redux-saga/effects'
+import { call, put } from 'redux-saga/effects'
 import AuthApi from 'apis/authApi'
 import UserApi from 'apis/userApi'
 import { saveToken } from 'utils/auth'
 import { toast } from 'react-toastify'
+
+import { setUser } from './authSlice'
 
 function* handleAuthRegister(action) {
   const { payload } = action
@@ -117,4 +119,26 @@ function* handleUploadAvatar(action) {
   }
 }
 
-export { handleUpdateProfile, handleChangePassword, handleSetupPIN, handleUploadAvatar }
+function* handleGetHistory() {
+  try {
+    const res = yield call(UserApi.getHistory)
+    if (res.status === 200) {
+      yield put(setUser({ history: res.data }))
+    }
+  } catch (error) {
+    toast.error(error.response.data?.message)
+  }
+}
+
+function* handleGetCards() {
+  try {
+    const res = yield call(UserApi.getCards)
+    if (res.status === 200) {
+      yield put(setUser({ cards: res.data }))
+    }
+  } catch (error) {
+    toast.error(error.response.data?.message)
+  }
+}
+
+export { handleUpdateProfile, handleChangePassword, handleSetupPIN, handleUploadAvatar, handleGetHistory, handleGetCards }

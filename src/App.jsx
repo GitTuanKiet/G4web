@@ -9,9 +9,9 @@ import 'react-toastify/dist/ReactToastify.css'
 import NavigationScroll from 'layouts/NavigationScroll'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { getToken, getRefreshToken } from 'utils/auth'
+import { getToken, getRefreshToken, logout } from 'utils/auth'
 import { jwtDecode } from 'jwt-decode'
-import { setUser, authRefreshToken } from 'stores/auth/authSlice'
+import { setUser, authRefreshToken, userHistory, userCards } from 'stores/auth/authSlice'
 
 function App() {
   const { user } = useSelector((state) => state.auth)
@@ -24,22 +24,31 @@ function App() {
     if (access_token) {
       const decoded = jwtDecode(access_token)
       if (!decoded) return
+      const exp = new Date(decoded.exp * 1000)
       if (!user) {
+        // set user to redux store
         dispatch(
           setUser({
             user: decoded,
             isLoggedIn: true
           })
         )
+
+        // logout if token is expired
+        if (exp < new Date()) {
+          logout()
+        }
       }
 
-      if (new Date(decoded.exp * 1000) < new Date(new Date().getTime() - 15 * 60000)) {
+      dispatch(userCards())
+      dispatch(userHistory())
+      if (exp < new Date(new Date().getTime() + 15 * 60000)) {
         dispatch(authRefreshToken({ refreshToken }))
       }
     } else if (refreshToken) {
       dispatch(authRefreshToken({ refreshToken }))
     } else {
-      dispatch(setUser({ user: null, isLoggedIn: false }))
+      dispatch(setUser({ user: null, isLoggedIn: false, history: null }))
     }
   }, [dispatch, user])
 

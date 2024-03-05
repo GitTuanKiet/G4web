@@ -27,8 +27,8 @@ const RoomMap = ({ price, setPrice }) => {
           alt="Màn hình chiếu"
         />
         <div className="w-full h-auto grid grid-cols-12 justify-items-center gap-y-2">
-          {CoupleChairs?.map((content, index) => (
-            <CoupleChair
+          {Chairs?.map((content, index) => (
+            <Chair
               key={index}
               id={content.idChair}
               checked={content.isChecked}
@@ -46,8 +46,8 @@ const RoomMap = ({ price, setPrice }) => {
               setChair={handleChairClick}
             />
           ))}
-          {Chairs?.map((content, index) => (
-            <Chair
+          {CoupleChairs?.map((content, index) => (
+            <CoupleChair
               key={index}
               id={content.idChair}
               checked={content.isChecked}

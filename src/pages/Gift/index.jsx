@@ -100,8 +100,8 @@ const Gift = () => {
       <div className="w-[70rem] flex flex-col">
         {/* Lấy các dữ liệu */}
         {
-          data.map((item) => (
-            <>
+          data.map((item, index) => (
+            <div key={index}>
               <hr className="border-t-2 border-gray-400 mb-3" />
               <div>
                 <div className='flex justify-between'>
@@ -127,7 +127,7 @@ const Gift = () => {
                   }
                 </div>
               </div>
-            </>
+            </div>
           ))
         }
 

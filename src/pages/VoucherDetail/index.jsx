@@ -1,15 +1,7 @@
 import Button from 'components/Button'
 import { useNavigate } from 'react-router-dom'
 
-const fakeArray = [
-  {
-    title: 'Voucher 2D',
-    price: 11000000,
-    growthValue: 'Có giá trị đổi vé xem phim 2D',
-    imageUrl:
-      'https://iguov8nhvyobj.vcdn.cloud/media/catalog/product/cache/1/small_image/245x/1e805736ee3519448ab72df742a3cdae/v/o/voucher1.png'
-  }
-]
+import { fakeArray } from 'apis/mockData'
 
 function VoucherDetail({ slug }) {
   const navigate = useNavigate()
@@ -25,7 +17,7 @@ function VoucherDetail({ slug }) {
           <h2 className="font-semibold text-2xl">{fakeArray[0].title}</h2>
           <p className=" mt-1 mb-3 border-b-2">{fakeArray[0].growthValue}</p>
           <div className="flex justify-between">
-            <span className="font-bold ">Giá </span> <span className="text-red-600">{fakeArray[0].price}</span>
+            <span className="font-bold ">Giá trị</span> <span className="text-red-600">{fakeArray[0].discount}</span>
           </div>
           <div className="flex justify-between mt-2">
             <span className="font-bold ">Hạn sử dụng </span> <span>6 tháng</span>
@@ -44,7 +36,7 @@ function VoucherDetail({ slug }) {
             <button className="text-rose-500 mr-5" onClick={() => navigate(-1)}>
               &lt;&lt; Quay lại
             </button>
-            <Button primary>Mua hoặc tặng quà</Button>
+            <Button to={`/booking-voucher/${fakeArray[0].code}`} primary>Mua hoặc tặng quà</Button>
           </div>
         </div>
       </div>

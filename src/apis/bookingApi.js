@@ -94,24 +94,6 @@ const fakeTypes = [
   }
 ]
 
-const ListVoucher = [
-  {
-    id: 1,
-    code: 'ABC123',
-    discount: 11
-  },
-  {
-    id: 2,
-    code: 'ABC456',
-    discount: 22
-  },
-  {
-    id: 3,
-    code: 'ABC789',
-    discount: 33
-  }
-]
-
 class BookingApi {
   static getListCity = async () => {
     return fakeCities
@@ -131,11 +113,6 @@ class BookingApi {
   static getListTime = async () => {
     return fakeTimes
     // return await axiosPrivate.get('booking/list-time')
-  }
-
-  static getListVoucher = async () => {
-    return ListVoucher
-    // return await axiosPrivate.get('booking/list-voucher')
   }
 }
 

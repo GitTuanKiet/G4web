@@ -7,14 +7,15 @@ import BillTicket from 'views/booking/BillTicket'
 import ComboCard from 'views/booking/Combo'
 import RoomMap from 'views/booking/RoomMap'
 import CinemaAdd from 'views/booking/CinemaAdd'
-import PaymentMethodCard from 'views/checkout/PaymentMethod'
+import PaymentMethodCard from 'components/Bill/PaymentMethod'
 
 import { getBooking, setStep, clearState } from 'stores/booking/slice'
+import OrderApi from 'apis/orderApi'
 
 const BookTicket = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const { step, cinema, hour, day, type, chair, payment } = useSelector((state) => state.booking)
+  const { step, cinema, hour, day, type, chair, payment, total } = useSelector((state) => state.booking)
   const [price, setPrice] = useState(0)
 
   useEffect(() => {
@@ -22,53 +23,62 @@ const BookTicket = () => {
   }, [dispatch])
 
   const handleStep = (step) => {
+    let temp = step
     if (step === -1) {
       toast.info('Hủy đặt vé thành công')
       dispatch(clearState())
       navigate(-1)
-      return
+      temp = 0
     }
 
-    if (step === 0) {
-      toast.info('Xin mời chọn rạp chiếu')
-    }
+    // if (step === 0) {
+    //   toast.info('Xin mời chọn rạp chiếu')
+    // }
 
     if (step === 1) {
       if (!cinema || !hour || !day || !type) {
         toast.error('Vui lòng chọn rạp chiếu')
-        return
+        temp -= 1
       }
     }
+
 
     if (step === 2) {
       if (chair.length === 0) {
         toast.error('Vui lòng chọn ghế')
-        return
+        temp -= 1
       }
     }
 
     if (step === 3) {
       // if (price === 0) {
       //   toast.error('Vui lòng chọn combo')
-      //   return
       // }
     }
 
     if (step === 4) {
-      if (payment === '') {
+      if (!payment) {
         toast.error('Vui lòng chọn phương thức thanh toán')
-        return
+        temp -= 1
       }
     }
 
     if (step === 5) {
-      toast.success('Xác nhận đặt vé thành công')
+      toast.info('Đang chuyển đến cổng thanh toán')
       dispatch(clearState())
       navigate(-1)
-      // call api to book ticket
-      return
+      return OrderApi.createOrder('paypal', {
+        cinema: cinema.name,
+        hour: hour.value,
+        day: day.value,
+        type: 'ticket',
+        chair: chair.map((item) => item.id),
+        price: total,
+        name: cinema.name + '-' + type.name + '-' + day.value + '-' + hour.value,
+        return_url: import.meta.env.VITE_RETURN_URL
+      })
     }
-    dispatch(setStep(step))
+    dispatch(setStep(temp))
   }
 
   return (

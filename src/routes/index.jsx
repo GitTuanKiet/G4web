@@ -4,10 +4,10 @@ import { useRoutes } from 'react-router-dom'
 import MainRoutes from './MainRoutes'
 import AuthRoutes from './AuthRoutes'
 import { CgvOnlineRoutes, StaticRoutes, NotFoundRoutes } from './StaticRoutes'
-import testView from './testView'
+import PaymentRoutes from './PaymentRoutes'
 
 // ===========================|| ROUTING RENDER ||=========================== //
 
-const Routes = () => useRoutes([AuthRoutes, MainRoutes, StaticRoutes, CgvOnlineRoutes, NotFoundRoutes, testView])
+const Routes = () => useRoutes([AuthRoutes, MainRoutes, PaymentRoutes, StaticRoutes, CgvOnlineRoutes, NotFoundRoutes])
 
 export default Routes

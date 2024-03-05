@@ -8,7 +8,7 @@ import { CONSTANT } from 'utils/constant'
 function CommonInfo() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { user } = useSelector((state) => state.auth)
+  const { user, cards, history } = useSelector((state) => state.auth)
   const inputId = Math.random().toString(32).substring(2)
 
   const [image, setImage] = useState(null)
@@ -62,23 +62,28 @@ function CommonInfo() {
         </div>
         <div className="border-r-2 border-black flex flex-col justify-between items-center">
           <p>Thẻ quà tặng</p>
-          <p className="font-bold">{user?.giftIds.length}</p>
+          <p className="font-bold">{cards?.gifts.length}</p>
           <Button to='/gifts' small>Xem</Button>
         </div>
 
         <div className="border-r-2 border-black flex flex-col justify-between items-center">
-          <p>Voucher</p>
-          <p className="font-bold">{user?.voucherIds.length}</p>
+          <p>Mã giảm giá</p>
+          <p className="font-bold">{cards?.vouchers.length}</p>
           <Button to='/online-store' small>Xem</Button>
         </div>
-        <div className="border-r-2 border-black flex flex-col justify-between items-center">
-          <p>Counpon</p>
-          <p className="font-bold">{user?.couponIds.length}</p>
+        {/* <div className="border-r-2 border-black flex flex-col justify-between items-center">
+          <p>Ưu đãi</p>
+          <p className="font-bold">{cards?.coupons.length}</p>
           <Button to='/cinemas' small>Xem</Button>
+        </div> */}
+        <div className="border-r-2 border-black flex flex-col justify-between items-center">
+          <p>Vé xem phim</p>
+          <p className="font-bold">{cards?.tickets.length}</p>
+          <Button to='/ticket' small>Xem</Button>
         </div>
         <div className="flex flex-col justify-between items-center">
           <p>Giao dịch</p>
-          <p className="font-bold">{user?.orderIds.length}</p>
+          <p className="font-bold">{history?.ticket.length + history?.voucher.length + history?.gift.length}</p>
           <Button to='/profile/transaction-history' small>Xem</Button>
         </div>
       </div>

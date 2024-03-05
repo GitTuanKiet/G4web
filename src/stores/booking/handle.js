@@ -1,7 +1,7 @@
 import { call, put, select } from 'redux-saga/effects'
 import BookingApi from 'apis/bookingApi'
 import { toast } from 'react-toastify'
-import { setListCity, setListType, setListCinema, setListTime, setListVoucher } from './slice'
+import { setListCity, setListType, setListCinema, setListTime } from './slice'
 
 function* handleGetBookingData(action) {
   const { payload } = action
@@ -18,8 +18,6 @@ function* handleGetBookingData(action) {
     const listTime = yield call(BookingApi.getListTime)
     yield put(setListTime(listTime))
 
-    const listVoucher = yield call(BookingApi.getListVoucher)
-    yield put(setListVoucher(listVoucher))
   } catch (error) {
     toast.error('Lỗi lấy dữ liệu')
   }

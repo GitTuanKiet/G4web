@@ -1,125 +1,30 @@
 import { useParams, Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { useState } from 'react'
-const data = [
-  {
-    url: 'https://www.cgv.vn/media/cinemas/cms//1/_/1_cgv_tet.png',
-    title: 'year of the dragon',
-    slug: 'year-of-the-dragon',
-    img: [
-      {
-        title: 'CGV New Year',
-        slug: 'anh1',
-        img_url: 'https://www.cgv.vn/media/cinemas/cms//1/_/1_cgv_tet.png'
-      },
-      {
-        title: 'Dragon 2024',
-        slug: 'anh2',
-        img_url: 'https://www.cgv.vn/media/cinemas/cms//3/_/3_dragon.png'
-      },
-      {
-        title: 'Tet 2024',
-        slug: 'anh3',
-        img_url: 'https://www.cgv.vn/media/cinemas/cms//2/_/2_tet_2024.png'
-      }
-    ]
-  },
-  {
-    url: 'https://www.cgv.vn/media/cinemas/cms//t/h/thank_you_3-1.jpg',
-    title: 'thank you',
-    slug: 'thank-you',
-    img: [
-      {
-        title: 'Thank you 01',
-        slug: 'anh4',
-        img_url: 'https://www.cgv.vn/media/cinemas/cms//t/h/thank_you_3-1.jpg'
-      },
-      {
-        title: 'Thank you 02',
-        slug: 'anh5',
-        img_url: 'https://www.cgv.vn/media/cinemas/cms//t/h/thank_you_4-1.jpg'
-      }
-    ]
-  }
-  ,
-  {
-    url: 'https://www.cgv.vn/media/cinemas/cms//b/i/birthday_2-1.jpg',
-    title: 'birthday',
-    slug: 'birthday',
-    img: [
-      {
-        title: 'Thẻ Quà Tặng Sinh Nhật 01',
-        slug: 'anh6',
-        img_url: 'https://www.cgv.vn/media/cinemas/cms//b/i/birthday_2-1.jpg'
-      },
-      {
-        title: 'Thẻ Quà Tặng Sinh Nhật 01',
-        slug: 'anh7',
-        img_url: 'https://www.cgv.vn/media/cinemas/cms//b/i/birthday_4-1.jpg'
-      }
-    ]
-  },
-  {
-    url: 'https://www.cgv.vn/media/cinemas/cms//a/u/autumn_2.jpg',
-    title: 'FALL-ING FOR YOU',
-    slug: 'fall-ing-for-you',
-    img: [
-      {
-        title: 'Fabulous You',
-        slug: 'anh8',
-        img_url: 'https://www.cgv.vn/media/cinemas/cms//a/u/autumn_2.jpg'
-      },
-      {
-        title: 'Classic You',
-        slug: 'anh9',
-        img_url: 'https://www.cgv.vn/media/cinemas/cms//a/u/autumn_1.jpg'
-      }
-    ]
-  }
-  ,
-  {
-    url: 'https://www.cgv.vn/media/cinemas/cms//c/i/cine_5-1.jpg',
-    title: 'CINE',
-    slug: 'cine',
-    img: [
-      {
-        title: 'Cine 03',
-        slug: 'anh10',
-        img_url: 'https://www.cgv.vn/media/cinemas/cms//c/i/cine_5-1.jpg'
-      },
-      {
-        title: 'Cine 02',
-        slug: 'anh11',
-        img_url: 'https://www.cgv.vn/media/cinemas/cms//c/i/cine_3-1.jpg'
-      },
-      {
-        title: 'Cine 01',
-        slug: 'anh12',
-        img_url: 'https://www.cgv.vn/media/cinemas/cms//c/i/cine_1-1.jpg'
-      }
-    ]
-  }
-]
+
+import { setTotal } from 'stores/booking/slice'
+import { fakeGifts } from 'apis/mockData'
 
 const price = [
   {
     id: 1,
-    price: 100000
+    price: 100
   },
   {
     id: 2,
-    price: 200000
+    price: 200
   },
   {
     id: 3,
-    price: 300000
+    price: 300
   },
   {
     id: 4,
-    price: 500000
+    price: 500
   },
   {
     id: 5,
-    price: 1000000
+    price: 1000
   }
 ]
 
@@ -168,7 +73,8 @@ const content = [
 
 const GiftDetail = () => {
   const { slug } = useParams()
-  const gift = data.find(item => item.img.some(img => img.slug === slug))
+  const dispatch = useDispatch()
+  const gift = fakeGifts.find(item => item.img.some(img => img.slug === slug))
   const giftItem = gift.img.find(item => item.slug === slug)
   const ruleContents = content.filter(item => item.title === 'rule')
   const noteContents = content.filter(item => item.title === 'note')
@@ -181,6 +87,7 @@ const GiftDetail = () => {
     const selectedPrice = parseInt(event.target.value, 10)
     setSelectedPrice(selectedPrice)
   }
+
   return (
     <>
       <div>
@@ -199,27 +106,32 @@ const GiftDetail = () => {
               <select name="price" id="price" className='w-40 border p-2 mt-2' onChange={handlePriceChange}>
                 {price.map((item, index) => (
                   <option key={index} value={item.price}>
-                    {item.price} Đ
+                    ${item.price}
                   </option>
                 ))}
               </select>
               <p className='mt-6'>
-                {selectedPrice}
+                $ {selectedPrice}
               </p>
 
             </div>
             <hr className='mt-2 border-t-1 border-gray-300' />
             <div className='mt-3 ml-auto'>
-              <p className=' text-xl flex gap-2'>
-                Tổng tiền : <p className='text-red-500'>{selectedPrice} Đ</p>
-              </p>
+              <h1 className=' text-xl flex gap-2'>
+                Tổng tiền : <p className='text-red-500'>$ {selectedPrice}</p>
+              </h1>
               <div className='flex gap-2 ml-auto'>
-                <button className='border p-2 bg-red-500  text-white font-bold rounded-xl'>
+                <Link to={`/booking-gift/${gift.id}/${giftItem.slug}`}>
+                  <button
+                    className='border p-2 bg-red-500  text-white font-bold rounded-xl'
+                    onClick={() => dispatch(setTotal(selectedPrice))}
+                  >
                   Mua ngay
-                </button>
-                <button className='border p-2  bg-red-500 text-white font-bold rounded-xl'>
+                  </button>
+                </Link>
+                {/* <button className='border p-2  bg-red-500 text-white font-bold rounded-xl'>
                   Tặng quà
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
@@ -229,16 +141,16 @@ const GiftDetail = () => {
         <p className='text-center text-xl mt-2'>Điều kiện & điều khoản</p>
         <div>
           {
-            ruleContents.map((item) => (
-              <p className='text-sm' key={item.title}>
+            ruleContents.map((item, index) => (
+              <p className='text-sm' key={index}>
                 - {item.content}
               </p>
             ))
           }
           <p className='mt-2'>Lưu ý : </p>
           {
-            noteContents.map((item) => (
-              <p className='text-sm' key={item.title}>
+            noteContents.map((item, index) => (
+              <p className='text-sm' key={index}>
                 - {item.content}
               </p>
             ))

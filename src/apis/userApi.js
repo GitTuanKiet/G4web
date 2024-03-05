@@ -16,6 +16,14 @@ class UserApi {
   static setupPIN = async (data) => {
     return await axiosPrivate.put('user/setup-pin', data)
   }
+
+  static getHistory = async () => {
+    return await axiosPrivate.get('user/history')
+  }
+
+  static getCards = async () => {
+    return await axiosPrivate.get('card/fetch-all')
+  }
 }
 
 export default UserApi

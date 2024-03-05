@@ -7,8 +7,8 @@ import Content from './Content'
 import Divider from 'components/Divider'
 import Line from 'components/Bill/Line'
 import Unit from 'components/Bill/Unit'
-import GroupButton from './GroupButton'
-import Info from './Info'
+import GroupButton from '../../../components/Bill/GroupButton'
+import Info from '../../../components/Bill/Info'
 import Logo from 'components/icons/Logo'
 
 import { setTotal } from 'stores/booking/slice'
@@ -79,7 +79,7 @@ const BillTicket = ({ price, handleStep }) => {
         </div>
         <Divider />
         {/* group button */}
-        <GroupButton handleStep={handleStep} />
+        <GroupButton handleStep={handleStep} start={0} end={4} />
       </div>
     </div>
   )

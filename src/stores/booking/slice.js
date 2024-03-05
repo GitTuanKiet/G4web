@@ -5,7 +5,6 @@ const initialState = {
   listType: [],
   listCinema: [],
   listTime: [],
-  listVoucher: [],
   day: null,
   cinema: null,
   type: null,
@@ -16,6 +15,7 @@ const initialState = {
   step: 0,
   total: 0,
   voucher: null,
+  gift: null,
   hour: null
 }
 
@@ -29,7 +29,6 @@ const bookingSlice = createSlice({
     setListType(state, action) { state.listType = action.payload },
     setListCinema(state, action) { state.listCinema = action.payload },
     setListTime(state, action) { state.listTime = action.payload },
-    setListVoucher(state, action) { state.listVoucher = action.payload },
     setDay(state, action) {state.day = action.payload},
     setCinema(state, action) { state.cinema = action.payload},
     setType(state, action) {state.type = action.payload},
@@ -40,6 +39,7 @@ const bookingSlice = createSlice({
     setStep(state, action) { state.step = action.payload},
     setTotal(state, action) {state.total = action.payload},
     setVoucher(state, action) { state.voucher = action.payload },
+    setGift(state, action) { state.gift = action.payload },
     setHour(state, action) {state.hour = action.payload}
   }
 })
@@ -51,7 +51,6 @@ export const {
   setListType,
   setListCinema,
   setListTime,
-  setListVoucher,
   setDay,
   setCinema,
   setType,
@@ -62,6 +61,7 @@ export const {
   setStep,
   setTotal,
   setVoucher,
+  setGift,
   setHour
 } = bookingSlice.actions
 export default bookingSlice.reducer
