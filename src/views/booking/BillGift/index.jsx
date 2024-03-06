@@ -1,7 +1,7 @@
 
 import { useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import Divider from 'components/Divider'
 import Line from 'components/Bill/Line'
@@ -17,6 +17,7 @@ import { fakeGifts } from 'apis/mockData'
 
 const BillGift = ({ handleStep }) => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const { id, slug } = useParams()
   const { title, img_url } = fakeGifts.find((item) => item.id === Number(id))?.img.find((item) => item.slug === slug) || {}
 
@@ -29,8 +30,8 @@ const BillGift = ({ handleStep }) => {
   }, [total, navigate])
 
   useEffect(() => {
-    setGift({ title })
-  }, [title])
+    dispatch(setGift({ title }))
+  }, [title, dispatch])
 
   const dataTotal = [
     {
