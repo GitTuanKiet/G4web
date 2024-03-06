@@ -1,14 +1,16 @@
 import { NavLink, useNavigate } from 'react-router-dom'
+import IconArrowLeft from 'components/icons/IconArrowLeft'
+import IconChevronRight from 'components/icons/IconChevronRight'
 
 function Sidebar({ sidebarLinks }) {
   return (
     <div>
       <aside
         id="default-sidebar"
-        className=" top-0 left-0 z-40 w-[290px] h-screen transition-transform -translate-x-full sm:translate-x-0"
+        className=" top-0 left-0 z-40 w-[250px]   mt-10 rounded-xl transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar"
       >
-        <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+        <div className="h-full px-3 py-4 rounded-2xl border border-gray-300 overflow-y-auto bg-gray-50 dark:bg-[#FAEBE9]">
           <ul className="space-y-2 font-medium">
             {sidebarLinks.map((link, index) => (
               <li key={index}>
@@ -18,12 +20,13 @@ function Sidebar({ sidebarLinks }) {
                   className={({ isActive }) =>
                     isActive
                       ? 'text-primary block px-4 py-2 '
-                      : 'block px-4 py-2 text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700'
+                      : 'block px-4 py-2 text-gray-900 dark:text-slate-800  dark:hover:text-primary'
                   }
                 >
-                  <div className="flex items-center">
-                    {link.icon}
+                  <div className="flex items-center justify-between">
+                    {/* {link.icon} */}
                     <span className="ml-2">{link.title}</span>
+                    <IconChevronRight />
                   </div>
                 </NavLink>
               </li>

@@ -43,17 +43,17 @@ export default function Header() {
     },
     !user
       ? {
-        id: 'auth',
-        title: 'Đăng nhập / Đăng ký',
-        icon: <CiUser />,
-        to: '/auth'
-      }
+          id: 'auth',
+          title: 'Đăng nhập / Đăng ký',
+          icon: <CiUser />,
+          to: '/auth'
+        }
       : {
-        id: 'me',
-        title: 'Hello, ' + user.name,
-        icon: <CiUser />,
-        to: '/profile'
-      }
+          id: 'me',
+          title: 'Hello, ' + user.name,
+          icon: <CiUser />,
+          to: '/profile/common-info'
+        }
   ]
 
   return (
