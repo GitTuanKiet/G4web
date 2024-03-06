@@ -10,7 +10,7 @@ class UserApi {
   }
 
   static uploadAvatar = async (data) => {
-    return await axiosMultipart.post('uploads/avatar', data)
+    return await axiosMultipart.post('user/avatar', data)
   }
 
   static setupPIN = async (data) => {
@@ -22,7 +22,7 @@ class UserApi {
   }
 
   static getCards = async () => {
-    return await axiosPrivate.get('card/fetch-all')
+    return await axiosPrivate.get('user/fetch-card')
   }
 }
 

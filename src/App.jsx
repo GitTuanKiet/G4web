@@ -12,10 +12,15 @@ import { useEffect } from 'react'
 import { getToken, getRefreshToken, logout } from 'utils/auth'
 import { jwtDecode } from 'jwt-decode'
 import { setUser, authRefreshToken, userHistory, userCards } from 'stores/auth/authSlice'
+import { fetchData } from 'stores/data/slice'
 
 function App() {
   const { user } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchData())
+  }, [dispatch])
 
   useEffect(() => {
     const access_token = getToken()
@@ -48,7 +53,7 @@ function App() {
     } else if (refreshToken) {
       dispatch(authRefreshToken({ refreshToken }))
     } else {
-      dispatch(setUser({ user: null, isLoggedIn: false, history: null }))
+      dispatch(setUser({ user: null, isLoggedIn: false, history: null, cards: null }))
     }
   }, [dispatch, user])
 
