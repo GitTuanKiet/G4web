@@ -38,7 +38,7 @@ const Voucher = () => {
       toast.info('Đang chuyển đến cổng thanh toán')
       dispatch(clearState())
       navigate(-1)
-      return OrderApi.createOrder('paypal', {
+      return OrderApi.createOrder(payment, {
         name: voucher.title,
         code: voucher.code,
         price: total,

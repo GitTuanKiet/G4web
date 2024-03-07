@@ -50,11 +50,7 @@ const BillVoucher = ({ handleStep }) => {
         </div>
         <Divider />
         {/* Info */}
-        <Info
-          image={imageUrl}
-          title={''}
-          data={[]}
-        />
+        <img src={imageUrl} alt={title} className="rounded-xl aspect-auto mx-auto" />
         <Divider />
         {/* Content */}
         <div>

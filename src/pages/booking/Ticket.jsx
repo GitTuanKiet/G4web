@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -8,7 +7,9 @@ import ComboCard from 'views/booking/Combo'
 import RoomMap from 'views/booking/RoomMap'
 import CinemaAdd from 'views/booking/CinemaAdd'
 import PaymentMethodCard from 'components/Bill/PaymentMethod'
+import { padStart } from 'utils/helper'
 
+import { format } from 'date-fns'
 import { setStep, clearState } from 'stores/booking/slice'
 import OrderApi from 'apis/orderApi'
 
@@ -19,8 +20,7 @@ const BookTicket = () => {
   const { slug } = useParams()
   const movie = movies.find((item) => item.slug === slug)
 
-  const { step, filter, showtime, chairs, payment, total, voucher, gift, combo } = useSelector((state) => state.booking)
-  const [price, setPrice] = useState(0)
+  const { step, showtime, chairs, payment, total, voucher, gift } = useSelector((state) => state.booking)
 
   const handleStep = (step) => {
     let temp = step
@@ -67,16 +67,17 @@ const BookTicket = () => {
       toast.info('Đang chuyển đến cổng thanh toán')
       dispatch(clearState())
       navigate(-1)
-      return OrderApi.createOrder('paypal', {
+      const data = {
         showtimeId: showtime.id,
         chairs,
         ...(voucher && { voucherOrderId: voucher.orderId }),
         ...(gift && { giftOrderId: gift.orderId }),
-        description: `Mua vé xem phim ${movie.name} ${filter.type}, suất chiếu ${showtime.start} ngày ${filter.date.value} tại ${filter.city} ${combo.length ? `với combo ${combo.join(', ')}` : ''}`,
-        price: total,
-        name: movie.name,
+        description: `Mua vé xem phim ${movie.title} , suất chiếu ${padStart(showtime.start)} ngày ${format(showtime.day, 'dd/MM/yyyy')}`,
+        price: total*1.1,
+        name: movie.title + movie.ageRestriction,
         return_url: import.meta.env.VITE_RETURN_URL
-      })
+      }
+      return OrderApi.createOrder(payment, data)
     }
     dispatch(setStep(temp))
   }
@@ -84,10 +85,10 @@ const BookTicket = () => {
   return (
     <section className="flex w-full justify-center h-auto mx-auto py-8 gap-8">
       {step === 0 && <CinemaAdd movie={movie} />}
-      {step === 1 && <RoomMap price={price} setPrice={setPrice} />}
-      {step === 2 && <ComboCard price={price} setPrice={setPrice} />}
+      {step === 1 && <RoomMap />}
+      {step === 2 && <ComboCard />}
       {step === 3 && <PaymentMethodCard />}
-      <BillTicket price={price} handleStep={handleStep} />
+      <BillTicket handleStep={handleStep} />
     </section>
   )
 }

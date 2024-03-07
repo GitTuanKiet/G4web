@@ -1,7 +1,6 @@
 
-import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import Content from './Content'
 import Divider from 'components/Divider'
@@ -11,40 +10,30 @@ import GroupButton from 'components/Bill/GroupButton'
 import Info from 'components/Bill/Info'
 import Logo from 'components/icons/Logo'
 
-import { setTotal } from 'stores/booking/slice'
-import { fakeList } from 'apis/mockData'
-
-
-const BillTicket = ({ price, handleStep }) => {
-  const dispatch = useDispatch()
+const BillTicket = ({ handleStep }) => {
   const { slug } = useParams()
-  const { name, poster, rated, category, duration, language } = fakeList.find((item) => item.slug === slug) || {}
+  const { movies, cinemas } = useSelector((state) => state.data)
+  const { voucher, showtime, total } = useSelector((state) => state.booking)
 
-  const { voucher, cinema } = useSelector((state) => state.booking)
+  const movie = movies.find((item) => item.slug === slug)
+  const cinema = cinemas.find((item) => item.id === showtime?.cinemaId)
+
+  const { poster, title } = movie || { poster: '', title: '' }
   const { discount } = voucher || { discount: 0 }
-  const totalEnd = price < discount ? 0 : price - discount
-  const vat = totalEnd / 10
 
-  useEffect(() => {
-    dispatch(setTotal(totalEnd+vat))
-  }, [totalEnd, vat, dispatch])
-
+  const totalEnd = total >= discount ? total - discount : 0
   const dataTotal = [
-    {
-      key: 'Giá vé',
-      value: Unit({ value: price })
-    },
     {
       key: 'Giảm giá',
       value: Unit({ value: discount })
     },
     {
       key: 'Phí VAT',
-      value: Unit({ value: vat })
+      value: Unit({ value: totalEnd * 0.1 })
     },
     {
       key: 'Tổng',
-      value: Unit({ value: totalEnd+vat })
+      value: Unit({ value: totalEnd * 1.1 })
     }
   ]
 
@@ -62,20 +51,22 @@ const BillTicket = ({ price, handleStep }) => {
         {/* Info */}
         <Info
           image={poster}
-          title={name}
-          data={[category, duration, language, rated]}
+          title={title}
+          other={movie ? [movie.language, movie.duration, movie.ageRestriction] : []}
+          ticket
         />
-        <Divider />
         {/* Content */}
         <Content />
-        <Divider />
         {/* Total */}
-        <div>
-          {dataTotal.map((item, index) => (
-            <Line key={index} keyName={item.key} value={item.value} />
-          ))}
-        </div>
-        <Divider />
+        {total > 0 ?
+          <>
+            <div>
+              {dataTotal.map((item, index) => (
+                <Line key={index} keyName={item.key} value={item.value} />
+              ))}
+            </div>
+            <Divider />
+          </> : null}
         {/* group button */}
         <GroupButton handleStep={handleStep} start={0} end={4} />
       </div>

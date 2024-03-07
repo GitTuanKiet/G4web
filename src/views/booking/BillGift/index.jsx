@@ -20,6 +20,7 @@ const BillGift = ({ handleStep }) => {
   const dispatch = useDispatch()
   const { id, slug } = useParams()
   const { title, img_url } = fakeGifts.find((item) => item.id === Number(id))?.img.find((item) => item.slug === slug) || {}
+  console.log('🚀 ~ BillGift ~ img_url:', img_url)
 
   const { payment, total } = useSelector((state) => state.booking)
 
@@ -52,11 +53,7 @@ const BillGift = ({ handleStep }) => {
         </div>
         <Divider />
         {/* Info */}
-        <Info
-          image={img_url}
-          title={''}
-          data={[]}
-        />
+        <img src={img_url} alt={title} className="rounded-xl aspect-auto mx-auto" />
         <Divider />
         {/* Content */}
         <div>
