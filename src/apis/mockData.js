@@ -1,4 +1,41 @@
+import { format, addDays } from 'date-fns'
 
+const formatDateTime = (date) => {
+  return format(date, 'dd/MM/yyyy')
+}
+
+export const slides = [
+  {
+    id: 1,
+    src: 'https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/9/8/980x448_272.jpg',
+    alt: 'Slide 1',
+    link: 'https://www.cgv.vn/default/newsoffer/cgv-giftcard-tet24/'
+  },
+  {
+    id: 2,
+    src: 'https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/r/o/rolling_banner_22.jpg',
+    alt: 'Slide 2',
+    link: 'https://www.cgv.vn/default/afag.html'
+  },
+  {
+    id: 3,
+    src: 'https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/d/h/dhd_rolling_banner.jpg',
+    alt: 'Slide 3',
+    link: 'https://www.cgv.vn/default/newsoffer/cgv-giftcard-tet2024/'
+  },
+  {
+    id: 4,
+    src: 'https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/i/m/imgpsh_fullsize_anim_2.png',
+    alt: 'Slide 4',
+    link: 'https://www.cgv.vn/default/newsoffer/cgv-dragon-combo/'
+  },
+  {
+    id: 5,
+    src: 'https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/9/8/980x448_269.jpg',
+    alt: 'Slide 5',
+    link: 'https://www.cgv.vn/default/newsoffer/cgv-nhan-lich/'
+  }
+]
 
 const fake = {
   poster: 'https://i.pinimg.com/474x/af/b5/eb/afb5eb4d723c2385531525bbc787db0d.jpg',
@@ -701,10 +738,9 @@ const mockCinemas = [
 const fakeMovie = {
   poster: 'https://i.pinimg.com/474x/af/b5/eb/afb5eb4d723c2385531525bbc787db0d.jpg',
   language: 'English',
-
   releaseDate: '2022-01-01',
   endDate: '2025-01-31',
-  trailer: 'https://www.youtube.com/embed/5qap5aO4i9A',
+  trailer: 'https://www.youtube.com/embed/5g4lY8Y3eoo',
   genres: ['Action', 'Adventure', 'Fantasy'],
   directors: ['Director 1', 'Director 2', 'Director 3'],
   actors: ['Actor 1', 'Actor 2', 'Actor 3']
@@ -866,4 +902,16 @@ const mockShowtimes = [
   }
 ]
 
-export { mockCities, mockCinemas, mockMovies, mockShowtimes }
+const currentDate = new Date()
+
+const dates = []
+
+dates.push({ id: 0, value: currentDate })
+
+// Thêm 29 ngày tiếp theo vào mảng
+for (let i = 1; i < 30; i++) {
+  const nextDate = addDays(currentDate, i)
+  dates.push({ id: i, value: nextDate })
+}
+
+export { mockCities, mockCinemas, mockMovies, mockShowtimes, dates }

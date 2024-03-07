@@ -1,9 +1,9 @@
 
 import { useState } from 'react'
-
+import { useSelector } from 'react-redux'
 
 import Banner from 'views/home/Banner'
-import EventList from 'views/home/Event/EventList'
+import CardShowtime from './CardShowtime'
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -13,54 +13,88 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 
-
 // import required modules
 import { Navigation } from 'swiper/modules'
+import Button from 'components/Button'
 
+import { format } from 'date-fns'
+import { slides } from 'apis/mockData'
 
-const Content = ({ item }) => {
-  const currentDate = new Date()
-  const [selectedDate, setSelectedDate] = useState(new Date())
-  const dates = Array.from({ length: 366 }, (_, index) => new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + index))
-    .filter(date => !isNaN(date.getTime()) && date.getTime() >= currentDate.getTime())
+const Content = ({ cinema }) => {
+  const { dates, movies } = useSelector((state) => state.data)
+  const [selectedDate, setSelectedDate] = useState(dates[0])
+  const [show, setShow] = useState(true)
 
   return (
     <>
-      <h1 className="text-primary text-4xl text-center font-semibold py-10">THEATER</h1>
-      <h2 className="text-primary text-2xl text-center font-semibold py-10">{item.name}</h2>
+      <h1 className="text-primary text-6xl text-center py-10">THEATER</h1>
+      <h2 className="text-primary text-3xl text-center py-10">{cinema.name}</h2>
 
       <div className="w-full h-auto">
-        <Banner />
+        <Banner slides={slides} />
       </div>
 
-      {/* date */}
-      <div className="w-full h-auto flex items-center justify-center my-10 border-t-2 border-b-2 border-gray-500">
-        <Swiper
-          slidesPerView={7}
-          spaceBetween={30}
-          pagination={{
-            clickable: true
-          }}
-          navigation={true}
-
-          modules={[Navigation]}
-          centeredSlides={true}
-          className="calenderSwiper w-full h-full gap-1"
-        >
-          {dates.map((date) => (
-            <SwiperSlide key={date.getTime()}>
-              <button onClick={() => setSelectedDate(date)} className='bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full'>
-                {date.toLocaleDateString()}
-              </button>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+      <div className="flex items-center justify-center text-white rounded-b-none relative my-10 ">
+        <div className="triangle-left"></div>
+        <div className="text-center bg-red-500 py-2 px-6 border-r-transparent inline-flex justify-center gap-x-4 text-lg relative z-10">
+          <div className="triangle-left"></div>
+          <h1 className='ml-3 cursor-pointer hover:opacity-90 hover:text-secondary' onClick={() => setShow(true)}>
+              Lịch Chiếu
+          </h1>
+          <h1 className='mr-3 cursor-pointer hover:opacity-90 hover:text-secondary' onClick={() => setShow(false)}>
+            Giá vé
+          </h1>
+          <div className="triangle-right"></div>
+        </div>
       </div>
 
-      <div className="page-container ">
-        <EventList key={selectedDate} />
-      </div>
+      {show ?
+        <>
+          {/* date */}
+          <div className="py-2 px-20 border-y-4 border-gray-600">
+            <Swiper
+              slidesPerView={7}
+              spaceBetween={30}
+              pagination={{
+                clickable: true
+              }}
+              navigation={true}
 
+              modules={[Navigation]}
+              className="calenderSwiper"
+            >
+              {dates.map((item) => {
+                const check = item.id === selectedDate?.id
+                return (
+                  <SwiperSlide
+                    key={item.id}
+                  >
+                    <Button
+                      onClick={() => setSelectedDate(item)}
+                      className='w-20 h-16'
+                      primary={check}
+                      disabled={check}
+                    >
+                      <div className="flex items-center justify-evenly">
+                        <div className='text-xs'>
+                          <p>{format(item.value, 'LL')}</p>
+                          <p>{format(item.value, 'E')}</p>
+                        </div>
+                        <span className="text-2xl font-medium">{format(item.value, 'd')}</span>
+                      </div>
+                    </Button>
+                  </SwiperSlide>
+                )})}
+            </Swiper>
+          </div>
+
+          {/* filter showtime */}
+          <div className="w-full h-auto">
+            {movies.map((movie) => (
+              <CardShowtime key={movie.id} movie={movie} cinema={cinema} date={selectedDate} />
+            ))}
+          </div>
+        </>: <div className="text-center text-3xl text-primary">Giá vé</div>}
     </>
   )
 }

@@ -1,4 +1,4 @@
-import { format, addDays } from 'date-fns'
+import { format } from 'date-fns'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -6,30 +6,15 @@ import Button from 'components/Button'
 
 import { setDay } from 'stores/booking/slice'
 
-const formatDateTime = (date) => {
-  return format(date, 'yyyy-MM-dd')
-}
-
-const currentDate = formatDateTime(new Date())
-
-const dates = []
-
-dates.push({ id: 0, value: currentDate })
-
-// Thêm 29 ngày tiếp theo vào mảng
-for (let i = 1; i < 30; i++) {
-  const nextDate = addDays(currentDate, i)
-  dates.push({ id: i, value: formatDateTime(nextDate) })
-}
-
 const ListDate = () => {
   const dispatch = useDispatch()
   const { day } = useSelector((state) => state.booking)
+  const { dates } = useSelector((state) => state.data)
 
   useEffect(() => {
     if (!day)
       dispatch(setDay(dates[0]))
-  }, [day, dispatch])
+  }, [day, dates, dispatch])
 
   return (
     <div className="grid grid-cols-10 gap-y-3">

@@ -5,7 +5,6 @@ import Button from 'components/Button'
 
 import { setCity } from 'stores/booking/slice'
 
-
 const ListCity = () => {
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user)

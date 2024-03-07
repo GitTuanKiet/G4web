@@ -1,8 +1,8 @@
 
 
-const Divider = () => {
+const Divider = ({ border, white }) => {
   return (
-    <hr className="border-t border-dashed border-black my-4" />
+    <hr className={`border-t ${border? 'border' :'border-dashed'} ${white ? 'border-white':'border-black'} my-4`} />
   )
 }
 

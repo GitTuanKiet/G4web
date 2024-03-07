@@ -18,7 +18,7 @@ export default function TheaterSpecial({ data }) {
 
   return (
     <>
-      <div className="w-full h-auto flex items-center justify-center my-10 border-t-2 border-b-2 border-gray-500 ">
+      <div className="my-10 border-y-4 border-gray-600">
         <Swiper
           slidesPerView={7}
           spaceBetween={30}
@@ -29,7 +29,7 @@ export default function TheaterSpecial({ data }) {
 
           modules={[Navigation]}
           centeredSlides={true}
-          className="calenderSwiper w-full h-full gap-1"
+          className="calenderSwiper"
         >
           {data.map((item) => (
             <SwiperSlide key={item.id}>
@@ -42,7 +42,6 @@ export default function TheaterSpecial({ data }) {
                     backgroundPosition: 'center'
                   }}
                 >
-                  {/* <img src="https://chocanh.vn/wp-content/uploads/hinh-anh-cho-cute-chibi-dep-nhat_101023548.png" alt={item.name} srcset="" /> */}
                 </button>
               </Link>
             </SwiperSlide>

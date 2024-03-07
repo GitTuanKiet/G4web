@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { mockCities } from 'apis/mockData'
+import { mockCities, dates } from 'apis/mockData'
 const initialState = {
+  dates: dates,
   cities: mockCities,
   cinemas: [],
   showtimes: [],

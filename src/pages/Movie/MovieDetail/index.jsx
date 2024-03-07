@@ -1,78 +1,71 @@
 
 import { useState } from 'react'
+import { format } from 'date-fns'
 import { useParams } from 'react-router-dom'
-
-const data = [
-  {
-    id: 1,
-    poster: 'https://i.pinimg.com/474x/af/b5/eb/afb5eb4d723c2385531525bbc787db0d.jpg',
-    name: 'Harry porter',
-    slug: 'movie-1',
-    director: 'John Doe',
-    releaseDate: '25/01/2024',
-    category: 'Hành động, nhập vai, tình cảm',
-    duration: '120p',
-    language: 'tiếng anh',
-    description:
-      'No Way Up xoay quanh các nhân vật có xuất thân rất khác nhau gặp nhau khi chiếc máy bay họ đang di chuyển đâm xuống Thái Bình Dương. Chiếc máy bay gặp sự cố phải dừng lại một cách nguy hiểm gần rìa của một khe núi không đáy. Khi nguồn cung cấp không khí của họ nhanh chóng cạn kiệt, một cuộc chiến sinh tồn khi họ phải đối mặt với các hung thần đại dương - Cá Mập.',
-    trailer: 'https://www.youtube.com/embed/5g4lY8Y3eoo'
-  }
-]
+import { useSelector } from 'react-redux'
 
 function MovieDetail() {
   const { slug } = useParams()
-  const movie = data.find((item) => item.slug === slug)
+  const { movies } = useSelector((state) => state.data)
+  const movie = movies.find((item) => item.slug === slug)
   const [showTrailer, setShowTrailer] = useState(false)
 
   return (
-    <div className="page-container">
-      <h1 className="text-center text-primary font-semibold text-3xl my-4">Movie Detail</h1>
-      <div className="flex gap-x-10 justify-start">
-        <div>
-          <img
-            src={movie.poster}
-            alt=""
-            className="w-full h-auto object-cover  rounded-lg"
-          />
-        </div>
-        <div className="content">
-          <h2 className=" text-3xl font-semibold">{movie.name}</h2>
-          <ul className="list-disc text-xl">
-            <li>Đạo diễn: {movie.director}</li>
-            <li>Ngày phát hành: {movie.releaseDate}</li>
-            <li>Thể loại: {movie.category}</li>
-            <li>Thời lượng: {movie.duration}</li>
-            <li>Ngôn ngữ: {movie.language}</li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <div className="flex items-center justify-center py-6 text-white rounded-b-none relative">
-          <div className="triangle-left"></div>
-          <div className="text-center bg-red-500 py-2 px-6 border-r-transparent inline-flex justify-center gap-x-4 text-lg relative z-10">
-            <div className="triangle-left"></div>
-            <h1 className={`ml-3 cursor-pointer hover:opacity-90 hover:text-secondary ${!showTrailer ? 'text-secondary': ''} `} onClick={() => setShowTrailer(false)}>Chi tiết</h1>
-            <h1 className={`mr-3 cursor-pointer hover:opacity-90 hover:text-secondary ${showTrailer ? 'text-secondary': ''} `} onClick={() => setShowTrailer(true)}>Trailer</h1>
-            <div className="triangle-right"></div>
+    movie ?
+      <div className="page-container">
+        <h1 className="text-center text-primary font-semibold text-3xl my-4">Chi tiết phim</h1>
+        <div className="flex gap-x-10 justify-start">
+          <div>
+            <img
+              src={movie?.poster}
+              alt={movie?.title}
+              className="w-full h-auto object-cover  rounded-lg"
+            />
+          </div>
+          <div className="content">
+            <h2 className="text-6xl font-semibold">{movie?.title}</h2>
+            <ul className="list-disc text-xl">
+              <li>Đạo diễn: {movie?.directors.join(', ')}</li>
+              <li>Diễn viên: {movie?.actors.join(', ')}</li>
+              <li>Ngày phát hành: {format(new Date(movie?.releaseDate), 'dd/MM/yyyy')}</li>
+              <li>Ngày kết thúc: {format(new Date(movie?.endDate), 'dd/MM/yyyy')}</li>
+              <li>Thể loại: {movie?.genres.join(', ')}</li>
+              <li>Thời lượng: {movie?.duration} phút</li>
+              <li>Ngôn ngữ: {movie?.language}</li>
+              <li>{movie?.ageRestriction}+</li>
+            </ul>
           </div>
         </div>
-      </div>
-      {showTrailer ?
-        <div className="aspect-video">
-          <Trailer />
+        <div>
+          <div className="flex items-center justify-center py-6 text-white rounded-b-none relative">
+            <div className="triangle-left"></div>
+            <div className="text-center bg-red-500 py-2 px-6 border-r-transparent inline-flex justify-center gap-x-4 text-lg relative z-10">
+              <div className="triangle-left"></div>
+              <h1 className={`ml-3 cursor-pointer hover:opacity-90 hover:text-secondary ${!showTrailer ? 'text-secondary': ''} `} onClick={() => setShowTrailer(false)}>Chi tiết</h1>
+              <h1 className={`mr-3 cursor-pointer hover:opacity-90 hover:text-secondary ${showTrailer ? 'text-secondary': ''} `} onClick={() => setShowTrailer(true)}>Trailer</h1>
+              <div className="triangle-right"></div>
+            </div>
+          </div>
         </div>
-        : <p className="text-sm">{movie.description}</p>}
-    </div>
+        {showTrailer ?
+          <div className="aspect-video">
+            <Trailer src={movie?.trailer}/>
+          </div>
+          : <p className="text-sm">{movie.description}</p>}
+      </div> :
+      <div>
+        <h1>Loading ...</h1>
+      </div>
   )
 }
 
 export default MovieDetail
 
-function Trailer() {
+function Trailer({ src }) {
   return (
     <iframe
       className='w-full h-full object-cover'
-      src="https://www.youtube.com/embed/VyHV0BRtdxo?si=HnfVXtPH3nly71Nl"
+      src={src || 'https://www.youtube.com/embed/VyHV0BRtdxo?si=HnfVXtPH3nly71Nl'}
       title="YouTube video player"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowFullScreen

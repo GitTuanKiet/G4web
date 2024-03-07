@@ -17,7 +17,7 @@ function CinemaAdd() {
   useEffect(() => {
     // filter listCinema by type, city
     if (type && city) {
-      const filter = listCinema.filter((cinema) => city?.cinemaIds?.includes(cinema.id) && cinema.typeId === type.id)
+      const filter = listCinema.filter((cinema) => city?.cinemaIds?.includes(cinema.id) && cinema.typeId === type?.id)
       setFilterCinemas(filter)
     }
   }, [type, city, listCinema])
@@ -44,7 +44,7 @@ function CinemaAdd() {
 
         {/* Cinema */}
         {filterCinemas.map((itemCinema) => {
-          const filter = listTime.filter((time) => time.cinemaId === itemCinema.id && time.dateId === day.id)
+          const filter = listTime.filter((time) => time.cinemaId === itemCinema.id && time.dateId === day?.id)
           const showDate = filter ? filter[0] : null
           return (
             <div key={itemCinema.id} className='flex flex-col gap-y-2'>

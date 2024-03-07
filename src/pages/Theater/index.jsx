@@ -1,22 +1,56 @@
-// import { useEffect, useState } from 'react'
-// import { Link } from 'react-router-dom'
-
-// views components
-import Site from 'views/theater'
-// import GoldClass from 'views/theater/Special/GoldClass'
-// import 3D from 'views/theater/Special/3D'
-
+import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import Content from 'views/theater/Content'
+import Divider from 'components/Divider'
+import Button from 'components/Button'
 // ==============================|| THEATER ||============================== //
 
 const Theater = () => {
+  const { cities, cinemas } = useSelector((state) => state.data)
+  const [selectedCity, setSelectedCity] = useState(null)
+  const [showCinemas, setShowCinemas] = useState([])
+  const [selectedCinema, setSelectedCinema] = useState(null)
+
+  useEffect(() => {
+    if (cinemas) {
+      const filters = cinemas.filter((item) => item.city === selectedCity?.name)
+      setShowCinemas(filters)
+    }
+  }, [selectedCity, cinemas])
+
   return (
-    <>
+    <div>
       {/* Site */}
       <div className="w-full h-auto min-h-96 ">
-        <Site />
+        <div className='bg-gray-400 my-20 p-2 rounded-xl'>
+          <div className="w-full border-4 p-5 rounded-xl">
+            {/* Title */}
+            <h1 className="text-6xl text-center font-mono text-red-500">CGV CINEMAS</h1>
+            <Divider border white />
+            {/* City */}
+            <List data={cities} selected={selectedCity} setSelected={setSelectedCity} />
+            <Divider border white />
+            {/* List */}
+            <List data={showCinemas} selected={selectedCinema} setSelected={setSelectedCinema} />
+          </div>
+        </div>
+        {/* Content */}
+        {selectedCinema && <Content cinema={selectedCinema} />}
       </div>
-    </>
+    </div>
   )
 }
 
 export default Theater
+
+const List = ({ data, selected, setSelected }) => {
+  return (
+    <div className="w-full h-auto">
+      <div className="grid grid-cols-4 gap-2">
+        {data ? data.map((item) => (
+          <Button noborder key={item.id} primary={item === selected} onClick={() => setSelected(item)}>{item.name}</Button>
+        )): <div>Không có dữ liệu</div>}
+      </div>
+    </div>
+  )
+}

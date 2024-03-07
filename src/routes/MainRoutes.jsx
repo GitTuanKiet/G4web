@@ -59,7 +59,7 @@ const MainRoutes = {
           element: <ListMovie />
         },
         {
-          path: ':type',
+          path: ':status',
           element: <ListMovie />
         },
         {

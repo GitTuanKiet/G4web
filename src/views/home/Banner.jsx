@@ -13,15 +13,13 @@ import 'swiper/css/navigation'
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 
-export default function App({slides}) {
+export default function Banner({ slides }) {
   const progressCircle = useRef(null)
   const progressContent = useRef(null)
   const onAutoplayTimeLeft = (s, time, progress) => {
     progressCircle.current.style.setProperty('--progress', 1 - progress)
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`
   }
-
- 
 
   return (
     <>

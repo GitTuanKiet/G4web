@@ -16,7 +16,8 @@ const initialState = {
   total: 0,
   voucher: null,
   gift: null,
-  hour: null
+  hour: null,
+  showtime: null
 }
 
 const bookingSlice = createSlice({
@@ -40,7 +41,8 @@ const bookingSlice = createSlice({
     setTotal(state, action) {state.total = action.payload},
     setVoucher(state, action) { state.voucher = action.payload },
     setGift(state, action) { state.gift = action.payload },
-    setHour(state, action) {state.hour = action.payload}
+    setHour(state, action) { state.hour = action.payload },
+    setShowtime(state, action) { state.showtime = action.payload }
   }
 })
 
@@ -62,6 +64,7 @@ export const {
   setTotal,
   setVoucher,
   setGift,
-  setHour
+  setHour,
+  setShowtime
 } = bookingSlice.actions
 export default bookingSlice.reducer

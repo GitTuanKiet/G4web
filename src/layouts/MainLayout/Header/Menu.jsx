@@ -15,12 +15,12 @@ const movies = {
     {
       id: 'now',
       text: 'Phim Đang Chiếu',
-      to: '/movie/now'
+      to: '/movie/now-showing'
     },
     {
       id: 'soon',
       text: 'Phim Sắp Chiếu',
-      to: '/movie/soon'
+      to: '/movie/coming-soon'
     }
   ]
 }
