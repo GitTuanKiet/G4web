@@ -10,7 +10,7 @@ import { setVoucher } from 'stores/booking/slice'
 
 const Content = () => {
   const dispatch = useDispatch()
-  const { voucher, total, day, hour, type, chair, combo, payment } = useSelector((state) => state.booking)
+  const { voucher, total, day, hour, type, chairs, combo, payment } = useSelector((state) => state.booking)
   const [showModal, setShowModal] = useState(false)
 
   const handleSetVoucher = (value) => {
@@ -23,7 +23,7 @@ const Content = () => {
       {day && <Line keyName='Ngày chiếu' value={day.value} />}
       {hour && <Line keyName= 'Suất chiếu' value={hour.value} />}
       {type && <Line keyName='Loại vé' value={type.name} />}
-      {chair.length > 0 && <Line keyName='Ghế' value={chair.join(', ')} />}
+      {chairs.length > 0 && <Line keyName='Ghế' value={chairs.join(', ')} />}
       {combo.length > 0 && <Line keyName='Combo' value={combo.map((i) => `${i.name} x${i.quantity}`).join(', ')} />}
       {payment && <Line keyName='Phương thức thanh toán' value={payment} />}
       {total > 0 && <div className='flex justify-between'>

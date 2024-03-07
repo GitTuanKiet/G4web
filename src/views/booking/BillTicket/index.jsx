@@ -7,13 +7,11 @@ import Content from './Content'
 import Divider from 'components/Divider'
 import Line from 'components/Bill/Line'
 import Unit from 'components/Bill/Unit'
-import GroupButton from '../../../components/Bill/GroupButton'
-import Info from '../../../components/Bill/Info'
+import GroupButton from 'components/Bill/GroupButton'
+import Info from 'components/Bill/Info'
 import Logo from 'components/icons/Logo'
 
 import { setTotal } from 'stores/booking/slice'
-
-
 import { fakeList } from 'apis/mockData'
 
 

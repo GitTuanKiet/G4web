@@ -318,27 +318,27 @@ const fakeRoomMap = [
   },
   {
     chair: 'A25',
-    type: 'normal'
+    type: 'vip'
   },
   {
     chair: 'A26',
-    type: 'normal'
+    type: 'vip'
   },
   {
     chair: 'A27',
-    type: 'normal'
+    type: 'vip'
   },
   {
     chair: 'A28',
-    type: 'normal'
+    type: 'vip'
   },
   {
     chair: 'A29',
-    type: 'normal'
+    type: 'vip'
   },
   {
     chair: 'A30',
-    type: 'normal'
+    type: 'vip'
   },
   {
     chair: 'A31',
@@ -413,12 +413,8 @@ const fakeRoomMap = [
     type: 'vip'
   },
   {
-    chair: 'A49',
-    type: 'vip'
-  },
-  {
-    chair: 'A50',
-    type: 'vip'
+    chair: 'A49,A50',
+    type: 'couple'
   },
   {
     chair: 'A51,A52',
@@ -442,82 +438,6 @@ const fakeRoomMap = [
   },
   {
     chair: 'A61,A62',
-    type: 'couple'
-  },
-  {
-    chair: 'A63,A64',
-    type: 'couple'
-  },
-  {
-    chair: 'A65,A66',
-    type: 'couple'
-  },
-  {
-    chair: 'A67,A68',
-    type: 'couple'
-  },
-  {
-    chair: 'A69,A70',
-    type: 'couple'
-  },
-  {
-    chair: 'A71,A72',
-    type: 'couple'
-  },
-  {
-    chair: 'A73,A74',
-    type: 'couple'
-  },
-  {
-    chair: 'A75,A76',
-    type: 'couple'
-  },
-  {
-    chair: 'A77,A78',
-    type: 'couple'
-  },
-  {
-    chair: 'A79,A80',
-    type: 'couple'
-  },
-  {
-    chair: 'A81,A82',
-    type: 'couple'
-  },
-  {
-    chair: 'A83,A84',
-    type: 'couple'
-  },
-  {
-    chair: 'A85,A86',
-    type: 'couple'
-  },
-  {
-    chair: 'A87,A88',
-    type: 'couple'
-  },
-  {
-    chair: 'A89,A90',
-    type: 'couple'
-  },
-  {
-    chair: 'A91,A92',
-    type: 'couple'
-  },
-  {
-    chair: 'A93,A94',
-    type: 'couple'
-  },
-  {
-    chair: 'A95,A96',
-    type: 'couple'
-  },
-  {
-    chair: 'A97,A98',
-    type: 'couple'
-  },
-  {
-    chair: 'A99,A100',
     type: 'couple'
   }
 ]
@@ -858,6 +778,7 @@ const mockShowtimes = [
     day: new Date(),
     start: 8,
     end: 10,
+    price: 75,
     bookedChairs: ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10']
   },
   {
@@ -868,6 +789,7 @@ const mockShowtimes = [
     day: new Date(),
     start: 11,
     end: 13,
+    price: 100,
     bookedChairs: ['A11', 'A12', 'A13', 'A14', 'A15', 'A16', 'A17', 'A18', 'A19', 'A20']
   },
   {
@@ -878,6 +800,7 @@ const mockShowtimes = [
     day: new Date(),
     start: 14,
     end: 16,
+    price: 125,
     bookedChairs: ['A21', 'A22', 'A23', 'A24', 'A25', 'A26', 'A27', 'A28', 'A29', 'A30']
   },
   {
@@ -888,6 +811,7 @@ const mockShowtimes = [
     day: new Date(),
     start: 17,
     end: 19,
+    price: 150,
     bookedChairs: ['A31', 'A32', 'A33', 'A34', 'A35', 'A36', 'A37', 'A38', 'A39', 'A40']
   },
   {
@@ -898,6 +822,7 @@ const mockShowtimes = [
     day: new Date(),
     start: 20,
     end: 22,
+    price: 175,
     bookedChairs: ['A41', 'A42', 'A43', 'A44', 'A45', 'A46', 'A47', 'A48', 'A49', 'A50']
   }
 ]

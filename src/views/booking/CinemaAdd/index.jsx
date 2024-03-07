@@ -1,72 +1,91 @@
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { padStart } from 'utils/helper'
+
 import Button from 'components/Button'
-import Divider from 'components/Divider'
 import ListDate from './ListDate'
 import ListCity from './ListCity'
 import ListType from './ListType'
 
-import { setCinema, setHour } from 'stores/booking/slice'
+import { setShowtime } from 'stores/booking/slice'
 
-function CinemaAdd() {
+function CinemaAdd({ movie }) {
   const dispatch = useDispatch()
-  const { listCinema, listTime, type, hour, city, day } = useSelector((state) => state.booking)
-  const [filterCinemas, setFilterCinemas] = useState(listCinema)
+  const { cinemas, showtimes } = useSelector((state) => state.data)
+
+  const { filter, showtime } = useSelector((state) => state.booking)
+  const { city, type, date } = filter
+
+  const [listCinema, setListCinema] = useState([])
+  const [listShowtime, setListShowtime] = useState([])
 
   useEffect(() => {
-    // filter listCinema by type, city
-    if (type && city) {
-      const filter = listCinema.filter((cinema) => city?.cinemaIds?.includes(cinema.id) && cinema.typeId === type?.id)
-      setFilterCinemas(filter)
+    let listShowtime = []
+    // filter list showtime by movie, date
+    if (movie) {
+      listShowtime = showtimes.filter((item) => item.movieId === movie.id)
     }
-  }, [type, city, listCinema])
+    if (date) {
+      listShowtime = listShowtime.filter((item) => item.dateId === date.id)
+    }
 
-  const handleSetCinema = (cinema, hour) => {
-    dispatch(setCinema(cinema))
-    dispatch(setHour(hour))
-  }
+    setListShowtime(listShowtime)
+  }, [movie, showtimes, date])
+
+  useEffect(() => {
+    let filterCinema = []
+    // filter list cinema by list showtime
+    if (listShowtime.length) {
+      const listIdCinema = listShowtime.map((showtime) => showtime.cinemaId)
+      filterCinema = cinemas.filter((cinema) => listIdCinema.includes(cinema.id))
+    }
+    if (city) {
+      filterCinema = filterCinema.filter((cinema) => cinema.city === city.name)
+    }
+    if (type) {
+      filterCinema = filterCinema.filter((cinema) => cinema.type === type)
+    }
+
+    setListCinema(filterCinema)
+  }, [listShowtime, cinemas, city, type])
 
   return (
     <div>
       <div className="bg-rose-100 flex flex-col h-auto min-w-[1280px] p-4">
         {/* Date */}
         <ListDate />
-        <Divider />
 
         {/* City */}
-        <ListCity />
-        <Divider />
+        <ListCity listCinema={listCinema} />
 
         {/* Type */}
-        <ListType />
-        <Divider />
+        <ListType listCinema={listCinema} />
 
         {/* Cinema */}
-        {filterCinemas.map((itemCinema) => {
-          const filter = listTime.filter((time) => time.cinemaId === itemCinema.id && time.dateId === day?.id)
-          const showDate = filter ? filter[0] : null
+        {listCinema.length ? listCinema.map((itemCinema) => {
+          const filter = listShowtime.filter((time) => time.cinemaId === itemCinema.id)
           return (
             <div key={itemCinema.id} className='flex flex-col gap-y-2'>
               <h1 className="text-4xl">{itemCinema.name}</h1>
-              {type && <p>{type.name}</p>}
+              <p>{itemCinema.type}</p>
               <div className="flex gap-4">
-                {showDate && showDate?.time.map((item, index) => {
-                  const check = hour?.id === showDate.id && hour?.value === item
+                {filter.length ? filter.map((itemShowtime, index) => {
+                  const check = itemShowtime.id === showtime?.id
                   return (
                     <Button
                       key={index}
                       primary={check}
                       disabled={check}
-                      onClick={() => handleSetCinema(itemCinema, { id: showDate.id, value:item })}
+                      onClick={() => dispatch(setShowtime(itemShowtime))}
                     >
-                      {item}
+                      {`${padStart(itemShowtime.start)} ${itemShowtime.start < 12 ? 'AM' : 'PM'}`}
                     </Button>
-                  )})}
+                  )}) : <p className='text-left text-xl'>Không có suất chiếu</p>}
               </div>
             </div>
           )
-        })}
+        }): <p className='text-center text-xl'>Không có rạp chiếu</p>}
       </div>
     </div>
   )

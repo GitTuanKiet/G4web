@@ -1,15 +1,16 @@
-import { useDispatch, useSelector } from 'react-redux'
+
+import { useSelector, useDispatch } from 'react-redux'
 
 import { toast } from 'react-toastify'
 import { setChairs, setTotal } from 'stores/booking/slice'
 
-const CoupleChair = ({ chair, className }) => {
+const NormalChair = ({ chair, className }) => {
   const dispatch = useDispatch()
   const { showtime, chairs, total } = useSelector((state) => state.booking)
 
   const isChecked = chairs.includes(chair)
   const disabled = showtime?.bookedChairs.includes(chair)
-  const color = disabled ? 'bg-gray-500 opacity-60' : 'bg-red-500 opacity-100'
+  const color = disabled ? 'bg-gray-500 opacity-60' : 'bg-green-500 opacity-100'
   const price = showtime.price * 1.5
 
   const handleChecked = () => {
@@ -32,13 +33,15 @@ const CoupleChair = ({ chair, className }) => {
   return (
     <div className={className}>
       <button
-        className={`w-20 h-10 shadow-md rounded-xl text-sx ${color} ${isChecked && 'opacity-80'} transition-opacity duration-300`}
+        className={`w-10 h-10 shadow-md rounded-xl text-[10px] ${color} ${isChecked && 'opacity-80'} transition-opacity duration-300`}
         disabled={disabled}
-        onClick={handleChecked}
+        onClick={() => handleChecked()}
       >
         <span>{isChecked ? '✔' : chair}</span>
       </button>
     </div>
   )
 }
-export default CoupleChair
+
+export default NormalChair
+

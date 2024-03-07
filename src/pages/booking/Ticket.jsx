@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import BillTicket from 'views/booking/BillTicket'
@@ -9,18 +9,18 @@ import RoomMap from 'views/booking/RoomMap'
 import CinemaAdd from 'views/booking/CinemaAdd'
 import PaymentMethodCard from 'components/Bill/PaymentMethod'
 
-import { getBooking, setStep, clearState } from 'stores/booking/slice'
+import { setStep, clearState } from 'stores/booking/slice'
 import OrderApi from 'apis/orderApi'
 
 const BookTicket = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const { step, cinema, hour, day, type, chair, payment, total } = useSelector((state) => state.booking)
-  const [price, setPrice] = useState(0)
+  const { movies } = useSelector((state) => state.data)
+  const { slug } = useParams()
+  const movie = movies.find((item) => item.slug === slug)
 
-  useEffect(() => {
-    dispatch(getBooking())
-  }, [dispatch])
+  const { step, filter, showtime, chairs, payment, total, voucher, gift, combo } = useSelector((state) => state.booking)
+  const [price, setPrice] = useState(0)
 
   const handleStep = (step) => {
     let temp = step
@@ -36,15 +36,15 @@ const BookTicket = () => {
     // }
 
     if (step === 1) {
-      if (!cinema || !hour || !day || !type) {
-        toast.error('Vui lòng chọn rạp chiếu')
+      if (!showtime) {
+        toast.error('Vui lòng chọn suất chiếu')
         temp -= 1
       }
     }
 
 
     if (step === 2) {
-      if (chair.length === 0) {
+      if (chairs.length === 0) {
         toast.error('Vui lòng chọn ghế')
         temp -= 1
       }
@@ -68,13 +68,13 @@ const BookTicket = () => {
       dispatch(clearState())
       navigate(-1)
       return OrderApi.createOrder('paypal', {
-        cinema: cinema.name,
-        hour: hour.value,
-        day: day.value,
-        type: 'ticket',
-        chair: chair.map((item) => item.id),
+        showtimeId: showtime.id,
+        chairs,
+        ...(voucher && { voucherOrderId: voucher.orderId }),
+        ...(gift && { giftOrderId: gift.orderId }),
+        description: `Mua vé xem phim ${movie.name} ${filter.type}, suất chiếu ${showtime.start} ngày ${filter.date.value} tại ${filter.city} ${combo.length ? `với combo ${combo.join(', ')}` : ''}`,
         price: total,
-        name: cinema.name + '-' + type.name + '-' + day.value + '-' + hour.value,
+        name: movie.name,
         return_url: import.meta.env.VITE_RETURN_URL
       })
     }
@@ -83,7 +83,7 @@ const BookTicket = () => {
 
   return (
     <section className="flex w-full justify-center h-auto mx-auto py-8 gap-8">
-      {step === 0 && <CinemaAdd />}
+      {step === 0 && <CinemaAdd movie={movie} />}
       {step === 1 && <RoomMap price={price} setPrice={setPrice} />}
       {step === 2 && <ComboCard price={price} setPrice={setPrice} />}
       {step === 3 && <PaymentMethodCard />}

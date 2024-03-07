@@ -1,35 +1,58 @@
 
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
+import { useCallback, useState, useEffect } from 'react'
 
 import Button from 'components/Button'
+import Divider from 'components/Divider'
 
-import { setType } from 'stores/booking/slice'
+import { setFilter } from 'stores/booking/slice'
 
-const ListType = () => {
+const ListType = ({ listCinema }) => {
   const dispatch = useDispatch()
-  const { listType, type } = useSelector((state) => state.booking)
+  const { filter } = useSelector((state) => state.booking)
+
+  const [listType, setListType] = useState([])
+  const [selectedType, setSelectedType] = useState(filter?.type || null)
 
   useEffect(() => {
-    if (!type)
-      dispatch(setType(listType[0]))
-  }, [type, dispatch, listType])
+    let listType = []
+    if (listCinema.length) {
+      listType = listCinema.map((cinema) => cinema.type)
+    }
+    setListType([...new Set(listType)])
+  }, [listCinema])
+
+  const handleSetFilterType = useCallback((type) => {
+    if (selectedType) {
+      const checked = type === selectedType
+      if (checked) {
+        setSelectedType(null)
+        dispatch(setFilter({ type: null }))
+        return
+      }
+    }
+    dispatch(setFilter({ type }))
+    setSelectedType(type)
+  }, [dispatch, selectedType])
 
   return (
-    <div className="flex gap-x-2">
-      {listType.map((item) => {
-        const check = item.id === type?.id
-        return (
-          <Button
-            key={item.id}
-            primary={check}
-            disabled={check}
-            onClick={() => dispatch(setType(item))}
-          >
-            {item.name}
-          </Button>
-        )})}
-    </div>
+    listType.length ?
+      <>
+        <div className="flex gap-x-2">
+          {listType.map((item, index) => {
+            const check = item === selectedType
+            return (
+              <Button
+                key={index}
+                primary={check}
+                onClick={() => handleSetFilterType(item)}
+              >
+                {item}
+              </Button>
+            )})}
+        </div>
+        <Divider />
+      </> : null
   )
 }
 

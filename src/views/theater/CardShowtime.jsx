@@ -4,10 +4,10 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import Button from 'components/Button'
 import Divider from 'components/Divider'
+import { padStart } from 'utils/helper'
 
 import { setStep, setShowtime } from 'stores/booking/slice'
 
-const padStart = (num) => String(num).padStart(2, '0') + ':00'
 
 const CardShowtime = ({ movie, cinema, date }) => {
   const dispatch = useDispatch()

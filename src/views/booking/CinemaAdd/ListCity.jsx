@@ -1,36 +1,60 @@
-import { useEffect } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import Button from 'components/Button'
+import Divider from 'components/Divider'
 
-import { setCity } from 'stores/booking/slice'
+import { setFilter } from 'stores/booking/slice'
 
-const ListCity = () => {
+const ListCity = ({ listCinema }) => {
   const dispatch = useDispatch()
-  const user = useSelector((state) => state.user)
-  const { listCity, city } = useSelector((state) => state.booking)
-  const findCity = listCity.find((city) => city?.name == user?.city)
+  const { cities } = useSelector((state) => state.data)
+  const { filter } = useSelector((state) => state.booking)
+
+  const [listCity, setListCity] = useState(cities)
+  const [selectedCity, setSelectedCity] = useState(filter?.city || null)
 
   useEffect(() => {
-    if (!city)
-      dispatch(setCity(findCity || listCity[0]))
-  }, [city, dispatch, listCity, findCity])
+    let listCity = []
+    if (listCinema.length) {
+      const listNameCity = listCinema.map((cinema) => cinema.city)
+      listCity = cities.filter((city) => listNameCity.includes(city.name))
+    }
+    setListCity([...new Set(listCity)])
+  }, [listCinema, cities])
+
+  const handleSetFilterCity = useCallback((city) => {
+    if (selectedCity) {
+      const checked = city.id === selectedCity.id
+      if (checked) {
+        setSelectedCity(null)
+        dispatch(setFilter({ city: null }))
+        return
+      }
+    }
+    setSelectedCity(city)
+    dispatch(setFilter({ city }))
+  }, [dispatch, selectedCity])
 
   return (
-    <div className="grid grid-cols-6 gap-2">
-      {listCity.map((item) => {
-        const check = item.id === city?.id
-        return (
-          <Button
-            key={item.id}
-            primary={check}
-            disabled={check}
-            onClick={() => dispatch(setCity(item))}
-          >
-            {item.name}
-          </Button>
-        )})}
-    </div>
+    listCity.length ?
+      <>
+        <div className="grid grid-cols-6 gap-2">
+          {listCity.map((item) => {
+            const check = item.id === selectedCity?.id
+            return (
+              <Button
+                key={item.id}
+                primary={check}
+                onClick={() => handleSetFilterCity(item)}
+              >
+                {item.name}
+              </Button>
+            )
+          })}
+        </div>
+        <Divider />
+      </> : null
   )
 }
 
