@@ -9,6 +9,7 @@ const BookTicket = Loadable(lazy(() => import('pages/booking/Ticket')))
 const BookVoucher = Loadable(lazy(() => import('pages/booking/Voucher')))
 const BookGift = Loadable(lazy(() => import('pages/booking/Gift')))
 const Ticket = Loadable(lazy(() => import('pages/Ticket')))
+const Congratulation = Loadable(lazy(() => import('pages/Congratulation')))
 
 const PaymentRoutes = {
   path: '/',
@@ -33,7 +34,11 @@ const PaymentRoutes = {
     {
       path: 'ticket/return',
       element: <Ticket />
-    }
+    },
+    {
+      path: 'payments/succeeded',
+      element: <Congratulation />
+    },
   ]
 }
 
