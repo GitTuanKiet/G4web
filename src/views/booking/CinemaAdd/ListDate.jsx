@@ -16,14 +16,14 @@ const ListDate = () => {
 
   const handleSetFilterDate = useCallback((date) => {
     dispatch(setFilter({ date }))
-    selectedDate.id !== date.id && setSelectedDate(date)
+    selectedDate._id !== date._id && setSelectedDate(date)
   }, [dispatch, selectedDate])
 
   return (
     <>
       <div className="grid grid-cols-10 gap-y-3">
         {dates.map((item, index) => {
-          const check = item.id === selectedDate.id
+          const check = item._id === selectedDate._id
           return (
             <Button
               key={index}

@@ -7,23 +7,23 @@ import { fakeGifts } from 'apis/mockData'
 
 const price = [
   {
-    id: 1,
+    _id: 1,
     price: 100
   },
   {
-    id: 2,
+    _id: 2,
     price: 200
   },
   {
-    id: 3,
+    _id: 3,
     price: 300
   },
   {
-    id: 4,
+    _id: 4,
     price: 500
   },
   {
-    id: 5,
+    _id: 5,
     price: 1000
   }
 ]
@@ -121,7 +121,7 @@ const GiftDetail = () => {
                 Tổng tiền : <p className='text-red-500'>$ {selectedPrice}</p>
               </h1>
               <div className='flex gap-2 ml-auto'>
-                <Link to={`/booking-gift/${gift.id}/${giftItem.slug}`}>
+                <Link to={`/booking-gift/${gift._id}/${giftItem.slug}`}>
                   <button
                     className='border p-2 bg-red-500  text-white font-bold rounded-xl'
                     onClick={() => dispatch(setTotal(selectedPrice))}

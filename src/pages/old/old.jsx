@@ -8,7 +8,7 @@ function TransactionHistory() {
       id_place_order: 'asdfgasfasddfs',
       status: 'hoàn tất',
       movie: {
-        id: 1,
+        _id: 1,
         title: 'Star Wars: Episode I - A New Hope',
         slug: 'Star-Wars-Episode-I-A-New-Hope',
         src: 'https://images2.thanhnien.vn/528068263637045248/2023/12/20/4-17030463783122084922355.jpg',
@@ -17,7 +17,7 @@ function TransactionHistory() {
         end_date: new Date()
       },
       cinema: {
-        id: 1,
+        _id: 1,
         name: 'CGV Phạm Ngọc Thạch',
         room: 'Room 2, tầng 5'
       },
@@ -27,7 +27,7 @@ function TransactionHistory() {
       id_place_order: 'xcvnhxcvxc',
       status: 'hoàn tất',
       movie: {
-        id: 1,
+        _id: 1,
         title: 'Star Wars: Episode I - A New Hope',
         slug: 'Star-Wars-Episode-I-A-New-Hope',
         src: 'https://images2.thanhnien.vn/528068263637045248/2023/12/20/4-17030463783122084922355.jpg',
@@ -36,7 +36,7 @@ function TransactionHistory() {
         end_date: new Date()
       },
       cinema: {
-        id: 1,
+        _id: 1,
         name: 'CGV Phạm Ngọc Thạch',
         room: 'Room 2, tầng 5'
       },
@@ -93,7 +93,7 @@ function TransactionHistory() {
                         <p>{film.cinema.name}</p>
                         <p>{film.cinema.room}</p>
                         <p className="font-bold mb-4">{film.price}</p>
-                        <Button primary to={`/show-booked-tiket/${film.id}`}>
+                        <Button primary to={`/show-booked-tiket/${film._id}`}>
                           Xem
                         </Button>
                       </div>

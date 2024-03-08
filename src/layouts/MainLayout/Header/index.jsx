@@ -30,26 +30,26 @@ export default function Header() {
 
   const subMenu = [
     {
-      id: 'news-offer',
+      _id: 'news-offer',
       title: 'Tin mới & Ưu đãi',
       icon: <FaRegNewspaper />,
       to: '/news-offer'
     },
     {
-      id: 'ticket',
+      _id: 'ticket',
       title: 'Vé của tôi',
       icon: <IoTicketOutline />,
       to: '/ticket'
     },
     !user
       ? {
-        id: 'auth',
+        _id: 'auth',
         title: 'Đăng nhập / Đăng ký',
         icon: <CiUser />,
         to: '/auth'
       }
       : {
-        id: 'profile',
+        _id: 'profile',
         title: 'Hello, ' + user.name,
         icon: <CiUser />,
         to: '/profile/common-info'
@@ -66,7 +66,7 @@ export default function Header() {
         <Breadcrumb items={[{ text: '1' }, { text: '2' }]} />
         <div className="flex gap-4">
           {subMenu.map((item) => (
-            <LinkItem key={item.id} to={item.to} text={item.title} icon={item.icon} />
+            <LinkItem key={item._id} to={item.to} text={item.title} icon={item.icon} />
           ))}
           {/* {user && <p>hello, {user.name}</p>} */}
         </div>

@@ -13,7 +13,7 @@ const CardShowtime = ({ movie, cinema, date }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { showtimes } = useSelector((state) => state.data)
-  const filters = showtimes.filter((item) => item.movieId === movie.id && item.cinemaId === cinema.id && item.dateId === date.id)
+  const filters = showtimes.filter((item) => item.movieId === movie._id && item.cinemaId === cinema._id && item.dateId === date._id)
   const [selectedTime, setSelectedTime] = useState(null)
 
   const handleBookingTicket = () => {
@@ -40,7 +40,7 @@ const CardShowtime = ({ movie, cinema, date }) => {
               <h3 className="text-3xl font-medium">{cinema.type}</h3>
               <div className="flex gap-x-4">
                 {filters.map((item) => (
-                  <Button key={item.id} primary={item === selectedTime} onClick={() => setSelectedTime(item)} className="h-12">
+                  <Button key={item._id} primary={item === selectedTime} onClick={() => setSelectedTime(item)} className="h-12">
                     {`${padStart(item.start)} ${item.start < 12 ? 'AM' : 'PM'}`}
                   </Button>
                 ))}

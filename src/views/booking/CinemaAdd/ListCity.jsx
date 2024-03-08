@@ -25,7 +25,7 @@ const ListCity = ({ listCinema }) => {
 
   const handleSetFilterCity = useCallback((city) => {
     if (selectedCity) {
-      const checked = city.id === selectedCity.id
+      const checked = city._id === selectedCity._id
       if (checked) {
         setSelectedCity(null)
         dispatch(setFilter({ city: null }))
@@ -41,10 +41,10 @@ const ListCity = ({ listCinema }) => {
       <>
         <div className="grid grid-cols-6 gap-2">
           {listCity.map((item) => {
-            const check = item.id === selectedCity?.id
+            const check = item._id === selectedCity?._id
             return (
               <Button
-                key={item.id}
+                key={item._id}
                 primary={check}
                 onClick={() => handleSetFilterCity(item)}
               >

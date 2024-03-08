@@ -3,43 +3,43 @@ import Poster from 'views/newsoffer/Poster'
 
 const data = [
   {
-    id: 1,
+    _id: 1,
     poster: 'https://www.cgv.vn/media/wysiwyg/2024/012024/240x201.png',
     title: 'Lat Mat 48h',
     time: 'Từ 01.04.2021 - 30.04.2021'
   },
   {
-    id: 2,
+    _id: 2,
     poster: 'https://www.cgv.vn/media/wysiwyg/2024/012024/240x201.png',
     title: 'Gia Dinh Croods 2',
     time: 'Từ 01.04.2021 - 30.04.2021'
   },
   {
-    id: 3,
+    _id: 3,
     poster: 'https://www.cgv.vn/media/wysiwyg/2024/012024/240x201.png',
     title: 'Trang Ti',
     time: 'Từ 01.04.2021 - 30.04.2021'
   },
   {
-    id: 4,
+    _id: 4,
     poster: 'https://www.cgv.vn/media/wysiwyg/2024/012024/240x201.png',
     title: 'Lat Mat 48h',
     time: 'Từ 01.04.2021 - 30.04.2021'
   },
   {
-    id: 5,
+    _id: 5,
     poster: 'https://www.cgv.vn/media/wysiwyg/2024/012024/240x201.png',
     title: 'Gia Dinh Croods 2',
     time: 'Từ 01.04.2021 - 30.04.2021'
   },
   {
-    id: 6,
+    _id: 6,
     poster: 'https://www.cgv.vn/media/wysiwyg/2024/012024/240x201.png',
     title: 'Trang Ti',
     time: 'Từ 01.04.2021 - 30.04.2021'
   },
   {
-    id: 7,
+    _id: 7,
     poster: 'https://www.cgv.vn/media/wysiwyg/2024/012024/240x201.png',
     title: 'Lat Mat 48h',
     time: 'Từ 01.04.2021 - 30.04.2021'

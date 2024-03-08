@@ -10,11 +10,11 @@ const fake = {
 }
 
 const fakeData = [
-  { ...fake, name: 'Combo bỏng mắt', id: 1 },
-  { ...fake, name: 'Combo bỏng + nước', id: 2 },
-  { ...fake, name: 'Combo bỏng + nước + thịt', id: 3 },
-  { ...fake, name: 'Combo bỏng + nước + thịt + rau', id: 4 },
-  { ...fake, name: 'Combo bỏng + nước + thịt + rau + cơm', id: 5 }
+  { ...fake, name: 'Combo bỏng mắt', _id: 1 },
+  { ...fake, name: 'Combo bỏng + nước', _id: 2 },
+  { ...fake, name: 'Combo bỏng + nước + thịt', _id: 3 },
+  { ...fake, name: 'Combo bỏng + nước + thịt + rau', _id: 4 },
+  { ...fake, name: 'Combo bỏng + nước + thịt + rau + cơm', _id: 5 }
 ]
 
 const Combo = () => {
@@ -23,10 +23,10 @@ const Combo = () => {
 
   const handleSetPrice = (type, item) => {
     // check if item already in combo
-    const isExist = combo.find((i) => i.id === item.id)
+    const isExist = combo.find((i) => i._id === item._id)
     if (type === '+') {
       if (isExist) {
-        dispatch(setCombo(combo.map((i) => i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i)))
+        dispatch(setCombo(combo.map((i) => i._id === item._id ? { ...i, quantity: i.quantity + 1 } : i)))
         dispatch(setTotal(total + Number(item.price)))
         return
       }
@@ -37,12 +37,12 @@ const Combo = () => {
 
     if (type === '-') {
       if (isExist.quantity === 1) {
-        dispatch(setCombo(combo.filter((i) => i.id !== item.id)))
+        dispatch(setCombo(combo.filter((i) => i._id !== item._id)))
         dispatch(setTotal(total - Number(item.price)))
         return
       }
 
-      dispatch(setCombo(combo.map((i) => i.id === item.id ? { ...i, quantity: i.quantity - 1 } : i)))
+      dispatch(setCombo(combo.map((i) => i._id === item._id ? { ...i, quantity: i.quantity - 1 } : i)))
       dispatch(setTotal(total - Number(item.price)))
     }
   }
@@ -51,7 +51,7 @@ const Combo = () => {
     <div>
       <div className="bg-rose-100 flex flex-col h-auto w-[800px] gap-4 p-4">
         {fakeData.map((item) => (
-          <ComboCard key={item.id} id={item.id} {...item} handleSetPrice={handleSetPrice} />
+          <ComboCard key={item._id} _id={item._id} {...item} handleSetPrice={handleSetPrice} />
         ))}
       </div>
     </div>

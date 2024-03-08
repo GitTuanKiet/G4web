@@ -18,9 +18,8 @@ import { fakeGifts } from 'apis/mockData'
 const BillGift = ({ handleStep }) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { id, slug } = useParams()
-  const { title, img_url } = fakeGifts.find((item) => item.id === Number(id))?.img.find((item) => item.slug === slug) || {}
-  console.log('🚀 ~ BillGift ~ img_url:', img_url)
+  const { _id, slug } = useParams()
+  const { title, img_url } = fakeGifts.find((item) => item._id === Number(_id))?.img.find((item) => item.slug === slug) || {}
 
   const { payment, total } = useSelector((state) => state.booking)
 

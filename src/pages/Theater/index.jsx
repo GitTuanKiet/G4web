@@ -48,7 +48,7 @@ const List = ({ data, selected, setSelected }) => {
     <div className="w-full h-auto">
       <div className="grid grid-cols-4 gap-2">
         {data ? data.map((item) => (
-          <Button noborder key={item.id} primary={item === selected} onClick={() => setSelected(item)}>{item.name}</Button>
+          <Button noborder key={item._id} primary={item === selected} onClick={() => setSelected(item)}>{item.name}</Button>
         )): <div>Không có dữ liệu</div>}
       </div>
     </div>

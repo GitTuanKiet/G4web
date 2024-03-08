@@ -64,10 +64,10 @@ const Content = ({ cinema }) => {
               className="calenderSwiper"
             >
               {dates.map((item) => {
-                const check = item.id === selectedDate?.id
+                const check = item._id === selectedDate?._id
                 return (
                   <SwiperSlide
-                    key={item.id}
+                    key={item._id}
                   >
                     <Button
                       onClick={() => setSelectedDate(item)}
@@ -91,7 +91,7 @@ const Content = ({ cinema }) => {
           {/* filter showtime */}
           <div className="w-full h-auto">
             {movies.map((movie) => (
-              <CardShowtime key={movie.id} movie={movie} cinema={cinema} date={selectedDate} />
+              <CardShowtime key={movie._id} movie={movie} cinema={cinema} date={selectedDate} />
             ))}
           </div>
         </>: <div className="text-center text-3xl text-primary">Giá vé</div>}

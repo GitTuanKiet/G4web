@@ -16,7 +16,7 @@ const BillTicket = ({ handleStep }) => {
   const { voucher, showtime, total } = useSelector((state) => state.booking)
 
   const movie = movies.find((item) => item.slug === slug)
-  const cinema = cinemas.find((item) => item.id === showtime?.cinemaId)
+  const cinema = cinemas.find((item) => item._id === showtime?.cinemaId)
 
   const { poster, title } = movie || { poster: '', title: '' }
   const { discount } = voucher || { discount: 0 }

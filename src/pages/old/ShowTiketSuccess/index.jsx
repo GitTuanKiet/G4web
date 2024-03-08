@@ -13,7 +13,7 @@ export default function ShowTicketSuccess() {
     start_date: new Date(),
     end_date: new Date(),
     cinema: {
-      id: 1,
+      _id: 1,
       name: 'CGV Phạm Ngọc Thạch',
       room: 'Room 2, tầng 5'
     },
@@ -25,7 +25,7 @@ export default function ShowTicketSuccess() {
 
   return (
     <div className="mt-10">
-      <h1 className="uppercase bg-[#222222] text-white py-3 text-center ">Mã đặt vé # {movie.id} - Hoàn tất</h1>
+      <h1 className="uppercase bg-[#222222] text-white py-3 text-center ">Mã đặt vé # {movie._id} - Hoàn tất</h1>
       <img
         src="https://vietluat.vn/wp-content/uploads/2019/10/cap-ma-vach-ma-so-800x283.png"
         alt=""

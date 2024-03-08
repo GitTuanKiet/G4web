@@ -11,7 +11,7 @@ function MovieList() {
         <Swiper grabCursor={true} spaceBetween={40} slidesPerView={'auto'}>
           {movies.map((movie) => {
             return (
-              <SwiperSlide key={movie.id}>
+              <SwiperSlide key={movie._id}>
                 <MovieItem movie={movie} />
               </SwiperSlide>
             )

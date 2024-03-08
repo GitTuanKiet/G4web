@@ -6,7 +6,7 @@ function Sidebar({ sidebarLinks }) {
   return (
     <div>
       <aside
-        id="default-sidebar"
+        _id="default-sidebar"
         className=" top-0 left-0 z-40 w-[250px]   mt-10 rounded-xl transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar"
       >

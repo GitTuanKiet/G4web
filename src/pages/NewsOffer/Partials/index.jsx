@@ -49,38 +49,38 @@ const fake = {
 
 const data = [
   {
-    id: 1,
+    _id: 1,
     ...fake
   },
   {
-    id: 2,
+    _id: 2,
     ...fake
   },
   {
-    id: 3,
+    _id: 3,
     ...fake
   },
   {
-    id: 4,
+    _id: 4,
     ...fake
   },
   {
-    id: 5,
+    _id: 5,
     ...fake
   },
   {
-    id: 6,
+    _id: 6,
     ...fake
   },
   {
-    id: 7,
+    _id: 7,
     ...fake
   }
 ]
 
 const NewsOffer = () => {
-  const { id } = useParams()
-  const newData = data.find(item => item.id === parseInt(id))
+  const { _id } = useParams()
+  const newData = data.find(item => item._id === parseInt(_id))
   const { title, img, content } = newData
 
   return (

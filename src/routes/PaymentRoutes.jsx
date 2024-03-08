@@ -24,7 +24,7 @@ const PaymentRoutes = {
       element: <BookVoucher />
     },
     {
-      path: 'booking-gift/:id/:slug',
+      path: 'booking-gift/:_id/:slug',
       element: <BookGift/>
     },
     {

@@ -6,31 +6,31 @@ const formatDateTime = (date) => {
 
 export const slides = [
   {
-    id: 1,
+    _id: 1,
     src: 'https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/9/8/980x448_272.jpg',
     alt: 'Slide 1',
     link: 'https://www.cgv.vn/default/newsoffer/cgv-giftcard-tet24/'
   },
   {
-    id: 2,
+    _id: 2,
     src: 'https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/r/o/rolling_banner_22.jpg',
     alt: 'Slide 2',
     link: 'https://www.cgv.vn/default/afag.html'
   },
   {
-    id: 3,
+    _id: 3,
     src: 'https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/d/h/dhd_rolling_banner.jpg',
     alt: 'Slide 3',
     link: 'https://www.cgv.vn/default/newsoffer/cgv-giftcard-tet2024/'
   },
   {
-    id: 4,
+    _id: 4,
     src: 'https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/i/m/imgpsh_fullsize_anim_2.png',
     alt: 'Slide 4',
     link: 'https://www.cgv.vn/default/newsoffer/cgv-dragon-combo/'
   },
   {
-    id: 5,
+    _id: 5,
     src: 'https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/9/8/980x448_269.jpg',
     alt: 'Slide 5',
     link: 'https://www.cgv.vn/default/newsoffer/cgv-nhan-lich/'
@@ -49,35 +49,35 @@ const fake = {
 
 export const fakeList = [
   {
-    id: 1,
+    _id: 1,
     ...fake
   },
   {
-    id: 2,
+    _id: 2,
     ...fake
   },
   {
-    id: 3,
+    _id: 3,
     ...fake
   },
   {
-    id: 4,
+    _id: 4,
     ...fake
   },
   {
-    id: 5,
+    _id: 5,
     ...fake
   },
   {
-    id: 6,
+    _id: 6,
     ...fake
   },
   {
-    id: 7,
+    _id: 7,
     ...fake
   },
   {
-    id: 8,
+    _id: 8,
     ...fake
   }
 ]
@@ -95,7 +95,7 @@ export const fakeArray = [
 
 export const fakeGifts = [
   {
-    id: 1,
+    _id: 1,
     url: 'https://www.cgv.vn/media/cinemas/cms//1/_/1_cgv_tet.png',
     title: 'year of the dragon',
     slug: 'year-of-the-dragon',
@@ -118,7 +118,7 @@ export const fakeGifts = [
     ]
   },
   {
-    id: 2,
+    _id: 2,
     url: 'https://www.cgv.vn/media/cinemas/cms//t/h/thank_you_3-1.jpg',
     title: 'thank you',
     slug: 'thank-you',
@@ -136,7 +136,7 @@ export const fakeGifts = [
     ]
   },
   {
-    id: 3,
+    _id: 3,
     url: 'https://www.cgv.vn/media/cinemas/cms//b/i/birthday_2-1.jpg',
     title: 'birthday',
     slug: 'birthday',
@@ -154,7 +154,7 @@ export const fakeGifts = [
     ]
   },
   {
-    id: 4,
+    _id: 4,
     url: 'https://www.cgv.vn/media/cinemas/cms//a/u/autumn_2.jpg',
     title: 'FALL-ING FOR YOU',
     slug: 'fall-ing-for-you',
@@ -172,7 +172,7 @@ export const fakeGifts = [
     ]
   },
   {
-    id: 5,
+    _id: 5,
     url: 'https://www.cgv.vn/media/cinemas/cms//c/i/cine_5-1.jpg',
     title: 'CINE',
     slug: 'cine',
@@ -198,23 +198,23 @@ export const fakeGifts = [
 
 const mockCities = [
   {
-    id: 1,
+    _id: 1,
     name: 'Hồ Chí Minh'
   },
   {
-    id: 2,
+    _id: 2,
     name: 'Hà Nội'
   },
   {
-    id: 3,
+    _id: 3,
     name: 'Đà Nẵng'
   },
   {
-    id: 4,
+    _id: 4,
     name: 'Hải Phòng'
   },
   {
-    id: 5,
+    _id: 5,
     name: 'Cần Thơ'
   }
 ]
@@ -444,210 +444,210 @@ const fakeRoomMap = [
 
 const mockCinemas = [
   {
-    id: 1,
+    _id: 1,
     name: 'CGV Vincom Đồng Khởi',
     city: 'Hồ Chí Minh',
     type: '2D',
     roomMap: fakeRoomMap
   },
   {
-    id: 2,
+    _id: 2,
     name: 'CGV Vincom Thảo Điền',
     city: 'Hồ Chí Minh',
     type: '3D',
     roomMap: fakeRoomMap
   },
   {
-    id: 3,
+    _id: 3,
     name: 'CGV Vincom Lê Văn Việt',
     city: 'Hồ Chí Minh',
     type: '4D',
     roomMap: fakeRoomMap
   },
   {
-    id: 4,
+    _id: 4,
     name: 'CGV Vincom Quang Trung',
     city: 'Hồ Chí Minh',
     type: '2D',
     roomMap: fakeRoomMap
   },
   {
-    id: 5,
+    _id: 5,
     name: 'CGV Vincom Gò Vấp',
     city: 'Hồ Chí Minh',
     type: '3D',
     roomMap: fakeRoomMap
   },
   {
-    id: 6,
+    _id: 6,
     name: 'CGV Vincom Thủ Đức',
     city: 'Hồ Chí Minh',
     type: '4D',
     roomMap: fakeRoomMap
   },
   {
-    id: 7,
+    _id: 7,
     name: 'CGV Vincom Biên Hòa',
     city: 'Đồng Nai',
     type: '2D',
     roomMap: fakeRoomMap
   },
   {
-    id: 8,
+    _id: 8,
     name: 'CGV Vincom Bà Rịa',
     city: 'Bà Rịa - Vũng Tàu',
     type: '3D',
     roomMap: fakeRoomMap
   },
   {
-    id: 9,
+    _id: 9,
     name: 'CGV Vincom Cần Thơ',
     city: 'Cần Thơ',
     type: '4D',
     roomMap: fakeRoomMap
   },
   {
-    id: 10,
+    _id: 10,
     name: 'CGV Vincom Hà Nội',
     city: 'Hà Nội',
     type: '2D',
     roomMap: fakeRoomMap
   },
   {
-    id: 11,
+    _id: 11,
     name: 'CGV Vincom Long Biên',
     city: 'Hà Nội',
     type: '3D',
     roomMap: fakeRoomMap
   },
   {
-    id: 12,
+    _id: 12,
     name: 'CGV Vincom Royal City',
     city: 'Hà Nội',
     type: '4D',
     roomMap: fakeRoomMap
   },
   {
-    id: 13,
+    _id: 13,
     name: 'CGV Vincom Nguyễn Chí Thanh',
     city: 'Hà Nội',
     type: '2D',
     roomMap: fakeRoomMap
   },
   {
-    id: 14,
+    _id: 14,
     name: 'CGV Vincom Thanh Xuân',
     city: 'Hà Nội',
     type: '3D',
     roomMap: fakeRoomMap
   },
   {
-    id: 15,
+    _id: 15,
     name: 'CGV Vincom Hải Phòng',
     city: 'Hải Phòng',
     type: '4D',
     roomMap: fakeRoomMap
   },
   {
-    id: 16,
+    _id: 16,
     name: 'CGV Vincom Đà Nẵng',
     city: 'Đà Nẵng',
     type: '2D',
     roomMap: fakeRoomMap
   },
   {
-    id: 17,
+    _id: 17,
     name: 'CGV Vincom Nha Trang',
     city: 'Khánh Hòa',
     type: '3D',
     roomMap: fakeRoomMap
   },
   {
-    id: 18,
+    _id: 18,
     name: 'CGV Vincom Huế',
     city: 'Thừa Thiên Huế',
     type: '4D',
     roomMap: fakeRoomMap
   },
   {
-    id: 19,
+    _id: 19,
     name: 'CGV Vincom Vinh',
     city: 'Nghệ An',
     type: '2D',
     roomMap: fakeRoomMap
   },
   {
-    id: 20,
+    _id: 20,
     name: 'CGV Vincom Đà Lạt',
     city: 'Lâm Đồng',
     type: '3D',
     roomMap: fakeRoomMap
   },
   {
-    id: 21,
+    _id: 21,
     name: 'CGV Vincom Bình Dương',
     city: 'Bình Dương',
     type: '3D',
     roomMap: fakeRoomMap
   },
   {
-    id: 22,
+    _id: 22,
     name: 'CGV Vincom Vũng Tàu',
     city: 'Bà Rịa - Vũng Tàu',
     type: '3D',
     roomMap: fakeRoomMap
   },
   {
-    id: 23,
+    _id: 23,
     name: 'CGV Vincom Cần Thơ',
     city: 'Cần Thơ',
     type: '3D',
     roomMap: fakeRoomMap
   },
   {
-    id: 24,
+    _id: 24,
     name: 'CGV Vincom Hà Nội',
     city: 'Hà Nội',
     type: '3D',
     roomMap: fakeRoomMap
   },
   {
-    id: 25,
+    _id: 25,
     name: 'CGV Vincom Hải Phòng',
     city: 'Hải Phòng',
     type: '3D',
     roomMap: fakeRoomMap
   },
   {
-    id: 26,
+    _id: 26,
     name: 'CGV Vincom Đà Nẵng',
     city: 'Đà Nẵng',
     type: '3D',
     roomMap: fakeRoomMap
   },
   {
-    id: 27,
+    _id: 27,
     name: 'CGV Vincom Nha Trang',
     city: 'Khánh Hòa',
     type: '3D',
     roomMap: fakeRoomMap
   },
   {
-    id: 28,
+    _id: 28,
     name: 'CGV Vincom Huế',
     city: 'Thừa Thiên Huế',
     type: '3D',
     roomMap: fakeRoomMap
   },
   {
-    id: 29,
+    _id: 29,
     name: 'CGV Vincom Vinh',
     city: 'Nghệ An',
     type: '3D',
     roomMap: fakeRoomMap
   },
   {
-    id: 30,
+    _id: 30,
     name: 'CGV Vincom Đà Lạt',
     city: 'Lâm Đồng',
     type: '3D',
@@ -668,7 +668,7 @@ const fakeMovie = {
 
 const mockMovies = [
   {
-    id: 1,
+    _id: 1,
     title: 'Movie 1',
     slug: 'movie-1',
     description: 'Movie 1 description',
@@ -678,7 +678,7 @@ const mockMovies = [
     ...fakeMovie
   },
   {
-    id: 2,
+    _id: 2,
     title: 'Movie 2',
     slug: 'movie-2',
     description: 'Movie 2 description',
@@ -688,7 +688,7 @@ const mockMovies = [
     ...fakeMovie
   },
   {
-    id: 3,
+    _id: 3,
     title: 'Movie 3',
     slug: 'movie-3',
     description: 'Movie 3 description',
@@ -698,7 +698,7 @@ const mockMovies = [
     ...fakeMovie
   },
   {
-    id: 4,
+    _id: 4,
     title: 'Movie 4',
     slug: 'movie-4',
     description: 'Movie 4 description',
@@ -708,7 +708,7 @@ const mockMovies = [
     ...fakeMovie
   },
   {
-    id: 5,
+    _id: 5,
     title: 'Movie 5',
     slug: 'movie-5',
     description: 'Movie 5 description',
@@ -718,7 +718,7 @@ const mockMovies = [
     ...fakeMovie
   },
   {
-    id: 6,
+    _id: 6,
     title: 'Movie 6',
     slug: 'movie-6',
     description: 'Movie 6 description',
@@ -728,7 +728,7 @@ const mockMovies = [
     ...fakeMovie
   },
   {
-    id: 7,
+    _id: 7,
     title: 'Movie 7',
     slug: 'movie-7',
     description: 'Movie 7 description',
@@ -738,7 +738,7 @@ const mockMovies = [
     ...fakeMovie
   },
   {
-    id: 8,
+    _id: 8,
     title: 'Movie 8',
     slug: 'movie-8',
     description: 'Movie 8 description',
@@ -748,7 +748,7 @@ const mockMovies = [
     ...fakeMovie
   },
   {
-    id: 9,
+    _id: 9,
     title: 'Movie 9',
     slug: 'movie-9',
     description: 'Movie 9 description',
@@ -758,7 +758,7 @@ const mockMovies = [
     ...fakeMovie
   },
   {
-    id: 10,
+    _id: 10,
     title: 'Movie 10',
     slug: 'movie-10',
     description: 'Movie 10 description',
@@ -771,7 +771,7 @@ const mockMovies = [
 
 const mockShowtimes = [
   {
-    id: 1,
+    _id: 1,
     cinemaId: 1,
     movieId: 1,
     dateId: 0,
@@ -782,7 +782,7 @@ const mockShowtimes = [
     bookedChairs: ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10']
   },
   {
-    id: 2,
+    _id: 2,
     cinemaId: 1,
     movieId: 1,
     dateId: 0,
@@ -793,7 +793,7 @@ const mockShowtimes = [
     bookedChairs: ['A11', 'A12', 'A13', 'A14', 'A15', 'A16', 'A17', 'A18', 'A19', 'A20']
   },
   {
-    id: 3,
+    _id: 3,
     cinemaId: 1,
     movieId: 1,
     dateId: 0,
@@ -804,7 +804,7 @@ const mockShowtimes = [
     bookedChairs: ['A21', 'A22', 'A23', 'A24', 'A25', 'A26', 'A27', 'A28', 'A29', 'A30']
   },
   {
-    id: 4,
+    _id: 4,
     cinemaId: 1,
     movieId: 1,
     dateId: 0,
@@ -815,7 +815,7 @@ const mockShowtimes = [
     bookedChairs: ['A31', 'A32', 'A33', 'A34', 'A35', 'A36', 'A37', 'A38', 'A39', 'A40']
   },
   {
-    id: 5,
+    _id: 5,
     cinemaId: 1,
     movieId: 1,
     dateId: 0,
@@ -831,12 +831,12 @@ const currentDate = new Date()
 
 const dates = []
 
-dates.push({ id: 0, value: currentDate })
+dates.push({ _id: 0, value: currentDate })
 
 // Thêm 29 ngày tiếp theo vào mảng
 for (let i = 1; i < 30; i++) {
   const nextDate = addDays(currentDate, i)
-  dates.push({ id: i, value: nextDate })
+  dates.push({ _id: i, value: nextDate })
 }
 
 export { mockCities, mockCinemas, mockMovies, mockShowtimes, dates }
