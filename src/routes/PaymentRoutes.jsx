@@ -32,13 +32,9 @@ const PaymentRoutes = {
       element: <Ticket />
     },
     {
-      path: 'ticket/return',
-      element: <Ticket />
-    },
-    {
       path: 'payments/succeeded',
       element: <Congratulation />
-    },
+    }
   ]
 }
 

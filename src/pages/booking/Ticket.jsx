@@ -75,6 +75,7 @@ const BookTicket = () => {
         description: `Mua vé xem phim ${movie.title} , suất chiếu ${padStart(showtime.start)} ngày ${format(showtime.day, 'dd/MM/yyyy')}`,
         price: total*1.1,
         name: movie.title + movie.ageRestriction,
+        type:'ticket',
         return_url: import.meta.env.VITE_RETURN_URL
       }
       return OrderApi.createOrder(payment, data)
