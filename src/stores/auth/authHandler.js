@@ -13,9 +13,9 @@ function* handleAuthRegister(action) {
     if (res.status === 201) {
       saveToken(res.data.token)
       toast.success(res.data.message)
-      setTimeout(() => {
-        window.location.href = '/auth/login'
-      }, 5000)
+      // setTimeout(() => {
+      //   window.location.href = '/auth/login'
+      // }, 5000)
     }
   } catch (error) {
     toast.error(error.response.data?.message)
