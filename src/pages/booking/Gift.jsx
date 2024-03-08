@@ -8,6 +8,7 @@ import PaymentMethodCard from 'components/Bill/PaymentMethod'
 
 import { setStep, clearState } from 'stores/booking/slice'
 import OrderApi from 'apis/orderApi'
+import { CONSTANT } from 'utils/constant'
 
 const Gift = () => {
   const dispatch = useDispatch()
@@ -42,7 +43,7 @@ const Gift = () => {
         name: gift.title,
         price: total,
         type: 'gift',
-        return_url: import.meta.env.VITE_RETURN_URL
+        return_url: CONSTANT.return_url
       })
     }
     dispatch(setStep(temp))

@@ -8,6 +8,7 @@ import PaymentMethodCard from 'components/Bill/PaymentMethod'
 
 import { setStep, clearState } from 'stores/booking/slice'
 import OrderApi from 'apis/orderApi'
+import { CONSTANT } from 'utils/constant'
 
 const Voucher = () => {
   const dispatch = useDispatch()
@@ -43,7 +44,7 @@ const Voucher = () => {
         code: voucher.code,
         price: total,
         type: 'voucher',
-        return_url: import.meta.env.VITE_RETURN_URL
+        return_url: CONSTANT.return_url
       })
     }
     dispatch(setStep(temp))

@@ -12,6 +12,7 @@ import { padStart } from 'utils/helper'
 import { format } from 'date-fns'
 import { setStep, clearState } from 'stores/booking/slice'
 import OrderApi from 'apis/orderApi'
+import { CONSTANT } from 'utils/constant'
 
 const BookTicket = () => {
   const dispatch = useDispatch()
@@ -76,7 +77,7 @@ const BookTicket = () => {
         price: total*1.1,
         name: movie.title + movie.ageRestriction,
         type:'ticket',
-        return_url: import.meta.env.VITE_RETURN_URL
+        return_url: CONSTANT.return_url
       }
       return OrderApi.createOrder(payment, data)
     }

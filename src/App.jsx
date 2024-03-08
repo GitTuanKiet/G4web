@@ -41,6 +41,7 @@ function App() {
 
         // logout if token is expired
         if (exp < new Date()) {
+          dispatch(setUser({ user: null, isLoggedIn: false, history: null, cards: null }))
           logout()
         }
       }
@@ -54,6 +55,7 @@ function App() {
       dispatch(authRefreshToken({ refreshToken }))
     } else {
       dispatch(setUser({ user: null, isLoggedIn: false, history: null, cards: null }))
+      logout()
     }
   }, [dispatch, user])
 

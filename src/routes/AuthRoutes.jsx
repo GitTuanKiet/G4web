@@ -8,7 +8,6 @@ import VerifyEmail from 'pages/Congratulation/VerifiedEmail'
 const Login = Loadable(lazy(() => import('views/auth/Login')))
 const Register = Loadable(lazy(() => import('views/auth/Register')))
 const ForgotPassword = Loadable(lazy(() => import('views/auth/ForgotPassword')))
-const Congratulation = Loadable(lazy(() => import('pages/Congratulation')))
 
 // ===========================|| AUTH ROUTING ||=========================== //
 

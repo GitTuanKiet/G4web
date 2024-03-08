@@ -2,7 +2,7 @@ import AuthApi from 'apis/authApi'
 import SucceededImage from 'assets/images/image_succeeded.png'
 import Button from 'components/Button'
 import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 function VerifyEmail({
   title = 'Verified email successfully!',
@@ -12,21 +12,24 @@ function VerifyEmail({
   const [verified, setVerified] = useState(false)
   const [loading, setLoading] = useState(true)
   useEffect(() => {
+    if (!token) {
+      return
+    }
     const verify = async () => {
       try {
         const res = await AuthApi.verifyEmail(token)
         setLoading(false)
-        console.log('🚀 ~ verify ~ res:', res)
         if (res.status === 200) {
           setVerified(true)
+          toast.success(res.data.message)
         }
       } catch (err) {
         setLoading(false)
-        // toast.error('Something went wrong')
+        toast.error(err.response.data.message)
       }
     }
     verify()
-  }, [verified])
+  }, [verified, token])
 
   return (
     <div className="mx-auto text-center my-10">
