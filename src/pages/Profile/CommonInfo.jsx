@@ -44,7 +44,7 @@ function CommonInfo() {
         />
         <label htmlFor={inputId}>
           <input
-            id={inputId}
+            _id={inputId}
             type="file"
             accept="image/*,.png,.jpg,.jpeg,.gif"
             onChange={(e) => handleOnAddImage(e)}

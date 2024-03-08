@@ -15,12 +15,12 @@ function* handleFetchData() {
     ])
 
     yield put(fetchDataSuccess({
-      // cinemas: resCinemas.data,
-      // showtimes: resShowtimes.data,
-      // movies: resMovies.data
-      cinemas: mockCinemas,
-      showtimes: mockShowtimes,
-      movies: mockMovies
+      cinemas: resCinemas.data,
+      showtimes: resShowtimes.data,
+      movies: resMovies.data
+      // cinemas: mockCinemas,
+      // showtimes: mockShowtimes,
+      // movies: mockMovies
     }))
   } catch (error) {
     yield put(fetchDataFailed(error))

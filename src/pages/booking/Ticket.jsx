@@ -68,7 +68,7 @@ const BookTicket = () => {
       dispatch(clearState())
       navigate(-1)
       const data = {
-        showtimeId: showtime.id,
+        showtimeId: showtime._id,
         chairs,
         ...(voucher && { voucherOrderId: voucher.orderId }),
         ...(gift && { giftOrderId: gift.orderId }),

@@ -5,13 +5,13 @@ function Input({ label, errors, control, ...rest }) {
 
   return (
     <div className="mb-4 w-full">
-      <label htmlFor={rest.id || rest.name}>
+      <label htmlFor={rest._id || rest.name}>
         <span className='font-bold'>
           {label}
         </span>
       </label>
       <input
-        id={rest.id || rest.name}
+        _id={rest._id || rest.name}
         type={rest.type || 'text'}
         className="border border-gray-200 rounded-md py-3 px-4 min-w-[125px] w-full mt-1 focus:border-primary"
         {...field}

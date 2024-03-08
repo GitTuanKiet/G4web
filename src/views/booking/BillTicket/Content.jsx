@@ -16,7 +16,7 @@ const Content = () => {
   const { voucher, total, showtime, chairs, combo, payment } = useSelector((state) => state.booking)
   const [showModal, setShowModal] = useState(false)
 
-  const cinema = cinemas.find((item) => item.id === showtime?.cinemaId)
+  const cinema = cinemas.find((item) => item._id === showtime?.cinemaId)
 
   const type = cinema?.type
   const { day, start } = showtime || {}

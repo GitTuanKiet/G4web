@@ -2,31 +2,31 @@ import Banner from 'views/home/Banner'
 
 const slides = [
   {
-    id: 1,
+    _id: 1,
     src: 'https://iguov8nhvyobj.vcdn.cloud/media/wysiwyg/career/cgv-outing-2.jpg',
     alt: 'Slide 1',
     link: 'https://www.cgv.vn/default/newsoffer/cgv-giftcard-tet24/'
   },
   {
-    id: 2,
+    _id: 2,
     src: 'https://iguov8nhvyobj.vcdn.cloud/media/wysiwyg/web/THT_2724.png',
     alt: 'Slide 2',
     link: 'https://www.cgv.vn/default/afag.html'
   },
   {
-    id: 3,
+    _id: 3,
     src: 'https://iguov8nhvyobj.vcdn.cloud/media/wysiwyg/web/z4410924643120_ad97087d62f2128232ea4fe89883838b.png',
     alt: 'Slide 3',
     link: 'https://www.cgv.vn/default/newsoffer/cgv-giftcard-tet2024/'
   },
   {
-    id: 4,
+    _id: 4,
     src: 'https://iguov8nhvyobj.vcdn.cloud/media/wysiwyg/career/cgv-football.jpg',
     alt: 'Slide 4',
     link: 'https://www.cgv.vn/default/newsoffer/cgv-dragon-combo/'
   },
   {
-    id: 5,
+    _id: 5,
     src: 'https://iguov8nhvyobj.vcdn.cloud/media/wysiwyg/career/cgv-outing.jpg',
     alt: 'Slide 5',
     link: 'https://www.cgv.vn/default/newsoffer/cgv-nhan-lich/'

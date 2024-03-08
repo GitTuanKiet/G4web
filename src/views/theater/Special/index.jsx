@@ -32,7 +32,7 @@ export default function TheaterSpecial({ data }) {
           className="calenderSwiper"
         >
           {data.map((item) => (
-            <SwiperSlide key={item.id}>
+            <SwiperSlide key={item._id}>
               <Link to={`/theaters/special/${item.slug}`}>
                 <button
                   className='h-[100px] w-[100px] relative rounded-[50%] object-cover border-2 border-black bg-white filter grayscale hover:grayscale-0 active:grayscale-0 focus:outline-none focus:ring focus:border-transparent transition duration-300 '

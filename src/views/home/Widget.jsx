@@ -2,43 +2,43 @@ import { Link } from 'react-router-dom'
 
 const StaticWidget = [
   {
-    id: 1,
+    _id: 1,
     title: 'rạp cgv',
     bgImage: 'https://chocanh.vn/wp-content/uploads/hinh-anh-cho-cute-chibi-dep-nhat_101023548.png',
     link: '/theaters'
   },
   {
-    id: 2,
+    _id: 2,
     title: 'phim đang chiếu',
     bgImage: 'https://chocanh.vn/wp-content/uploads/hinh-anh-cho-cute-chibi-dep-nhat_101023548.png',
     link: '/movie/now'
   },
   {
-    id: 3,
+    _id: 3,
     title: 'dặc trưng cgv',
     bgImage: 'https://chocanh.vn/wp-content/uploads/hinh-anh-cho-cute-chibi-dep-nhat_101023548.png',
     link: '/theaters/special'
   },
   {
-    id: 4,
+    _id: 4,
     title: 'Thuê rạp & vé nhóm',
     bgImage: 'https://chocanh.vn/wp-content/uploads/hinh-anh-cho-cute-chibi-dep-nhat_101023548.png',
     link: '/cinemas'
   },
   {
-    id: 5,
+    _id: 5,
     title: 'liên hệ cgv',
     bgImage: 'https://chocanh.vn/wp-content/uploads/hinh-anh-cho-cute-chibi-dep-nhat_101023548.png',
     link: '/contacts'
   },
   {
-    id: 6,
+    _id: 6,
     title: 'tin mới & ưu đãi',
     bgImage: 'https://chocanh.vn/wp-content/uploads/hinh-anh-cho-cute-chibi-dep-nhat_101023548.png',
     link: '/news-offer'
   },
   {
-    id: 7,
+    _id: 7,
     title: 'đăng ký ngay',
     bgImage: 'https://chocanh.vn/wp-content/uploads/hinh-anh-cho-cute-chibi-dep-nhat_101023548.png',
     link: '/auth/register'

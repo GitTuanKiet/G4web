@@ -4,31 +4,31 @@ const img = 'https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9a
 
 const fakeList = [
   {
-    id: 1,
+    _id: 1,
     img: img
   },
   {
-    id: 2,
+    _id: 2,
     img: img
   },
   {
-    id: 3,
+    _id: 3,
     img: img
   },
   {
-    id: 4,
+    _id: 4,
     img: img
   },
   {
-    id: 5,
+    _id: 5,
     img: img
   },
   {
-    id: 6,
+    _id: 6,
     img: img
   },
   {
-    id: 7,
+    _id: 7,
     img: img
   }
 ]
@@ -55,7 +55,7 @@ function EventList() {
       <div className="event-list ">
         <Swiper grabCursor={true} spaceBetween={40} slidesPerView={'auto'}>
           {fakeList.map((event) => (
-            <SwiperSlide key={event.id}>
+            <SwiperSlide key={event._id}>
               <img
                 src={event.img}
                 className="w-full h-full"

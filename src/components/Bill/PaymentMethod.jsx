@@ -52,7 +52,7 @@ const PaymentOption = ({
     className={`flex h-14 gap-5 justify-start items-center py-2 px-4 rounded-lg ${selected ? 'shadow-md bg-white' : 'hover:bg-rose-500'} w-full max-md:flex-wrap max-md:max-w-full transition duration-150 ease-in-out`}
     onClick={onSelected}
   >
-    <input type="radio" id={value} name={altText} value={value} checked={selected} onChange={onSelected} />
+    <input type="radio" _id={value} name={altText} value={value} checked={selected} onChange={onSelected} />
     <div className="h-full w-20">
       <img src={logoSrc} alt={altText} className="mix-blend-darken aspect-auto h-full" />
     </div>

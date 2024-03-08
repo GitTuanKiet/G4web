@@ -76,7 +76,7 @@ const MainRoutes = {
           element: <NewsOffer />
         },
         {
-          path: ':id',
+          path: ':_id',
           element: <NewsOfferDetail />
         }
       ]

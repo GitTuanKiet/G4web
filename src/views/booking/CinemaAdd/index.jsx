@@ -24,10 +24,10 @@ function CinemaAdd({ movie }) {
     let listShowtime = []
     // filter list showtime by movie, date
     if (movie) {
-      listShowtime = showtimes.filter((item) => item.movieId === movie.id)
+      listShowtime = showtimes.filter((item) => item.movieId === movie._id)
     }
     if (date) {
-      listShowtime = listShowtime.filter((item) => item.dateId === date.id)
+      listShowtime = listShowtime.filter((item) => item.dateId === date._id)
     }
 
     setListShowtime(listShowtime)
@@ -38,7 +38,7 @@ function CinemaAdd({ movie }) {
     // filter list cinema by list showtime
     if (listShowtime.length) {
       const listIdCinema = listShowtime.map((showtime) => showtime.cinemaId)
-      filterCinema = cinemas.filter((cinema) => listIdCinema.includes(cinema.id))
+      filterCinema = cinemas.filter((cinema) => listIdCinema.includes(cinema._id))
     }
     if (city) {
       filterCinema = filterCinema.filter((cinema) => cinema.city === city.name)
@@ -64,14 +64,14 @@ function CinemaAdd({ movie }) {
 
         {/* Cinema */}
         {listCinema.length ? listCinema.map((itemCinema) => {
-          const filter = listShowtime.filter((time) => time.cinemaId === itemCinema.id)
+          const filter = listShowtime.filter((time) => time.cinemaId === itemCinema._id)
           return (
-            <div key={itemCinema.id} className='flex flex-col gap-y-2'>
+            <div key={itemCinema._id} className='flex flex-col gap-y-2'>
               <h1 className="text-4xl">{itemCinema.name}</h1>
               <p>{itemCinema.type}</p>
               <div className="flex gap-4">
                 {filter.length ? filter.map((itemShowtime, index) => {
-                  const check = itemShowtime.id === showtime?.id
+                  const check = itemShowtime._id === showtime?._id
                   return (
                     <Button
                       key={index}
