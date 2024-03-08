@@ -1,12 +1,15 @@
-import { useEffect } from 'react'
-
-import OrderApi from 'apis/orderApi'
-import { toast } from 'react-toastify'
 
 
 import SucceededImage from 'assets/images/image_succeeded.png'
 import Button from 'components/Button'
-function Congratulation() {
+
+function Congratulation({
+  title = 'Congratulation',
+  description = 'You have successfully completed the payment process. Thank you for choosing our service!',
+  redirect = '/',
+  titleBtn = 'Go back home'
+}) {
+
   return (
     <div className="mx-auto text-center my-10">
       <img
