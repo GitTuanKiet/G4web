@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 // project imports
 import NavigationScroll from 'layouts/NavigationScroll'
-import { setInfo, fetchCards, fetchHistory, userClear } from 'stores/user/slice'
+import { setInfo, fetchCards, fetchHistory, userClear, getMemberCard } from 'stores/user/slice'
 import { logout } from 'stores/auth/slice'
 import { fetchData } from 'stores/data/slice'
 import { refreshToken } from 'stores/auth/slice'
@@ -71,6 +71,7 @@ function App() {
 
       dispatch(fetchHistory())
       dispatch(fetchCards())
+      dispatch(getMemberCard())
     } else {
       dispatch(userClear())
     }

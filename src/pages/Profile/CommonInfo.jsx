@@ -8,7 +8,7 @@ import { CONSTANT } from 'utils/constant'
 function CommonInfo() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { info, cards, history } = useSelector((state) => state.user)
+  const { info, cards, history, loading, memberCard } = useSelector((state) => state.user)
   const inputId = Math.random().toString(32).substring(2)
 
   const [image, setImage] = useState(null)
@@ -50,7 +50,7 @@ function CommonInfo() {
             onChange={(e) => handleOnAddImage(e)}
             hidden
           />
-          <Button onClick={() => handleUploadAvatar()} primary>
+          <Button onClick={() => handleUploadAvatar()} primary loading={loading}>
             Thay đổi
           </Button>
         </label>
@@ -62,15 +62,15 @@ function CommonInfo() {
       <div className="rounded-lg border-2 p-2 grid grid-cols-5 text-center">
         <div className="border-r-2 pr-2 text-left border-black flex flex-col justify-between">
           <p className="flex justify-between">
-            Cấp độ thẻ <span className="font-bold">{info?.POINTS}</span>
+            Cấp độ thẻ <span className="font-bold">{memberCard?.level || 'Chưa có'}</span>
           </p>
 
           <p className="flex justify-between">
-            Tổng chi tiêu <span className="font-bold">{info?.POINTS}</span>
+            Tổng chi tiêu <span className="font-bold">{memberCard?.point}</span>
           </p>
 
           <p className="flex justify-between">
-            Điểm CGV <span className="font-bold">{info?.POINTS}</span>
+            Mã PIN <span className="font-bold">{info?.PIN}</span>
           </p>
         </div>
         <div className="border-r-2 border-black flex flex-col justify-between items-center">

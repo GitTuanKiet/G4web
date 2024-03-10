@@ -8,6 +8,7 @@ import {
   paymentError,
   paymentFinish
 } from './slice'
+import { refreshToken } from 'stores/auth/slice'
 
 function* handleCreateOrder() {
   const { accessToken } = yield select((state) => state.auth)
@@ -58,6 +59,7 @@ function* handleCaptureOrder(action) {
       // xóa param trên url
       window.history.pushState({}, document.title, window.location.pathname)
     }
+    yield put(refreshToken())
     toast.info('Đang chuyển hướng về trang chủ')
     setTimeout(() => {
       navigate('/')

@@ -63,6 +63,7 @@ function* handleLogout(action) {
     removeToken()
     navigate('/')
     yield put(authClear())
+    window.location.reload()
   } catch (error) {
     // yield put(authError(error.response.data?.message))
     yield put(authError('Có lỗi xảy ra'))

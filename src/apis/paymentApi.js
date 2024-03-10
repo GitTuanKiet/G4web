@@ -1,10 +1,14 @@
 import { axiosPrivate } from 'apis/axiosConfig'
+import { toast } from 'react-toastify'
 let testpayment = 'paypal'
 
 class OrderApi {
   static instance = axiosPrivate()
   constructor(accessToken) {
-    if (!accessToken) throw new Error('Bạn cần phải đăng nhập')
+    if (!accessToken) {
+      toast.error('Bạn chưa đăng nhập')
+      return
+    }
     if (!this.instance)
       this.instance = axiosPrivate(accessToken)
   }

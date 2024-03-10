@@ -5,7 +5,8 @@ const initialState = {
   error: null,
   history: null,
   cards: null,
-  info: null
+  info: null,
+  memberCard: null
 }
 
 const userSlice = createSlice({
@@ -25,7 +26,11 @@ const userSlice = createSlice({
     uploadAvatar: () => { },
     setupPIN: () => { },
     fetchHistory: () => { },
-    fetchCards: () => { }
+    fetchCards: () => { },
+    getMemberCard: () => { },
+    setMemberCard: (state, action) => { state.memberCard = action.payload },
+    registerMemberCard: () => { },
+    lostMemberCard: () => { }
   }
 })
 export const {
@@ -42,7 +47,11 @@ export const {
   uploadAvatar,
   setupPIN,
   fetchHistory,
-  fetchCards
+  fetchCards,
+  getMemberCard,
+  setMemberCard,
+  registerMemberCard,
+  lostMemberCard
 } = userSlice.actions
 
 export default userSlice.reducer

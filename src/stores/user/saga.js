@@ -5,7 +5,10 @@ import {
   updateProfile,
   changePassword,
   uploadAvatar,
-  setupPIN
+  setupPIN,
+  getMemberCard,
+  registerMemberCard,
+  lostMemberCard
 } from './slice'
 import {
   handleUpdateProfile,
@@ -13,7 +16,10 @@ import {
   handleUploadAvatar,
   handleSetupPIN,
   handleFetchHistory,
-  handleFetchCards
+  handleFetchCards,
+  handleGetMemberCard,
+  handleRegisterMemberCard,
+  handleLostMemberCard
 } from './handle'
 
 export default function* userSaga() {
@@ -23,4 +29,7 @@ export default function* userSaga() {
   yield takeLatest(changePassword.type, handleChangePassword)
   yield takeLatest(uploadAvatar.type, handleUploadAvatar)
   yield takeLatest(setupPIN.type, handleSetupPIN)
+  yield takeLatest(getMemberCard.type, handleGetMemberCard)
+  yield takeLatest(registerMemberCard.type, handleRegisterMemberCard)
+  yield takeLatest(lostMemberCard.type, handleLostMemberCard)
 }

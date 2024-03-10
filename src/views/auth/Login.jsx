@@ -64,7 +64,7 @@ function Login() {
           className="w-full max-w-[500px] bg-white p-10 rounded-lg shadow-md mt-10"
         >
           <Input label="Email" placeholder="Enter your email" name="email" control={control} errors={errors} />
-          <Input label="Password" placeholder="Enter your password" name="password" control={control} errors={errors} />
+          <Input label="Password" placeholder="Enter your password" name="password" type="password" control={control} errors={errors} />
 
           <div className="mt-4 flex items-center justify-between mb-4">
             <div className="flex items-center justify-start">

@@ -6,11 +6,13 @@ import {
   userFinish,
   userError,
   setCards,
-  setHistory
+  setHistory,
+  setMemberCard
 } from './slice'
 
 import { saveToken } from 'utils/auth'
 import { toast } from 'react-toastify'
+import { format } from 'date-fns'
 
 function* handleUpdateProfile(action) {
   const { payload } = action
@@ -122,4 +124,72 @@ function* handleFetchCards() {
   }
 }
 
-export { handleUpdateProfile, handleChangePassword, handleSetupPIN, handleUploadAvatar, handleFetchHistory, handleFetchCards }
+function* handleGetMemberCard() {
+  try {
+    yield put(userLoading())
+    const { accessToken } = yield select((state) => state.auth)
+    const userApi = new UserApi(accessToken)
+    const res = yield call(userApi.getMemberCard)
+    if (res.status === 200) {
+      if (res.data) {
+        yield put(setMemberCard(res.data))
+      }
+      yield put(userSuccess())
+    }
+  } catch (error) {
+    toast.error(error.response.data?.message)
+  } finally {
+    yield put(userFinish())
+  }
+}
+
+function* handleRegisterMemberCard(action) {
+  const { payload } = action
+  try {
+    yield put(userLoading())
+    const { accessToken } = yield select((state) => state.auth)
+    const userApi = new UserApi(accessToken)
+    const newPayload = {
+      ...payload,
+      registeredDate: format(new Date(), 'yyyy-MM-dd')
+    }
+    const res = yield call(userApi.registerMemberCard, newPayload)
+    if (res.status === 200) {
+      yield put(userSuccess())
+      toast.success(res.data.message)
+    }
+  } catch (error) {
+    toast.error(error.response.data?.message)
+  } finally {
+    yield put(userFinish())
+  }
+}
+
+function* handleLostMemberCard() {
+  try {
+    yield put(userLoading())
+    const { accessToken } = yield select((state) => state.auth)
+    const userApi = new UserApi(accessToken)
+    const res = yield call(userApi.lostMemberCard)
+    if (res.status === 200) {
+      yield put(userSuccess())
+      toast.success(res.data.message)
+    }
+  } catch (error) {
+    toast.error(error.response.data?.message)
+  } finally {
+    yield put(userFinish())
+  }
+}
+
+export {
+  handleUpdateProfile,
+  handleChangePassword,
+  handleSetupPIN,
+  handleUploadAvatar,
+  handleFetchHistory,
+  handleFetchCards,
+  handleGetMemberCard,
+  handleRegisterMemberCard,
+  handleLostMemberCard
+}

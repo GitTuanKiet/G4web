@@ -90,7 +90,8 @@ const GiftDetail = () => {
   }
 
   const handleInitOrder = (order, data, value) => {
-    const price = value - value * 0.1
+    // const price = value - value * 0.1
+    const price = value
     dispatch(initOrder({ navigate, order, data, price }))
   }
 

@@ -173,6 +173,10 @@ function* handleStepBookingDiscount(action) {
 
     if (payment.order === 'voucher') yield put(setPayment({ code: data?.voucher?.code }))
     yield put(setDescription(`${payment.order} - ${data?.voucher?.title || data?.gift?.title}`))
+  }
+
+  if (nextStep === 2) {
+    if (payment.price <= 0) yield put(setPayment({ price: 0 }))
     yield put(createOrder())
   }
 

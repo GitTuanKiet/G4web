@@ -6,9 +6,10 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateProfile } from 'stores/user/slice'
 import { useFormSubmit } from 'utils/form'
+import { format } from 'date-fns'
 
 function AccountDetail() {
-  const { info } = useSelector((state) => state.user)
+  const { info, loading } = useSelector((state) => state.user)
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -27,13 +28,13 @@ function AccountDetail() {
     dispatch(updateProfile(data))
   }
 
-  const { handleOnSubmit, register, control, errors, isSubmitting } = useFormSubmit(schemaProfile, {
+  const { handleOnSubmit, register, control, errors } = useFormSubmit(schemaProfile, {
     name: info.name,
     city: info.city,
     gender: info.gender,
     phone: info.phone,
     address: info.address,
-    birthday: info.birthday
+    birthday: format(new Date(info.birthday), 'yyyy-MM-dd')
   }, call)
 
   return (
@@ -85,7 +86,7 @@ function AccountDetail() {
             <Button onClick={() => navigate(-1)}>
           &lt;&lt; Quay lại
             </Button>
-            <Button onClick={handleOnSubmit} primary loading={isSubmitting}>
+            <Button onClick={handleOnSubmit} primary loading={loading}>
           Lưu lại
             </Button>
           </div>
