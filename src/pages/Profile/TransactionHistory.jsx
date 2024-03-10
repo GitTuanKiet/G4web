@@ -50,7 +50,7 @@ function TransactionHistory() {
         </Button>
       </div>
 
-      <div className="my-3">
+      <div className="my-3 h-[400px] overflow-auto">
         {history &&
           history[selected].map((item, index) => (
             <OrderCard

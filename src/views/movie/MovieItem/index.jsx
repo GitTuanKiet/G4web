@@ -9,8 +9,8 @@ function MovieItem({ movie }) {
 
   return (
     <>
-      <div className="bg-white flex flex-col rounded-lg  h-full select-none relative">
-        <img src={movie.poster} alt="" className=" w-full h-auto rounded-xl object-cover " />
+      <div className="bg-white flex flex-col rounded-lg h-full select-none relative">
+        <img src={movie.poster} alt="" className="w-full h-full rounded-xl object-cover" />
         <div>
           <span className="absolute top-0 bg-secondary text-primary py-1 px-3 rounded-md ml-3 mt-3 font-semibold">T{movie.ageRestriction}</span>
         </div>

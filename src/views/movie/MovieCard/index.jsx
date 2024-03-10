@@ -16,12 +16,12 @@ const MovieCard = ({ movie }) => {
 
   return (
     <>
-      <div className='movie-card'>
+      <div className='movie-card flex flex-col justify-between'>
         <Link to={`/movie/detail/${movie.slug}`} >
           <img
             src={movie.poster}
             alt={movie.title}
-            className="w-full h-auto rounded-xl object-cover "
+            className="w-[1/4] h-[500px] rounded-xl object-cover "
           />
         </Link>
         <div className="py-4 flex flex-col w-full bottom-0 ">

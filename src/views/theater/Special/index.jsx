@@ -1,4 +1,4 @@
-import { useState } from 'react'
+
 import { Link } from 'react-router-dom'
 
 // Import Swiper React components
@@ -49,7 +49,7 @@ export default function TheaterSpecial({ data }) {
         </Swiper>
       </div>
 
-      <Partials data={data} />
+      <Partials />
     </>
   )
 }

@@ -53,10 +53,10 @@ function ProfileLayout() {
   }, [accessToken, navigate])
 
   return (
-    <div className="flex items-start gap-x-4 w-full h-screen">
+    <div className="flex items-start gap-x-4 w-full h-auto">
       <Sidebar sidebarLinks={sidebarLinks} />
 
-      <div className="w-full h-auto mt-10  ">
+      <div className="w-full h-auto mt-10 ">
         <Outlet />
       </div>
     </div>

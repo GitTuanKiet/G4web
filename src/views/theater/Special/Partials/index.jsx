@@ -3,21 +3,19 @@ import { useParams, Navigate } from 'react-router-dom'
 // project imports
 import TheaterGoldClass from './GoldClass'
 import Theater3D from './3D'
+import { useSelector } from 'react-redux'
 
-const Partials = ({ data }) => {
+const Partials = () => {
   const { slug } = useParams()
-  const theater = data.filter((item) => item.slug === slug)
-
-  if (!theater.length) {
-    return <Navigate to="/theaters/special/gold-class" />
-  }
-
-  const cinemas = theater[0]?.cinemas
+  const { cinemas } = useSelector((state) => state.data)
+  const theater3D = cinemas.filter((item) => item.type === '3D')
+  const theater2D = cinemas.filter((item) => item.type === '2D')
 
   return (
     <>
-      {slug === 'gold-class' && <TheaterGoldClass data={cinemas} />}
-      {slug === '3d' && <Theater3D data={cinemas} />}
+      {!slug && <TheaterGoldClass data={theater2D} />}
+      {slug === 'gold-class' && <TheaterGoldClass data={theater2D} />}
+      {slug === '3d' && <Theater3D data={theater3D} />}
     </>
   )
 }

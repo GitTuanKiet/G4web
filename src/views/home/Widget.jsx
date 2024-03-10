@@ -11,7 +11,7 @@ const StaticWidget = [
     _id: 2,
     title: 'phim đang chiếu',
     bgImage: 'https://chocanh.vn/wp-content/uploads/hinh-anh-cho-cute-chibi-dep-nhat_101023548.png',
-    link: '/movie/now'
+    link: '/movie/now-showing'
   },
   {
     _id: 3,

@@ -13,6 +13,7 @@ const Movie = () => {
   const [str, setStr] = useState(['Đang chiếu', 'Sắp ra mắt'])
   const slug = status === 'coming-soon' ? 'now-showing' : 'coming-soon'
   useEffect(() => {
+    if (!status) return
     if (status === 'coming-soon') {
       setStr(['Sắp ra mắt', 'Đang chiếu'])
     } else {

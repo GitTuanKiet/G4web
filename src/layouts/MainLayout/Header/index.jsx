@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 
 // assets
 import { CiUser } from 'react-icons/ci'
@@ -26,8 +27,10 @@ const LinkItem = ({ to, text, icon }) => {
 }
 
 export default function Header() {
+  const location = useLocation()
   const { accessToken } = useSelector((state) => state.auth)
   const { info } = useSelector((state) => state.user)
+  const [history, setHistory] = useState([])
 
   const subMenu = [
     {
@@ -57,6 +60,17 @@ export default function Header() {
       }
   ]
 
+  useEffect(() => {
+    const path = location.pathname.split('/')
+    const items = path.map((item, index) => {
+      return {
+        to: '/' + path.slice(1, index + 1).join('/'),
+        text: item
+      }
+    })
+    setHistory(items)
+  }, [location])
+
   return (
     <>
       <header className="flex items-end w-full py-2 gap-5">
@@ -64,12 +78,11 @@ export default function Header() {
         <Menu />
       </header>
       <div className="flex justify-between uppercase font-mono text-xl">
-        <Breadcrumb items={[{ text: '1' }, { text: '2' }]} />
+        <Breadcrumb items={history} />
         <div className="flex gap-4">
           {subMenu.map((item) => (
             <LinkItem key={item._id} to={item.to} text={item.title} icon={item.icon} />
           ))}
-          {/* {user && <p>hello, {user.name}</p>} */}
         </div>
       </div>
       <div></div>
