@@ -1,12 +1,11 @@
-import { NavLink, useNavigate } from 'react-router-dom'
-import IconArrowLeft from 'components/icons/IconArrowLeft'
+import { NavLink } from 'react-router-dom'
 import IconChevronRight from 'components/icons/IconChevronRight'
 
 function Sidebar({ sidebarLinks }) {
   return (
     <div>
       <aside
-        _id="default-sidebar"
+        id="default-sidebar"
         className=" top-0 left-0 z-40 w-[250px]   mt-10 rounded-xl transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar"
       >
@@ -34,10 +33,6 @@ function Sidebar({ sidebarLinks }) {
           </ul>
         </div>
       </aside>
-      {/* <div className="p-4 sm:ml-64">
-
-
-      </div> */}
     </div>
   )
 }

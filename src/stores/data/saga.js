@@ -6,8 +6,6 @@ import {
   fetchData
 } from './slice'
 
-function* dataSaga() {
+export default function* dataSaga() {
   yield takeLatest(fetchData.type, handleFetchData)
 }
-
-export { dataSaga }

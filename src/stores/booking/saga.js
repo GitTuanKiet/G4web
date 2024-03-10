@@ -1,17 +1,32 @@
-import { takeLatest } from 'redux-saga/effects'
+import { takeLatest, takeEvery } from 'redux-saga/effects'
 import {
-  handleCheckLogin
+  handleAddDiscount,
+  handleRemoveDiscount,
+  handleStepBookingDiscount,
+  handleStepBookingTicket,
+  handleBookCombo,
+  handleBookChairs,
+  handleBookShowtime,
+  handleInitOrder
 } from './handle'
 import {
-  setShowtime,
-  setVoucher,
-  setGift
+  addDiscount,
+  removeDiscount,
+  bookDiscount,
+  bookTicket,
+  bookCombo,
+  bookChairs,
+  bookShowtime,
+  initOrder
 } from './slice'
 
-function* bookingSaga() {
-  yield takeLatest(setShowtime.type, handleCheckLogin)
-  yield takeLatest(setVoucher.type, handleCheckLogin)
-  yield takeLatest(setGift.type, handleCheckLogin)
+export default function* bookingSaga() {
+  yield takeEvery(addDiscount.type, handleAddDiscount)
+  yield takeEvery(removeDiscount.type, handleRemoveDiscount)
+  yield takeEvery(bookDiscount.type, handleStepBookingDiscount)
+  yield takeEvery(bookTicket.type, handleStepBookingTicket)
+  yield takeEvery(bookCombo.type, handleBookCombo)
+  yield takeEvery(bookChairs.type, handleBookChairs)
+  yield takeEvery(bookShowtime.type, handleBookShowtime)
+  yield takeLatest(initOrder.type, handleInitOrder)
 }
-
-export { bookingSaga }

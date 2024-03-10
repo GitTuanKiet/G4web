@@ -12,7 +12,7 @@ const ListTicket = ({ tickets, watched }) => {
         const cinema = cinemas.find((cinema) => cinema._id === showtime.cinemaId)
         const movie = movies.find((movie) => movie._id === showtime.movieId)
         return (
-          <div key="kk" className="px-14 py-6 bg-[#FAEBE9] rounded-xl max-w-[900px] mx-auto w-full max-md:px-5 mb-4">
+          <div key={item._id} className="px-14 py-6 bg-[#FAEBE9] rounded-xl max-w-[900px] mx-auto w-full max-md:px-5 mb-4">
             <div className="flex gap-5 max-md:flex-col max-md:gap-0">
               <div className="flex flex-col w-[24%] max-md:ml-0 max-md:w-full">
                 <img
@@ -37,7 +37,7 @@ const ListTicket = ({ tickets, watched }) => {
                     day={showtime.day}
                     time={showtime.start}
                     total={item.total}
-                    type={item.type}
+                    type={cinema.type}
                     chairs={item.chairs}
                   />
                 </div>

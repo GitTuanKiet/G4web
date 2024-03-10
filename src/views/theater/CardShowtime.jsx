@@ -6,7 +6,7 @@ import Button from 'components/Button'
 import Divider from 'components/Divider'
 import { padStart } from 'utils/helper'
 
-import { setStep, setShowtime } from 'stores/booking/slice'
+import { initOrder } from 'stores/booking/slice'
 
 
 const CardShowtime = ({ movie, cinema, date }) => {
@@ -17,9 +17,7 @@ const CardShowtime = ({ movie, cinema, date }) => {
   const [selectedTime, setSelectedTime] = useState(null)
 
   const handleBookingTicket = () => {
-    dispatch(setShowtime(selectedTime))
-    dispatch(setStep(1))
-    navigate(`/booking-ticket/${movie.slug}`)
+    dispatch(initOrder({ navigate, order: 'ticket', data: { movie, cinema, showtime: selectedTime } }))
   }
 
   return (

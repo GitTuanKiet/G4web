@@ -1,21 +1,16 @@
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Button from 'components/Button'
 import ListTicket from './ListTicket'
 import { useSelector } from 'react-redux'
 
 const CinemaTicketOverview = () => {
-  const { cards, isLoggedIn } = useSelector((state) => state.auth)
-  const [watched, setWatched] = useState(true)
+  const { cards } = useSelector((state) => state.user)
+  const [watched, setWatched] = useState(false)
 
-  useEffect(() => {
-    if (!isLoggedIn) {
-      window.location.href = '/auth/login'
-    }
-  }, [isLoggedIn])
-
-  const ticketUsed = cards?.ticket?.filter((item) => item.status === 'used') || []
-  const ticketNotUsed = cards?.ticket?.filter((item) => item.status === 'active') || []
+  const ticket = cards?.tickets || []
+  const ticketUsed = ticket.filter((item) => item.status === 'used')
+  const ticketNotUsed = ticket.filter((item) => item.status === 'active')
   return (
     <section className="w-full py-10">
       <div>

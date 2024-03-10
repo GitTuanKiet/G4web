@@ -1,9 +1,9 @@
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { useState } from 'react'
 
-import { setTotal } from 'stores/booking/slice'
 import { fakeGifts } from 'apis/mockData'
+import { initOrder } from 'stores/booking/slice'
 
 const price = [
   {
@@ -73,6 +73,7 @@ const content = [
 
 const GiftDetail = () => {
   const { slug } = useParams()
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const gift = fakeGifts.find(item => item.img.some(img => img.slug === slug))
   const giftItem = gift.img.find(item => item.slug === slug)
@@ -87,6 +88,12 @@ const GiftDetail = () => {
     const selectedPrice = parseInt(event.target.value, 10)
     setSelectedPrice(selectedPrice)
   }
+
+  const handleInitOrder = (order, data, value) => {
+    const price = value - value * 0.1
+    dispatch(initOrder({ navigate, order, data, price }))
+  }
+
 
   return (
     <>
@@ -121,14 +128,12 @@ const GiftDetail = () => {
                 Tổng tiền : <p className='text-red-500'>$ {selectedPrice}</p>
               </h1>
               <div className='flex gap-2 ml-auto'>
-                <Link to={`/booking-gift/${gift._id}/${giftItem.slug}`}>
-                  <button
-                    className='border p-2 bg-red-500  text-white font-bold rounded-xl'
-                    onClick={() => dispatch(setTotal(selectedPrice))}
-                  >
+                <button
+                  className='border p-2 bg-red-500  text-white font-bold rounded-xl'
+                  onClick={() => handleInitOrder('gift', { price: selectedPrice, gift: giftItem }, selectedPrice)}
+                >
                   Mua ngay
-                  </button>
-                </Link>
+                </button>
                 {/* <button className='border p-2  bg-red-500 text-white font-bold rounded-xl'>
                   Tặng quà
                 </button> */}

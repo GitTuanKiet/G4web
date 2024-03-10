@@ -1,27 +1,18 @@
 import axios from 'axios'
 import { CONSTANT } from 'utils/constant'
-import { getToken } from 'utils/auth'
 
-const axiosPublic = axios.create({
+const axiosPublic = () => axios.create({
   baseURL: CONSTANT.baseURL,
   headers: {
     'Content-Type': 'application/json'
   }
 })
 
-const axiosPrivate = axios.create({
+const axiosPrivate = (accessToken) => axios.create({
   baseURL: CONSTANT.baseURL,
   headers: {
-    Authorization: `Bearer ${getToken()}`
+    Authorization: `Bearer ${accessToken}`
   }
 })
 
-const axiosMultipart = axios.create({
-  baseURL: CONSTANT.baseURL,
-  headers: {
-    'Content-Type': 'multipart/form-data',
-    Authorization: `Bearer ${getToken()}`
-  }
-})
-
-export { axiosPublic, axiosPrivate, axiosMultipart }
+export { axiosPublic, axiosPrivate }

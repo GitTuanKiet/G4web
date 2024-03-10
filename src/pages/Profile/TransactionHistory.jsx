@@ -24,7 +24,7 @@ const OrderCard = ({ orderId, payment, name, price, createdAt, status, links }) 
 function TransactionHistory() {
   const navigate = useNavigate()
 
-  const { history } = useSelector((state) => state.auth)
+  const { history } = useSelector((state) => state.user)
   const [selected, setSelected] = useState('ticket')
 
   const handleSelected = (e) => {

@@ -26,7 +26,8 @@ const LinkItem = ({ to, text, icon }) => {
 }
 
 export default function Header() {
-  const { user } = useSelector((state) => state.auth)
+  const { accessToken } = useSelector((state) => state.auth)
+  const { info } = useSelector((state) => state.user)
 
   const subMenu = [
     {
@@ -41,7 +42,7 @@ export default function Header() {
       icon: <IoTicketOutline />,
       to: '/ticket'
     },
-    !user
+    !accessToken
       ? {
         _id: 'auth',
         title: 'Đăng nhập / Đăng ký',
@@ -50,7 +51,7 @@ export default function Header() {
       }
       : {
         _id: 'profile',
-        title: 'Hello, ' + user.name,
+        title: 'Hello, ' + info?.name,
         icon: <CiUser />,
         to: '/profile/common-info'
       }

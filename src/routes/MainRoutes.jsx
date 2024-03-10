@@ -17,6 +17,7 @@ const ListGift = Loadable(lazy(() => import('pages/Gift/ListGift')))
 const GiftDetail = Loadable(lazy(() => import('pages/Gift/GiftDetail')))
 const OnlineStore = Loadable(lazy(() => import('pages/OnlineStore')))
 const VoucherDetail = Loadable(lazy(() => import('pages/VoucherDetail')))
+const Ticket = Loadable(lazy(() => import('pages/Ticket')))
 
 import ProfileRoutes from './ProfileRoutes'
 import ExtraInfoRoutes from './ExtraInfoRoutes'
@@ -97,6 +98,10 @@ const MainRoutes = {
           element: <GiftDetail />
         }
       ]
+    },
+    {
+      path: 'ticket',
+      element: <Ticket />
     },
     {
       path: 'online-store',

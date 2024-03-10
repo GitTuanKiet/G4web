@@ -5,9 +5,8 @@ import VipChair from './VipChair'
 import CoupleChair from './CoupleChair'
 
 const RoomMap = () => {
-  const { cinemas } = useSelector((state) => state.data)
-  const { showtime } = useSelector((state) => state.booking)
-  const roomMap = cinemas.find((item) => item._id === showtime.cinemaId)?.roomMap
+  const { data } = useSelector((state) => state.booking)
+  const roomMap = data?.cinema?.roomMap
 
   const normalChairs = roomMap?.filter((item) => item.type === 'normal')
   const coupleChairs = roomMap?.filter((item) => item.type === 'couple')

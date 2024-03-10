@@ -25,9 +25,10 @@ const PriceAndQuantity = ({ price, imageMinus, imagePlus, quantity, handleSetQua
 )
 
 const ComboCard = ({ _id, image, name, price, handleSetPrice }) => {
-  const { combo } = useSelector((state) => state.booking)
+  const { data } = useSelector((state) => state.booking)
   const [quantity, setQuantity] = useState(0)
 
+  const { combo } = data
   useEffect(() => {
     const isExist = combo.find((i) => i._id === _id)
     if (isExist) {

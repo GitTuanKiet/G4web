@@ -38,8 +38,7 @@ const TicketInformation = ({ day, time, total, type, chairs }) => (
         <tr className="">
           <th className="font-normal opacity-50 ">Ngày chiếu</th>
           <th className="font-normal opacity-50">Suất chiếu</th>
-          <th className="font-normal opacity-50">Loại vé</th>
-          {/* <th className="font-normal opacity-50">Số lượng vé</th> */}
+          <th className="font-normal opacity-50">Số lượng vé</th>
           <th className="font-normal opacity-50">Số ghế</th>
         </tr>
       </thead>
@@ -48,7 +47,6 @@ const TicketInformation = ({ day, time, total, type, chairs }) => (
           <td>{format(new Date(day), 'dd/MM/yyyy')}</td>
           <td>{padStart(time)}</td>
           <td>{type}</td>
-          {/* <td>02 vé</td> */}
           <td>{chairs.join(', ')}</td>
         </tr>
       </tbody>

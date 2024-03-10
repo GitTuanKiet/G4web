@@ -3,7 +3,7 @@ import * as Yup from 'yup'
 import Button from 'components/Button'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { userChangePassword } from 'stores/auth/authSlice'
+import { changePassword } from 'stores/user/slice'
 import { useFormSubmit } from 'utils/form'
 import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
@@ -23,7 +23,7 @@ function ChangePassword() {
       toast.info('Mật khẩu mới không được trùng với mật khẩu cũ')
       return
     }
-    dispatch(userChangePassword(data))
+    dispatch(changePassword(data))
   }
 
   const { handleOnSubmit, control, errors, isSubmitting } = useFormSubmit(schemaProfile, {
@@ -59,7 +59,7 @@ function ChangePassword() {
             <Button onClick={() => navigate(-1)}>
           &lt;&lt; Quay lại
             </Button>
-            <Button onClick={handleOnSubmit} primary disabled={isSubmitting}>
+            <Button onClick={handleOnSubmit} primary loading={isSubmitting}>
               Xác nhận
             </Button>
           </div>

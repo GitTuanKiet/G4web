@@ -1,9 +1,8 @@
 import { call, all, put } from 'redux-saga/effects'
 import FetchApi from 'apis/fetchApi'
-import { toast } from 'react-toastify'
-import { fetchDataFailed, fetchDataSuccess, fetchingData } from './slice'
+import { fetchDataFailed, fetchDataSuccess, fetchingData, fetchFinish } from './slice'
 
-import { mockCinemas, mockShowtimes, mockMovies } from 'apis/mockData'
+// import { mockCinemas, mockShowtimes, mockMovies } from 'apis/mockData'
 
 function* handleFetchData() {
   try {
@@ -18,13 +17,11 @@ function* handleFetchData() {
       cinemas: resCinemas.data,
       showtimes: resShowtimes.data,
       movies: resMovies.data
-      // cinemas: mockCinemas,
-      // showtimes: mockShowtimes,
-      // movies: mockMovies
     }))
   } catch (error) {
-    yield put(fetchDataFailed(error))
-    toast.error('Lỗi lấy dữ liệu')
+    yield put(fetchDataFailed(error.response.data?.message))
+  } finally {
+    yield put(fetchFinish())
   }
 }
 

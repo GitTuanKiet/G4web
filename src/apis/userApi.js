@@ -1,29 +1,18 @@
-import { axiosPrivate, axiosMultipart } from 'apis/axiosConfig'
-
+import { axiosPrivate } from 'apis/axiosConfig'
 class UserApi {
-  static updateProfile = async (data) => {
-    return await axiosPrivate.put('user/update-profile', data)
+  static instance = axiosPrivate()
+  constructor(accessToken) {
+    if (!accessToken) throw new Error('Bạn cần phải đăng nhập')
+    if (!this.instance)
+      this.instance = axiosPrivate(accessToken)
   }
 
-  static changePassword = async (data) => {
-    return await axiosPrivate.put('user/change-password', data)
-  }
-
-  static uploadAvatar = async (data) => {
-    return await axiosMultipart.post('user/avatar', data)
-  }
-
-  static setupPIN = async (data) => {
-    return await axiosPrivate.put('user/setup-pin', data)
-  }
-
-  static getHistory = async () => {
-    return await axiosPrivate.get('user/history')
-  }
-
-  static getCards = async () => {
-    return await axiosPrivate.get('user/fetch-card')
-  }
+  updateProfile = async (data) => await this.instance.put('user/update-profile', data)
+  changePassword = async (password) => await this.instance.put('user/change-password', password)
+  uploadAvatar = async (avatar) => await this.instance.post('user/avatar', avatar)
+  setupPIN = async (pin) => await this.instance.put('user/setup-pin', pin)
+  getHistory = async () => await this.instance.get('user/history')
+  getCards = async () => await this.instance.get('user/fetch-card')
 }
 
 export default UserApi

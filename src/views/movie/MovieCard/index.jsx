@@ -1,8 +1,19 @@
 import Button from 'components/Button'
-import { Link } from 'react-router-dom'
+
+import { Link, useNavigate } from 'react-router-dom'
 import { format } from 'date-fns'
+import { initOrder } from 'stores/booking/slice'
+import { useDispatch } from 'react-redux'
+
 
 const MovieCard = ({ movie }) => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const handleBookingTicket = () => {
+    dispatch(initOrder({ navigate, order: 'ticket', data: { movie } }))
+  }
+
   return (
     <>
       <div className='movie-card'>
@@ -20,9 +31,7 @@ const MovieCard = ({ movie }) => {
           <h3 className='text-sx'>Khởi chiếu: {format(new Date(movie?.releaseDate), 'dd/MM/yyyy')}</h3>
           <div className="flex items-center justify-between my-2">
             <Button>Like</Button>
-            <Link to={`/booking-ticket/${movie.slug}`}>
-              <Button primary>{movie.status === 'now showing' ? 'Mua vé' : 'Đặt vé'}</Button>
-            </Link>
+            <Button onClick={handleBookingTicket} primary>{movie.status === 'now showing' ? 'Mua vé' : 'Đặt vé'}</Button>
           </div>
         </div>
       </div>

@@ -1,6 +1,8 @@
 
-import { useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+
+import { bookTicket } from 'stores/booking/slice'
 
 import Content from './Content'
 import Divider from 'components/Divider'
@@ -10,32 +12,40 @@ import GroupButton from 'components/Bill/GroupButton'
 import Info from 'components/Bill/Info'
 import Logo from 'components/icons/Logo'
 
-const BillTicket = ({ handleStep }) => {
-  const { slug } = useParams()
-  const { movies, cinemas } = useSelector((state) => state.data)
-  const { voucher, showtime, total } = useSelector((state) => state.booking)
+const BillTicket = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { data, step } = useSelector((state) => state.booking)
+  const { payment } = useSelector((state) => state.payment)
 
-  const movie = movies.find((item) => item.slug === slug)
-  const cinema = cinemas.find((item) => item._id === showtime?.cinemaId)
+  const { cinema, movie } = data
+  const { price } = payment
 
   const { poster, title } = movie || { poster: '', title: '' }
-  const { discount } = voucher || { discount: 0 }
+  const { voucherPrice, giftPrice, chairsPrice, comboPrice } = data
 
-  const totalEnd = total >= discount ? total - discount : 0
-  const dataTotal = [
+  const dataPrice = [
     {
-      key: 'Giảm giá',
-      value: Unit({ value: discount })
+      key: 'Giá vé',
+      value: Unit({ value: chairsPrice })
     },
     {
-      key: 'Phí VAT',
-      value: Unit({ value: totalEnd * 0.1 })
+      key: 'Mã giảm giá',
+      value: Unit({ value: voucherPrice })
     },
     {
-      key: 'Tổng',
-      value: Unit({ value: totalEnd * 1.1 })
+      key: 'Combo',
+      value: Unit({ value: comboPrice })
+    },
+    {
+      key: 'Mã quà tặng',
+      value: Unit({ value: giftPrice })
     }
   ]
+
+  const handleStep = (step) => {
+    dispatch(bookTicket({ nextStep: step, navigate }))
+  }
 
   return (
     <div>
@@ -58,15 +68,17 @@ const BillTicket = ({ handleStep }) => {
         {/* Content */}
         <Content />
         {/* Total */}
-        {total > 0 ?
-          <>
-            <div>
-              {dataTotal.map((item, index) => (
-                <Line key={index} keyName={item.key} value={item.value} />
-              ))}
-            </div>
-            <Divider />
-          </> : null}
+
+        <div>
+          {dataPrice.map((item, index) => (
+            <Line key={index} keyName={item.key} value={item.value} />
+          ))}
+        </div>
+        <Divider />
+        {step === 4 ? <div className='flex flex-col'>
+          <Line keyName='Tổng cộng' value={Unit({ value: price })} />
+          <span className='text-xs text-right text-blue-400'>Đã bao gồm VAT(10%)</span>
+        </div> : null}
         {/* group button */}
         <GroupButton handleStep={handleStep} start={0} end={4} />
       </div>

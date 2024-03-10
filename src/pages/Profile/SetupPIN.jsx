@@ -3,7 +3,7 @@ import * as Yup from 'yup'
 import Button from 'components/Button'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { userSetupPIN } from 'stores/auth/authSlice'
+import { setupPIN } from 'stores/user/slice'
 import { useFormSubmit } from 'utils/form'
 
 function SetupPIN() {
@@ -16,7 +16,7 @@ function SetupPIN() {
   })
 
   const call = (data) => {
-    dispatch(userSetupPIN(data))
+    dispatch(setupPIN(data))
   }
 
   const { handleOnSubmit, control, errors, isSubmitting } = useFormSubmit(schemaProfile, {
@@ -43,7 +43,7 @@ function SetupPIN() {
           <Button onClick={() => navigate(-1)}>
           &lt;&lt; Quay lại
           </Button>
-          <Button onClick={handleOnSubmit} primary disabled={isSubmitting}>
+          <Button onClick={handleOnSubmit} primary loading={isSubmitting}>
               Xác nhận
           </Button>
         </div>

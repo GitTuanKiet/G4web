@@ -1,11 +1,19 @@
 import Button from 'components/Button'
 import { useNavigate } from 'react-router-dom'
-
+import { useDispatch } from 'react-redux'
 import { fakeArray } from 'apis/mockData'
+
+import { initOrder } from 'stores/booking/slice'
 
 function VoucherDetail({ slug }) {
   const navigate = useNavigate()
-  //  use params to fetch api....
+  const dispatch = useDispatch()
+
+  const handleInitOrder = (order, data, value) => {
+    const price = value - value * 0.1
+    dispatch(initOrder({ navigate, order, data, price }))
+  }
+
   return (
     <div className="w-full">
       <div className=" border-b-2 pb-4 border-black mt-4">
@@ -36,7 +44,8 @@ function VoucherDetail({ slug }) {
             <button className="text-rose-500 mr-5" onClick={() => navigate(-1)}>
               &lt;&lt; Quay lại
             </button>
-            <Button to={`/booking-voucher/${fakeArray[0].code}`} primary>Mua hoặc tặng quà</Button>
+            <Button onClick={() => handleInitOrder('voucher', { voucher: fakeArray[0] }, fakeArray[0].discount)}
+              primary>Mua ngay</Button>
           </div>
         </div>
       </div>

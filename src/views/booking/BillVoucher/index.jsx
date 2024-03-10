@@ -1,42 +1,31 @@
 
-import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import Divider from 'components/Divider'
 import Line from 'components/Bill/Line'
 import Unit from 'components/Bill/Unit'
 import GroupButton from 'components/Bill/GroupButton'
-import Info from 'components/Bill/Info'
 import Logo from 'components/icons/Logo'
+import { bookDiscount } from 'stores/booking/slice'
 
-import { setTotal, setVoucher } from 'stores/booking/slice'
-
-
-import { fakeArray } from 'apis/mockData'
-
-
-const BillVoucher = ({ handleStep }) => {
+const BillVoucher = () => {
   const dispatch = useDispatch()
-  const { code } = useParams()
-  const { title, discount, imageUrl, growthValue } = fakeArray.find((item) => item.code === code) || {}
-
-  const { payment } = useSelector((state) => state.booking)
-  const totalEnd = discount - discount / 10
-  useEffect(() => {
-    dispatch(setTotal(totalEnd))
-  }, [totalEnd, dispatch])
-
-  useEffect(() => {
-    dispatch(setVoucher({ title, code }))
-  }, [title, code, dispatch])
+  const navigate = useNavigate()
+  const { data } = useSelector((state) => state.booking)
+  const { title, discount, imageUrl, growthValue, code } = data.voucher || {}
+  const { method, payment } = useSelector((state) => state.payment)
 
   const dataTotal = [
     {
       key: 'Tổng',
-      value: Unit({ value: totalEnd })
+      value: Unit({ value: payment.price })
     }
   ]
+
+  const handleStep = (step) => {
+    dispatch(bookDiscount({ nextStep: step, navigate }))
+  }
 
   return (
     <div>
@@ -57,7 +46,7 @@ const BillVoucher = ({ handleStep }) => {
           {Unit({ value: growthValue })}
           <Line keyName='Mã giảm giá' value={code} />
           <Line keyName='Giảm giá' value={Unit({ value: discount })} />
-          {payment && <Line keyName='Phương thức thanh toán' value={payment} />}
+          {method && <Line keyName='Phương thức thanh toán' value={method} />}
         </div>
         <Divider />
         {/* Total */}

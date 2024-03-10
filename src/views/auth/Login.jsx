@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 // project imports
 import Button from 'components/Button'
@@ -10,8 +11,7 @@ import Logo from 'components/icons/Logo'
 import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { authLogin } from 'stores/auth/authSlice'
-import { useDispatch } from 'react-redux'
+import { login } from 'stores/auth/slice'
 
 const schema = Yup.object({
   email: Yup.string().email('Invalid email').required('Email is required'),
@@ -20,7 +20,9 @@ const schema = Yup.object({
 
 function Login() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
+  const { loading } = useSelector((state) => state.auth)
   const [remember, setRemember] = useState(false)
 
   const {
@@ -36,7 +38,7 @@ function Login() {
   })
 
   const onSubmit = (data) => {
-    dispatch(authLogin(data))
+    dispatch(login({ data, navigate }))
 
     if (remember) {
       localStorage.setItem('email', data.email)
@@ -75,7 +77,7 @@ function Login() {
               </Link>
             </div>
           </div>
-          <Button primary wFull>
+          <Button primary wFull loading={loading}>
             Sign in
           </Button>
           <div className="my-3 float-right text-sm ">

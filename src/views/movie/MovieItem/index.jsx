@@ -1,8 +1,12 @@
 import Button from 'components/Button'
 import { useNavigate } from 'react-router-dom'
+import { initOrder } from 'stores/booking/slice'
+import { useDispatch } from 'react-redux'
 
 function MovieItem({ movie }) {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+
   return (
     <>
       <div className="bg-white flex flex-col rounded-lg  h-full select-none relative">
@@ -14,7 +18,7 @@ function MovieItem({ movie }) {
           <h3 className="text-center text-2xl">{movie.title}</h3>
           <div className="flex items-center justify-between my-2 mx-8">
             <Button primary className="hover:opacity-100"
-              onClick={() => navigate(`/booking-ticket/${movie.slug}`)}>
+              onClick={() => dispatch(initOrder({ navigate, order: 'ticket', data: { movie } }))}>
               Mua ngay
             </Button>
             <Button onClick={() => navigate(`/movie/detail/${movie.slug}`)} primary className="hover:opacity-100">

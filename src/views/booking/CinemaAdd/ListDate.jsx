@@ -29,7 +29,8 @@ const ListDate = () => {
               key={index}
               primary={check}
               disabled={check}
-              className='w-20 h-16'
+              className='w-16 h-10'
+              small
               onClick={() => handleSetFilterDate(item)}
             >
               <div className="flex items-center justify-evenly">
