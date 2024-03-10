@@ -4,6 +4,8 @@ import NormalChair from './NormalChair'
 import VipChair from './VipChair'
 import CoupleChair from './CoupleChair'
 
+import IcScreen from 'assets/images/film/ic-screen.png'
+
 const RoomMap = () => {
   const { data } = useSelector((state) => state.booking)
   const roomMap = data?.cinema?.roomMap
@@ -16,7 +18,7 @@ const RoomMap = () => {
     <div>
       <div className="flex flex-col w-[960px] justify-center items-center gap-y-2">
         <img
-          src="/src/assets/images/film/ic-screen.png"
+          src={IcScreen}
           alt="Màn hình chiếu"
         />
         <div className="flex flex-col gap-6 justify-center items-center">

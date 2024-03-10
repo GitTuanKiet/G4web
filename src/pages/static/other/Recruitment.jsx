@@ -1,5 +1,7 @@
 import Banner from 'views/home/Banner'
 
+import RecruitmentSrc from 'assets/images/recruitment.png'
+
 const slides = [
   {
     _id: 1,
@@ -68,7 +70,7 @@ function Recruitment() {
           phòng và khối cụm rạp:
         </p>
 
-        <img src="/src/assets/images/recruitment.png" className="" alt="" />
+        <img src={RecruitmentSrc} alt="Recruitment" className="" />
 
         <div className="grid grid-cols-2 gap-10 px-8 ">
           <div>

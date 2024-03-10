@@ -1,40 +1,47 @@
 import { useDispatch, useSelector } from 'react-redux'
 
+import AtmSrc from 'assets/images/payment-methods/napas.png'
+import VisaSrc from 'assets/images/payment-methods/visa-master-amex-jcb.jfif'
+import MomoSrc from 'assets/images/payment-methods/momo.png'
+import ZaloSrc from 'assets/images/payment-methods/zalopay.png'
+import ShopeeSrc from 'assets/images/payment-methods/shopeepay.png'
+import VnPaySrc from 'assets/images/payment-methods/vnpay.png'
+
 import { setMethod } from 'stores/payment/slice'
 const paymentOptionsData = [
   {
     value: 'atm',
-    logoSrc: '/src/assets/images/payment-methods/napas.png',
+    logoSrc: AtmSrc,
     altText: 'ATM nội địa Napas',
     description: 'Thẻ ATM nội địa Napas'
   },
   {
     value: 'visa-master',
-    logoSrc: '/src/assets/images/payment-methods/visa-master-amex-jcb.jfif',
+    logoSrc: VisaSrc,
     altText: 'Thẻ quốc tế',
     description: 'Thẻ quốc tế (Visa, Master)'
   },
   {
     value: 'momo',
-    logoSrc: '/src/assets/images/payment-methods/momo.png',
+    logoSrc: MomoSrc,
     altText: 'MoMo',
     description: 'MoMo: Nhập MMCGV24 -5k/bill'
   },
   {
     value: 'zalopay',
-    logoSrc: '/src/assets/images/payment-methods/zalopay.png',
+    logoSrc: ZaloSrc,
     altText: 'ZaloPay',
     description: 'ZaloPay: 84k/vé + quà 50k đặt xe Be'
   },
   {
     value: 'shopeepay',
-    logoSrc: '/src/assets/images/payment-methods/shopeepay.png',
+    logoSrc: ShopeeSrc,
     altText: 'ShopeePay',
     description: 'ShopeePay'
   },
   {
     value: 'vnpay',
-    logoSrc: '/src/assets/images/payment-methods/vnpay.png',
+    logoSrc: VnPaySrc,
     altText: 'VNPAY',
     description: 'VNPAY'
   }

@@ -6,6 +6,9 @@ import Button from 'components/Button'
 import Input from 'components/Input'
 import Logo from 'components/icons/Logo'
 
+import ggLogo from 'assets/images/ggLogo.png'
+import fbLogo from 'assets/images/fbLogo.png'
+
 // third-party
 import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
@@ -80,14 +83,14 @@ function Register() {
           <div className="mt-4 flex justify-between items-center">
             <a className="flex gap-x-2 items-center p-3 shadow rounded-lg cursor-pointer hover:shadow-md ">
               <div>
-                <img src="/src/assets/images/ggLogo.png" alt="" className="w-4" />
-              </div>{' '}
+                <img src={ggLogo} alt="" className="w-4" />
+              </div>
               <span className="text-xs">Continue with Google</span>
             </a>
             <a className="flex gap-x-2 items-center p-3 shadow rounded-lg cursor-pointer hover:shadow-md ">
               <div>
-                <img src="/src/assets/images/fbLogo.png" alt="" className="w-4" />
-              </div>{' '}
+                <img src={fbLogo} alt="" className="w-4" />
+              </div>
               <span className="text-xs">Continue with Facebook</span>
             </a>
           </div>

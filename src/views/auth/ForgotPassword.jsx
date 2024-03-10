@@ -6,6 +6,8 @@ import Button from 'components/Button'
 import Input from 'components/Input'
 import Logo from 'components/icons/Logo'
 
+import ForgotPasswordImg from 'assets/images/forgotPassword.jpg'
+
 // third-party
 import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
@@ -45,7 +47,7 @@ function ForgotPassword() {
         </div>
         <div className="w-full flex justify-center items-center gap-5 mx-auto max-w-[800px] ">
           <div>
-            <img src="/src/assets/images/forgotPassword.jpg" className='' alt="" />
+            <img src={ForgotPasswordImg} alt="Forgot password" className="" />
           </div>
           <form onSubmit={handleSubmit(onSubmit)} className="w-full">
             <h2 className='text-4xl mb-4 font-bold'>Forgot password?</h2>

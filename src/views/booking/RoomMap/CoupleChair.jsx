@@ -10,7 +10,7 @@ const CoupleChair = ({ chair, className }) => {
   const isChecked = chairs?.includes(chair)
   const disabled = showtime?.bookedChairs.includes(chair)
   const color = disabled ? 'bg-gray-500 opacity-60' : 'bg-red-500 opacity-100'
-  const priceChair = showtime.price * 1.5
+  const priceChair = showtime.price + showtime.price * 8 / 10
 
   const handleChecked = () => {
     if (disabled) return
