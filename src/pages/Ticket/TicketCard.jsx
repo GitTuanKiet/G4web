@@ -25,7 +25,7 @@ const CinemaInformation = ({ cinemaName, movieTitle, genres, duration, watched }
     </div>
     <div className="border-dashed border-t border-slate-400">
       <div className="pt-2 uppercase  text-lg font-medium text-black">{movieTitle}</div>
-      <div className="pt-2">{genres.join(', ')}</div>
+      <div className="pt-2">{genres?.join(', ')}</div>
       <div className="pt-2">Thời lượng: {duration} phút</div>
     </div>
   </div>
@@ -44,10 +44,10 @@ const TicketInformation = ({ day, time, total, type, chairs }) => (
       </thead>
       <tbody>
         <tr>
-          <td>{format(new Date(day), 'dd/MM/yyyy')}</td>
-          <td>{padStart(time)}</td>
+          <td>{day && format(new Date(day), 'dd/MM/yyyy')}</td>
+          <td>{time && padStart(time)}</td>
           <td>{type}</td>
-          <td>{chairs.join(', ')}</td>
+          <td>{chairs?.join(', ')}</td>
         </tr>
       </tbody>
     </table>
