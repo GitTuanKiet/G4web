@@ -17,7 +17,11 @@ const getDomain = () => {
 const getReturnURL = () => {
   const path = import.meta.env.VITE_RETURN_URL
   const url = import.meta.url
-  return url.split('src')[0] + path
+  if (import.meta.env.MODE === 'development') {
+    return url.split('src')[0] + path
+  } else {
+    return url.split('assets')[0] + path
+  }
 }
 
 export const CONSTANT = {
