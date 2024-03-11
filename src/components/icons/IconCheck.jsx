@@ -9,4 +9,4 @@ function IconCheck() {
     </svg>
   )
 }
-export default IconCheck;
+export default IconCheck

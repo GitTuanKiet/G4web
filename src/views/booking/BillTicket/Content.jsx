@@ -47,7 +47,7 @@ const Content = () => {
                 onClick={() => dispatch(removeDiscount({ discount: 'voucher' }))}>x</Button> : null}
               </span>
             </> :
-            isBooking ? <Button small onClick={() => setShowModalVoucher(!showModalVoucher)}>+</Button>: null}
+            isBooking ?<><span className="font-medium">Thêm mã giảm giá:</span> <Button small onClick={() => setShowModalVoucher(!showModalVoucher)}>+</Button></>: null}
         </div>}
       {comboPrice > 0 &&
         <div className='flex justify-between'>
@@ -58,7 +58,7 @@ const Content = () => {
                 <Button small className="min-w-1 ml-1" onClick={() => dispatch(removeDiscount({ discount: 'gift' }))}>x</Button> : null}
               </span>
             </> :
-            isBooking ? <Button small onClick={() => setShowModalGift(!showModalGift)}>+</Button>: null}
+            isBooking ?<><span className="font-medium">Thêm mã quà tặng:</span> <Button small onClick={() => setShowModalGift(!showModalGift)}>+</Button></>: null}
         </div>}
       {day && <Divider />}
       {showModalVoucher && <ModalListVoucher setShowModal={setShowModalVoucher} voucher />}

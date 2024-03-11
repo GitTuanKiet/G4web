@@ -6,12 +6,12 @@ import { useSelector } from 'react-redux'
 
 import Unit from 'components/Bill/Unit'
 
-const OrderCard = ({ orderId, payment, name, price, createdAt, status, links }) => {
+const OrderCard = ({ orderId, payment, name, price, status }) => {
   return (
     <div className="flex justify-between items-center border-b border-gray-300 py-2">
       <div>
         <p className="text-[15px]">{name}</p>
-        <p className="text-[13px] text-gray-500">{createdAt}</p>
+        <p className="text-[13px] text-gray-500">{orderId}</p>
       </div>
       <div>
         {payment && <Unit value={price} />}
