@@ -29,6 +29,5 @@ export const CONSTANT = {
   domain: getDomain(),
   return_url: getReturnURL()
 }
-console.log('🚀 ~ CONSTANT:', CONSTANT)
 
 

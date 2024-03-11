@@ -38,7 +38,7 @@ const TicketInformation = ({ day, time, total, type, chairs }) => (
         <tr className="">
           <th className="font-normal opacity-50 ">Ngày chiếu</th>
           <th className="font-normal opacity-50">Suất chiếu</th>
-          <th className="font-normal opacity-50">Số lượng vé</th>
+          <th className="font-normal opacity-50">Rạp chiếu</th>
           <th className="font-normal opacity-50">Số ghế</th>
         </tr>
       </thead>

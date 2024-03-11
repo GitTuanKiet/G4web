@@ -6,14 +6,14 @@ import Line from 'components/Bill/Line'
 import Divider from 'components/Divider'
 import ModalListVoucher from './ModalList'
 
-import { format, set } from 'date-fns'
+import { format } from 'date-fns'
 import { padStart } from 'utils/helper'
 import { removeDiscount } from 'stores/booking/slice'
 
 const Content = () => {
   const dispatch = useDispatch()
   const { cinemas } = useSelector((state) => state.data)
-  const { data } = useSelector((state) => state.booking)
+  const { data, step } = useSelector((state) => state.booking)
   const { method } = useSelector((state) => state.payment)
   const [showModalVoucher, setShowModalVoucher] = useState(false)
   const [showModalGift, setShowModalGift] = useState(false)
@@ -26,6 +26,7 @@ const Content = () => {
   const { chairs, combo, voucher, gift, showtime, chairsPrice, comboPrice } = data
   const cinema = cinemas.find((item) => item._id === showtime?.cinemaId)
 
+  const isBooking = step < 4
   const type = cinema?.type
   const { day, start } = showtime || {}
 
@@ -40,16 +41,16 @@ const Content = () => {
       {chairsPrice > 0 &&
         <div className='flex justify-between'>
           <span className="font-medium">Mã giảm giá:</span>
-          {voucher ? <span>{voucher?.code}<Button small className="min-w-1 ml-1"
-            onClick={() => dispatch(removeDiscount({ discount: 'voucher' }))}>x</Button></span> :
-            <Button small onClick={() => setShowModalVoucher(!showModalVoucher)}>+</Button>}
+          {voucher ? <span>{voucher?.code} {isBooking ? <Button small className="min-w-1 ml-1"
+            onClick={() => dispatch(removeDiscount({ discount: 'voucher' }))}>x</Button> : null}</span> :
+            isBooking ? <Button small onClick={() => setShowModalVoucher(!showModalVoucher)}>+</Button>: null}
         </div>}
       {comboPrice > 0 &&
         <div className='flex justify-between'>
           <span className="font-medium">Mã quà tặng:</span>
-          {gift ? <span>{gift?.name}<Button small className="min-w-1 ml-1"
-            onClick={() => dispatch(removeDiscount({ discount: 'gift' }))}>x</Button></span> :
-            <Button small onClick={() => setShowModalGift(!showModalGift)}>+</Button>}
+          {gift ? <span>{gift?.name} {isBooking ? <Button small className="min-w-1 ml-1"
+            onClick={() => dispatch(removeDiscount({ discount: 'gift' }))}>x</Button> : null}</span> :
+            isBooking ? <Button small onClick={() => setShowModalGift(!showModalGift)}>+</Button>: null}
         </div>}
       {day && <Divider />}
       {showModalVoucher && <ModalListVoucher setShowModal={setShowModalVoucher} voucher />}

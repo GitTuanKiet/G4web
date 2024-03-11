@@ -65,8 +65,7 @@ function* handleBookChairs(action) {
   try {
     yield put(bookingLoading())
     if (chairs.length > 4) throw new Error('Chọn quá nhiều ghế rồi bạn ơi')
-
-    yield put(setData({ chairs, chairsPrice: price }))
+    else yield put(setData({ chairs, chairsPrice: price }))
   } catch (error) {
     yield put(bookingError(error.message))
   } finally {
@@ -125,8 +124,9 @@ function* handleStepBookingTicket(action) {
         throw new Error('Vui lòng chọn phương thức thanh toán')
       }
       // add description
-      yield put(setDescription(` - Ghế: ${data?.chairs.join(', ')}`))
-      yield put(setDescription(` - Combo: ${data?.combo.map((i) => `${i.name} x${i.quantity}`).join(', ')}`))
+      // yield put(setDescription(` - Ghế: ${data?.chairs.join(', ')}`))
+      // yield put(setDescription(` - ${data?.combo.map((i) => `${i.name} x${i.quantity}`).join(', ')}`))
+      yield put(setDescription(` - Mua vé xem phim ${data?.movie?.title}`))
       // calculate price (chair - voucher) + (combo - gift)
       const { chairsPrice, comboPrice, voucherPrice, giftPrice } = data
       const totalChair = chairsPrice - voucherPrice < 0 ? 0 : chairsPrice - voucherPrice
@@ -136,7 +136,7 @@ function* handleStepBookingTicket(action) {
     }
 
     if (nextStep === 5) {
-      if (payment.price <= 0) yield put(setPayment({ price: 0 }))
+      if (payment.price < 0) yield put(setPayment({ price: 0 }))
       yield put(createOrder())
     }
 

@@ -75,8 +75,11 @@ const BillTicket = () => {
           ))}
         </div>
         <Divider />
-        {step === 4 ? <div className='flex flex-col'>
-          <Line keyName='Tổng cộng' value={Unit({ value: price })} />
+        {step >= 4 ? <div className='flex flex-col'>
+          <div className="flex justify-between">
+            <span className="font-medium">{'Tổng cộng'}:</span>
+            <span className="text-gray-500">{Unit({ value: price })}</span>
+          </div>
           <span className='text-xs text-right text-blue-400'>Đã bao gồm VAT(10%)</span>
         </div> : null}
         {/* group button */}

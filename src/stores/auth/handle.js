@@ -116,6 +116,7 @@ function* handleVerifyEmail(action) {
       toast.success(res.data.message)
       yield put(authVerify())
       toast.info('Sẽ chuyển hướng về trang đăng nhập sau 5s')
+      window.history.pushState({}, document.title, window.location.pathname)
       setTimeout(() => {
         navigate('/auth/login')
       }, 5000)
@@ -135,6 +136,7 @@ function* handleResetPassword(action) {
     if (res.status === 200) {
       toast.success(res.data.message)
       yield put(authVerify())
+      window.history.pushState({}, document.title, window.location.pathname)
       toast.info('Sẽ chuyển hướng về trang đăng nhập sau 5s')
       setTimeout(() => {
         navigate('/auth/login')
