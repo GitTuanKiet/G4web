@@ -14,6 +14,9 @@ function* handleFetchData() {
       call(FetchApi.getMovies)
     ])
 
+    console.log(resCinemas)
+    console.log(resShowtimes)
+    console.log(resMovies)
     yield put(fetchDataSuccess({
       cinemas: resCinemas.data,
       showtimes: resShowtimes.data,

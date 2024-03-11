@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
-
+import imagePaths from 'assets/images/imagePaths'
 const img = 'https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/u/2/u22-240x201-04.png'
 
 const fakeList = [
@@ -38,7 +38,11 @@ function EventList() {
 
   return (
     <div>
-      <h1 className="text-primary text-6xl text-center my-6 font-semibold">EVENT</h1>
+      <div className='my-10'>
+        <hr className='border-t-2 border-black mb-[-18px]' />
+        <img src={imagePaths.event} alt="" className='mx-auto ' />
+        <hr className='border-t-2 border-black mt-[-18px]' />
+      </div>
 
       <div className="flex items-center justify-center pb-6 text-white rounded-b-none relative">
         <div className="triangle-left"></div>

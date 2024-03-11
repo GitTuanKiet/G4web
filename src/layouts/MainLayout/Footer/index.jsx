@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import imagePaths from 'assets/images/imagePaths'
 
 // Assets
 import logo from 'assets/images/menu/cgvlogo.png'
@@ -53,19 +54,64 @@ const FooterLink = ({ title, links }) => {
 const LogoLink = ({ url, logo }) => {
   return (
     <a href={url} className="[border:none] [outline:none] h-[37px] flex relative">
-      <img src={logo} alt="" className="w-full h-full object-contain" />
+      <img src={logo} alt="" className="w-[50px] h-[20px] object-fill my-auto" />
     </a>
   )
 }
 
-const logoData = Array(10).fill({ url: '#', logo: logo })
 
+const LogoData = [
+  {
+    url: '#',
+    logo: imagePaths.dx
+  },
+  {
+    url: '#',
+    logo: imagePaths.imax
+  },
+  {
+    url: '#',
+    logo: imagePaths.starium
+  },
+  {
+    url: '#',
+    logo: imagePaths.gold_class
+  },
+  {
+    url: '#',
+    logo: imagePaths.lamour
+  },
+  {
+    url: '#',
+    logo: imagePaths.sweet_box
+  },
+  {
+    url: '#',
+    logo: imagePaths.premium_cinema
+  },
+  {
+    url: '#',
+    logo: imagePaths.screen_x
+  },
+  {
+    url: '#',
+    logo: imagePaths.cine_foret
+  },
+  {
+    url: '#',
+    logo: imagePaths.cine_living_room
+  },
+  {
+    url: '#',
+    logo: imagePaths.cine_suite
+  }
+]
 export default function Footer() {
   return (
     <footer className="z-10 w-full py-2">
       <hr className="border border-black absolute w-full left-0" />
       <div className="flex justify-between flex-row gap-4 py-2">
-        {logoData.map((data, index) => (
+        {LogoData.map((data, index) => (
           <LogoLink key={index} url={data.url} logo={data.logo} />
         ))}
       </div>
@@ -79,34 +125,34 @@ export default function Footer() {
           <ul className="mt-2 flex flex-row items-start justify-start gap-[13px] mb-2">
             <li className="transition-transform transform hover:scale-90">
               <a href="#">
-                <img src={logo} alt="" className="object-contain h-[34px] w-[34px] relative bg-gray-100" />
+                <img src={imagePaths.facebook} alt="" className="object-contain h-[34px] w-[34px] relative " />
               </a>
             </li>
             <li className="transition-transform transform hover:scale-90">
               <a href="#">
-                <img src={logo} alt="" className="object-contain h-[34px] w-[34px] relative bg-gray-100" />
+                <img src={imagePaths.youtube} alt="" className="object-contain h-[34px] w-[34px] relative " />
               </a>
             </li>
             <li className="transition-transform transform hover:scale-90">
               <a href="#">
-                <img src={logo} alt="" className="object-contain h-[34px] w-[34px] relative bg-gray-100" />
+                <img src={imagePaths.instagram} alt="" className="object-contain h-[34px] w-[34px] relative " />
               </a>
             </li>
             <li className="transition-transform transform hover:scale-90">
               <a href="#">
-                <img src={logo} alt="" className="object-contain h-[34px] w-[34px] relative bg-gray-100" />
+                <img src={imagePaths.zalo} alt="" className="object-cover h-[34px] w-[34px] relative " />
               </a>
             </li>
           </ul>
           <a href="#">
-            <img src={logo} alt="" className="w-[175px] h-[35px] relative bg-brown object-contain  bg-gray-100" />
+            <img src={imagePaths.bo_cong_thuong} alt="" className="w-[175px] h-[55px] relative  object-fill" />
           </a>
         </div>
       </div>
       <hr className="border border-black absolute w-full left-0" />
       <div className="flex justify-center items-center gap-[25px] text-xs text-gray-500 mx-auto py-2">
         <div>
-          <img src={logo} alt="" className="h-[84px] w-[84px] relative bg-gray-200 object-contain" />
+          <img src={logo} alt="" className="h-[84px] w-[84px] relative  object-contain" />
         </div>
         <div>
           <p className="font-bold text-base">CÔNG TY TNHH CJ CGV VIỆT NAM</p>
