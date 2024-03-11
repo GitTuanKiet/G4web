@@ -132,11 +132,11 @@ function* handleStepBookingTicket(action) {
       const totalChair = chairsPrice - voucherPrice < 0 ? 0 : chairsPrice - voucherPrice
       const totalCombo = comboPrice - giftPrice < 0 ? 0 : comboPrice - giftPrice
       const total = totalChair + totalCombo
-      yield put(setPayment({ chairs: data?.chairs, price: Number((total + total/10).toFixed(2)) }))
+      yield put(setPayment({ chairs: data?.chairs, price: Number((total + total/10).toFixed(2)) || 0.01 }))
     }
 
     if (nextStep === 5) {
-      if (payment.price < 0) yield put(setPayment({ price: 0 }))
+      if (payment.price <= 0) yield put(setPayment({ price: 0.01 }))
       yield put(createOrder())
     }
 

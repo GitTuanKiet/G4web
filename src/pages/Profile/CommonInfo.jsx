@@ -9,6 +9,8 @@ function CommonInfo() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { info, cards, history, loading, memberCard } = useSelector((state) => state.user)
+
+  const historyLength = history?.ticket.length + history?.voucher.length+ history?.gift.length
   const inputId = Math.random().toString(32).substring(2)
 
   const [image, setImage] = useState(null)
@@ -66,16 +68,16 @@ function CommonInfo() {
           </p>
 
           <p className="flex justify-between">
-            Tổng chi tiêu <span className="font-bold">{memberCard?.point}</span>
+            Tổng chi tiêu <span className="font-bold">{memberCard?.point || 0}</span>
           </p>
 
           <p className="flex justify-between">
-            Mã PIN <span className="font-bold">{info?.PIN}</span>
+            Mã PIN <span className="font-bold">{info?.PIN || 'Chưa có'}</span>
           </p>
         </div>
         <div className="border-r-2 border-black flex flex-col justify-between items-center">
           <p>Thẻ quà tặng</p>
-          <p className="font-bold">{cards?.gifts.length}</p>
+          <p className="font-bold">{cards?.gifts.length || 0}</p>
           <Button to="/gifts" small>
             Xem
           </Button>
@@ -83,7 +85,7 @@ function CommonInfo() {
 
         <div className="border-r-2 border-black flex flex-col justify-between items-center">
           <p>Mã giảm giá</p>
-          <p className="font-bold">{cards?.vouchers.length}</p>
+          <p className="font-bold">{cards?.vouchers.length || 0}</p>
           <Button to="/online-store" small>
             Xem
           </Button>
@@ -95,14 +97,14 @@ function CommonInfo() {
         </div> */}
         <div className="border-r-2 border-black flex flex-col justify-between items-center">
           <p>Vé xem phim</p>
-          <p className="font-bold">{cards?.tickets.length}</p>
+          <p className="font-bold">{cards?.tickets.length || 0}</p>
           <Button to="/ticket" small>
             Xem
           </Button>
         </div>
         <div className="flex flex-col justify-between items-center">
           <p>Giao dịch</p>
-          <p className="font-bold">{history?.ticket.length || 0 + history?.voucher.length || 0 + history?.gift.length || 0}</p>
+          <p className="font-bold">{historyLength || 0}</p>
           <Button to="/profile/transaction-history" small>
             Xem
           </Button>
@@ -115,7 +117,7 @@ function CommonInfo() {
           <h2>Tên: {info?.name}</h2>
           <h2>Email: {info?.email}</h2>
           <h2>Điện thoại: {info?.phone || 'Chưa có số điên thoại'}</h2>
-          <h2>Thẻ thành viên: {info?.memberCardId || 'Chưa có thẻ thành viên'}</h2>
+          <h2>Thẻ thành viên: {memberCard?.number || 'Chưa có thẻ thành viên'}</h2>
         </div>
         <div className="flex gap-4 justify-end items-center">
           <Button onClick={() => navigate(-1)}>&lt;&lt; Quay lại</Button>
