@@ -1,4 +1,4 @@
-import { useParams, Navigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 // project imports
 import TheaterGoldClass from './GoldClass'

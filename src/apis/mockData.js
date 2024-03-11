@@ -1,8 +1,4 @@
-import { format, addDays } from 'date-fns'
-
-const formatDateTime = (date) => {
-  return format(date, 'dd/MM/yyyy')
-}
+import { addDays } from 'date-fns'
 
 export const slides = [
   {

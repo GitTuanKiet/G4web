@@ -3,8 +3,7 @@ import { Outlet } from 'react-router-dom'
 
 const sidebarLinks = [
   {
-    path: 'introduction ',
-    // element: <CommonInfo />,
+    path: 'introduction',
     title: 'Giới thiệu'
   },
   {

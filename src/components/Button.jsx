@@ -6,7 +6,6 @@ function Button({
   children,
   loading = false,
   primary = false,
-  outline = false,
   wFull = false,
   disabled = false,
   noborder = false,

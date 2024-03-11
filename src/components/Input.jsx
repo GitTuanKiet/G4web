@@ -11,7 +11,7 @@ function Input({ label, errors, control, ...rest }) {
         </span>
       </label>
       <input
-        _id={rest._id || rest.name}
+        id={rest._id || rest.name}
         type={rest.type || 'text'}
         className="border border-gray-200 rounded-md py-3 px-4 min-w-[125px] w-full mt-1 focus:border-primary"
         {...field}
