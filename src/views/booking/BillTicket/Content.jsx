@@ -40,16 +40,24 @@ const Content = () => {
       {method && <Line keyName='Phương thức thanh toán' value={method} />}
       {chairsPrice > 0 &&
         <div className='flex justify-between'>
-          <span className="font-medium">Mã giảm giá:</span>
-          {voucher ? <span>{voucher?.code} {isBooking ? <Button small className="min-w-1 ml-1"
-            onClick={() => dispatch(removeDiscount({ discount: 'voucher' }))}>x</Button> : null}</span> :
+          {voucher ?
+            <>
+              <span className="font-medium">Mã giảm giá:</span>
+              <span>{voucher?.code} {isBooking ? <Button small className="min-w-1 ml-1"
+                onClick={() => dispatch(removeDiscount({ discount: 'voucher' }))}>x</Button> : null}
+              </span>
+            </> :
             isBooking ? <Button small onClick={() => setShowModalVoucher(!showModalVoucher)}>+</Button>: null}
         </div>}
       {comboPrice > 0 &&
         <div className='flex justify-between'>
-          <span className="font-medium">Mã quà tặng:</span>
-          {gift ? <span>{gift?.name} {isBooking ? <Button small className="min-w-1 ml-1"
-            onClick={() => dispatch(removeDiscount({ discount: 'gift' }))}>x</Button> : null}</span> :
+          {gift ?
+            <>
+              <span className="font-medium">Mã quà tặng:</span>
+              <span>{gift?.name} {isBooking ?
+                <Button small className="min-w-1 ml-1" onClick={() => dispatch(removeDiscount({ discount: 'gift' }))}>x</Button> : null}
+              </span>
+            </> :
             isBooking ? <Button small onClick={() => setShowModalGift(!showModalGift)}>+</Button>: null}
         </div>}
       {day && <Divider />}

@@ -29,8 +29,8 @@ const BillGift = () => {
   }
 
   return (
-    <div>
-      <div className="rounded-xl h-auto w-80 bg-rose-100 p-4 text-[15px]">
+    <div className='min-w-80'>
+      <div className="rounded-xl h-auto w-full bg-rose-100 p-4 text-[15px]">
         {/* Title */}
         <div className="flex justify-between items-center">
           <div className='w-16'>
