@@ -1,4 +1,3 @@
-
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
@@ -48,11 +47,11 @@ const BillTicket = () => {
   }
 
   return (
-    <div className='min-w-80'>
-      <div className="rounded-xl h-auto w-full bg-rose-100 p-4 text-[15px]">
+    <div className="min-w-80 ">
+      <div className="rounded-xl h-auto w-full bg-rose-100 p-4 text-[15px] ">
         {/* Title */}
         <div className="flex justify-between items-center">
-          <div className='w-16'>
+          <div className="w-16">
             <Logo />
           </div>
           <p className="font-sans text-xl">{cinema?.name || ''}</p>
@@ -75,13 +74,15 @@ const BillTicket = () => {
           ))}
         </div>
         <Divider />
-        {step >= 4 ? <div className='flex flex-col'>
-          <div className="flex justify-between">
-            <span className="font-medium">{'Tổng cộng'}:</span>
-            <span className="text-gray-500">{Unit({ value: price })}</span>
+        {step >= 4 ? (
+          <div className="flex flex-col">
+            <div className="flex justify-between">
+              <span className="font-medium">{'Tổng cộng'}:</span>
+              <span className="text-gray-500">{Unit({ value: price })}</span>
+            </div>
+            <span className="text-xs text-right text-blue-400">Đã bao gồm VAT(10%)</span>
           </div>
-          <span className='text-xs text-right text-blue-400'>Đã bao gồm VAT(10%)</span>
-        </div> : null}
+        ) : null}
         {/* group button */}
         <GroupButton handleStep={handleStep} start={0} end={4} />
       </div>

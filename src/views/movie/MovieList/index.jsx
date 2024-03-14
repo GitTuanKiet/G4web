@@ -1,12 +1,13 @@
 import { useSelector } from 'react-redux'
 import MovieItem from '../MovieItem'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import Heading from 'components/Heading'
 
 function MovieList() {
   const { movies } = useSelector((state) => state.data)
   return (
     <div>
-      <h1 className="text-primary text-6xl text-center my-6 font-semibold">Movie selection</h1>
+    <Heading>Movie selection</Heading>
       <div className="movie-list ">
         <Swiper grabCursor={true} spaceBetween={40} slidesPerView={'auto'}>
           {movies.map((movie) => {

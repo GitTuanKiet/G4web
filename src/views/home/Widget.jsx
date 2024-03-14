@@ -55,7 +55,7 @@ const StaticWidget = [
 const CardWidget = ({ title, bgImage, link }) => {
   return (
     <div
-      className="flex flex-col w-full h-full bg-cover bg-center bg-no-repeat shadow-sm "
+      className="flex flex-col w-full h-full bg-cover bg-center bg-no-repeat  "
       style={{ backgroundImage: `url(${bgImage})` }}
     >
       <Link to={link} className="w-full h-full flex items-end justify-center ">
@@ -68,9 +68,14 @@ const CardWidget = ({ title, bgImage, link }) => {
 const Widget = () => {
   return (
     <>
-      <div className="flex gap-6">
+      <div className="flex justify-between w-full">
         {StaticWidget.map((item, index) => (
-          <div className="min-w-[80px] min-h-[80px]" key={index}>
+          <div
+            className={`min-w-[80px] min-h-[80px] w-[140px] h-[97px] ${
+              index === StaticWidget.length - 1 ? '' : 'border-r '
+            } border-black  `}
+            key={index}
+          >
             <CardWidget key={index} title={item.title} bgImage={item.bgImage} link={item.link} />
           </div>
         ))}

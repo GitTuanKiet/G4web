@@ -28,7 +28,7 @@ const BookTicket = () => {
   }, [payment.order, navigate])
 
   return (
-    <section className="flex max-w-7xl justify-center h-auto mx-auto py-8 gap-4">
+    <section className="flex max-w-7xl justify-center h-auto mx-auto py-8 gap-4 tablet:flex-col mobile:flex-col">
       {step === 0 && <CinemaAdd />}
       {step === 1 && <RoomMap />}
       {step === 2 && <ComboCard />}

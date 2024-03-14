@@ -2,6 +2,10 @@ import { Link } from 'react-router-dom'
 
 // Assets
 import logo from 'assets/images/menu/cgvlogo.png'
+import fbLogo from 'assets/images/fb.png'
+import zaloLogo from 'assets/images/zalo.png'
+import ytbLogo from 'assets/images/ytb.png'
+import certificated from 'assets/images/logo-da-thong-bao-bo-cong-thuong-mau-xanh.png'
 
 const footerData = [
   {
@@ -37,9 +41,9 @@ const footerData = [
 
 const FooterLink = ({ title, links }) => {
   return (
-    <div className="text-slate-500">
-      <h2 className="font-semibold text-xl py-2">{title}</h2>
-      <ul className="text-lg max-w-[260px]">
+    <div className="text-slate-500 mobile:shadow-sm mobile:pb-3">
+      <h2 className="font-semibold text-lg py-2">{title}</h2>
+      <ul className=" max-w-[260px]">
         {links.map((link, index) => (
           <li className="hover:text-primary" key={index}>
             {link.url ? <Link to={link.url}>{link.title}</Link> : <span>{link.title}</span>}
@@ -52,8 +56,8 @@ const FooterLink = ({ title, links }) => {
 
 const LogoLink = ({ url, logo }) => {
   return (
-    <a href={url} className="[border:none] [outline:none] h-[37px] flex relative">
-      <img src={logo} alt="" className="w-full h-full object-contain" />
+    <a href={url} className="[border:none] [outline:none]   ">
+      <img src={logo} alt="" className="w-full h-full  object-cover" />
     </a>
   )
 }
@@ -64,53 +68,56 @@ export default function Footer() {
   return (
     <footer className="z-10 w-full py-2">
       <hr className="border border-black absolute w-full left-0" />
-      <div className="flex justify-between flex-row gap-4 py-2">
+      <div className="flex justify-between flex-row gap-4 py-4 mobile:hidden">
         {logoData.map((data, index) => (
           <LogoLink key={index} url={data.url} logo={data.logo} />
         ))}
       </div>
       <hr className="border border-black absolute w-full left-0" />
-      <div className="flex justify-between gap-10 w-full text-gray-500 dark:text-white">
+      <div className=" grid grid-cols-4 lg:gap-x-20 md:grid-cols-3 mobile:grid-cols-none  gap-y-4  w-full text-gray-500 py-4 ">
         {footerData.map((data, index) => (
           <FooterLink key={index} title={data.title} links={data.links} />
         ))}
         <div>
-          <p className="font-semibold text-2xl py-2">Kết nối với chúng tôi</p>
-          <ul className="mt-2 flex flex-row items-start justify-start gap-[13px] mb-2">
+          <p className="font-semibold text-xl py-2">Kết nối với chúng tôi</p>
+          <ul className="mt-2 flex  items-center    gap-[13px] mb-2">
             <li className="transition-transform transform hover:scale-90">
               <a href="#">
-                <img src={logo} alt="" className="object-contain h-[34px] w-[34px] relative bg-gray-100" />
+                <img src={fbLogo} alt="" className="object-contain h-[50px] w-[50px] relative " />
               </a>
             </li>
             <li className="transition-transform transform hover:scale-90">
               <a href="#">
-                <img src={logo} alt="" className="object-contain h-[34px] w-[34px] relative bg-gray-100" />
+                <img src={zaloLogo} alt="" className="object-contain h-[50px] w-[50px] relative " />
               </a>
             </li>
             <li className="transition-transform transform hover:scale-90">
               <a href="#">
-                <img src={logo} alt="" className="object-contain h-[34px] w-[34px] relative bg-gray-100" />
-              </a>
-            </li>
-            <li className="transition-transform transform hover:scale-90">
-              <a href="#">
-                <img src={logo} alt="" className="object-contain h-[34px] w-[34px] relative bg-gray-100" />
+                <img src={ytbLogo} alt="" className="object-contain h-[50px] w-[50px] relative " />
               </a>
             </li>
           </ul>
           <a href="#">
-            <img src={logo} alt="" className="w-[175px] h-[35px] relative bg-brown object-contain  bg-gray-100" />
+            <img
+              src={certificated}
+              alt=""
+              className="mobile:w-[200px]  w-[125px] h-[48px]  bg-brown object-contain  "
+            />
           </a>
         </div>
       </div>
       <hr className="border border-black absolute w-full left-0" />
-      <div className="flex justify-center items-center gap-[25px] text-xs text-gray-500 mx-auto py-2">
+      <div className="flex  items-center gap-[25px] text-xs text-gray-500 mx-auto py-2">
         <div>
-          <img src={logo} alt="" className="h-[84px] w-[84px] relative bg-gray-200 object-contain" />
+          <img
+            src={logo}
+            alt=""
+            className="h-[143px] mobile:w-[200px] mobile:h-[200px] w-[143px] relative object-contain"
+          />
         </div>
         <div>
           <p className="font-bold text-base">CÔNG TY TNHH CJ CGV VIỆT NAM</p>
-          <ul className="mt-2">
+          <ul className="mt-3">
             <li>
               Giấy Chứng nhận đăng ký doanh nghiệp: 0303675393 đăng ký lần đầu ngày 31/7/2008, được cấp bởi Sở Kế hoạch
               và

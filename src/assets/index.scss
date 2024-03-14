@@ -90,4 +90,13 @@ html {
     top: 0;
     z-index: 1;
   }
+
+  @media screen and (max-width: 768px) {
+    .movie-list .swiper-slide {
+      width: 230px;
+    }
+    .event-list .swiper-slide {
+      width: 150px;
+    }
+  }
 }
