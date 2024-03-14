@@ -17,7 +17,7 @@ const authSlice = createSlice({
     authSuccess: (state, action) => ({ ...state, ...action.payload, loading: false, verified: true }),
     authFinish: (state) => { state.loading = false },
     authError: (state, action) => { state.error = action.payload, state.loading = false },
-    authVerify: (state) => { state.verified = true },
+    authVerify: (state) => { state.loading = false, state.verified = true },
     authClear: () => initialState,
     register: () => { },
     login: () => { },

@@ -49,8 +49,8 @@ const Combo = () => {
   }
 
   return (
-    <div>
-      <div className="bg-rose-100 flex flex-col h-auto w-[800px] gap-4 p-4">
+    <div className='min-w-[800px]'>
+      <div className="bg-rose-100 flex flex-col h-auto w-full gap-4 p-4">
         {fakeData.map((item) => (
           <ComboCard key={item._id} _id={item._id} {...item} handleSetPrice={handleSetPrice} />
         ))}

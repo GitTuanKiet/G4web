@@ -5,7 +5,7 @@ import { fakeArray } from 'apis/mockData'
 
 import { initOrder } from 'stores/booking/slice'
 
-function VoucherDetail({ slug }) {
+function VoucherDetail() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 

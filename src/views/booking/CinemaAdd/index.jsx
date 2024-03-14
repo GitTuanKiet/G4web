@@ -51,8 +51,8 @@ function CinemaAdd() {
   }, [listShowtime, cinemas, city, type])
 
   return (
-    <div>
-      <div className="bg-rose-100 flex flex-col h-auto min-w-[800px] p-4">
+    <div className="min-w-[800px]">
+      <div className="bg-rose-100 flex flex-col h-auto w-full p-4">
         {/* Date */}
         <ListDate />
 

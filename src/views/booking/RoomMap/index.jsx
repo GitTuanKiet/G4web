@@ -15,8 +15,8 @@ const RoomMap = () => {
   const vipChairs = roomMap?.filter((item) => item.type === 'vip')
 
   return (
-    <div>
-      <div className="flex flex-col w-[960px] justify-center items-center gap-y-2">
+    <div className='min-w-[800px]'>
+      <div className="flex flex-col w-full h-auto justify-center items-center gap-y-2">
         <img
           src={IcScreen}
           alt="Màn hình chiếu"
