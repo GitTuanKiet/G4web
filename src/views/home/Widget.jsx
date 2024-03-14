@@ -1,65 +1,74 @@
 import { Link } from 'react-router-dom'
+import FeatureImg from 'assets/images/film/dac_trung.png'
+import ContactImg from 'assets/images/film/lien_he.png'
+import filmImg from 'assets/images/film/phim_dang_chieu.png'
+import cinemaImg from 'assets/images/film/Rap.png'
+import newsImg from 'assets/images/film/tin_moi.png'
+import TicketGroup from 'assets/images/film/ve_nhom.png'
+import registerNowImg from 'assets/images/film/dang_ky_ngay.png'
 
 const StaticWidget = [
   {
     _id: 1,
-    title: 'rạp cgv',
-    bgImage: 'https://chocanh.vn/wp-content/uploads/hinh-anh-cho-cute-chibi-dep-nhat_101023548.png',
+    // title: 'rạp cgv',
+    bgImage: cinemaImg,
     link: '/theaters'
   },
   {
     _id: 2,
-    title: 'phim đang chiếu',
-    bgImage: 'https://chocanh.vn/wp-content/uploads/hinh-anh-cho-cute-chibi-dep-nhat_101023548.png',
+    // title: 'phim đang chiếu',
+    bgImage: filmImg,
     link: '/movie/now-showing'
   },
   {
     _id: 3,
-    title: 'dặc trưng cgv',
-    bgImage: 'https://chocanh.vn/wp-content/uploads/hinh-anh-cho-cute-chibi-dep-nhat_101023548.png',
+    // title: 'dặc trưng cgv',
+    bgImage: FeatureImg,
     link: '/theaters/special'
   },
   {
     _id: 4,
-    title: 'Thuê rạp & vé nhóm',
-    bgImage: 'https://chocanh.vn/wp-content/uploads/hinh-anh-cho-cute-chibi-dep-nhat_101023548.png',
+    // title: 'Thuê rạp & vé nhóm',
+    bgImage: TicketGroup,
     link: '/cinemas'
   },
   {
     _id: 5,
-    title: 'liên hệ cgv',
-    bgImage: 'https://chocanh.vn/wp-content/uploads/hinh-anh-cho-cute-chibi-dep-nhat_101023548.png',
+    // title: 'liên hệ cgv',
+    bgImage: ContactImg,
     link: '/contacts'
   },
   {
     _id: 6,
-    title: 'tin mới & ưu đãi',
-    bgImage: 'https://chocanh.vn/wp-content/uploads/hinh-anh-cho-cute-chibi-dep-nhat_101023548.png',
+    // title: 'tin mới & ưu đãi',
+    bgImage: newsImg,
     link: '/news-offer'
   },
   {
     _id: 7,
-    title: 'đăng ký ngay',
-    bgImage: 'https://chocanh.vn/wp-content/uploads/hinh-anh-cho-cute-chibi-dep-nhat_101023548.png',
+    // title: 'đăng ký ngay',
+    bgImage: registerNowImg,
     link: '/auth/register'
   }
 ]
 
 const CardWidget = ({ title, bgImage, link }) => {
   return (
-    <div className="flex flex-col w-full h-full bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${bgImage})` }}>
-      <Link to={link} className="w-full h-full flex items-end justify-center">
+    <div
+      className="flex flex-col w-full h-full bg-cover bg-center bg-no-repeat shadow-sm "
+      style={{ backgroundImage: `url(${bgImage})` }}
+    >
+      <Link to={link} className="w-full h-full flex items-end justify-center ">
         <span className="uppercase font-mono text-xs">{title}</span>
       </Link>
     </div>
-
   )
 }
 
 const Widget = () => {
   return (
     <>
-      <div className="flex gap-4">
+      <div className="flex gap-6">
         {StaticWidget.map((item, index) => (
           <div className="min-w-[80px] min-h-[80px]" key={index}>
             <CardWidget key={index} title={item.title} bgImage={item.bgImage} link={item.link} />

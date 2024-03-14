@@ -47,17 +47,17 @@ export default function Header() {
     },
     !accessToken
       ? {
-        _id: 'auth',
-        title: 'Đăng nhập / Đăng ký',
-        icon: <CiUser />,
-        to: '/auth'
-      }
+          _id: 'auth',
+          title: 'Đăng nhập / Đăng ký',
+          icon: <CiUser />,
+          to: '/auth'
+        }
       : {
-        _id: 'profile',
-        title: 'Hello, ' + info?.name,
-        icon: <CiUser />,
-        to: '/profile/common-info'
-      }
+          _id: 'profile',
+          title: 'Hello, ' + info?.name,
+          icon: <CiUser />,
+          to: '/profile/common-info'
+        }
   ]
 
   useEffect(() => {

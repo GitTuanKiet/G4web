@@ -1,8 +1,6 @@
-
 // assets
 import logo2 from 'assets/images/menu/kenhcine.gif'
 import logo3 from 'assets/images/menu/mua-ve_ngay.png'
-
 
 // project imports
 import Dropdown from 'components/extended/Dropdown'
@@ -104,13 +102,13 @@ const menuItems = [movies, theaters, members, cultureplex]
 const Menu = () => {
   return (
     <>
-      <div className='flex justify-between w-full h-full'>
-        <ul className='flex font-semibold uppercase items-end gap-1'>
+      <div className="flex justify-between w-full h-full">
+        <ul className="flex font-semibold uppercase items-end gap-1">
           {menuItems.map((item) => (
             <Dropdown key={item._id} title={item.title} items={item.items} icon={item.icon} />
           ))}
         </ul>
-        <div className='flex items-center'>
+        <div className="flex items-center">
           <img
             className="h-27 w-108 relative overflow-hidden shrink-0 object-cover"
             loading="eager"
