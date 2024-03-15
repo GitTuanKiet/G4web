@@ -1,16 +1,18 @@
-import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
 // project imports
 import Button from 'components/Button'
 import Input from 'components/Input'
 import Logo from 'components/icons/Logo'
 
+import ForgotPasswordImg from 'assets/images/forgotPassword.jpg'
+
 // third-party
 import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { authForgotPassword } from 'stores/auth/authSlice'
+import { forgotPassword } from 'stores/auth/slice'
 
 
 const schema = Yup.object({
@@ -19,6 +21,8 @@ const schema = Yup.object({
 
 function ForgotPassword() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { loading } = useSelector((state) => state.auth)
 
   const {
     handleSubmit,
@@ -31,8 +35,8 @@ function ForgotPassword() {
     }
   })
 
-  const onSubmit = (data) => {
-    dispatch(authForgotPassword(data))
+  const onSubmit = (email) => {
+    dispatch(forgotPassword({ email, navigate }))
   }
 
   return (
@@ -43,14 +47,14 @@ function ForgotPassword() {
         </div>
         <div className="w-full flex justify-center items-center gap-5 mx-auto max-w-[800px] ">
           <div>
-            <img src="/src/assets/images/forgotPassword.jpg" className='' alt="" />
+            <img src={ForgotPasswordImg} alt="Forgot password" className="" />
           </div>
           <form onSubmit={handleSubmit(onSubmit)} className="w-full">
             <h2 className='text-4xl mb-4 font-bold'>Forgot password?</h2>
             <p>Enter the email address associated with your account.</p>
             <Input placeholder="Enter your email" name="email" control={control} errors={errors} />
 
-            <Button primary wFull>
+            <Button primary wFull loading={loading}>
           Confirm
             </Button>
             <div className="my-3 float-right text-sm ">

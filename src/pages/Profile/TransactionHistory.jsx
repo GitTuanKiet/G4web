@@ -6,12 +6,12 @@ import { useSelector } from 'react-redux'
 
 import Unit from 'components/Bill/Unit'
 
-const OrderCard = ({ orderId, payment, name, price, createdAt, status, links }) => {
+const OrderCard = ({ orderId, payment, name, price, status }) => {
   return (
     <div className="flex justify-between items-center border-b border-gray-300 py-2">
       <div>
         <p className="text-[15px]">{name}</p>
-        <p className="text-[13px] text-gray-500">{createdAt}</p>
+        <p className="text-[13px] text-gray-500">{orderId}</p>
       </div>
       <div>
         {payment && <Unit value={price} />}
@@ -24,7 +24,7 @@ const OrderCard = ({ orderId, payment, name, price, createdAt, status, links }) 
 function TransactionHistory() {
   const navigate = useNavigate()
 
-  const { history } = useSelector((state) => state.auth)
+  const { history } = useSelector((state) => state.user)
   const [selected, setSelected] = useState('ticket')
 
   const handleSelected = (e) => {
@@ -50,7 +50,7 @@ function TransactionHistory() {
         </Button>
       </div>
 
-      <div className="my-3">
+      <div className="my-3 h-[400px] overflow-auto">
         {history &&
           history[selected].map((item, index) => (
             <OrderCard

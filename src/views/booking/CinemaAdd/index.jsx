@@ -8,15 +8,15 @@ import ListDate from './ListDate'
 import ListCity from './ListCity'
 import ListType from './ListType'
 
-import { setShowtime } from 'stores/booking/slice'
+import { bookShowtime } from 'stores/booking/slice'
 
-function CinemaAdd({ movie }) {
+function CinemaAdd() {
   const dispatch = useDispatch()
   const { cinemas, showtimes } = useSelector((state) => state.data)
+  const { filter, data } = useSelector((state) => state.booking)
 
-  const { filter, showtime } = useSelector((state) => state.booking)
+  const { showtime, movie } = data
   const { city, type, date } = filter
-
   const [listCinema, setListCinema] = useState([])
   const [listShowtime, setListShowtime] = useState([])
 
@@ -51,8 +51,8 @@ function CinemaAdd({ movie }) {
   }, [listShowtime, cinemas, city, type])
 
   return (
-    <div>
-      <div className="bg-rose-100 flex flex-col h-auto min-w-[1280px] p-4">
+    <div className="min-w-[800px]">
+      <div className="bg-rose-100 flex flex-col h-auto w-full p-4">
         {/* Date */}
         <ListDate />
 
@@ -77,7 +77,7 @@ function CinemaAdd({ movie }) {
                       key={index}
                       primary={check}
                       disabled={check}
-                      onClick={() => dispatch(setShowtime(itemShowtime))}
+                      onClick={() => dispatch(bookShowtime({ showtime: itemShowtime, cinema: itemCinema }))}
                     >
                       {`${padStart(itemShowtime.start)} ${itemShowtime.start < 12 ? 'AM' : 'PM'}`}
                     </Button>

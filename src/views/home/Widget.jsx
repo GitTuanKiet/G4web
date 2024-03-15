@@ -61,9 +61,9 @@ const Widget = () => {
   return (
     <>
       <div className="flex w-full justify-between">
-      {StaticWidget.map((item, index) => (
+        {StaticWidget.map((item, index) => (
           <div
-            className={`min-w-[110px] min-h-[100px] `}
+            className={'min-w-[110px] min-h-[100px] '}
             key={index}
           >
             <CardWidget key={index} title={item.title} bgImage={item.bgImage} link={item.link} />
@@ -71,7 +71,7 @@ const Widget = () => {
               <div className="absolute inset-y-0 right-0 w-px bg-gray-400" />
             )}
           </div>
-        
+
         ))}
       </div>
     </>

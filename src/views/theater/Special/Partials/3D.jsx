@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
-
-export default function Theater3D() {
+import ListCinema from './ListCinema'
+export default function Theater3D({ data }) {
   return (
     <>
       {/* Title */}
@@ -38,6 +38,8 @@ export default function Theater3D() {
         </Link>
       </div>
 
+      {/* List */}
+      <ListCinema listCinema={data} />
     </>
   )
 }

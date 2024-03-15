@@ -16,20 +16,17 @@ const useFormSubmit = (schema, defaultValues, call) => {
 
     const check = Object.keys(data).every((key) => data[key] === defaultValues[key])
 
-    setTimeout(() => {
-      if (check) {
-        toast.info('Không có gì thay đổi')
-        setIsSubmitting(false)
-        return
-      }
-
-      if (data) {
-        call(data)
-      }
-
+    if (check) {
+      toast.info('Không có gì thay đổi')
       setIsSubmitting(false)
-    }, 3000)
+      return
+    }
 
+    if (data) {
+      call(data)
+    }
+
+    setIsSubmitting(false)
   }
 
   return { handleOnSubmit : handleSubmit(onSubmit), register, control, errors, isSubmitting }

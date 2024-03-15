@@ -1,40 +1,47 @@
 import { useDispatch, useSelector } from 'react-redux'
 
-import { setPayment } from 'stores/booking/slice'
+import AtmSrc from 'assets/images/payment-methods/napas.png'
+import VisaSrc from 'assets/images/payment-methods/visa-master-amex-jcb.jfif'
+import MomoSrc from 'assets/images/payment-methods/momo.png'
+import ZaloSrc from 'assets/images/payment-methods/zalopay.png'
+import ShopeeSrc from 'assets/images/payment-methods/shopeepay.png'
+import VnPaySrc from 'assets/images/payment-methods/vnpay.png'
+
+import { setMethod } from 'stores/payment/slice'
 const paymentOptionsData = [
   {
     value: 'atm',
-    logoSrc: '/src/assets/images/payment-methods/napas.png',
+    logoSrc: AtmSrc,
     altText: 'ATM nội địa Napas',
     description: 'Thẻ ATM nội địa Napas'
   },
   {
     value: 'visa-master',
-    logoSrc: '/src/assets/images/payment-methods/visa-master-amex-jcb.jfif',
+    logoSrc: VisaSrc,
     altText: 'Thẻ quốc tế',
     description: 'Thẻ quốc tế (Visa, Master)'
   },
   {
     value: 'momo',
-    logoSrc: '/src/assets/images/payment-methods/momo.png',
+    logoSrc: MomoSrc,
     altText: 'MoMo',
     description: 'MoMo: Nhập MMCGV24 -5k/bill'
   },
   {
     value: 'zalopay',
-    logoSrc: '/src/assets/images/payment-methods/zalopay.png',
+    logoSrc: ZaloSrc,
     altText: 'ZaloPay',
     description: 'ZaloPay: 84k/vé + quà 50k đặt xe Be'
   },
   {
     value: 'shopeepay',
-    logoSrc: '/src/assets/images/payment-methods/shopeepay.png',
+    logoSrc: ShopeeSrc,
     altText: 'ShopeePay',
     description: 'ShopeePay'
   },
   {
     value: 'vnpay',
-    logoSrc: '/src/assets/images/payment-methods/vnpay.png',
+    logoSrc: VnPaySrc,
     altText: 'VNPAY',
     description: 'VNPAY'
   }
@@ -52,7 +59,7 @@ const PaymentOption = ({
     className={`flex h-14 gap-5 justify-start items-center py-2 px-4 rounded-lg ${selected ? 'shadow-md bg-white' : 'hover:bg-rose-500'} w-full max-md:flex-wrap max-md:max-w-full transition duration-150 ease-in-out`}
     onClick={onSelected}
   >
-    <input type="radio" _id={value} name={altText} value={value} checked={selected} onChange={onSelected} />
+    <input type="radio" id={value} name={altText} value={value} checked={selected} onChange={onSelected} />
     <div className="h-full w-20">
       <img src={logoSrc} alt={altText} className="mix-blend-darken aspect-auto h-full" />
     </div>
@@ -62,7 +69,7 @@ const PaymentOption = ({
 
 const PaymentMethodCard = ({ paymentOptions = paymentOptionsData }) => {
   const dispatch = useDispatch()
-  const { payment } = useSelector((state) => state.booking)
+  const { method } = useSelector((state) => state.payment)
 
   return (
     <section className="flex flex-col justify-center items-center max-w-4xl min-w-80 mx-auto py-8">
@@ -77,8 +84,8 @@ const PaymentMethodCard = ({ paymentOptions = paymentOptionsData }) => {
               logoSrc={option.logoSrc}
               altText={option.altText}
               description={option.description}
-              selected={payment === option.value}
-              onSelected={() => dispatch(setPayment((option.value)))}
+              selected={method === option.value}
+              onSelected={() => dispatch(setMethod(option.value))}
             />
           ))}
         </div>

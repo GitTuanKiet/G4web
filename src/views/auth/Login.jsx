@@ -1,17 +1,20 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 // project imports
 import Button from 'components/Button'
 import Input from 'components/Input'
 import Logo from 'components/icons/Logo'
 
+import ggLogo from 'assets/images/ggLogo.png'
+import fbLogo from 'assets/images/fbLogo.png'
+
 // third-party
 import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { authLogin } from 'stores/auth/authSlice'
-import { useDispatch } from 'react-redux'
+import { login } from 'stores/auth/slice'
 
 const schema = Yup.object({
   email: Yup.string().email('Invalid email').required('Email is required'),
@@ -20,7 +23,9 @@ const schema = Yup.object({
 
 function Login() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
+  const { loading } = useSelector((state) => state.auth)
   const [remember, setRemember] = useState(false)
 
   const {
@@ -36,7 +41,7 @@ function Login() {
   })
 
   const onSubmit = (data) => {
-    dispatch(authLogin(data))
+    dispatch(login({ data, navigate }))
 
     if (remember) {
       localStorage.setItem('email', data.email)
@@ -62,7 +67,7 @@ function Login() {
           className="w-full max-w-[500px] bg-white p-10 rounded-lg shadow-md mt-10"
         >
           <Input label="Email" placeholder="Enter your email" name="email" control={control} errors={errors} />
-          <Input label="Password" placeholder="Enter your password" name="password" control={control} errors={errors} />
+          <Input label="Password" placeholder="Enter your password" name="password" type="password" control={control} errors={errors} />
 
           <div className="mt-4 flex items-center justify-between mb-4">
             <div className="flex items-center justify-start">
@@ -75,7 +80,7 @@ function Login() {
               </Link>
             </div>
           </div>
-          <Button primary wFull>
+          <Button primary wFull loading={loading}>
             Sign in
           </Button>
           <div className="my-3 float-right text-sm ">
@@ -92,13 +97,13 @@ function Login() {
           <div className="mt-4 flex justify-between items-center">
             <a className="flex gap-x-2 items-center p-3 shadow rounded-lg cursor-pointer hover:shadow-md ">
               <div>
-                <img src="/src/assets/images/ggLogo.png" alt="" className="w-4" />
+                <img src={ggLogo} alt="" className="w-4" />
               </div>
               <span className="text-xs">Continue with Google</span>
             </a>
             <a className="flex gap-x-2 items-center p-3 shadow rounded-lg cursor-pointer hover:shadow-md ">
               <div>
-                <img src="/src/assets/images/fbLogo.png" alt="" className="w-4" />
+                <img src={fbLogo} alt="" className="w-4" />
               </div>
               <span className="text-xs">Continue with Facebook</span>
             </a>

@@ -16,6 +16,7 @@ const ArrowLeft = () => {
 }
 
 const LinkItem = ({ to, text }) => {
+  if (to === '/') return null
   return (
     <li>
       <div className="flex items-center">
@@ -57,9 +58,9 @@ const Breadcrumb = ({ items }) => {
           {/* Items */}
           {items.map((item, index) => {
             if (index === items.length - 1) {
-              return <SpanItem key={index} text={item.text} />
+              return <SpanItem key={index} text={item?.text} />
             } else {
-              return <LinkItem key={index} to={item.to} text={item.text} />
+              return <LinkItem key={index} to={item?.to} text={item?.text} />
             }
           })}
         </ol>

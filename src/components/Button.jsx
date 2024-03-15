@@ -4,21 +4,24 @@ function Button({
   to,
   href,
   children,
-  isLoading,
+  loading = false,
   primary = false,
-  outline = false,
   wFull = false,
   disabled = false,
   noborder = false,
   size,
   small = false,
-  className: externalClassName, // Thêm prop className để nhận thêm className từ bên ngoài
+  className, // Thêm prop className để nhận thêm className từ bên ngoài
   style,
   ...passProps
 }) {
   let Comp = 'button'
   const props = {
     ...passProps
+  }
+
+  if (loading) {
+    disabled = true
   }
 
   if (to) {
@@ -46,11 +49,11 @@ function Button({
     ${noborder ? 'border-0' : ''}
     `
 
-  let className = `${defaultClassName} ${externalClassName || ''}`
+  let externalClassName = `${defaultClassName} ${className || ''}`
 
   return (
-    <Comp className={className} style={style} {...props}>
-      {children}
+    <Comp className={externalClassName} style={style} {...props}>
+      {loading ? 'Đang xử lý' : children}
     </Comp>
   )
 }

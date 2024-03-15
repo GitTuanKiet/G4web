@@ -1,48 +1,36 @@
 
-import { useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import Divider from 'components/Divider'
 import Line from 'components/Bill/Line'
 import Unit from 'components/Bill/Unit'
 import GroupButton from 'components/Bill/GroupButton'
-import Info from 'components/Bill/Info'
 import Logo from 'components/icons/Logo'
+import { bookDiscount } from 'stores/booking/slice'
 
-import { setGift } from 'stores/booking/slice'
-
-import { fakeGifts } from 'apis/mockData'
-
-
-const BillGift = ({ handleStep }) => {
-  const navigate = useNavigate()
+const BillGift = () => {
   const dispatch = useDispatch()
-  const { _id, slug } = useParams()
-  const { title, img_url } = fakeGifts.find((item) => item._id === Number(_id))?.img.find((item) => item.slug === slug) || {}
+  const navigate = useNavigate()
+  const { data } = useSelector((state) => state.booking)
 
-  const { payment, total } = useSelector((state) => state.booking)
-
-  useEffect(() => {
-    if (total === 0) {
-      navigate(-1)
-    }
-  }, [total, navigate])
-
-  useEffect(() => {
-    dispatch(setGift({ title }))
-  }, [title, dispatch])
+  const { title, img_url } = data.gift || {}
+  const { method, payment } = useSelector((state) => state.payment)
 
   const dataTotal = [
     {
       key: 'Tổng',
-      value: Unit({ value: total })
+      value: Unit({ value: payment.price })
     }
   ]
 
+  const handleStep = (step) => {
+    dispatch(bookDiscount({ nextStep: step, navigate }))
+  }
+
   return (
-    <div>
-      <div className="rounded-xl h-auto w-80 bg-rose-100 p-4 text-[15px]">
+    <div className='min-w-80'>
+      <div className="rounded-xl h-auto w-full bg-rose-100 p-4 text-[15px]">
         {/* Title */}
         <div className="flex justify-between items-center">
           <div className='w-16'>
@@ -56,8 +44,8 @@ const BillGift = ({ handleStep }) => {
         <Divider />
         {/* Content */}
         <div>
-          <Line keyName='Giá trị' value={Unit({ value: total })} />
-          {payment && <Line keyName='Phương thức thanh toán' value={payment} />}
+          <Line keyName='Giá trị' value={Unit({ value: payment.price })} />
+          {method && <Line keyName='Phương thức thanh toán' value={method} />}
         </div>
         <Divider />
         {/* Total */}

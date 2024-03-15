@@ -1,25 +1,31 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
 // project imports
 import Button from 'components/Button'
 import Input from 'components/Input'
 import Logo from 'components/icons/Logo'
 
+import ggLogo from 'assets/images/ggLogo.png'
+import fbLogo from 'assets/images/fbLogo.png'
+
 // third-party
 import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useDispatch } from 'react-redux'
-import { authRegister } from 'stores/auth/authSlice'
+import { register } from 'stores/auth/slice'
 
 const schema = Yup.object({
   name: Yup.string().required('Name is required').min(3, 'Name must be at least 8 characters '),
+  birthday: Yup.string().required('Birthday is required'),
   email: Yup.string().email('Invalid email').required('Email is required'),
   password: Yup.string().required('Password is required').min(8, 'Password must be at least 8 characters')
 })
 
 function Register() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { loading } = useSelector((state) => state.auth)
   const {
     handleSubmit,
     control,
@@ -28,13 +34,14 @@ function Register() {
     resolver: yupResolver(schema),
     defaultValues: {
       name: '',
+      birthday: '',
       email: '',
       password: ''
     }
   })
 
   const onSubmit = async (data) => {
-    dispatch(authRegister(data))
+    dispatch(register({ data, navigate }))
   }
 
   return (
@@ -52,9 +59,10 @@ function Register() {
           onSubmit={handleSubmit(onSubmit)}
           className="w-full max-w-[500px] bg-white p-10 rounded-lg shadow-md mt-10"
         >
-          <Input label="Name" placeholder="Enter your name" name="name" control={control} errors={errors} />
+          <Input label="Tên" placeholder="Enter your name" name="name" control={control} errors={errors} />
+          <Input label="Ngày sinh" type="date" placeholder="Enter your birthday" name="birthday" control={control} errors={errors} />
           <Input label="Email" placeholder="Enter your email" name="email" control={control} errors={errors} />
-          <Input label="Password" placeholder="Enter your password" name="password" control={control} errors={errors} />
+          <Input label="Password" type="password" placeholder="Enter your password" name="password" control={control} errors={errors} />
 
           <div className="my-3 float-right">
             <p href="#" className=" text-sm">
@@ -64,7 +72,7 @@ function Register() {
               </Link>
             </p>
           </div>
-          <Button primary wFull>
+          <Button primary wFull loading={loading}>
             Sign up
           </Button>
           <div className="w-full flex items-center justify-between mt-8">
@@ -75,14 +83,14 @@ function Register() {
           <div className="mt-4 flex justify-between items-center">
             <a className="flex gap-x-2 items-center p-3 shadow rounded-lg cursor-pointer hover:shadow-md ">
               <div>
-                <img src="/src/assets/images/ggLogo.png" alt="" className="w-4" />
-              </div>{' '}
+                <img src={ggLogo} alt="" className="w-4" />
+              </div>
               <span className="text-xs">Continue with Google</span>
             </a>
             <a className="flex gap-x-2 items-center p-3 shadow rounded-lg cursor-pointer hover:shadow-md ">
               <div>
-                <img src="/src/assets/images/fbLogo.png" alt="" className="w-4" />
-              </div>{' '}
+                <img src={fbLogo} alt="" className="w-4" />
+              </div>
               <span className="text-xs">Continue with Facebook</span>
             </a>
           </div>

@@ -1,3 +1,9 @@
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+
+import { useEffect } from 'react'
+import { jwtDecode } from 'jwt-decode'
+import { toast } from 'react-toastify'
 // router
 import Routes from 'routes'
 
@@ -7,15 +13,38 @@ import 'react-toastify/dist/ReactToastify.css'
 
 // project imports
 import NavigationScroll from 'layouts/NavigationScroll'
-import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
-import { getToken, getRefreshToken, logout } from 'utils/auth'
-import { jwtDecode } from 'jwt-decode'
-import { setUser, authRefreshToken, userHistory, userCards } from 'stores/auth/authSlice'
+import { setInfo, fetchCards, fetchHistory, userClear, getMemberCard } from 'stores/user/slice'
+import { logout } from 'stores/auth/slice'
 import { fetchData } from 'stores/data/slice'
+import { refreshToken } from 'stores/auth/slice'
 
 function App() {
-  const { user } = useSelector((state) => state.auth)
+  const navigate = useNavigate()
+  const { accessToken } = useSelector((state) => state.auth)
+  const userError = useSelector((state) => state.user.error)
+  const dataError = useSelector((state) => state.data.error)
+  const authError = useSelector((state) => state.auth.error)
+  const bookingError = useSelector((state) => state.booking.error)
+  const paymentError = useSelector((state) => state.payment.error)
+
+  useEffect(() => {
+    if (userError) {
+      toast.error(userError)
+    }
+    if (dataError) {
+      toast.error(dataError)
+    }
+    if (authError) {
+      toast.error(authError)
+    }
+    if (bookingError) {
+      toast.error(bookingError)
+    }
+    if (paymentError) {
+      toast.error(paymentError)
+    }
+  }, [userError, dataError, authError, bookingError, paymentError])
+
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -23,41 +52,30 @@ function App() {
   }, [dispatch])
 
   useEffect(() => {
-    const access_token = getToken()
-    const refreshToken = getRefreshToken()
-
-    if (access_token) {
-      const decoded = jwtDecode(access_token)
+    if (accessToken) {
+      const decoded = jwtDecode(accessToken)
       if (!decoded) return
       const exp = new Date(decoded.exp * 1000)
-      if (!user) {
-        // set user to redux store
-        dispatch(
-          setUser({
-            user: decoded,
-            isLoggedIn: true
-          })
-        )
+      // set user to redux store
+      dispatch(setInfo(decoded))
 
-        // logout if token is expired
-        if (exp < new Date()) {
-          dispatch(setUser({ user: null, isLoggedIn: false, history: null, cards: null }))
-          logout()
-        }
+      // logout if token is expired
+      if (exp < new Date()) {
+        dispatch(logout({ navigate }))
       }
 
-      dispatch(userCards())
-      dispatch(userHistory())
+      // refresh token if token is about to expire
       if (exp < new Date(new Date().getTime() + 15 * 60000)) {
-        dispatch(authRefreshToken({ refreshToken }))
+        dispatch(refreshToken())
       }
-    } else if (refreshToken) {
-      dispatch(authRefreshToken({ refreshToken }))
+
+      dispatch(fetchHistory())
+      dispatch(fetchCards())
+      dispatch(getMemberCard())
     } else {
-      dispatch(setUser({ user: null, isLoggedIn: false, history: null, cards: null }))
-      logout()
+      dispatch(userClear())
     }
-  }, [dispatch, user])
+  }, [dispatch, accessToken, navigate])
 
   return (
     <>

@@ -1,21 +1,25 @@
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import { useState, useEffect } from 'react'
 import Button from 'components/Button'
 import ListTicket from './ListTicket'
 import { useSelector } from 'react-redux'
 
 const CinemaTicketOverview = () => {
-  const { cards, isLoggedIn } = useSelector((state) => state.auth)
-  const [watched, setWatched] = useState(true)
+  const navigate = useNavigate()
+  const { cards } = useSelector((state) => state.user)
+  const { accessToken } = useSelector((state) => state.auth)
+  const [watched, setWatched] = useState(false)
 
   useEffect(() => {
-    if (!isLoggedIn) {
-      window.location.href = '/auth/login'
+    if (!accessToken) {
+      navigate('/auth')
     }
-  }, [isLoggedIn])
+  }, [accessToken, navigate])
 
-  const ticketUsed = cards?.ticket?.filter((item) => item.status === 'used') || []
-  const ticketNotUsed = cards?.ticket?.filter((item) => item.status === 'active') || []
+  const ticket = cards?.tickets || []
+  const ticketUsed = ticket.filter((item) => item.status === 'used')
+  const ticketNotUsed = ticket.filter((item) => item.status === 'active')
   return (
     <section className="w-full py-10">
       <div>

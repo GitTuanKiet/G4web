@@ -1,24 +1,14 @@
 import { axiosPublic } from 'apis/axiosConfig'
 
 class AuthApi {
-  static register = async (data) => {
-    return await axiosPublic.post('auth/register', data)
-  }
+  static instance = axiosPublic()
 
-  static login = async (data) => {
-    return await axiosPublic.post('auth/login', data)
-  }
-  static verifyEmail = async (token) => {
-    return await axiosPublic.get(`auth/verify-email/${token}`)
-  }
-
-  static refreshToken = async (data) => {
-    return await axiosPublic.post('auth/refresh-token', data)
-  }
-
-  static forgotPassword = async (data) => {
-    return await axiosPublic.post('auth/forgot-password', data)
-  }
+  static register = async (data) => await this.instance.post('auth/register', data)
+  static login = async (data) => await this.instance.post('auth/login', data)
+  static verifyEmail = async (verifyToken) => await this.instance.get(`auth/verify-email/${verifyToken}`)
+  static resetPassword = async (resetToken) => await this.instance.get(`auth/reset-password/${resetToken}`)
+  static refreshToken = async (refreshToken) => await this.instance.get(`auth/refresh-token/${refreshToken}`)
+  static forgotPassword = async (email) => await this.instance.post('auth/forgot-password', email)
 }
 
 export default AuthApi

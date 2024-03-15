@@ -13,6 +13,7 @@ const Movie = () => {
   const [str, setStr] = useState(['Đang chiếu', 'Sắp ra mắt'])
   const slug = status === 'coming-soon' ? 'now-showing' : 'coming-soon'
   useEffect(() => {
+    if (!status) return
     if (status === 'coming-soon') {
       setStr(['Sắp ra mắt', 'Đang chiếu'])
     } else {
@@ -30,9 +31,9 @@ const Movie = () => {
   return (
     <>
       <div className='w-full flex items-center justify-between py-3 border-b-2 border-gray-500'>
-        <Button className='text-6xl font-semibold' >{str[0]}</Button>
+        <Button className='text-6xl font-semibold' primary>{str[0]}</Button>
         <Link to={`/movie/${slug}`} >
-          <Button primary>{str[1]}</Button>
+          <Button>{str[1]}</Button>
         </Link>
       </div>
       <hr />

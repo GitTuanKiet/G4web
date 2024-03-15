@@ -4,15 +4,16 @@ import { useState } from 'react'
 import Button from 'components/Button'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { userUpdateProfile } from 'stores/auth/authSlice'
+import { updateProfile } from 'stores/user/slice'
 import { useFormSubmit } from 'utils/form'
+import { format } from 'date-fns'
 
 function AccountDetail() {
-  const { user } = useSelector((state) => state.auth)
+  const { info, loading } = useSelector((state) => state.user)
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const [gender, setGender] = useState(user.gender)
+  const [gender, setGender] = useState(info.gender)
 
   const schemaProfile = Yup.object({
     name: Yup.string().required('Name is required'),
@@ -24,16 +25,16 @@ function AccountDetail() {
   })
 
   const call = (data) => {
-    dispatch(userUpdateProfile(data))
+    dispatch(updateProfile(data))
   }
 
-  const { handleOnSubmit, register, control, errors, isSubmitting } = useFormSubmit(schemaProfile, {
-    name: user.name,
-    city: user.city,
-    gender: user.gender,
-    phone: user.phone,
-    address: user.address,
-    birthday: user.birthday
+  const { handleOnSubmit, register, control, errors } = useFormSubmit(schemaProfile, {
+    name: info.name,
+    city: info.city,
+    gender: info.gender,
+    phone: info.phone,
+    address: info.address,
+    birthday: format(new Date(info.birthday), 'yyyy-MM-dd')
   }, call)
 
   return (
@@ -75,17 +76,17 @@ function AccountDetail() {
         <div className="mt-3 flex justify-between">
           <div className="mb-2 flex gap-4">
             <p>
-              <span className="font-bold">Email:</span> <br /> {user.email}
+              <span className="font-bold">Email:</span> <br /> {info.email}
             </p>
             <p>
-              <span className="font-bold">Số thẻ thành viên:</span> <br /> {user.memberCardId || 'Chưa có số thẻ'}
+              <span className="font-bold">Số thẻ thành viên:</span> <br /> {info.memberCardId || 'Chưa có số thẻ'}
             </p>
           </div>
           <div className="flex justify-center items-center gap-4">
             <Button onClick={() => navigate(-1)}>
           &lt;&lt; Quay lại
             </Button>
-            <Button onClick={handleOnSubmit} primary disabled={isSubmitting}>
+            <Button onClick={handleOnSubmit} primary loading={loading}>
           Lưu lại
             </Button>
           </div>

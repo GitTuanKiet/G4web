@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import ComboCard from './ComboCard'
 
-import { setCombo, setTotal } from 'stores/booking/slice'
+import { bookCombo } from 'stores/booking/slice'
 
 const fake = {
   image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/fa55cc058528581e2ea5d261f091ced63d6477962be2ab8059c900db7871722c?apiKey=a8afef7bb7724cdfb195c3c79e17a7b1&',
@@ -19,37 +19,38 @@ const fakeData = [
 
 const Combo = () => {
   const dispatch = useDispatch()
-  const { combo, total } = useSelector((state) => state.booking)
+  const { data } = useSelector((state) => state.booking)
 
+  const { combo, comboPrice } = data
   const handleSetPrice = (type, item) => {
     // check if item already in combo
     const isExist = combo.find((i) => i._id === item._id)
     if (type === '+') {
       if (isExist) {
-        dispatch(setCombo(combo.map((i) => i._id === item._id ? { ...i, quantity: i.quantity + 1 } : i)))
-        dispatch(setTotal(total + Number(item.price)))
+        const newCombo = combo.map((i) => i._id === item._id ? { ...i, quantity: i.quantity + 1 } : i)
+        dispatch(bookCombo({ combo: newCombo, price: comboPrice + Number(item.price) }))
         return
       }
 
-      dispatch(setCombo([...combo, { ...item, quantity: 1 }]))
-      dispatch(setTotal(total + Number(item.price)))
+      const newCombo = [...combo, { ...item, quantity: 1 }]
+      dispatch(bookCombo({ combo: newCombo, price: comboPrice + Number(item.price) }))
     }
 
     if (type === '-') {
       if (isExist.quantity === 1) {
-        dispatch(setCombo(combo.filter((i) => i._id !== item._id)))
-        dispatch(setTotal(total - Number(item.price)))
+        const newwCombo = combo.filter((i) => i._id !== item._id)
+        dispatch(bookCombo({ combo: newwCombo, price: comboPrice - Number(item.price) }))
         return
       }
 
-      dispatch(setCombo(combo.map((i) => i._id === item._id ? { ...i, quantity: i.quantity - 1 } : i)))
-      dispatch(setTotal(total - Number(item.price)))
+      const newCombo = combo.map((i) => i._id === item._id ? { ...i, quantity: i.quantity - 1 } : i)
+      dispatch(bookCombo({ combo: newCombo, price: comboPrice - Number(item.price) }))
     }
   }
 
   return (
-    <div>
-      <div className="bg-rose-100 flex flex-col h-auto w-[800px] gap-4 p-4">
+    <div className='min-w-[800px]'>
+      <div className="bg-rose-100 flex flex-col h-auto w-full gap-4 p-4">
         {fakeData.map((item) => (
           <ComboCard key={item._id} _id={item._id} {...item} handleSetPrice={handleSetPrice} />
         ))}

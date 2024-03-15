@@ -2,12 +2,13 @@ import { lazy } from 'react'
 
 // project imports
 import Loadable from 'components/Loadable'
-import VerifyEmail from 'pages/Congratulation/VerifiedEmail'
 
 // auth routing
 const Login = Loadable(lazy(() => import('views/auth/Login')))
 const Register = Loadable(lazy(() => import('views/auth/Register')))
 const ForgotPassword = Loadable(lazy(() => import('views/auth/ForgotPassword')))
+const VerifyEmail = Loadable(lazy(() => import('views/auth/VerifyEmail')))
+const ResetPassword = Loadable(lazy(() => import('views/auth/ResetPassword')))
 
 // ===========================|| AUTH ROUTING ||=========================== //
 
@@ -31,8 +32,12 @@ const AuthRoutes = {
       element: <ForgotPassword />
     },
     {
-      path: 'verify-email/:token',
+      path: 'verify-email/:verifyToken',
       element: <VerifyEmail />
+    },
+    {
+      path: 'reset-password/:resetToken',
+      element: <ResetPassword />
     }
   ]
 }

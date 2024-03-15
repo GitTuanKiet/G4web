@@ -2,13 +2,14 @@ import Input from 'components/Input'
 import * as Yup from 'yup'
 import Button from 'components/Button'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { userSetupPIN } from 'stores/auth/authSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { setupPIN } from 'stores/user/slice'
 import { useFormSubmit } from 'utils/form'
 
 function SetupPIN() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const { loading } = useSelector((state) => state.user)
 
   const schemaProfile = Yup.object({
     newPIN: Yup.number().required('New PIN is required').min(6, 'PIN must be at least 6 characters'),
@@ -16,10 +17,10 @@ function SetupPIN() {
   })
 
   const call = (data) => {
-    dispatch(userSetupPIN(data))
+    dispatch(setupPIN(data))
   }
 
-  const { handleOnSubmit, control, errors, isSubmitting } = useFormSubmit(schemaProfile, {
+  const { handleOnSubmit, control, errors } = useFormSubmit(schemaProfile, {
     newPIN: '',
     confirmPIN: ''
   }, call)
@@ -43,7 +44,7 @@ function SetupPIN() {
           <Button onClick={() => navigate(-1)}>
           &lt;&lt; Quay lại
           </Button>
-          <Button onClick={handleOnSubmit} primary disabled={isSubmitting}>
+          <Button onClick={handleOnSubmit} primary loading={loading}>
               Xác nhận
           </Button>
         </div>

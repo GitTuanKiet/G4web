@@ -29,9 +29,12 @@ const dataSlice = createSlice({
     fetchDataFailed(state, action) {
       state.loading = false
       state.error = action.payload
+    },
+    fetchFinish(state) {
+      state.loading = false
     }
   }
 })
 
-export const { fetchData, fetchingData, fetchDataSuccess, fetchDataFailed } = dataSlice.actions
+export const { fetchData, fetchingData, fetchDataSuccess, fetchDataFailed, fetchFinish } = dataSlice.actions
 export default dataSlice.reducer

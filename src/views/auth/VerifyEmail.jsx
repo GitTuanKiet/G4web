@@ -1,35 +1,27 @@
-import AuthApi from 'apis/authApi'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useEffect } from 'react'
+
 import SucceededImage from 'assets/images/image_succeeded.png'
 import Button from 'components/Button'
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { toast } from 'react-toastify'
+
+import { verifyEmail } from 'stores/auth/slice'
+
 function VerifyEmail({
   title = 'Verified email successfully!',
-  description = 'You have successfully completed verify proccess.Now, You can login with just acccount which created!'
+  description = 'You have successfully completed verify process.Now, You can login with just account which created!'
 }) {
-  const { token } = useParams()
-  const [verified, setVerified] = useState(false)
-  const [loading, setLoading] = useState(true)
+  const { verifyToken } = useParams()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { loading, verified } = useSelector((state) => state.auth)
+
   useEffect(() => {
-    if (!token) {
+    if (!verifyToken) {
       return
     }
-    const verify = async () => {
-      try {
-        const res = await AuthApi.verifyEmail(token)
-        setLoading(false)
-        if (res.status === 200) {
-          setVerified(true)
-          toast.success(res.data.message)
-        }
-      } catch (err) {
-        setLoading(false)
-        toast.error(err.response.data.message)
-      }
-    }
-    verify()
-  }, [verified, token])
+    dispatch(verifyEmail({ verifyToken, navigate }))
+  }, [verifyToken, dispatch, navigate])
 
   return (
     <div className="mx-auto text-center my-10">
