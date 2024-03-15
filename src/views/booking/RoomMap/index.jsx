@@ -8,7 +8,7 @@ import IcScreen from 'assets/images/film/ic-screen.png'
 
 const RoomMap = () => {
   const { data } = useSelector((state) => state.booking)
-  const roomMap = data?.cinema?.roomMap
+  const roomMap = data?.theater?.roomMap
 
   const normalChairs = roomMap?.filter((item) => item.type === 'normal')
   const coupleChairs = roomMap?.filter((item) => item.type === 'couple')

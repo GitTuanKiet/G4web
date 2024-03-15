@@ -11,8 +11,10 @@ const ListDate = () => {
   const dispatch = useDispatch()
   const { filter } = useSelector((state) => state.booking)
   const { dates } = useSelector((state) => state.data)
+  const { data } = useSelector((state) => state.booking)
 
-  const [selectedDate, setSelectedDate] = useState(filter?.date || dates[0])
+  const date = dates.find((item) => item._id === data?.showtime?.dateId) || dates[0]
+  const [selectedDate, setSelectedDate] = useState(filter?.date || date)
 
   const handleSetFilterDate = useCallback(
     (date) => {

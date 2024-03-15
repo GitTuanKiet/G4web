@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+import { dates } from 'apis/mockData'
+
 const initialState = {
   filter: {
     city: null,
-    date: null,
+    date: dates[0],
     type: null
   },
   data: {
