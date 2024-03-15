@@ -2,8 +2,6 @@ import { call, all, put } from 'redux-saga/effects'
 import FetchApi from 'apis/fetchApi'
 import { fetchDataFailed, fetchDataSuccess, fetchingData, fetchFinish } from './slice'
 
-// import { mockCinemas, mockShowtimes, mockMovies } from 'apis/mockData'
-
 function* handleFetchData() {
   try {
     yield put(fetchingData())
