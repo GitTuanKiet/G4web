@@ -28,14 +28,18 @@ function AccountDetail() {
     dispatch(updateProfile(data))
   }
 
-  const { handleOnSubmit, register, control, errors } = useFormSubmit(schemaProfile, {
-    name: info.name,
-    city: info.city,
-    gender: info.gender,
-    phone: info.phone,
-    address: info.address,
-    birthday: format(new Date(info.birthday), 'yyyy-MM-dd')
-  }, call)
+  const { handleOnSubmit, register, control, errors } = useFormSubmit(
+    schemaProfile,
+    {
+      name: info.name,
+      city: info.city,
+      gender: info.gender,
+      phone: info.phone,
+      address: info.address,
+      birthday: format(new Date(info.birthday), 'yyyy-MM-dd')
+    },
+    call
+  )
 
   return (
     <div>
@@ -43,30 +47,61 @@ function AccountDetail() {
 
       <form
         onSubmit={handleOnSubmit}
-        className="w-full bg-white p-10 rounded-lg shadow-md mt-10"
+        className="w-full bg-white p-10 rounded-lg shadow-md mt-10 mobile:mt-0 mobile:p-0"
       >
-        <div className="flex justify-between w-full gap-10">
+        <div className="flex justify-between w-full gap-10 mobile:gap-0 mobile:flex-col">
           <Input label="Họ Tên" placeholder="Họ Tên" name="name" control={control} errors={errors} />
           <Input label="Thành Phố" placeholder="Thành Phố" name="city" control={control} errors={errors} />
         </div>
-        <div className="flex justify-between w-full gap-10">
+        <div className="flex justify-between w-full gap-10 mobile:gap-0 mobile:flex-col">
+          <Input label="Số điện thoại" placeholder="Số điện thoại" name="phone" control={control} errors={errors} />
           <Input
-            label="Số điện thoại"
-            placeholder="Số điện thoại"
-            name="phone"
+            label="Ngày sinh"
+            type="date"
+            placeholder="Ngày sinh"
+            name="birthday"
             control={control}
             errors={errors}
           />
-          <Input label="Ngày sinh" type="date" placeholder="Ngày sinh" name="birthday" control={control} errors={errors} />
         </div>
-        <div className="flex justify-between items-center w-full gap-10">
+        <div className="flex justify-between items-center w-full mobile:flex-col gap-10 mobile:gap-0">
           <Input label="Địa chỉ" placeholder="Địa chỉ" name="address" control={control} errors={errors} />
           <div className="w-full">
             <span className="font-bold">Giới tính</span>
-            <div className='py-4 w-full flex gap-1'>
-              <p><input type="radio" value="male" {...register('gender')} className="mx-2" checked={gender === 'male'} onChange={() => setGender('male')} /> Nam</p>
-              <p><input type="radio" value="female" {...register('gender')} className="mx-2" checked={gender === 'female'} onChange={() => setGender('female')} /> Nữ</p>
-              <p><input type="radio" value="none" {...register('gender')} className="mx-2" checked={gender === 'none'} onChange={() => setGender('none')} /> Không tiết lộ</p>
+            <div className="py-4 w-full flex gap-1">
+              <p>
+                <input
+                  type="radio"
+                  value="male"
+                  {...register('gender')}
+                  className="mx-2"
+                  checked={gender === 'male'}
+                  onChange={() => setGender('male')}
+                />{' '}
+                Nam
+              </p>
+              <p>
+                <input
+                  type="radio"
+                  value="female"
+                  {...register('gender')}
+                  className="mx-2"
+                  checked={gender === 'female'}
+                  onChange={() => setGender('female')}
+                />{' '}
+                Nữ
+              </p>
+              <p>
+                <input
+                  type="radio"
+                  value="none"
+                  {...register('gender')}
+                  className="mx-2"
+                  checked={gender === 'none'}
+                  onChange={() => setGender('none')}
+                />
+                Không tiết lộ
+              </p>
             </div>
           </div>
         </div>
@@ -74,7 +109,7 @@ function AccountDetail() {
       <div className="mt-3">
         <h2 className="border-b-2 pb-2">Thông Tin Tùy Chọn</h2>
         <div className="mt-3 flex justify-between">
-          <div className="mb-2 flex gap-4">
+          <div className=" mobile:flex-col mb-2 flex gap-4">
             <p>
               <span className="font-bold">Email:</span> <br /> {info.email}
             </p>
@@ -82,12 +117,10 @@ function AccountDetail() {
               <span className="font-bold">Số thẻ thành viên:</span> <br /> {info.memberCardId || 'Chưa có số thẻ'}
             </p>
           </div>
-          <div className="flex justify-center items-center gap-4">
-            <Button onClick={() => navigate(-1)}>
-          &lt;&lt; Quay lại
-            </Button>
+          <div className="flex justify-center items-center gap-4 mobile:flex-col">
+            <Button onClick={() => navigate(-1)}>&lt;&lt; Quay lại</Button>
             <Button onClick={handleOnSubmit} primary loading={loading}>
-          Lưu lại
+              Lưu lại
             </Button>
           </div>
         </div>

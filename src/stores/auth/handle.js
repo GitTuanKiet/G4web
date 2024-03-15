@@ -1,18 +1,8 @@
 import { call, put, select } from 'redux-saga/effects'
 import AuthApi from 'apis/authApi'
-import {
-  saveToken,
-  removeToken
-} from 'utils/auth'
+import { saveToken, removeToken } from 'utils/auth'
 import { toast } from 'react-toastify'
-import {
-  authLoading,
-  authSuccess,
-  authFinish,
-  authVerify,
-  authError,
-  authClear
-} from './slice'
+import { authLoading, authSuccess, authFinish, authVerify, authError, authClear } from './slice'
 
 function* handleRegister(action) {
   const { data, navigate } = action.payload
@@ -149,6 +139,12 @@ function* handleResetPassword(action) {
   }
 }
 
-export { handleRegister, handleLogin, handleLogout, handleRefreshToken, handleForgotPassword, handleVerifyEmail, handleResetPassword }
-
-
+export {
+  handleRegister,
+  handleLogin,
+  handleLogout,
+  handleRefreshToken,
+  handleForgotPassword,
+  handleVerifyEmail,
+  handleResetPassword
+}

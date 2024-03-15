@@ -20,7 +20,7 @@ const Dropdown = forwardRef(({ title, items, icon }, ref) => {
           <span>{title}</span>
         </button>
 
-        <div className="bg-gray-600 dark:bg-white rounded-md hidden absolute text-left z-10 min-w-[200px] w-full group-hover:block group-focus:block">
+        <div className="bg-gray-600 dark:bg-white rounded-md hidden absolute text-left z-10000 min-w-[200px] w-full group-hover:block group-focus:block">
           <ul className="p-4 m-1 border rounded-md text-white dark:text-gray-900 dark:border-gray-900">
             {items.map((item, index) => (
               <LinkItem key={index} to={item.to} text={item.text} />

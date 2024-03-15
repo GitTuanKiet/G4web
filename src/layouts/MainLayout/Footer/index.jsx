@@ -66,7 +66,7 @@ const logoData = Array(10).fill({ url: '#', logo: logo })
 
 export default function Footer() {
   return (
-    <footer className="z-10 w-full py-2">
+    <footer className="z-10 w-full py-2  ">
       <hr className="border border-black absolute w-full left-0" />
       <div className="flex justify-between flex-row gap-4 py-4 mobile:hidden">
         {logoData.map((data, index) => (

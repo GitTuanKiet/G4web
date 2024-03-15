@@ -17,12 +17,12 @@ const Home = () => {
         <Widget />
       </div> */}
       {/* banner */}
-      <div className="w-full h-[auto] my-12 max-w-[830px] mx-auto ">
+      <div className="w-full h-[auto] my-12 max-w-[830px] mx-auto mobile:hidden ">
         <Banner slides={slides} />
       </div>
 
       {/* content */}
-      <div className="">
+      <div className="w-full">
         <Content />
       </div>
     </>

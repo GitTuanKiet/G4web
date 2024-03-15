@@ -2,7 +2,7 @@ import GiftCard from './GiftCard'
 
 const List = ({ data }) => {
   return (
-    <div className="flex flex-row gap-4 my-4">
+    <div className="flex flex-row gap-4 my-4 mobile:flex-col">
       {data.map((item, index) => (
         <GiftCard key={index} img_url={item.img_url} slug={item.slug} />
       ))}

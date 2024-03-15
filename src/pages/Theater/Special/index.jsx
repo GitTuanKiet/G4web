@@ -80,7 +80,7 @@ const data = [
 const Special = () => {
   return (
     <>
-      <div className="w-full h-auto page-container">
+      <div className="w-full h-auto ">
         <TheaterSpecial data={data} />
       </div>
     </>

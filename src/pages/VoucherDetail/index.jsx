@@ -20,7 +20,7 @@ function VoucherDetail() {
       <div className=" border-b-2 pb-4 border-black mt-4">
         <h1 className="text-4xl">Voucher Phim</h1>
       </div>
-      <div className="flex  gap-x-6 mt-10 w-full">
+      <div className="flex  gap-x-6 mt-10 w-full mobile:flex-col">
         <img src={fakeArray[0].imageUrl} alt="" className="w-[450px] h-[450px] object-contain" />
         <div className="w-full">
           <h2 className="font-semibold text-2xl">{fakeArray[0].title}</h2>
@@ -45,8 +45,12 @@ function VoucherDetail() {
             <button className="text-rose-500 mr-5" onClick={() => navigate(-1)}>
               &lt;&lt; Quay lại
             </button>
-            <Button onClick={() => handleInitOrder('voucher', { voucher: fakeArray[0] }, fakeArray[0].discount)}
-              primary>Mua ngay</Button>
+            <Button
+              onClick={() => handleInitOrder('voucher', { voucher: fakeArray[0] }, fakeArray[0].discount)}
+              primary
+            >
+              Mua ngay
+            </Button>
           </div>
         </div>
       </div>

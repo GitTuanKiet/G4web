@@ -51,7 +51,7 @@ function CinemaAdd() {
   }, [listShowtime, cinemas, city, type])
 
   return (
-    <div className="min-w-[780px] mobile:min-w-fit">
+    <div className="min-w-[780px] mobile:min-w-fit tablet:min-w-fit">
       <div className="bg-rose-100 flex flex-col h-auto w-full p-4 rounded-lg">
         {/* Date */}
         <ListDate />

@@ -98,5 +98,14 @@ html {
     .event-list .swiper-slide {
       width: 150px;
     }
+    .calendar-list .swiper-slide {
+      width: 150px;
+    }
+    .calendar-list .swiper-wrapper {
+      // display: flex;
+      // justify-content: space-between;
+      // row-gap: 20px;
+      // grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 }
