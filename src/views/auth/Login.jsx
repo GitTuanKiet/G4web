@@ -52,22 +52,24 @@ function Login() {
 
   return (
     <>
-      <div className="w-full h-screen bg-gray-50 flex flex-col items-center justify-center">
-        <div className="flex items-center justify-center">
+      <div className="w-full h-screen bg-gray-50 flex flex-col items-center justify-center mt-10">
+        <Link to="/" className="flex items-center justify-center mobile:h-[60px]">
           <Logo />
-        </div>
+        </Link>
         <h1 className="text-xl font-semibold mt-5">Sign in to your account</h1>
-        <div className="flex items-center justify-center text-sm mt-3">
-          <div className="mr-2">Or</div>
-          <div className="text-primary">start your 14-day free trial</div>
-
-        </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="w-full max-w-[500px] bg-white p-10 rounded-lg shadow-md mt-10"
+          className="w-full max-w-[500px] bg-white p-5 rounded-lg shadow-md mt-10"
         >
           <Input label="Email" placeholder="Enter your email" name="email" control={control} errors={errors} />
-          <Input label="Password" placeholder="Enter your password" name="password" type="password" control={control} errors={errors} />
+          <Input
+            label="Password"
+            placeholder="Enter your password"
+            name="password"
+            type="password"
+            control={control}
+            errors={errors}
+          />
 
           <div className="mt-4 flex items-center justify-between mb-4">
             <div className="flex items-center justify-start">
@@ -94,14 +96,14 @@ function Login() {
             <div className="flex-none mx-4 text-gray-500 text-sm font-light">Or continue with</div>
             <div className="border-t border-gray-200 w-full h-1"></div>
           </div>
-          <div className="mt-4 flex justify-between items-center">
-            <a className="flex gap-x-2 items-center p-3 shadow rounded-lg cursor-pointer hover:shadow-md ">
+          <div className="mt-4 flex justify-between items-center gap-y-3 mobile:flex-col">
+            <a className="flex gap-x-2 items-center p-3 h-[38px] w-[180px] shadow rounded-lg cursor-pointer hover:shadow-md ">
               <div>
                 <img src={ggLogo} alt="" className="w-4" />
               </div>
               <span className="text-xs">Continue with Google</span>
             </a>
-            <a className="flex gap-x-2 items-center p-3 shadow rounded-lg cursor-pointer hover:shadow-md ">
+            <a className="flex gap-x-2 items-center p-3 h-[38px] w-[180px] shadow rounded-lg cursor-pointer hover:shadow-md ">
               <div>
                 <img src={fbLogo} alt="" className="w-4" />
               </div>

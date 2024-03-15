@@ -9,7 +9,6 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 
-
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 
@@ -23,7 +22,7 @@ export default function Banner({ slides }) {
 
   return (
     <>
-      <div className='w-full h-full '>
+      <div className="w-full h-full ">
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
@@ -38,7 +37,8 @@ export default function Banner({ slides }) {
           navigation={true}
           modules={[Autoplay, Pagination, Navigation]}
           onAutoplayTimeLeft={onAutoplayTimeLeft}
-          className="mySwiper w-full h-full"
+          className="mySwiper w-full h-full "
+          
         >
           {slides.map((slide, index) => (
             <SwiperSlide key={index}>

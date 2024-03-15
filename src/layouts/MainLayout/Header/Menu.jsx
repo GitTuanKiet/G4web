@@ -1,11 +1,10 @@
-
 // assets
 import logo2 from 'assets/images/menu/kenhcine.gif'
 import logo3 from 'assets/images/menu/mua-ve_ngay.png'
 
-
 // project imports
 import Dropdown from 'components/extended/Dropdown'
+import { useState } from 'react'
 
 const movies = {
   _id: 'movies',
@@ -104,15 +103,15 @@ const menuItems = [movies, theaters, members, cultureplex]
 const Menu = () => {
   return (
     <>
-      <div className='flex justify-between w-full h-full'>
-        <ul className='flex font-semibold uppercase items-end gap-1'>
+      <div className="flex justify-between w-full h-full ml-auto transform transition-all duration-500 ease-in-out ">
+        <ul className="flex desktop:ml-6 tablet:ml-6 laptop-6 font-semibold uppercase items-center   gap-1 mobile:flex-col mobile:items-start">
           {menuItems.map((item) => (
             <Dropdown key={item._id} title={item.title} items={item.items} icon={item.icon} />
           ))}
         </ul>
-        <div className='flex items-center'>
+        <div className="flex items-center  mobile:hidden ">
           <img
-            className="h-27 w-108 relative overflow-hidden shrink-0 object-cover"
+            className="h-27 w-[100px] relative overflow-hidden shrink-0 object-cover"
             loading="eager"
             alt="https://kenhcine.cgv.vn"
             src={logo2}

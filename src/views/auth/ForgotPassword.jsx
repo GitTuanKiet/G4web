@@ -14,7 +14,6 @@ import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { forgotPassword } from 'stores/auth/slice'
 
-
 const schema = Yup.object({
   email: Yup.string().email('Invalid email').required('Email is required')
 })
@@ -42,24 +41,24 @@ function ForgotPassword() {
   return (
     <>
       <div className="w-full h-screen bg-gray-50 flex flex-col items-center justify-center">
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center mobile:h-[60px]">
           <Logo />
         </div>
-        <div className="w-full flex justify-center items-center gap-5 mx-auto max-w-[800px] ">
+        <div className="w-full flex justify-center items-center gap-5 mx-auto max-w-[800px] mobile:flex-col px-4 ">
           <div>
-            <img src={ForgotPasswordImg} alt="Forgot password" className="" />
+            <img src={ForgotPasswordImg} alt="Forgot password" className="mobile:w-60" />
           </div>
-          <form onSubmit={handleSubmit(onSubmit)} className="w-full">
-            <h2 className='text-4xl mb-4 font-bold'>Forgot password?</h2>
-            <p>Enter the email address associated with your account.</p>
+          <form onSubmit={handleSubmit(onSubmit)} className="w-full ">
+            <h2 className="text-4xl mb-4 font-bold">Forgot password?</h2>
+            <p className="text-gray-400 italic">Enter the email address associated with your account.</p>
             <Input placeholder="Enter your email" name="email" control={control} errors={errors} />
 
             <Button primary wFull loading={loading}>
-          Confirm
+              Confirm
             </Button>
             <div className="my-3 float-right text-sm ">
               <Link to="/" className="text-primary !underline">
-            Back to home
+                Back to home
               </Link>
             </div>
           </form>

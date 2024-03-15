@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom'
 
 const sidebarLinks = [
   {
-    path: 'introduction',
+    path: 'about ',
     title: 'Giới thiệu'
   },
   {
@@ -38,10 +38,10 @@ const sidebarLinks = [
 
 function ExtraInfoLayout() {
   return (
-    <div className="flex items-start gap-x-4 w-full h-screen">
+    <div className="flex items-start gap-x-4 w-full ">
       <Sidebar sidebarLinks={sidebarLinks} />
 
-      <div className="w-full mt-10 bg-[##fdfcf0] text-[#636363] text-justify">
+      <div className="w-full mt-10 bg-[##fdfcf0] text-[#636363] text-justify ">
         <Outlet />
       </div>
     </div>

@@ -3,7 +3,7 @@ import { forwardRef } from 'react'
 
 const LinkItem = ({ to, text }) => {
   return (
-    <li className='py-1'>
+    <li className="py-1">
       <Link to={to} className="transition-colors duration-300 hover:text-red-500">
         {text}
       </Link>
@@ -15,7 +15,7 @@ const Dropdown = forwardRef(({ title, items, icon }, ref) => {
   return (
     <>
       <li ref={ref} className="relative group">
-        <button className="flex items-center px-4 py-2 text-gray-700 hover:text-red-500 dark:text-white">
+        <button className="flex items-center px-4 py-2 text-gray-800 hover:text-red-500 ">
           {icon && <span className="me-2">{icon}</span>}
           <span>{title}</span>
         </button>

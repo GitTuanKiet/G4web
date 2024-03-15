@@ -7,26 +7,22 @@ import Footer from './Footer'
 // ==============================|| MAIN LAYOUT ||============================== //
 
 const MainLayout = () => {
-
   return (
-    <div className="w-full h-screen">
+    <div className="   w-full h-screen">
+      {/* /overflow-x-hidden  */}
       {/* header */}
-      <div className="w-full bg-yellow-500 flex justify-center">
-        <div className="w-[70%]">
-          <Header />
-        </div>
+      <div className="w-full bg-pinkThin  flex justify-center">
+        <Header />
       </div>
       {/* content */}
       <div className="w-full flex justify-center">
-        <div className="w-[70%] h-auto flex flex-col z-0 pb-10">
+        <div className=" page-container h-auto flex flex-col z-0 pb-10">
           <Outlet />
         </div>
       </div>
       {/* footer */}
-      <div className="w-full flex justify-center">
-        <div className="w-[70%]">
-          <Footer />
-        </div>
+      <div className="page-container ">
+        <Footer />
       </div>
     </div>
   )
