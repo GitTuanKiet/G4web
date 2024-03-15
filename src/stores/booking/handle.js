@@ -126,7 +126,7 @@ function* handleStepBookingTicket(action) {
       // add description
       // yield put(setDescription(` - Ghế: ${data?.chairs.join(', ')}`))
       // yield put(setDescription(` - ${data?.combo.map((i) => `${i.name} x${i.quantity}`).join(', ')}`))
-      yield put(setDescription(` - Mua vé xem phim ${data?.movie?.title}`))
+      yield put(setDescription(` - movieId: ${data?.movie?._id}`))
       // calculate price (chair - voucher) + (combo - gift)
       const { chairsPrice, comboPrice, voucherPrice, giftPrice } = data
       const totalChair = chairsPrice - voucherPrice < 0 ? 0 : chairsPrice - voucherPrice

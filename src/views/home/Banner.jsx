@@ -38,7 +38,6 @@ export default function Banner({ slides }) {
           modules={[Autoplay, Pagination, Navigation]}
           onAutoplayTimeLeft={onAutoplayTimeLeft}
           className="mySwiper w-full h-full "
-          
         >
           {slides.map((slide, index) => (
             <SwiperSlide key={index}>
