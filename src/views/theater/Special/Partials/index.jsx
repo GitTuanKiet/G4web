@@ -7,15 +7,18 @@ import { useSelector } from 'react-redux'
 
 const Partials = () => {
   const { slug } = useParams()
-  const { cinemas } = useSelector((state) => state.data)
-  const theater3D = cinemas.filter((item) => item.type === '3D')
-  const theater2D = cinemas.filter((item) => item.type === '2D')
+  const { theaters, cinemas } = useSelector((state) => state.data)
+  const listCinemaIdHaveTheater3D = theaters.map((item) => { if (item.type === '3D') return item.cinemaId })
+  const listCinemaIdHaveTheater2D = theaters.map((item) => { if (item.type === '2D') return item.cinemaId })
+
+  const listCinema3D = cinemas.filter((item) => listCinemaIdHaveTheater3D.includes(item._id))
+  const listCinema2D = cinemas.filter((item) => listCinemaIdHaveTheater2D.includes(item._id))
 
   return (
     <>
-      {!slug && <TheaterGoldClass data={theater2D} />}
-      {slug === 'gold-class' && <TheaterGoldClass data={theater2D} />}
-      {slug === '3d' && <Theater3D data={theater3D} />}
+      {!slug && <TheaterGoldClass data={listCinema2D} />}
+      {slug === 'gold-class' && <TheaterGoldClass data={listCinema2D} />}
+      {slug === '3d' && <Theater3D data={listCinema3D} />}
     </>
   )
 }

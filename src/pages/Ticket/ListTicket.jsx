@@ -3,13 +3,14 @@ import { CinemaInformation, TicketInformation } from './TicketCard'
 import { useSelector } from 'react-redux'
 
 const ListTicket = ({ tickets, watched }) => {
-  const { showtimes, movies, cinemas } = useSelector((state) => state.data)
+  const { showtimes, movies, cinemas, theaters } = useSelector((state) => state.data)
 
   return (
     <div>
       {tickets.length ? tickets.map((item) => {
         const showtime = showtimes.find((showtime) => showtime._id === item?.showtimeId)
-        const cinema = cinemas.find((cinema) => cinema._id === showtime?.cinemaId)
+        const theater = theaters.find((theater) => theater._id === showtime?.theaterId)
+        const cinema = cinemas.find((cinema) => cinema._id === theater?.cinemaId)
         const movie = movies.find((movie) => movie._id === showtime?.movieId)
         return (
           <div key={item._id} className="px-14 py-6 bg-[#FAEBE9] rounded-xl max-w-[900px] mx-auto w-full max-md:px-5 mb-4">

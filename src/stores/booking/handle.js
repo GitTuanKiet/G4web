@@ -45,14 +45,14 @@ function* handleInitOrder(action) {
 }
 
 function* handleBookShowtime(action) {
-  const { cinema, showtime } = action.payload
+  const { cinema, theater, showtime } = action.payload
   try {
-    if (!cinema) throw new Error('Đã xảy ra lỗi, vui lòng thử lại')
+    if (!theater || !cinema) throw new Error('Đã xảy ra lỗi, vui lòng thử lại')
     if (!showtime) throw new Error('Vui lòng chọn suất chiếu')
 
     yield put(setPayment({ showtimeId: showtime._id }))
-    yield put(setData({ cinema, showtime }))
-    yield put(setDescription(`${cinema.name} - ${padStart(showtime.start)} ${format(new Date(showtime.day), 'dd/MM/yyyy')}`))
+    yield put(setData({ cinema, theater, showtime }))
+    yield put(setDescription(`R: ${cinema.name} -P: ${theater.name} - T: ${padStart(showtime.start)} ${format(new Date(showtime.day), 'dd/MM/yyyy')}`))
   } catch (error) {
     yield put(bookingError(error.message))
   } finally {
@@ -107,7 +107,7 @@ function* handleStepBookingTicket(action) {
     }
 
     if (nextStep === 1) {
-      if (!data?.showtime && !data?.cinema) {
+      if (!data?.showtime && !data?.theater) {
         throw new Error('Chưa chọn suất chiếu')
       }
       if (!payment?.showtimeId) yield put(setPayment({ showtimeId: data?.showtime?._id }))

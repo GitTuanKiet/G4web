@@ -12,7 +12,6 @@ import { removeDiscount } from 'stores/booking/slice'
 
 const Content = () => {
   const dispatch = useDispatch()
-  const { cinemas } = useSelector((state) => state.data)
   const { data, step } = useSelector((state) => state.booking)
   const { method } = useSelector((state) => state.payment)
   const [showModalVoucher, setShowModalVoucher] = useState(false)
@@ -23,18 +22,16 @@ const Content = () => {
     if (showModalGift) setShowModalVoucher(false)
   }, [showModalVoucher, showModalGift])
 
-  const { chairs, combo, voucher, gift, showtime, chairsPrice, comboPrice } = data
-  const cinema = cinemas.find((item) => item._id === showtime?.cinemaId)
+  const { chairs, combo, voucher, gift, showtime, theater, chairsPrice, comboPrice } = data
 
   const isBooking = step < 4
-  const type = cinema?.type
   const { day, start } = showtime || {}
 
   return (
     <div>
       {day && <Line keyName='Ngày chiếu' value={format(new Date(day), 'dd/MM/yyyy')} />}
       {start && <Line keyName= 'Suất chiếu' value={padStart(start)} />}
-      {type && <Line keyName='Loại vé' value={type} />}
+      {theater && <Line keyName='Phòng chiếu' value={theater.name} />}
       {chairs.length > 0 && <Line keyName='Ghế' value={chairs.join(', ')} />}
       {combo.length > 0 && <Line keyName='Combo' value={combo.map((i) => `${i.name} x${i.quantity}`).join(', ')} />}
       {method && <Line keyName='Phương thức thanh toán' value={method} />}
