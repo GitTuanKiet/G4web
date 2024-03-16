@@ -8,7 +8,7 @@ import Footer from './Footer'
 
 const MainLayout = () => {
   return (
-    <div className="  w-full h-screen">
+    <div className="w-full h-screen">
       {/* /overflow-x-hidden  */}
       {/* header */}
       <div className="w-full bg-pinkThin  flex justify-center">

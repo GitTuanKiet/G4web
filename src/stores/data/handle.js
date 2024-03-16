@@ -2,19 +2,19 @@ import { call, all, put } from 'redux-saga/effects'
 import FetchApi from 'apis/fetchApi'
 import { fetchDataFailed, fetchDataSuccess, fetchingData, fetchFinish } from './slice'
 
-// import { mockCinemas, mockShowtimes, mockMovies } from 'apis/mockData'
-
 function* handleFetchData() {
   try {
     yield put(fetchingData())
-    const [resCinemas, resShowtimes, resMovies] = yield all([
+    const [resCinemas, resTheaters, resShowtimes, resMovies] = yield all([
       call(FetchApi.getCinemas),
+      call(FetchApi.getTheaters),
       call(FetchApi.getShowtimes),
       call(FetchApi.getMovies)
     ])
 
     yield put(fetchDataSuccess({
       cinemas: resCinemas.data,
+      theaters: resTheaters.data,
       showtimes: resShowtimes.data,
       movies: resMovies.data
     }))

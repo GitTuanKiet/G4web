@@ -5,6 +5,7 @@ const initialState = {
   dates: dates,
   cities: mockCities,
   cinemas: [],
+  theaters: [],
   showtimes: [],
   movies: [],
   loading: false,
@@ -23,6 +24,7 @@ const dataSlice = createSlice({
       state.loading = false
       state.error = null
       state.cinemas = action.payload.cinemas
+      state.theaters = action.payload.theaters
       state.showtimes = action.payload.showtimes
       state.movies = action.payload.movies
     },

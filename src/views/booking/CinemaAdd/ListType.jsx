@@ -7,7 +7,7 @@ import Divider from 'components/Divider'
 
 import { setFilter } from 'stores/booking/slice'
 
-const ListType = ({ listCinema }) => {
+const ListType = ({ listTheater }) => {
   const dispatch = useDispatch()
   const { filter } = useSelector((state) => state.booking)
 
@@ -16,11 +16,11 @@ const ListType = ({ listCinema }) => {
 
   useEffect(() => {
     let listType = []
-    if (listCinema.length) {
-      listType = listCinema.map((cinema) => cinema.type)
+    if (listTheater.length) {
+      listType = listTheater.map((cinema) => cinema.type)
     }
     setListType([...new Set(listType)])
-  }, [listCinema])
+  }, [listTheater])
 
   const handleSetFilterType = useCallback((type) => {
     if (selectedType) {

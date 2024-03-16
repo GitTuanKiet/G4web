@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import imagePaths from 'assets/images/imagePaths'
 
 // Assets
 import logo from 'assets/images/menu/cgvlogo.png'
@@ -62,8 +63,53 @@ const LogoLink = ({ url, logo }) => {
   )
 }
 
-const logoData = Array(10).fill({ url: '#', logo: logo })
 
+const logoData = [
+  {
+    url: '#',
+    logo: imagePaths.dx
+  },
+  {
+    url: '#',
+    logo: imagePaths.imax
+  },
+  {
+    url: '#',
+    logo: imagePaths.starium
+  },
+  {
+    url: '#',
+    logo: imagePaths.gold_class
+  },
+  {
+    url: '#',
+    logo: imagePaths.lamour
+  },
+  {
+    url: '#',
+    logo: imagePaths.sweet_box
+  },
+  {
+    url: '#',
+    logo: imagePaths.premium_cinema
+  },
+  {
+    url: '#',
+    logo: imagePaths.screen_x
+  },
+  {
+    url: '#',
+    logo: imagePaths.cine_foret
+  },
+  {
+    url: '#',
+    logo: imagePaths.cine_living_room
+  },
+  {
+    url: '#',
+    logo: imagePaths.cine_suite
+  }
+]
 export default function Footer() {
   return (
     <footer className="z-10 w-full py-2  ">
