@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux'
 import MovieItem from '../MovieItem'
 import imagePaths from 'assets/images/imagePaths'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import Heading from 'components/Heading'
 
 function MovieList() {
   const { movies } = useSelector((state) => state.data)

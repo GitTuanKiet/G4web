@@ -57,8 +57,8 @@ const FooterLink = ({ title, links }) => {
 
 const LogoLink = ({ url, logo }) => {
   return (
-    <a href={url} className="border-none outline-none">
-      <img src={logo} alt="" className="w-20 object-cover mix-blend-darken" />
+    <a href={url} className="[border:none] [outline:none]   ">
+      <img src={logo} alt="" className="w-full h-full  object-cover" />
     </a>
   )
 }
@@ -112,9 +112,9 @@ const logoData = [
 ]
 export default function Footer() {
   return (
-    <footer className="z-10 w-full py-2">
+    <footer className="z-10 w-full py-2  ">
       <hr className="border border-black absolute w-full left-0" />
-      <div className="flex justify-center flex-row gap-4 mobile:hidden h-16 items-center">
+      <div className="flex justify-between flex-row gap-4 py-4 mobile:hidden">
         {logoData.map((data, index) => (
           <LogoLink key={index} url={data.url} logo={data.logo} />
         ))}

@@ -1,13 +1,14 @@
 import Sidebar from 'components/Sidebar'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import { logout } from 'stores/auth/slice'
 
 function ProfileLayout() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const [openSidebar, setOpenSidebar] = useState(false)
   const { accessToken } = useSelector((state) => state.auth)
 
   const handleLogout = () => {
@@ -53,10 +54,10 @@ function ProfileLayout() {
   }, [accessToken, navigate])
 
   return (
-    <div className="flex items-start gap-x-4 w-full h-auto">
-      <Sidebar sidebarLinks={sidebarLinks} />
-
-      <div className="w-full h-auto mt-10 ">
+    <div className="flex items-start gap-x-4  h-full ">
+      {/* <Sidebar sidebarLinks={sidebarLinks} /> */}
+      <div className="w-full h-fit mt-10 z-8 ">
+        {/* absolute */}
         <Outlet />
       </div>
     </div>

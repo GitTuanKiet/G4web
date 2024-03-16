@@ -65,10 +65,10 @@ const Cinemas = () => {
         Thuê rạp/ Sự kiện <br></br>& Vé nhóm
       </h1>
 
-      <div className="mt-4 flex justify-between gap-x-5">
+      <div className="mt-4 flex justify-between gap-x-5 mobile:flex-col">
         <div>
           <iframe
-            width="460"
+            width="340"
             height="250"
             src="https://www.youtube.com/embed/GwdTXGlG1iI?si=rhSMwm7lpzZ-3LBC"
             title="YouTube video player"
@@ -77,7 +77,7 @@ const Cinemas = () => {
             allowfullscreen
           ></iframe>
         </div>
-        <p className="text-sm">
+        <p className="text-sm text-justify">
           Bạn đang tìm giải pháp quảng cáo độc đáo để tăng doanh thu cho công ty? Bạn muốn gửi quà tặng có ý nghĩa đến
           đối tác thay cho lời cảm ơn về mối hợp tác lâu bền? <br />
           Bạn muốn thưởng thức những bộ phim bom tấn thật riêng tư cùng bạn bè, người thân hay đồng nghiệp?
@@ -94,7 +94,7 @@ const Cinemas = () => {
         <h1 className="text-primary text-3xl text-center my-6 font-semibold uppercase">Lập kế hoạch cùng CGV ngay</h1>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex justify-between w-full gap-10">
+          <div className="flex justify-between w-full gap-10 mobile:flex-col">
             <Input label="Họ Tên" placeholder="Họ Tên" name="name" control={control} errors={errors} />
             <Input
               label="Số điện thoại"
@@ -104,11 +104,11 @@ const Cinemas = () => {
               errors={errors}
             />
           </div>
-          <div className="flex justify-between w-full gap-10">
+          <div className="flex justify-between w-full gap-10 mobile:flex-col">
             <Input label="Email" placeholder="email" name="name" control={control} errors={errors} />
             <Input label="Địa chỉ" placeholder="Địa chỉ" name="address" control={control} errors={errors} />
           </div>
-          <div className="flex justify-between w-full gap-10">
+          <div className="flex justify-between w-full gap-10 mobile:flex-col">
             <Input label="Công ty" placeholder="công ty" name="company" control={control} errors={errors} />
             <Input
               label="Chọn dịch vụ"
@@ -118,7 +118,7 @@ const Cinemas = () => {
               errors={errors}
             />
           </div>
-          <div className="flex justify-between w-full gap-10">
+          <div className="flex justify-between w-full gap-10 mobile:flex-col">
             <div className="w-full">
               <label htmlFor="" className="block mb-2 font-medium">
                 Ngày muốn thuê
@@ -133,7 +133,7 @@ const Cinemas = () => {
               errors={errors}
             />
           </div>
-          <div className="flex justify-between w-full gap-10">
+          <div className="flex justify-between w-full gap-10 mobile:flex-col">
             <div className="w-full">
               <label htmlFor="" className="block mb-2 font-medium">
                 Chọn khu vực

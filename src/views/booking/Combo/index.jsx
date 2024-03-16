@@ -5,7 +5,8 @@ import ComboCard from './ComboCard'
 import { bookCombo } from 'stores/booking/slice'
 
 const fake = {
-  image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/fa55cc058528581e2ea5d261f091ced63d6477962be2ab8059c900db7871722c?apiKey=a8afef7bb7724cdfb195c3c79e17a7b1&',
+  image:
+    'https://cdn.builder.io/api/v1/image/assets/TEMP/fa55cc058528581e2ea5d261f091ced63d6477962be2ab8059c900db7871722c?apiKey=a8afef7bb7724cdfb195c3c79e17a7b1&',
   price: 50
 }
 
@@ -27,7 +28,7 @@ const Combo = () => {
     const isExist = combo.find((i) => i._id === item._id)
     if (type === '+') {
       if (isExist) {
-        const newCombo = combo.map((i) => i._id === item._id ? { ...i, quantity: i.quantity + 1 } : i)
+        const newCombo = combo.map((i) => (i._id === item._id ? { ...i, quantity: i.quantity + 1 } : i))
         dispatch(bookCombo({ combo: newCombo, price: comboPrice + Number(item.price) }))
         return
       }
@@ -43,14 +44,14 @@ const Combo = () => {
         return
       }
 
-      const newCombo = combo.map((i) => i._id === item._id ? { ...i, quantity: i.quantity - 1 } : i)
+      const newCombo = combo.map((i) => (i._id === item._id ? { ...i, quantity: i.quantity - 1 } : i))
       dispatch(bookCombo({ combo: newCombo, price: comboPrice - Number(item.price) }))
     }
   }
 
   return (
-    <div className='min-w-[800px]'>
-      <div className="bg-rose-100 flex flex-col h-auto w-full gap-4 p-4">
+    <div className="min-w-[800px]  mobile:min-w-fit  ">
+      <div className="bg-rose-100 flex flex-col justify-center items-center h-auto w-full gap-4 p-4 rounded-lg ">
         {fakeData.map((item) => (
           <ComboCard key={item._id} _id={item._id} {...item} handleSetPrice={handleSetPrice} />
         ))}

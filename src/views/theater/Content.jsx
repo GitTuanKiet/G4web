@@ -1,6 +1,6 @@
-
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
+import { isMobile } from 'react-device-detect'
 
 import Banner from 'views/home/Banner'
 import CardShowtime from './CardShowtime'
@@ -38,45 +38,45 @@ const Content = ({ cinema }) => {
         <div className="triangle-left"></div>
         <div className="text-center bg-red-500 py-2 px-6 border-r-transparent inline-flex justify-center gap-x-4 text-lg relative z-10">
           <div className="triangle-left"></div>
-          <h1 className='ml-3 cursor-pointer hover:opacity-90 hover:text-secondary' onClick={() => setShow(true)}>
-              Lịch Chiếu
+          <h1
+            className={`ml-3 cursor-pointer hover:opacity-90 hover:text-secondary ${show ? 'text-secondary' : ''}`}
+            onClick={() => setShow(true)}
+          >
+            Lịch Chiếu
           </h1>
-          <h1 className='mr-3 cursor-pointer hover:opacity-90 hover:text-secondary' onClick={() => setShow(false)}>
+          <h1
+            className={`mr-3 cursor-pointer hover:opacity-90 hover:text-secondary ${!show ? 'text-secondary' : ''}`}
+            onClick={() => setShow(false)}
+          >
             Giá vé
           </h1>
           <div className="triangle-right"></div>
         </div>
       </div>
 
-      {show ?
+      {show ? (
         <>
           {/* date */}
-          <div className="py-2 px-20 border-y-4 border-gray-600">
+          <div className="py-2 px-20 border-y-4 border-gray-600  mobile:px-0">
             <Swiper
-              slidesPerView={7}
+              slidesPerView={isMobile ? 2 : 7} // Modify slidesPerView based on screen size
               spaceBetween={30}
-              pagination={{
-                clickable: true
-              }}
-              navigation={true}
-
+              navigation={isMobile ? false : true}
               modules={[Navigation]}
-              className="calenderSwiper"
+              className="calendar-list "
             >
               {dates.map((item) => {
                 const check = item._id === selectedDate?._id
                 return (
-                  <SwiperSlide
-                    key={item._id}
-                  >
+                  <SwiperSlide key={item._id}>
                     <Button
                       onClick={() => setSelectedDate(item)}
-                      className='w-20 h-16'
+                      className="w-20 h-16 mobile:h-12"
                       primary={check}
                       disabled={check}
                     >
-                      <div className="flex items-center justify-evenly">
-                        <div className='text-xs'>
+                      <div className="flex items-center justify-evenly grid-cols-1">
+                        <div className="text-xs">
                           <p>{format(item.value, 'LL')}</p>
                           <p>{format(item.value, 'E')}</p>
                         </div>
@@ -84,7 +84,8 @@ const Content = ({ cinema }) => {
                       </div>
                     </Button>
                   </SwiperSlide>
-                )})}
+                )
+              })}
             </Swiper>
           </div>
 
@@ -94,7 +95,10 @@ const Content = ({ cinema }) => {
               <CardShowtime key={movie._id} movie={movie} cinema={cinema} date={selectedDate} />
             ))}
           </div>
-        </>: <div className="text-center text-3xl text-primary">Giá vé</div>}
+        </>
+      ) : (
+        <div className="text-center text-3xl text-primary">Giá vé</div>
+      )}
     </>
   )
 }

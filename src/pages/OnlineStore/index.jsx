@@ -52,7 +52,7 @@ const OnlineStore = () => {
         <div className=" border-b-2 pb-4 border-black">
           <h1 className="text-4xl">Voucher Phim</h1>
         </div>
-        <div className="grid grid-cols-3 gap-3 mt-4">
+        <div className="grid grid-cols-3 gap-3 mt-4 mobile:grid-cols-none">
           {fakeArray.map((item, index) => (
             <VoucherItem key={index} data={item} />
           ))}
@@ -76,7 +76,7 @@ function VoucherItem({ data }) {
       <div>
         <span className="mr-3">{price} đ</span>
 
-        <span className="uppercase text-white bg-rose-600  py-1  px-2 cursor-pointer rounded">mua</span>
+        <span className="uppercase text-white bg-rose-600  py-1  px-2 cursor-pointer rounded">Mua</span>
       </div>
       <p className=" mt-1 mb-3">{growthValue}</p>
       <img onClick={() => navigate('/vouchers/slug_here')} src={imageUrl} alt="voucher's image" className="w-full" />

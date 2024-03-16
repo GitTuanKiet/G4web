@@ -3,15 +3,11 @@ import { useSelector } from 'react-redux'
 
 import Unit from 'components/Bill/Unit'
 
-const Image = ({ src, alt }) => (
-  <img src={src} alt={alt} className="aspect-square w-[74px]" loading="lazy" />
-)
+const Image = ({ src, alt }) => <img src={src} alt={alt} className="aspect-square w-[74px]" loading="lazy" />
 
 const PriceAndQuantity = ({ price, imageMinus, imagePlus, quantity, handleSetQuantity }) => (
   <div className="flex gap-5 justify-between items-center my-auto">
-    <div className="flex-auto">
-      {Unit({ value: price })}
-    </div>
+    <div className="flex-auto">{Unit({ value: price })}</div>
     <div className="flex gap-5 text-black whitespace-nowrap">
       <button onClick={() => handleSetQuantity('-')} disabled={quantity === 0}>
         <Image src={imageMinus} alt="Decrease quantity" />
@@ -40,8 +36,7 @@ const ComboCard = ({ _id, image, name, price, handleSetPrice }) => {
     if (quantity < 0) {
       setQuantity(0)
     }
-  }
-  , [quantity])
+  }, [quantity])
 
   const handleSetQuantity = (type) => {
     if (type === '+') {
@@ -53,13 +48,13 @@ const ComboCard = ({ _id, image, name, price, handleSetPrice }) => {
     }
   }
   return (
-    <article className="flex gap-5 justify-between px-6 py-4 text-base font-medium rounded-xl border-solid bg-zinc-300 bg-opacity-30 border-[0.5px] border-black border-opacity-30 max-w-[800px] sm:flex-wrap sm:px-5">
+    <article className="flex gap-5 justify-between w-full px-6 py-4 text-base font-medium rounded-xl border-solid bg-zinc-300 bg-opacity-30 border-[0.5px] border-black border-opacity-30 max-w-[800px] sm:flex-wrap sm:px-5">
       <div className="flex gap-5 justify-between text-black">
         <Image src={image} alt={name} />
         <div className="flex-auto my-auto">{name}</div>
       </div>
       <PriceAndQuantity
-        price={price*quantity}
+        price={price * quantity}
         imageMinus="https://cdn.builder.io/api/v1/image/assets/TEMP/e98ee89bab86ecd750e9bb7a32729a090dddcd2e85436a01a6e230bb2847e2e2?apiKey=a8afef7bb7724cdfb195c3c79e17a7b1&"
         imagePlus="https://cdn.builder.io/api/v1/image/assets/TEMP/87fa1eb99f33082596c4e71d6f43ed162dd169cda2613cae0e16756751f3fac1?apiKey=a8afef7bb7724cdfb195c3c79e17a7b1&"
         quantity={quantity}
