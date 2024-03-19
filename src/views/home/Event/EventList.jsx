@@ -37,15 +37,11 @@ const fakeList = [
 function EventList() {
   return (
     <div>
-<<<<<<< HEAD
-      <Heading>EVENT</Heading>
-=======
       <div className='py-10 flex justify-center items-center'>
         <div className='border-y-2 border-black pt-1 flex-grow'></div>
         <img src={imagePaths.event} alt="" className='px-4' />
         <div className='border-y-2 border-black pt-1 flex-grow'></div>
       </div>
->>>>>>> 350b630853115902534801ac7d2e91baf5394507
 
       <div className="flex items-center justify-center pb-6 text-white rounded-b-none relative">
         <div className="triangle-left"></div>

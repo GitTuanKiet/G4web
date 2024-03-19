@@ -27,7 +27,7 @@ const sidebarLinks = [
     title: 'Chính sách bảo mật'
   },
   {
-    path: 'common-questions',
+    path: 'faq',
     title: 'Câu hỏi thường gặp'
   },
   {
@@ -39,9 +39,11 @@ const sidebarLinks = [
 function ExtraInfoLayout() {
   return (
     <div className="flex items-start gap-x-4 w-full ">
-      <Sidebar sidebarLinks={sidebarLinks} />
+      <div className="mobile:absolute">
+        <Sidebar sidebarLinks={sidebarLinks} />
+      </div>
 
-      <div className="w-full mt-10 bg-[##fdfcf0] text-[#636363] text-justify ">
+      <div className="w-full mt-10 bg-[##fdfcf0] text-[#636363] text-justify  ">
         <Outlet />
       </div>
     </div>

@@ -12,6 +12,7 @@ const PolicyPrivacy = Loadable(lazy(() => import('pages/static/ExtraInfo/Policy/
 const PolicyPayment = Loadable(lazy(() => import('pages/static/ExtraInfo/Policy/Payment')))
 const TermConditions = Loadable(lazy(() => import('pages/static/ExtraInfo/Terms/Conditions')))
 const TermsOfUse = Loadable(lazy(() => import('pages/static/ExtraInfo/Terms/OfUse')))
+const FAQ = Loadable(lazy(() => import('pages/static/ExtraInfo/FAQ')))
 
 // ===========================|| PROFILE ROUTING ||=========================== //
 
@@ -46,6 +47,10 @@ const ExtraInfoRoutes = {
     {
       path: 'security-policy',
       element: <TermsOfUse />
+    },
+    {
+      path: 'faq',
+      element: <FAQ />
     }
   ]
 }

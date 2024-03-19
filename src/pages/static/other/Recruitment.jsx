@@ -72,7 +72,7 @@ function Recruitment() {
 
         <img src={RecruitmentSrc} alt="Recruitment" className="" />
 
-        <div className="grid grid-cols-2 gap-10 px-8 ">
+        <div className="grid grid-cols-2 gap-10 px-8 mobile:grid-cols-none  ">
           <div>
             <h2 className="font-bold text-primary text-2xl text-center my-2">VỊ TRÍ TOÀN THỜI GIAN</h2>
             <div className="p-4 bg-[#f0eedc] rounded-3xl border-[#bcb890] border-2">
@@ -80,7 +80,8 @@ function Recruitment() {
                 <h2 className="font-bold text-lg text-center">Khối Văn Phòng/ Cụm Rạp</h2>
                 <div>
                   <p>
-                    <b>Cách 1</b>: Gửi CV đến email <b>cgvtalent@cj.net</b> với tiêu đề <b>&quot;[HỌ TÊN] - Ứng tuyển [VỊ TRÍ]&rdquo;</b>.
+                    <b>Cách 1</b>: Gửi CV đến email <b>cgvtalent@cj.net</b> với tiêu đề{' '}
+                    <b>&quot;[HỌ TÊN] - Ứng tuyển [VỊ TRÍ]&rdquo;</b>.
                   </p>
                   <p>
                     <b>Cách 2:</b> Nộp hồ sơ trực tiếp trên các trang tuyển dụng uy tín mà CGV có đăng tuyển như

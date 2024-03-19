@@ -12,13 +12,13 @@ function Sidebar({ sidebarLinks }) {
   return (
     <div
       id="default-sidebar"
-      className={`top-0 left-0 z-40 w-[250px]  relative mt-10 rounded-xl transition-transform  sm:translate-x-0 ${
-        open ? 'translate-x-0' : '-translate-x-[106%] transition-transform duration-300 '
+      className={`top-0 left-0 z-40 mobile:w-[250px]  w-[300px]  relative mt-10 rounded-xl transition-transform  sm:translate-x-0 ${
+        open ? 'mobile:translate-x-0' : 'mobile:-translate-x-[106%] mobile:transition-transform mobile:duration-300 '
       }`}
       aria-label="Sidebar"
     >
       <span
-        className={`bg-[#FAEBE9] border border-slate-400 p-1 rounded-full text-primary  absolute right-0 translate-x-2/4 top-[6%] ${
+        className={` desktop:hidden bg-[#FAEBE9] border border-slate-400 p-1 rounded-full text-primary  absolute right-0 translate-x-2/4 top-[6%] ${
           open ? 'rotate-180 transition-transform duration-400' : 'transition-transform duration-400'
         }`}
         onClick={() => setOpen(!open)}
