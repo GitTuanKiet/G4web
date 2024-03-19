@@ -8,7 +8,6 @@ import { logout } from 'stores/auth/slice'
 function ProfileLayout() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const [openSidebar, setOpenSidebar] = useState(false)
   const { accessToken } = useSelector((state) => state.auth)
 
   const handleLogout = () => {
@@ -55,7 +54,9 @@ function ProfileLayout() {
 
   return (
     <div className="flex items-start gap-x-4  h-full ">
-      {/* <Sidebar sidebarLinks={sidebarLinks} /> */}
+      <div className="mobile:absolute">
+        <Sidebar sidebarLinks={sidebarLinks} />
+      </div>
       <div className="w-full h-fit mt-10 z-8 ">
         {/* absolute */}
         <Outlet />

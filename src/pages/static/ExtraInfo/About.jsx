@@ -3,15 +3,18 @@ const About = () => {
     <div className="mb-10">
       <h1 className="text-primary text-2xl"></h1>
       <div>
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/e1ZSLVTZ47M?si=LAqNZ-q0KM5FFTIX"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        ></iframe>
+        <div className="mobile:w-[100px]">
+          <iframe
+            // width="400"
+            height="315"
+            className="mobile:w-[340px] desktop:w-full desktop:h-[500px]"
+            src="https://www.youtube.com/embed/e1ZSLVTZ47M?si=LAqNZ-q0KM5FFTIX"
+            title="YouTube video player"
+            // frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
         <div className="my-10">
           <p>
             CGV là một trong năm Cụm Rạp Chiếu Phim lớn nhất toàn cầu và CGV Việt Nam là Nhà Phát Hành, nhà quản lý và
@@ -47,7 +50,7 @@ const About = () => {
             nghiệp điện ảnh Việt Nam ngày càng vững mạnh cùng các khách hàng tiềm năng, các nhà làm phim, các đối tác
             kinh doanh uy tín, và cùng toàn thể xã hội.
           </p>
-          <div className="grid grid-cols-3 gap-10 mt-10">
+          <div className="grid grid-cols-3 gap-10 mt-10 mobile:grid-cols-none text-center">
             <img
               src="https://www.cgv.vn/media/wysiwyg/about-1.jpg"
               alt=""

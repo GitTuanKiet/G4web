@@ -1,3 +1,4 @@
+import Heading from 'components/Heading'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import imagePaths from 'assets/images/imagePaths'
 const img = 'https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/u/2/u22-240x201-04.png'
