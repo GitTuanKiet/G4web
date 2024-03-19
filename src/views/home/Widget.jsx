@@ -77,7 +77,11 @@ const Widget = () => {
             key={index}
           >
             <CardWidget key={index} title={item.title} bgImage={item.bgImage} link={item.link} />
+            {index !== StaticWidget.length - 1 && (
+              <div className="absolute inset-y-0 right-0 w-px bg-gray-400" />
+            )}
           </div>
+
         ))}
       </div>
     </>

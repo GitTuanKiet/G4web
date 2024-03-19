@@ -12,43 +12,49 @@ import { bookShowtime } from 'stores/booking/slice'
 
 function CinemaAdd() {
   const dispatch = useDispatch()
-  const { cinemas, showtimes } = useSelector((state) => state.data)
+  const { cinemas, showtimes, theaters } = useSelector((state) => state.data)
   const { filter, data } = useSelector((state) => state.booking)
 
   const { showtime, movie } = data
   const { city, type, date } = filter
+  const [listTheater, setListTheater] = useState([])
   const [listCinema, setListCinema] = useState([])
   const [listShowtime, setListShowtime] = useState([])
 
   useEffect(() => {
     let listShowtime = []
     // filter list showtime by movie, date
-    if (movie) {
-      listShowtime = showtimes.filter((item) => item.movieId === movie._id)
-    }
-    if (date) {
-      listShowtime = listShowtime.filter((item) => item.dateId === date._id)
-    }
+    if (movie) listShowtime = showtimes.filter((item) => item.movieId === movie._id)
+    if (date) listShowtime = listShowtime.filter((item) => item.dateId === date._id)
 
     setListShowtime(listShowtime)
   }, [movie, showtimes, date])
 
   useEffect(() => {
-    let filterCinema = []
-    // filter list cinema by list showtime
-    if (listShowtime.length) {
-      const listIdCinema = listShowtime.map((showtime) => showtime.cinemaId)
-      filterCinema = cinemas.filter((cinema) => listIdCinema.includes(cinema._id))
-    }
+    let filterCinema = cinemas
+    // filter list cinema by city
     if (city) {
       filterCinema = filterCinema.filter((cinema) => cinema.city === city.name)
     }
-    if (type) {
-      filterCinema = filterCinema.filter((cinema) => cinema.type === type)
-    }
-
     setListCinema(filterCinema)
-  }, [listShowtime, cinemas, city, type])
+  }, [city, cinemas])
+
+  useEffect(() => {
+    let filterTheater = []
+    // filter list theater by showtime
+    if (listShowtime.length) {
+      const listIdTheater = listShowtime.map((showtime) => showtime.theaterId)
+      filterTheater = theaters.filter((theater) => listIdTheater.includes(theater._id))
+    }
+    // filter by type
+    if (type) filterTheater = filterTheater.filter((theater) => theater.type === type)
+    // filter by cinema
+    if (listCinema.length) {
+      const listIdCinema = listCinema.map((cinema) => cinema._id)
+      filterTheater = filterTheater.filter((theater) => listIdCinema.includes(theater.cinemaId))
+    }
+    setListTheater(filterTheater)
+  }, [listShowtime, theaters, type, listCinema])
 
   return (
     <div className="min-w-[780px] mobile:min-w-fit tablet:min-w-fit">
@@ -60,9 +66,10 @@ function CinemaAdd() {
         <ListCity listCinema={listCinema} />
 
         {/* Type */}
-        <ListType listCinema={listCinema} />
+        <ListType listTheater={listTheater} />
 
         {/* Cinema */}
+<<<<<<< HEAD
         {listCinema.length ? (
           listCinema.map((itemCinema) => {
             const filter = listShowtime.filter((time) => time.cinemaId === itemCinema._id)
@@ -70,6 +77,17 @@ function CinemaAdd() {
               <div key={itemCinema._id} className="flex flex-col gap-y-2">
                 <h1 className="text-4xl">{itemCinema.name}</h1>
                 <p>{itemCinema.type}</p>
+=======
+        {listTheater.length ? (
+          listTheater.map((itemTheater) => {
+            const cinema = listCinema.find((item) => item._id === itemTheater.cinemaId)
+            const filter = listShowtime.filter((time) => time.theaterId === itemTheater._id)
+            return cinema ? (
+              <div key={itemTheater._id} className="flex flex-col gap-y-2">
+                <h1 className="text-4xl">{cinema.name}</h1>
+                <h1 className="text-2xl">{itemTheater.name}</h1>
+                <p>{itemTheater.type}</p>
+>>>>>>> 350b630853115902534801ac7d2e91baf5394507
                 <div className="grid gap-3 grid-cols-3">
                   {filter.length ? (
                     filter.map((itemShowtime, index) => {
@@ -79,12 +97,17 @@ function CinemaAdd() {
                           key={index}
                           primary={check}
                           disabled={check}
+<<<<<<< HEAD
                           onClick={() => dispatch(bookShowtime({ showtime: itemShowtime, cinema: itemCinema }))}
+=======
+                          onClick={() => dispatch(bookShowtime({ cinema: cinema, showtime: itemShowtime, theater: itemTheater }))}
+>>>>>>> 350b630853115902534801ac7d2e91baf5394507
                         >
                           {`${padStart(itemShowtime.start)} ${itemShowtime.start < 12 ? 'AM' : 'PM'}`}
                         </Button>
                       )
                     })
+<<<<<<< HEAD
                   ) : (
                     <p className="text-left text-xl">Không có suất chiếu</p>
                   )}
@@ -95,6 +118,14 @@ function CinemaAdd() {
         ) : (
           <p className="text-center text-xl">Không có rạp chiếu</p>
         )}
+=======
+                  ) : <p key={itemTheater._id} className="text-left text-xl">Không có suất chiếu</p>}
+                </div>
+              </div>
+            ) : <p key={itemTheater._id} className="text-center text-xl">Không có rạp chiếu</p>
+          })
+        ) : <p className="text-center text-xl">Không có phòng chiếu</p>}
+>>>>>>> 350b630853115902534801ac7d2e91baf5394507
       </div>
     </div>
   )

@@ -1,14 +1,11 @@
 import { useController } from 'react-hook-form'
-
 function Input({ label, errors, control, ...rest }) {
   const { field } = useController({ control, name: rest.name })
 
   return (
     <div className="mb-4 w-full">
       <label htmlFor={rest._id || rest.name}>
-        <span className='font-bold'>
-          {label}
-        </span>
+        <span className="font-bold">{label}</span>
       </label>
       <input
         id={rest._id || rest.name}
@@ -21,4 +18,7 @@ function Input({ label, errors, control, ...rest }) {
     </div>
   )
 }
+
+
+
 export default Input

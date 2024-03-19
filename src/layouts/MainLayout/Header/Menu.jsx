@@ -104,7 +104,11 @@ const Menu = () => {
   return (
     <>
       <div className="flex justify-between w-full h-full ml-auto transform transition-all duration-500 ease-in-out ">
+<<<<<<< HEAD
         <ul className="flex desktop:ml-6 tablet:ml-6  font-semibold uppercase items-center   gap-1 mobile:flex-col mobile:items-start">
+=======
+        <ul className="flex desktop:ml-6 tablet:ml-6  font-semibold uppercase items-center gap-1 mobile:flex-col mobile:items-start">
+>>>>>>> 350b630853115902534801ac7d2e91baf5394507
           {menuItems.map((item) => (
             <Dropdown key={item._id} title={item.title} items={item.items} icon={item.icon} />
           ))}

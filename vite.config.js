@@ -14,7 +14,8 @@ export default defineConfig({
       'stores': '/src/stores',
       'utils': '/src/utils',
       'views': '/src/views',
-      'apis': '/src/apis'
+      'apis': '/src/apis',
+      'img' : '/src/img',
     }
   }
 })
