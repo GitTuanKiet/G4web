@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { jwtDecode } from 'jwt-decode'
 import { toast } from 'react-toastify'
 // router
@@ -51,6 +51,8 @@ function App() {
     dispatch(fetchData())
   }, [dispatch])
 
+  const [role, setRole] = useState('user')
+
   useEffect(() => {
     if (accessToken) {
       const decoded = jwtDecode(accessToken)
@@ -58,6 +60,7 @@ function App() {
       const exp = new Date(decoded.exp * 1000)
       // set user to redux store
       dispatch(setInfo(decoded))
+      setRole(decoded.role)
 
       // logout if token is expired
       if (exp < new Date()) {
@@ -80,6 +83,8 @@ function App() {
   return (
     <>
       <NavigationScroll>
+        {role === 'admin' && <Routes />}
+        
         <Routes />
         <ToastContainer
           position="top-right"

@@ -7,13 +7,13 @@ export default defineConfig({
   resolve: {
     alias: {
       'assets': '/src/assets',
-      'components': '/src/components',
-      'layouts': '/src/layouts',
-      'pages': '/src/pages',
+      'components': '/src/shared/components',
+      'layouts': '/src/client/layouts',
+      'pages': '/src/client/pages',
       'routes': '/src/routes',
       'stores': '/src/stores',
-      'utils': '/src/utils',
-      'views': '/src/views',
+      'utils': '/src/shared/utils',
+      'views': '/src/client/views',
       'apis': '/src/apis',
       'img' : '/src/img',
     }

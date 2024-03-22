@@ -3,15 +3,15 @@
     "baseUrl": "./src",
     "paths": {
       "assets/*": ["assets/*"],
-      "components/*": ["components/*"],
-      "layouts/*": ["layouts/*"],
-      "pages/*": ["pages/*"],
+      "components/*": ["shared/components/*"],
+      "layouts/*": ["client/layouts/*"],
+      "pages/*": ["client/pages/*"],
       "routes/*": ["routes/*"],
       "stores/*": ["stores/*"],
-      "utils/*": ["utils/*"],
-      "views/*": ["views/*"],
+      "utils/*": ["shared/utils/*"],
+      "views/*": ["client/views/*"],
       "apis/*": ["apis/*"]
-    },
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "build", "dist"]
