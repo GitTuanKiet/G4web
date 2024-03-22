@@ -13,7 +13,7 @@ function AccountDetail() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const [gender, setGender] = useState(info.gender)
+  const [gender, setGender] = useState(info?.gender)
 
   const schemaProfile = Yup.object({
     name: Yup.string().required('Name is required'),
@@ -31,12 +31,12 @@ function AccountDetail() {
   const { handleOnSubmit, register, control, errors } = useFormSubmit(
     schemaProfile,
     {
-      name: info.name,
-      city: info.city,
-      gender: info.gender,
-      phone: info.phone,
-      address: info.address,
-      birthday: format(new Date(info.birthday), 'yyyy-MM-dd')
+      name: info?.name,
+      city: info?.city,
+      gender: info?.gender,
+      phone: info?.phone,
+      address: info?.address,
+      birthday: format(new Date(info?.birthday || Date.now()), 'yyyy-MM-dd')
     },
     call
   )
@@ -111,10 +111,10 @@ function AccountDetail() {
         <div className="mt-3 flex justify-between">
           <div className=" mobile:flex-col mb-2 flex gap-4">
             <p>
-              <span className="font-bold">Email:</span> <br /> {info.email}
+              <span className="font-bold">Email:</span> <br /> {info?.email}
             </p>
             <p>
-              <span className="font-bold">Số thẻ thành viên:</span> <br /> {info.memberCardId || 'Chưa có số thẻ'}
+              <span className="font-bold">Số thẻ thành viên:</span> <br /> {info?.memberCardId || 'Chưa có số thẻ'}
             </p>
           </div>
           <div className="flex justify-center items-center gap-4 mobile:flex-col">

@@ -2,17 +2,19 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "assets/*": ["assets/*"],
+      "client/*": ["client/*"],
+      "admin/*": ["admin/*"],
+      "shared/*": ["shared/*"],
       "components/*": ["shared/components/*"],
-      "layouts/*": ["client/layouts/*"],
-      "pages/*": ["client/pages/*"],
+      "utils/*": ["shared/utils/*"],
+      "helpers/*": ["shared/helpers/*"],
+      "hooks/*": ["shared/hooks/*"],
+      "assets/*": ["assets/*"],
       "routes/*": ["routes/*"],
       "stores/*": ["stores/*"],
-      "utils/*": ["shared/utils/*"],
-      "views/*": ["client/views/*"],
       "apis/*": ["apis/*"]
     }
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "build", "dist"]
+  "exclude": ["node_modules", "dist"]
 }

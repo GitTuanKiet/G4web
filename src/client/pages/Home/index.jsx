@@ -1,10 +1,7 @@
-// import { useEffect, useState } from 'react'
-// import { Link } from 'react-router-dom'
-
 // project imports
-import Banner from 'views/home/Banner'
-import Widget from 'views/home/Widget'
-import Content from 'views/home/Content'
+import Banner from 'client/views/Banner'
+import EventList from './EventList'
+import MovieList from './MovieList'
 
 import { slides } from 'apis/mockData'
 // ==============================|| HOME ||============================== //
@@ -12,10 +9,6 @@ import { slides } from 'apis/mockData'
 const Home = () => {
   return (
     <>
-      {/* widget */}
-      {/* <div className="w-full py-2 flex items-center justify-center">
-        <Widget />
-      </div> */}
       {/* banner */}
       <div className="w-full h-[auto] my-12 max-w-[830px] mx-auto mobile:hidden ">
         <Banner slides={slides} />
@@ -23,7 +16,9 @@ const Home = () => {
 
       {/* content */}
       <div className="w-full">
-        <Content />
+        <MovieList />
+
+        <EventList />
       </div>
     </>
   )

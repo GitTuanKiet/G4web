@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import Content from 'views/theater/Content'
+import Content from './Content'
 import Divider from 'components/Divider'
 import Button from 'components/Button'
 // ==============================|| THEATER ||============================== //

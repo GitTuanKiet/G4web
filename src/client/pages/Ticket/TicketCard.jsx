@@ -1,7 +1,7 @@
 
 import logo from 'assets/images/logo.png'
 import IconCheck from 'components/icons/IconCheck'
-import { padStart } from 'utils/helper'
+import { padStart } from 'helpers/format'
 import { format } from 'date-fns'
 
 const CinemaInformation = ({ cinemaName, movieTitle, genres, duration, watched }) => (

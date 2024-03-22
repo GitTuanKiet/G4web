@@ -1,14 +1,12 @@
-import Sidebar from 'components/Sidebar'
+import Sidebar from 'components/extended/Sidebar'
 import { Outlet, useNavigate } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 import { logout } from 'stores/auth/slice'
 
 function ProfileLayout() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const { accessToken } = useSelector((state) => state.auth)
 
   const handleLogout = () => {
     dispatch(logout({ navigate }))
@@ -23,7 +21,6 @@ function ProfileLayout() {
       path: 'member-card',
       title: 'Thẻ thành viên'
     },
-    
     {
       path: 'account-detail',
       title: 'Chi tiết tài khoản'
@@ -41,17 +38,10 @@ function ProfileLayout() {
       title: 'Lịch sử giao dịch'
     },
     {
-      path: '',
       title: 'Đăng xuất',
-      onClick: handleLogout
+      onClick: () => handleLogout()
     }
   ]
-
-  useEffect(() => {
-    if (!accessToken) {
-      navigate('/auth')
-    }
-  }, [accessToken, navigate])
 
   return (
     <div className="flex items-start gap-x-4  h-full ">
@@ -59,7 +49,6 @@ function ProfileLayout() {
         <Sidebar sidebarLinks={sidebarLinks} />
       </div>
       <div className="w-full h-fit mt-10 z-8 ">
-        {/* absolute */}
         <Outlet />
       </div>
     </div>

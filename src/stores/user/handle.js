@@ -10,7 +10,7 @@ import {
   setMemberCard
 } from './slice'
 
-import { saveToken } from 'utils/auth'
+import { saveToken } from 'helpers/auth'
 import { toast } from 'react-toastify'
 import { format } from 'date-fns'
 
