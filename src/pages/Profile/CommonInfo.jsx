@@ -61,21 +61,21 @@ function CommonInfo() {
         Xin chào <span className="text-primary ">{info?.name}</span>,
       </h2>
       <p>Với trang này, bạn sẽ quản lý được tất cả thông tin tài khoản của mình.</p>
-      <div className="rounded-lg border-2 p-2 grid grid-cols-5 text-center mobile:grid-cols-none">
+      <div className="rounded-lg border-2 p-2 grid grid-cols-6 text-center mobile:grid-cols-none tablet:grid-cols-3 gap-y-3">
         <div className="desktop:border-r-2 pr-2 text-left border-black flex flex-col justify-between">
-          <p className="flex justify-between">
+          <p className="flex justify-between ">
             Cấp độ thẻ <span className="font-bold">{memberCard?.level || 'Chưa có'}</span>
           </p>
 
-          <p className="flex justify-between">
+          <p className="flex justify-between ">
             Tổng chi tiêu <span className="font-bold">{memberCard?.point || 0}</span>
           </p>
 
-          <p className="flex justify-between">
+          <p className="flex justify-between ">
             Mã PIN <span className="font-bold">{info?.PIN || 'Chưa có'}</span>
           </p>
         </div>
-        <div className="desktop:border-r-2 border-black  flex flex-col justify-between items-center">
+        <div className="desktop:border-r-2 border-black  flex flex-col mobile:border-b mobile:border-b-gray-100 mobile:pb-2 justify-between items-center">
           <p>Thẻ quà tặng</p>
           <p className="font-bold">{cards?.gifts.length || 0}</p>
           <Button to="/gifts" small>
@@ -83,36 +83,38 @@ function CommonInfo() {
           </Button>
         </div>
 
-        <div className="desktop:border-r-2 border-black  flex flex-col justify-between items-center">
+        <div className="desktop:border-r-2 border-black  flex flex-col mobile:border-b mobile:border-b-gray-100 mobile:pb-2 justify-between items-center">
           <p>Mã giảm giá</p>
           <p className="font-bold">{cards?.vouchers.length || 0}</p>
           <Button to="/online-store" small>
             Xem
           </Button>
         </div>
-        {/* <div className="desktop:border-r-2 border-black  flex flex-col justify-between items-center">
+        <div className="desktop:border-r-2 border-black  flex flex-col mobile:border-b mobile:border-b-gray-100 mobile:pb-2 justify-between items-center">
           <p>Ưu đãi</p>
           <p className="font-bold">{cards?.coupons.length}</p>
-          <Button to='/cinemas' small>Xem</Button>
-        </div> */}
-        <div className="desktop:border-r-2 border-black  flex flex-col justify-between items-center">
+          <Button to="/cinemas" small>
+            Xem
+          </Button>
+        </div>
+        <div className="desktop:border-r-2 border-black  flex flex-col mobile:border-b mobile:border-b-gray-100 mobile:pb-2 justify-between items-center">
           <p>Vé xem phim</p>
           <p className="font-bold">{cards?.tickets.length || 0}</p>
           <Button to="/ticket" small>
             Xem
           </Button>
         </div>
-        {/* <div className="flex flex-col justify-between items-center">
+        <div className="flex flex-col justify-between items-center">
           <p>Giao dịch</p>
           <p className="font-bold">{historyLength || 0}</p>
           <Button to="/profile/transaction-history" small>
             Xem
           </Button>
-        </div> */}
+        </div>
       </div>
 
       <h1 className="border-b-2 p-2 uppercase">Thông tin tài khoản</h1>
-      <div className="flex justify-between mobile:flex-col">
+      <div className="flex justify-between  mobile:flex-col">
         <div className="text-gray-400 px-6 py-3">
           <h2>Tên: {info?.name}</h2>
           <h2>Email: {info?.email}</h2>

@@ -15,11 +15,27 @@ import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { register } from 'stores/auth/slice'
 
+const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
+
 const schema = Yup.object({
-  name: Yup.string().required('Name is required').min(3, 'Name must be at least 8 characters '),
-  birthday: Yup.string().required('Birthday is required'),
-  email: Yup.string().email('Invalid email').required('Email is required'),
-  password: Yup.string().required('Password is required').min(8, 'Password must be at least 8 characters')
+  name: Yup.string()
+    .required('Name is required')
+    .min(3, 'Tên phải có ít nhất 3 ký tự')
+    .max(50, 'Tên không quá dài 50 ký tự')
+    .matches(/^[^\W\d_][^\W_]*$/, 'Tên không được chứa kí tự đặc biệt và không bắt đầu bằng kí tự số'),
+  birthday: Yup.string().required('Ngày sinh không được để trống '),
+  email: Yup.string()
+    .email('Email không hợp lệ')
+    .matches(emailRegex, 'Email không hợp lệ')
+    .required('Email không được để trống'),
+  password: Yup.string()
+    .required('Mật khẩu không được để trống')
+    .min(8, 'Mật khẩu phải tối thiếu 8 kí tự')
+    .matches(/^\S*$/, 'Mật khẩu không thể có khoảng trắng')
+    .matches(
+      /^(?=.*[!@#$%^&*])(?=.*[0-9])(?=.*[a-zA-Z])/,
+      'Mật khẩu phải chứa ít nhất một kí tự đặc biệt, một số và một chữ cái'
+    )
 })
 
 function Register() {
@@ -41,6 +57,7 @@ function Register() {
   })
 
   const onSubmit = async (data) => {
+    data.email = data?.email?.toLowerCase()
     dispatch(register({ data, navigate }))
   }
 

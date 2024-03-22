@@ -16,10 +16,14 @@ import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { login } from 'stores/auth/slice'
 
+
+const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+
 const schema = Yup.object({
-  email: Yup.string().email('Invalid email').required('Email is required'),
-  password: Yup.string().required('Password is required').min(8, 'Password must be at least 8 characters')
-})
+  email: Yup.string().matches(emailRegex, 'Email không hợp lệ').required('Email không được để trống'),
+  password: Yup.string().required('Password is required').min(8, 'Password must be at least 8 characters').matches(/^\S*$/, 'Mật khẩu không thể có khoảng trắng')
+});
+
 
 function Login() {
   const dispatch = useDispatch()
@@ -61,7 +65,9 @@ function Login() {
           onSubmit={handleSubmit(onSubmit)}
           className="w-full max-w-[500px] bg-white p-5 rounded-lg shadow-md mt-10"
         >
-          <Input label="Email" placeholder="Enter your email" name="email" control={control} errors={errors} />
+          <Input label="Email" placeholder="Enter your email" name="email"
+          
+           control={control} errors={errors} />
           <Input
             label="Password"
             placeholder="Enter your password"
