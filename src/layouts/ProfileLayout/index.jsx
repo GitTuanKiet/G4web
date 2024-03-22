@@ -23,6 +23,7 @@ function ProfileLayout() {
       path: 'member-card',
       title: 'Thẻ thành viên'
     },
+    
     {
       path: 'account-detail',
       title: 'Chi tiết tài khoản'
