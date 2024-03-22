@@ -19,5 +19,4 @@ function Input({ label, errors, control, ...rest }) {
     </div>
   )
 }
-
 export default Input
