@@ -13,9 +13,13 @@ import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { forgotPassword } from 'stores/auth/slice'
+const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
 const schema = Yup.object({
-  email: Yup.string().email('Invalid email').required('Email is required')
+  email: Yup.string()
+    .email('Email không hợp lệ')
+    .required('Email không được để trống')
+    .matches(emailRegex, 'Email không hợp lệ')
 })
 
 function ForgotPassword() {

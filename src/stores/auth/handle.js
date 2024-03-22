@@ -88,7 +88,7 @@ function* handleForgotPassword(action) {
     const res = yield call(AuthApi.forgotPassword, email)
     if (res.status === 200) {
       toast.success(res.data.message)
-      navigate('/')
+      navigate('/auth/login')
     }
   } catch (error) {
     yield put(authError(error.response.data?.message))
