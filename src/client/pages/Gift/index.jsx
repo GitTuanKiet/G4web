@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import GiftCard from 'views/cultureplex/GiftCard'
+import GiftCard from './GiftCard'
 
 const data = [
   {

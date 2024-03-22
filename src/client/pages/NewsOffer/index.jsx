@@ -1,5 +1,6 @@
 import Heading from 'components/Heading'
-import Poster from 'views/newsoffer/Poster'
+import { FaCalendarAlt } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const data = [
   {
@@ -45,6 +46,22 @@ const data = [
     time: 'Từ 01.04.2021 - 30.04.2021'
   }
 ]
+
+const Poster = ({ data }) => {
+  return (
+    <>
+      <Link to={`/news-offer/${data._id}`}>
+        <div className='w-full h-full flex flex-col gap-2'>
+          <img src={data.poster} alt={data.title} className='w-full h-full object-cover' />
+          <div className='flex items-center justify-start gap-2 py-2 text-red-500 font-semibold'>
+            <FaCalendarAlt />
+            <h4>{data.time}</h4>
+          </div>
+        </div>
+      </Link>
+    </>
+  )
+}
 
 const NewsOffer = () => {
   return (

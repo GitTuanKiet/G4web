@@ -4,7 +4,6 @@ import logo3 from 'assets/images/menu/mua-ve_ngay.png'
 
 // project imports
 import Dropdown from 'components/extended/Dropdown'
-import { useState } from 'react'
 
 const movies = {
   _id: 'movies',

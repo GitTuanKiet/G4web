@@ -15,7 +15,7 @@ import Menu from './Menu'
 import LogoSection from '../LogoSection'
 import Breadcrumb from 'components/extended/Breadcrumb'
 import { useSelector } from 'react-redux'
-import Widget from 'views/home/Widget'
+import Widget from 'client/views/Widget'
 
 const LinkItem = ({ to, text, icon }) => {
   return (
@@ -53,17 +53,17 @@ export default function Header() {
     },
     !accessToken
       ? {
-          _id: 'auth',
-          title: 'Đăng nhập / Đăng ký',
-          icon: <FaUser />,
-          to: '/auth'
-        }
+        _id: 'auth',
+        title: 'Đăng nhập / Đăng ký',
+        icon: <FaUser />,
+        to: '/auth'
+      }
       : {
-          _id: 'profile',
-          title: 'Hello, ' + info?.name,
-          icon: <FaUser />,
-          to: '/profile/common-info'
-        }
+        _id: 'profile',
+        title: 'Hello, ' + info?.name,
+        icon: <FaUser />,
+        to: '/profile/common-info'
+      }
   ]
 
   useEffect(() => {

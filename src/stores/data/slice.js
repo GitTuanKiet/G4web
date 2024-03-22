@@ -34,9 +34,10 @@ const dataSlice = createSlice({
     },
     fetchFinish(state) {
       state.loading = false
-    }
+    },
+    dataClear(state) { state = initialState }
   }
 })
 
-export const { fetchData, fetchingData, fetchDataSuccess, fetchDataFailed, fetchFinish } = dataSlice.actions
+export const { fetchData, fetchingData, fetchDataSuccess, fetchDataFailed, fetchFinish, dataClear } = dataSlice.actions
 export default dataSlice.reducer

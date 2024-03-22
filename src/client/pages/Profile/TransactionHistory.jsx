@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 
-import Unit from 'components/Bill/Unit'
+import Unit from 'client/views/Bill/Unit'
 
 const OrderCard = ({ orderId, payment, name, price, status }) => {
   return (

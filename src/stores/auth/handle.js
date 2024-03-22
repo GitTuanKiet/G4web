@@ -1,6 +1,6 @@
 import { call, put, select } from 'redux-saga/effects'
 import AuthApi from 'apis/authApi'
-import { saveToken, removeToken } from 'utils/auth'
+import { saveToken, removeToken } from 'helpers/auth'
 import { toast } from 'react-toastify'
 import { authLoading, authSuccess, authFinish, authVerify, authError, authClear } from './slice'
 
@@ -64,8 +64,18 @@ function* handleLogout(action) {
 
 function* handleRefreshToken() {
   try {
-    const { refreshToken } = yield select((state) => state.auth)
-    if (!refreshToken) return
+    const { accessToken, refreshToken } = yield select((state) => state.auth)
+    if (!refreshToken) {
+      removeToken()
+      toast.error('Phiên đăng nhập hết hạn')
+      return
+    }
+
+    // check if token is expiring in 15 minutes
+    const exp = new Date(accessToken.exp * 1000)
+    const isExpiring = exp - new Date() < 15 * 60000 + 1000
+    if (!isExpiring) return
+
     yield put(authLoading())
     const res = yield call(AuthApi.refreshToken, refreshToken)
     if (res.status === 200) {

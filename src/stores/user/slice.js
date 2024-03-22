@@ -13,11 +13,11 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
+    userClear: () => initialState,
     userLoading: (state) => { state.loading = true },
     userSuccess: (state) => { state.loading = false; state.error = null },
     userFinish: (state) => { state.loading = false },
     userError: (state, action) => { state.error = action.payload, state.loading = false },
-    userClear: () => initialState,
     setInfo: (state, action) => { state.info = action.payload },
     setHistory: (state, action) => { state.history = action.payload },
     setCards: (state, action) => { state.cards = action.payload },

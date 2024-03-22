@@ -39,9 +39,6 @@ const SpanItem = ({ text }) => {
         <span className="ms-1 text-sm font-semibold  text-primary  md:ms-2 laptop:hidden table:hidden desktop:hidden ">
           {text.length > 16 ? `${text.slice(0, 16)}...` : text}
         </span>
-        <span className="ms-1 text-sm font-semibold  text-primary  md:ms-2 mobile:hidden">
-          {text.length > 60 ? `${text.slice(0, 60)}...` : text}
-        </span>
       </div>
     </li>
   )
