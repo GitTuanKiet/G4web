@@ -16,12 +16,12 @@ function AccountDetail() {
   const [gender, setGender] = useState(info?.gender)
 
   const schemaProfile = Yup.object({
-    name: Yup.string().required('Name is required'),
-    city: Yup.string().required('City is required'),
-    gender: Yup.string().required('Gender is required'),
-    phone: Yup.string().required('Phone number is required'),
-    address: Yup.string().required('Address is required'),
-    birthday: Yup.string().required('Birthday is required')
+    name: Yup.string().required('Tên không được để trống'),
+    city: Yup.string().required('Thành phố không được để trống'),
+    gender: Yup.string().required('Giới tính không được để trống'),
+    phone: Yup.string().required('Số điện thoại không được để trống'),
+    address: Yup.string().required('Địa chỉ không được để trống'),
+    birthday: Yup.string().required('Ngày sinh không được để trống')
   })
 
   const call = (data) => {

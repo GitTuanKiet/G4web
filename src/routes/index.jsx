@@ -9,11 +9,17 @@ import NavigationScroll from 'helpers/NavigationScroll'
 
 import { AuthRoutes, NoLayoutRoutes } from './AuthRoutes'
 import { GuestRoutes, AuthenticatedRoutes } from 'client/ClientRoutes'
+import AdminRoutes from 'admin/AdminRoutes'
 
 const Router = () => {
   const { accessToken } = useSelector((state) => state.auth)
   const isAuthenticated = !!accessToken
-  return useRoutes([AuthRoutes, GuestRoutes, ...NoLayoutRoutes, AuthenticatedRoutes(isAuthenticated)])
+  
+  // const role = useSelector((state) => state.user.role)
+
+  const role = 'admin'
+
+  return useRoutes([AuthRoutes, GuestRoutes, ...NoLayoutRoutes, AuthenticatedRoutes(isAuthenticated), AdminRoutes(isAuthenticated, role)])
 }
 
 const fetchDataUser = (dispatch) => {
