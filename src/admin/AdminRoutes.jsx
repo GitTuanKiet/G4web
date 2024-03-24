@@ -10,10 +10,11 @@ import DetailMovie from './pages/Movies/detail'
 import AddBroadcast from './pages/Broadcast/add'
 import EditBroadcast from './pages/Broadcast/edit'
 const AdminRoutes = (isAuthenticated, role) => {
+  if (role !== 'admin') return {}
   return {
     path: '/admin',
-    element: isAuthenticated && role === 'admin' ? <MainLayout /> : <Navigate to="/auth/login" />,
-    children: [
+    element: isAuthenticated ? <MainLayout /> : <Navigate to="/auth/login" />,
+    children:[
       {
         path: 'home',
         element: <Home />

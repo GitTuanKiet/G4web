@@ -64,24 +64,13 @@ function* handleLogout(action) {
 
 function* handleRefreshToken() {
   try {
-    const { accessToken, refreshToken } = yield select((state) => state.auth)
-    if (!refreshToken) {
-      removeToken()
-      toast.error('Phiên đăng nhập hết hạn')
-      return
-    }
-
-    // check if token is expiring in 15 minutes
-    const exp = new Date(accessToken.exp * 1000)
-    const isExpiring = exp - new Date() < 15 * 60000 + 1000
-    if (!isExpiring) return
-
+    const { refreshToken } = yield select((state) => state.auth)
     yield put(authLoading())
     const res = yield call(AuthApi.refreshToken, refreshToken)
-    if (res.status === 200) {
+    if (res.status == 200) {
       const { accessToken } = res.data
       saveToken(accessToken)
-      yield put(authSuccess(accessToken))
+      yield put(authSuccess({ accessToken }))
     }
   } catch (error) {
     removeToken()
