@@ -1,6 +1,6 @@
 import { call, put, select } from 'redux-saga/effects'
 import AuthApi from 'apis/authApi'
-import { saveToken, removeToken } from 'utils/auth'
+import { saveToken, removeToken } from 'helpers/auth'
 import { toast } from 'react-toastify'
 import { authLoading, authSuccess, authFinish, authVerify, authError, authClear } from './slice'
 
@@ -65,13 +65,12 @@ function* handleLogout(action) {
 function* handleRefreshToken() {
   try {
     const { refreshToken } = yield select((state) => state.auth)
-    if (!refreshToken) return
     yield put(authLoading())
     const res = yield call(AuthApi.refreshToken, refreshToken)
-    if (res.status === 200) {
+    if (res.status == 200) {
       const { accessToken } = res.data
       saveToken(accessToken)
-      yield put(authSuccess(accessToken))
+      yield put(authSuccess({ accessToken }))
     }
   } catch (error) {
     removeToken()

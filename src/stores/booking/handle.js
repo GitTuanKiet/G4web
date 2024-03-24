@@ -1,17 +1,17 @@
 import { select, put } from 'redux-saga/effects'
 import { toast } from 'react-toastify'
 
-import { padStart } from 'utils/helper'
+import { padStart } from 'helpers/format'
 import { format } from 'date-fns'
 
-import { setStep, clearState, setData } from './slice'
+import { setStep, bookingClear, setData } from './slice'
 import {
   bookingLoading,
   bookingFinish,
   bookingError
 } from './slice'
 
-import { setPayment, setName, setDescription, createOrder, clearPayment } from 'stores/payment/slice'
+import { setPayment, setName, setDescription, createOrder, paymentClear } from 'stores/payment/slice'
 import { fetchData } from 'stores/data/slice'
 
 function* handleInitOrder(action) {
@@ -24,8 +24,8 @@ function* handleInitOrder(action) {
     return
   }
   // clear state
-  yield put(clearState())
-  yield put(clearPayment())
+  yield put(bookingClear())
+  yield put(paymentClear())
   yield put(bookingLoading())
 
   if (['ticket', 'voucher', 'gift'].includes(order)) {
@@ -39,7 +39,7 @@ function* handleInitOrder(action) {
     // set step
     yield put(setStep(0))
     // navigate
-    navigate(`/booking/${order}`)
+    navigate(`/booking-${order}`)
   }
   yield put(bookingFinish())
 }
@@ -95,7 +95,7 @@ function* handleStepBookingTicket(action) {
     yield put(fetchData())
     if (nextStep === -1) {
       toast.info('Hủy đặt vé thành công')
-      yield put(clearState())
+      yield put(bookingClear())
       navigate(-1)
     }
 
@@ -104,6 +104,7 @@ function* handleStepBookingTicket(action) {
         navigate(-1)
         return
       }
+      if (data?.chairs.length > 0) yield put(setData({ chairs: [] }))
     }
 
     if (nextStep === 1) {
@@ -154,7 +155,7 @@ function* handleStepBookingDiscount(action) {
   const { method, payment } = yield select((state) => state.payment)
   if (nextStep === -1) {
     toast.info('Hủy đặt vé thành công')
-    yield put(clearState())
+    yield put(bookingClear())
     navigate(-1)
   }
 

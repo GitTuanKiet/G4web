@@ -6,16 +6,17 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
+      'shared': '/src/shared',
+      'components': '/src/shared/components',
+      'utils': '/src/shared/utils',
+      'hooks': '/src/shared/hooks',
+      'helpers': '/src/shared/helpers',
+      'client': '/src/client',
+      'admin': '/src/admin',
       'assets': '/src/assets',
-      'components': '/src/components',
-      'layouts': '/src/layouts',
-      'pages': '/src/pages',
       'routes': '/src/routes',
       'stores': '/src/stores',
-      'utils': '/src/utils',
-      'views': '/src/views',
-      'apis': '/src/apis',
-      'img' : '/src/img',
+      'apis': '/src/apis'
     }
   }
 })

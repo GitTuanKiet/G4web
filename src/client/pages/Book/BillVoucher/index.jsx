@@ -1,0 +1,65 @@
+
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+
+import Divider from 'components/Divider'
+import Line from 'client/views/Bill/Line'
+import Unit from 'client/views/Bill/Unit'
+import GroupButton from 'client/views/Bill/GroupButton'
+import Logo from 'components/icons/Logo'
+import { bookDiscount } from 'stores/booking/slice'
+
+const BillVoucher = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { data } = useSelector((state) => state.booking)
+  const { title, discount, imageUrl, growthValue, code } = data.voucher || {}
+  const { method, payment } = useSelector((state) => state.payment)
+
+  const dataTotal = [
+    {
+      key: 'Tổng',
+      value: Unit({ value: payment.price })
+    }
+  ]
+
+  const handleStep = (step) => {
+    dispatch(bookDiscount({ nextStep: step, navigate }))
+  }
+
+  return (
+    <div className='min-w-80'>
+      <div className="rounded-xl h-auto w-full bg-rose-100 p-4 text-[15px]">
+        {/* Title */}
+        <div className="flex justify-between items-center">
+          <div className='w-16'>
+            <Logo />
+          </div>
+          <p className="font-sans text-xl">{title || ''}</p>
+        </div>
+        <Divider />
+        {/* Info */}
+        <img src={imageUrl} alt={title} className="rounded-xl aspect-auto mx-auto" />
+        <Divider />
+        {/* Content */}
+        <div>
+          {Unit({ value: growthValue })}
+          <Line keyName='Mã giảm giá' value={code} />
+          <Line keyName='Giảm giá' value={Unit({ value: discount })} />
+          {method && <Line keyName='Phương thức thanh toán' value={method} />}
+        </div>
+        <Divider />
+        {/* Total */}
+        <div>
+          {dataTotal.map((item, index) => (
+            <Line key={index} keyName={item.key} value={item.value} />
+          ))}
+        </div>
+        <Divider />
+        {/* group button */}
+        <GroupButton handleStep={handleStep} start={0} end={1} />
+      </div>
+    </div>
+  )
+}
+export default BillVoucher
