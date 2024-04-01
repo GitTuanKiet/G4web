@@ -5,9 +5,10 @@ import { useState } from 'react'
 function Sidebar({ sidebarLinks }) {
   const [open, setOpen] = useState(false)
 
-  const handleClick = (logout) => {
+  const handleClick = (link) => {
+    if (link?.path) return
+    link?.onClick()
     setOpen(false)
-    if (logout) logout()
   }
   return (
     <div
@@ -32,7 +33,7 @@ function Sidebar({ sidebarLinks }) {
             <li key={index}>
               <NavLink
                 to={link?.path}
-                onClick={() => handleClick(link?.onClick)}
+                onClick={() => handleClick(link)}
                 className={({ isActive }) =>
                   isActive
                     ? 'text-primary block px-4 py-2 '

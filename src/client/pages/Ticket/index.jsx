@@ -1,16 +1,16 @@
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 
 import Button from 'components/Button'
 import ListTicket from './TicketList'
-import { useSelector } from 'react-redux'
 
 const CinemaTicketOverview = () => {
   const { cards } = useSelector((state) => state.user)
   const [watched, setWatched] = useState(false)
 
-  const ticket = cards?.tickets || []
-  const ticketUsed = ticket.filter((item) => item.status === 'used')
-  const ticketNotUsed = ticket.filter((item) => item.status === 'active')
+  const tickets = cards?.tickets || []
+  const ticketsUsed = tickets.filter((item) => item.status === 'used')
+  const ticketsNotUsed = tickets.filter((item) => item.status === 'active')
   return (
     <section className="w-full py-10">
       <div>
@@ -25,8 +25,8 @@ const CinemaTicketOverview = () => {
         </div>
       </div>
 
-      {watched && <ListTicket tickets={ticketUsed} watched={watched} />}
-      {!watched && <ListTicket tickets={ticketNotUsed} watched={watched} />}
+      {watched && <ListTicket tickets={ticketsUsed} watched={watched} />}
+      {!watched && <ListTicket tickets={ticketsNotUsed} watched={watched} />}
     </section>
   )
 }
