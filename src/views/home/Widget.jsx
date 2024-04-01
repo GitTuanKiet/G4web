@@ -36,7 +36,7 @@ const StaticWidget = [
     _id: 5,
     // title: 'liên hệ cgv',
     bgImage: ContactImg,
-    link: '/contacts'
+    link: '/extra-info/contact'
   },
   {
     _id: 6,

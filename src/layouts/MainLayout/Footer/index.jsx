@@ -16,7 +16,7 @@ const footerData = [
       { title: 'Tiện ích online', url: '/cgv-online' },
       { title: 'Thẻ quà tặng', url: '/gifts' },
       { title: 'Tuyển dụng', url: '/recruitment' },
-      { title: 'Liên hệ quảng cáo', url: '/extra-info/contacts' },
+      { title: 'Liên hệ quảng cáo', url: '/extra-info/contact' },
       { title: 'Dành cho đối tác', url: '/extra-info/partners' }
     ]
   },

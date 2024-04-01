@@ -1,7 +1,7 @@
 import Sidebar from 'components/Sidebar'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 import { logout } from 'stores/auth/slice'
 
@@ -23,7 +23,6 @@ function ProfileLayout() {
       path: 'member-card',
       title: 'Thẻ thành viên'
     },
-    
     {
       path: 'account-detail',
       title: 'Chi tiết tài khoản'
@@ -41,7 +40,6 @@ function ProfileLayout() {
       title: 'Lịch sử giao dịch'
     },
     {
-      path: '',
       title: 'Đăng xuất',
       onClick: handleLogout
     }

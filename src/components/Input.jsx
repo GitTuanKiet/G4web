@@ -1,6 +1,6 @@
 import { useController } from 'react-hook-form'
 function Input({ label, errors, control, ...rest }) {
-  console.log('🚀 ~ Input ~ errors:', errors)
+
   const { field } = useController({ control, name: rest.name })
 
   return (

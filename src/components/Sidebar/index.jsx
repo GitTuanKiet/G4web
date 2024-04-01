@@ -6,7 +6,8 @@ function Sidebar({ sidebarLinks }) {
   const [open, setOpen] = useState(false)
 
   const handleClick = (link) => {
-    link?.onClick
+    if (link?.path) return
+    link?.onClick()
     setOpen(false)
   }
   return (
@@ -31,7 +32,7 @@ function Sidebar({ sidebarLinks }) {
           {sidebarLinks.map((link, index) => (
             <li key={index}>
               <NavLink
-                to={link.path}
+                to={link?.path}
                 onClick={() => handleClick(link)}
                 className={({ isActive }) =>
                   isActive

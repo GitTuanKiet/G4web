@@ -38,8 +38,8 @@ function CommonInfo() {
             image
               ? URL.createObjectURL(image)
               : info?.avatar
-              ? CONSTANT.baseURL + info?.avatar
-              : 'https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/icon-profile-cgv.png'
+                ? CONSTANT.baseURL + info?.avatar
+                : 'https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/icon-profile-cgv.png'
           }
           alt="avatar"
           className="border border-slate-300 p-2 rounded-full w-40 h-40 object-cover mb-3"
@@ -68,7 +68,7 @@ function CommonInfo() {
           </p>
 
           <p className="flex justify-between ">
-            Tổng chi tiêu <span className="font-bold">{memberCard?.point || 0}</span>
+            Điểm <span className="font-bold">{Math.floor(memberCard?.point || 0)}</span>
           </p>
 
           <p className="flex justify-between ">
@@ -92,7 +92,7 @@ function CommonInfo() {
         </div>
         <div className="desktop:border-r-2 border-black  flex flex-col mobile:border-b mobile:border-b-gray-100 mobile:pb-2 justify-between items-center">
           <p>Ưu đãi</p>
-          <p className="font-bold">{cards?.coupons.length}</p>
+          <p className="font-bold">{cards?.coupons.length || 0}</p>
           <Button to="/cinemas" small>
             Xem
           </Button>
