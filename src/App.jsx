@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { useEffect } from 'react'
 import { jwtDecode } from 'jwt-decode'
-import { toast } from 'react-toastify'
+
 // router
 import Routes from 'routes'
 
@@ -17,33 +17,11 @@ import { setInfo, fetchCards, fetchHistory, userClear, getMemberCard } from 'sto
 import { logout } from 'stores/auth/slice'
 import { fetchData } from 'stores/data/slice'
 import { refreshToken } from 'stores/auth/slice'
+import ErrorHandle from 'utils/errorHandle'
 
 function App() {
   const navigate = useNavigate()
   const { accessToken } = useSelector((state) => state.auth)
-  const userError = useSelector((state) => state.user.error)
-  const dataError = useSelector((state) => state.data.error)
-  const authError = useSelector((state) => state.auth.error)
-  const bookingError = useSelector((state) => state.booking.error)
-  const paymentError = useSelector((state) => state.payment.error)
-
-  useEffect(() => {
-    if (userError) {
-      toast.error(userError)
-    }
-    if (dataError) {
-      toast.error(dataError)
-    }
-    if (authError) {
-      toast.error(authError)
-    }
-    if (bookingError) {
-      toast.error(bookingError)
-    }
-    if (paymentError) {
-      toast.error(paymentError)
-    }
-  }, [userError, dataError, authError, bookingError, paymentError])
 
   const dispatch = useDispatch()
 
@@ -80,6 +58,7 @@ function App() {
   return (
     <>
       <NavigationScroll>
+        <ErrorHandle />
         <Routes />
         <ToastContainer
           position="top-right"

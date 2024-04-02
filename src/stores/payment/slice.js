@@ -46,7 +46,8 @@ const paymentSlice = createSlice({
     paymentError: (state, action) => { state.error = action.payload, state.loading = false },
     paymentFinish: (state) => { state.loading = false },
     createOrder: () => { },
-    captureOrder: () => { }
+    captureOrder: () => { },
+    paymentClear: (state) => { state.error = null }
   }
 })
 
@@ -61,7 +62,8 @@ export const {
   paymentFinish,
   paymentError,
   createOrder,
-  captureOrder
+  captureOrder,
+  paymentClear
 } = paymentSlice.actions
 
 export default paymentSlice.reducer

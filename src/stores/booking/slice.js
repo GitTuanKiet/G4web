@@ -39,7 +39,8 @@ const bookingSlice = createSlice({
     initOrder: () => { },
     bookingLoading: (state) => { state.loading = true },
     bookingFinish: (state) => { state.loading = false },
-    bookingError: (state, action) => { state.error = action.payload, state.loading = false }
+    bookingError: (state, action) => { state.error = action.payload, state.loading = false },
+    errorClear: (state) => { state.error = null }
   }
 })
 
@@ -58,6 +59,7 @@ export const {
   initOrder,
   bookingLoading,
   bookingFinish,
-  bookingError
+  bookingError,
+  errorClear
 } = bookingSlice.actions
 export default bookingSlice.reducer

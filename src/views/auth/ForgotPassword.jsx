@@ -53,16 +53,16 @@ function ForgotPassword() {
             <img src={ForgotPasswordImg} alt="Forgot password" className="mobile:w-60" />
           </div>
           <form onSubmit={handleSubmit(onSubmit)} className="w-full ">
-            <h2 className="text-4xl mb-4 font-bold">Forgot password?</h2>
-            <p className="text-gray-400 italic">Enter the email address associated with your account.</p>
-            <Input placeholder="Enter your email" name="email" control={control} errors={errors} />
+            <h2 className="text-4xl mb-4 font-bold">Quên mật khẩu</h2>
+            <p className="text-gray-400 italic">Nhập email của bạn để lấy lại mật khẩu</p>
+            <Input placeholder="Nhập email của bạn" name="email" control={control} errors={errors} />
 
             <Button primary wFull loading={loading}>
-              Confirm
+              Xác nhận
             </Button>
             <div className="my-3 float-right text-sm ">
               <Link to="/" className="text-primary !underline">
-                Back to home
+                Về trang chủ
               </Link>
             </div>
           </form>
