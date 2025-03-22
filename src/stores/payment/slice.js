@@ -19,7 +19,7 @@ const paymentSlice = createSlice({
   name: 'payment',
   initialState,
   reducers: {
-    clearPayment() { return initialState },
+    paymentClear() { return initialState },
     setMethod: (state, action) => { state.method = action.payload },
     setPayment: (state, action) => { state.payment = { ...state.payment, ...action.payload } },
     setName: (state, action) => {
@@ -52,7 +52,7 @@ const paymentSlice = createSlice({
 })
 
 export const {
-  clearPayment,
+  paymentClear,
   setMethod,
   setPayment,
   setName,
@@ -62,8 +62,7 @@ export const {
   paymentFinish,
   paymentError,
   createOrder,
-  captureOrder,
-  paymentClear
+  captureOrder
 } = paymentSlice.actions
 
 export default paymentSlice.reducer

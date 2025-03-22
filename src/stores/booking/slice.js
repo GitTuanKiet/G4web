@@ -25,7 +25,6 @@ const bookingSlice = createSlice({
   name: 'booking',
   initialState,
   reducers: {
-    clearState() { return initialState },
     setFilter: (state, action) => { state.filter = { ...state.filter, ...action.payload } },
     setData: (state, action) => { state.data = { ...state.data, ...action.payload } },
     setStep: (state, action) => { state.step = action.payload },
@@ -40,12 +39,14 @@ const bookingSlice = createSlice({
     bookingLoading: (state) => { state.loading = true },
     bookingFinish: (state) => { state.loading = false },
     bookingError: (state, action) => { state.error = action.payload, state.loading = false },
+    bookingClear: () => { return initialState },
     errorClear: (state) => { state.error = null }
   }
 })
 
 export const {
-  clearState,
+  bookingClear,
+  errorClear,
   setFilter,
   setData,
   setStep,
@@ -59,7 +60,6 @@ export const {
   initOrder,
   bookingLoading,
   bookingFinish,
-  bookingError,
-  errorClear
+  bookingError
 } = bookingSlice.actions
 export default bookingSlice.reducer
