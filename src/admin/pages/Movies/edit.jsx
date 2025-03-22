@@ -13,7 +13,7 @@ const schema = Yup.object().shape({
   language: Yup.string().required('Ngôn ngữ là bắt buộc'),
   premiere_date: Yup.date().required('Ngày khởi chiếu là bắt buộc'),
   end_date: Yup.date().required('Ngày dừng chiếu là bắt buộc'),
-  genre: Yup.array().min(1, 'Thể loại là bắt buộc'),
+  genres: Yup.array().min(1, 'Thể loại là bắt buộc'),
   actors: Yup.string().required('Diễn viên là bắt buộc'),
   directors: Yup.string().required('Đạo diễn là bắt buộc')
 })
@@ -26,13 +26,16 @@ function EditMovie() {
     formState: { errors },
     watch
   } = useForm({
+    defaultValues: {
+      genres: []
+    },
     resolver: yupResolver(schema)
   })
-  const genre = watch('genre', [])
+  const genres = watch('genres', [])
   const handleChange = (event) => {
     setValue(
-      'genre',
-      event.target.checked ? [...genre, event.target.value] : genre.filter((g) => g !== event.target.value)
+      'genres',
+      event.target.checked ? [...genres, event.target.value] : genres.filter((g) => g !== event.target.value)
     )
   }
 
@@ -59,11 +62,10 @@ function EditMovie() {
               <label>
                 <input
                   type="checkbox"
-                  name="genre"
-                  checked={genre.includes('action')}
+                  name="genres"
+                  checked={genres.includes('action')}
                   onChange={handleChange}
-                  onBlur={handleChange}
-                  {...register('genre')}
+                  {...register('genres')}
                   value="action"
                 />{' '}
                 Hành động
@@ -71,11 +73,10 @@ function EditMovie() {
               <label>
                 <input
                   type="checkbox"
-                  name="genre"
-                  checked={genre.includes('romantic')}
+                  name="genres"
+                  checked={genres.includes('romantic')}
                   onChange={handleChange}
-                  onBlur={handleChange}
-                  {...register('genre')}
+                  {...register('genres')}
                   value="romantic"
                 />{' '}
                 Tình cảm
@@ -83,11 +84,10 @@ function EditMovie() {
               <label>
                 <input
                   type="checkbox"
-                  name="genre"
-                  checked={genre.includes('cartoon')}
+                  name="genres"
+                  checked={genres.includes('cartoon')}
                   onChange={handleChange}
-                  onBlur={handleChange}
-                  {...register('genre')}
+                  {...register('genres')}
                   value="cartoon"
                 />{' '}
                 Hoạt hình
@@ -95,27 +95,26 @@ function EditMovie() {
               <label>
                 <input
                   type="checkbox"
-                  name="genre"
-                  checked={genre.includes('comedy')}
+                  name="genres"
+                  checked={genres.includes('comedy')}
                   onChange={handleChange}
-                  onBlur={handleChange}
                   value="comedy"
-                  {...register('genre')}
+                  {...register('genres')}
                 />{' '}
                 Hài hước
               </label>
               <label>
                 <input
                   type="checkbox"
-                  name="genre"
-                  checked={genre.includes('horror')}
+                  name="genres"
+                  checked={genres.includes('horror')}
                   onChange={handleChange}
-                  onBlur={handleChange}
-                  {...register('genre')}
+                  {...register('genres')}
                   value="horror"
                 />{' '}
                 Kinh dị
               </label>
+              {errors.genres && <p className="text-red-500">{errors.genres.message}</p>}
             </div>
           </div>
           <Input label="Diễn viên" name="actors" control={control} errors={errors} />

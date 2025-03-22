@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 // router
 import Router from 'routes'
 
-import ErrorHandle from 'utils/errorHandle'
+import ErrorHandle from 'shared/utils/errorHandle'
 
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'

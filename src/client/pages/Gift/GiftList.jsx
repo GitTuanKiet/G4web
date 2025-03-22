@@ -97,7 +97,7 @@ const GiftList = () => {
     <div className="py-10 gap-5">
       <h2 className="text-3xl font-semibold uppercase">{list.title}</h2>
       <div className="flex flex-row gap-4 my-4 mobile:flex-col">
-        {data.map((item, index) => (
+        {list.img.map((item, index) => (
           <GiftCard key={index} img_url={item.img_url} slug={item.slug} />
         ))}
       </div>

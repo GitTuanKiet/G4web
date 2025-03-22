@@ -1,4 +1,4 @@
-import Sidebar from 'components/extended/Sidebar'
+import Sidebar from 'shared/components/extended/Sidebar'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 

@@ -1,11 +1,11 @@
-import Input from 'components/Input'
+import Input from 'shared/components/Input'
 import * as Yup from 'yup'
 import { useState } from 'react'
-import Button from 'components/Button'
+import Button from 'shared/components/Button'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateProfile } from 'stores/user/slice'
-import { useFormSubmit } from 'utils/form'
+import { useFormSubmit } from 'shared/utils/form'
 import { format } from 'date-fns'
 
 function AccountDetail() {

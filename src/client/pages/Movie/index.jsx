@@ -4,7 +4,7 @@ import { useParams, Link, Navigate, useNavigate } from 'react-router-dom'
 import { format } from 'date-fns'
 import { initOrder } from 'stores/booking/slice'
 
-import Button from 'components/Button'
+import Button from 'shared/components/Button'
 
 const Movie = () => {
   const { status } = useParams()

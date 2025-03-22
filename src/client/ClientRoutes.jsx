@@ -4,7 +4,7 @@ import { lazy } from 'react'
 import MainLayout from './layouts/MainLayout'
 import ProfileLayout from './layouts/ProfileLayout'
 import ExtraInfoLayout from './layouts/ExtraInfoLayout'
-import Loadable from 'components/Loadable'
+import Loadable from 'shared/components/Loadable'
 import { Navigate } from 'react-router-dom'
 
 // pages routing

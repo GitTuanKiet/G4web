@@ -1,9 +1,7 @@
-// assets
 import logo2 from 'assets/images/menu/kenhcine.gif'
 import logo3 from 'assets/images/menu/mua-ve_ngay.png'
 
-// project imports
-import Dropdown from 'components/extended/Dropdown'
+import Dropdown from 'shared/components/extended/Dropdown'
 
 const movies = {
   _id: 'movies',

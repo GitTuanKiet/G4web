@@ -1,12 +1,11 @@
-
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import Divider from 'components/Divider'
+import Divider from 'shared/components/Divider'
 import Line from 'client/views/Bill/Line'
 import Unit from 'client/views/Bill/Unit'
 import GroupButton from 'client/views/Bill/GroupButton'
-import Logo from 'components/icons/Logo'
+import Logo from 'shared/components/icons/Logo'
 import { bookDiscount } from 'stores/booking/slice'
 
 const BillVoucher = () => {

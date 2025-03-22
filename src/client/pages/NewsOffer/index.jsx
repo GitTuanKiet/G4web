@@ -1,4 +1,4 @@
-import Heading from 'components/Heading'
+import Heading from 'shared/components/Heading'
 import { FaCalendarAlt } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 

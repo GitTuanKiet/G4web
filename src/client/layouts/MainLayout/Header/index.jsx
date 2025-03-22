@@ -13,7 +13,7 @@ import { IconContext } from 'react-icons'
 // project imports
 import Menu from './Menu'
 import LogoSection from '../LogoSection'
-import Breadcrumb from 'components/extended/Breadcrumb'
+import Breadcrumb from 'shared/components/extended/Breadcrumb'
 import { useSelector } from 'react-redux'
 import Widget from 'client/views/Widget'
 

@@ -4,12 +4,12 @@ import { useNavigate } from 'react-router-dom'
 import { bookTicket } from 'stores/booking/slice'
 
 import Content from './Content'
-import Divider from 'components/Divider'
+import Divider from 'shared/components/Divider'
 import Line from 'client/views/Bill/Line'
 import Unit from 'client/views/Bill/Unit'
 import GroupButton from 'client/views/Bill/GroupButton'
 import Info from 'client/views/Bill/Info'
-import Logo from 'components/icons/Logo'
+import Logo from 'shared/components/icons/Logo'
 
 const BillTicket = () => {
   const dispatch = useDispatch()

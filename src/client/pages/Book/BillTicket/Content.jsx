@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import Button from 'components/Button'
+import Button from 'shared/components/Button'
 import Line from 'client/views/Bill/Line'
-import Divider from 'components/Divider'
+import Divider from 'shared/components/Divider'
 import ModalListVoucher from './ModalList'
 
 import { format } from 'date-fns'
-import { padStart } from 'helpers/format'
+import { padStart } from 'shared/helpers/format'
 import { removeDiscount } from 'stores/booking/slice'
 
 const Content = () => {
